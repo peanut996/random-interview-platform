@@ -1,7 +1,5 @@
 @import "tailwindcss";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@config "../tailwind.config.ts";
 
 :root {
   --background: 0 0% 100%;
@@ -96,11 +94,11 @@
 }
 
 @layer base {
-  /* * {
+  * {
     @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
-  } */
+  }
 }
