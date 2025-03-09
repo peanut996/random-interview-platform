@@ -221,3 +221,59 @@ export async function getModelAnswer(question: any, language: string, onStream?:
   }
 }
 
+export async function generateQuestion(type: string, category: string, difficulty: string, language: string = 'en') {
+  const systemPrompt = `You are an expert at creating technical interview questions. 
+  Generate a new ${type} question in the ${category} category with ${difficulty} difficulty.
+  The question should be challenging but solvable within a reasonable time frame.
+  Return your response in JSON format exactly matching the structure provided, with no additional text.`
+
+  const prompt = `
+  Create a new technical interview question with the following parameters:
+  - Type: (e.g., Must be "Coding" or "Question")
+  - Category: (e.g., "Algorithms", "TCP", "Data Structures", etc.)
+  - Difficulty: (e.g., Must be "Easy", "Medium", "Hard")
+  
+  Generate a question that follows this exact JSON structure:
+  {
+    "id": "generated_unique_id",
+    "type": "",
+    "category": "",
+    "difficulty": "",
+    "translations": {
+      "en": {
+        "title": "English title here",
+        "description": "Detailed English description here",
+        "topic": "Relevant topic here"
+      },
+      "zh": {
+        "title": "Chinese title here",
+        "description": "Detailed Chinese description here",
+        "topic": "Relevant topic in Chinese here"
+      }
+    }${type === 'Coding' ? `,
+    "testCases": [
+      { "input": "example input 1", "output": "expected output 1" },
+      { "input": "example input 2", "output": "expected output 2" }
+    ]` : ''}
+  }
+  
+  Make sure the question is appropriate for the difficulty level and category specified.
+  `
+
+  try {
+    const result = await callOpenAI(prompt, systemPrompt)
+    const cleanedResult = cleanupJsonResponse(result)
+    
+    // Parse the result to ensure it's valid JSON
+    const questionData = JSON.parse(cleanedResult)
+    
+    // Generate a more reliable unique ID
+    questionData.id = `generated_${Date.now()}_${Math.floor(Math.random() * 1000)}`
+    
+    return questionData
+  } catch (error) {
+    console.error("Error generating question:", error)
+    throw new Error("Failed to generate question. Please check your API settings and try again.")
+  }
+}
+

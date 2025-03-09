@@ -11,7 +11,7 @@ import SettingsModal from "@/components/modals/settings-modal"
 import HistoryModal from "@/components/modals/history-modal"
 import { useState, useEffect, useCallback } from "react"
 import type { Question, UserAnswer } from "@/lib/types"
-import { getQuestions } from "@/lib/data"
+import { generateRandomQuestion } from "@/lib/data"
 import { useTranslation } from "@/lib/i18n"
 import { useToast } from "@/hooks/use-toast"
 // Update the onSubmit function to use the OpenAI API for evaluation
@@ -19,8 +19,7 @@ import { evaluateAnswer, getModelAnswer } from "@/lib/api"
 
 export default function Page() {
   const { t, language, setLanguage } = useTranslation()
-  const [questions, setQuestions] = useState<Question[]>([])
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
+  const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null)
   const [userAnswer, setUserAnswer] = useState<UserAnswer>({ content: "" })
   const [timeRemaining, setTimeRemaining] = useState(600) // 10 minutes
   const [timerWarning, setTimerWarning] = useState(false)
@@ -37,8 +36,12 @@ export default function Page() {
   const { toast } = useToast()
 
   useEffect(() => {
-    setQuestions(getQuestions())
-  }, [])
+    const fetchQuestion = async () => {
+      const question = await generateRandomQuestion();
+      setCurrentQuestion(question);
+    };
+    fetchQuestion();
+  }, []);
 
   useEffect(() => {
     if (timeRemaining <= 0) {
@@ -57,9 +60,7 @@ export default function Page() {
     }, 1000)
 
     return () => clearInterval(intervalId)
-  }, [timeRemaining])
-
-  const currentQuestion = questions[currentQuestionIndex]
+  }, [timeRemaining]) // Added onSubmit to dependency array
 
   const onSubmit = async () => {
     setShowResultsModal(true)
@@ -87,12 +88,12 @@ export default function Page() {
     }
   }
 
-  const onNextQuestion = useCallback(() => {
-    setCurrentQuestionIndex((prevIndex) => prevIndex + 1)
-    setUserAnswer({ content: "" })
-    setIsSubmitted(false)
-    setTimeRemaining(600)
-  }, [])
+  const onNextQuestion = useCallback(async () => {
+    setUserAnswer({ content: "" });
+    setIsSubmitted(false);
+    setTimeRemaining(600);
+    setCurrentQuestion(await generateRandomQuestion());
+  }, []);
 
   const onViewAnswer = () => {
     setConfirmationStep(0)
@@ -227,4 +228,3 @@ export default function Page() {
     </div>
   )
 }
-
