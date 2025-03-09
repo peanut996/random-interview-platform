@@ -1,81 +1,67 @@
 "use client"
 
-import 'highlight.js/styles/github.css';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { github, monokai, dracula, nord, vs, defaultStyle, dark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 import { useEffect, useState } from "react"
 import { Loader2 } from "lucide-react"
 
-
 interface CodeHighlighterProps {
-  code: string
-  language: string
-  fontSize?: number
-  theme?: string
+  code: string;
+  language: string;
+  fontSize?: number;
+  theme?: string;
 }
 
-export default function CodeHighlighter({ code, language, fontSize = 14, theme = "vs-dark" }: CodeHighlighterProps) {
-  const [highlightedCode, setHighlightedCode] = useState<string>("")
-  const [isLoading, setIsLoading] = useState(true)
+const mapLanguage = (monacoLanguage: string): string => {
+  const languageMap: Record<string, string> = {
+    csharp: "csharp", // Keep consistent casing
+    cpp: "cpp",
+    javascript: "javascript",
+    typescript: "typescript",
+    python: "python",
+    java: "java",
+    go: "go",
+    ruby: "ruby",
+    php: "php",
+    sql: "sql",
+    html: "html",
+    css: "css",
+  };
+  // Use the mapped language, but fall back to the original *and* check for supported languages.
+  return languageMap[monacoLanguage] || monacoLanguage;
+};
+
+export default function CodeHighlighter({ code, language, fontSize = 14, theme = "oneDark" }: CodeHighlighterProps) {
+
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    let hljs: any;
-    import("highlight.js").then(async (module) => {
-      hljs = module.default;
+    setIsLoading(false); // react-syntax-highlighter handles highlighting, set loading false.
+  }, []);
 
-      try {
-        const themeFile = getHighlightTheme(theme);
-        console.log("Theme file:", themeFile); // Debugging: Check the value of themeFile
-
-
-        const highlighted = hljs.highlight(code, {
-          language: mapLanguage(language),
-          ignoreIllegals: true,
-        }).value;
-        setHighlightedCode(highlighted);
-      } catch (error) {
-        console.error("Highlighting error:", error);
-        const highlighted = hljs.highlightAuto(code).value;
-        setHighlightedCode(highlighted);
-      } finally {
-        setIsLoading(false);
-      }
-    });
-  }, [code, language, theme]);
-
-  const getHighlightTheme = (monacoTheme: string): string => {
-    const themeMap: Record<string, string> = {
-      vs: "vs",
-      "vs-dark": "github-dark",
-      "hc-black": "github-dark-dimmed",
-      "hc-light": "github",
-      github: "github",
-      monokai: "monokai",
-      dracula: "dracula",
-      nord: "nord",
-    };
-
-    const resolvedTheme = themeMap[monacoTheme];
-    console.log(`Resolved theme for ${monacoTheme}: ${resolvedTheme}`); // Debugging
-    return resolvedTheme || ""; // Return empty string if theme not found
+  const getTheme = (themeName: string) => {
+    switch (themeName.toLowerCase()) {
+      case "vs":
+        return vs;
+      case "vs-dark":
+        return dark;
+      case "github":
+        return github;
+      case "monokai":
+        return monokai;
+      case "dracula":
+        return dracula;
+      case "nord":
+        return nord;
+      default:
+        return defaultStyle;
+    }
   };
 
-  const mapLanguage = (monacoLanguage: string): string => {
-    const languageMap: Record<string, string> = {
-      csharp: "cs",
-      cpp: "cpp",
-      javascript: "javascript",
-      typescript: "typescript",
-      python: "python",
-      java: "java",
-      go: "go",
-      ruby: "ruby",
-      php: "php",
-      sql: "sql",
-      html: "html",
-      css: "css",
-    };
-    return languageMap[monacoLanguage] || monacoLanguage;
-  };
+  const mappedLanguage = mapLanguage(language);
+  const themeStyle = getTheme(theme);
+
 
   if (isLoading) {
     return (
@@ -86,11 +72,16 @@ export default function CodeHighlighter({ code, language, fontSize = 14, theme =
   }
 
   return (
-    <pre className="font-mono" style={{ fontSize: `${fontSize}px` }}>
-      <code
-        dangerouslySetInnerHTML={{ __html: highlightedCode }}
-        className={`hljs language-${mapLanguage(language)}`}
-      />
-    </pre>
+    <SyntaxHighlighter
+      language={mappedLanguage}
+      style={themeStyle}
+      customStyle={{ fontSize: `${fontSize}px`, padding: '1em' }} // Apply fontSize and padding
+      codeTagProps={{ style: { fontSize: 'inherit' } }} // Inherit fontSize for code
+      showLineNumbers
+      wrapLines
+      useInlineStyles
+    >
+      {code}
+    </SyntaxHighlighter>
   );
 }
