@@ -1,58 +1,41 @@
 // Create a new file for API calls that use the OpenAI settings
 "use client"
 
-// Default server-side settings (will be loaded from environment variables)
-const DEFAULT_OPENAI_ENDPOINT = process.env.NEXT_PUBLIC_OPENAI_ENDPOINT || "https://api.openai.com/v1"
-const DEFAULT_OPENAI_MODEL = process.env.NEXT_PUBLIC_OPENAI_MODEL || "gpt-4"
+// Default model (will be overridden by server-side value)
+const DEFAULT_OPENAI_MODEL = "gpt-4"
 
 export async function callOpenAI(prompt: string, systemPrompt?: string) {
   try {
-    // First try to get settings from localStorage (user preferences)
-    const endpoint = localStorage.getItem("openai_endpoint") || DEFAULT_OPENAI_ENDPOINT
+    // Get user preferences from localStorage
     const model = localStorage.getItem("openai_model") || DEFAULT_OPENAI_MODEL
-
-    // For token, first check localStorage, then fallback to environment variable
-    let token = localStorage.getItem("openai_token")
-
-    // If no token in localStorage, use the server-side token
-    if (!token) {
-      // In a real app, this would be a server-side API call to get the token
-      // For this demo, we'll use the public env variable if available
-      token = process.env.NEXT_PUBLIC_OPENAI_TOKEN || ""
-    }
-
-    if (!token) {
-      throw new Error(
-        "OpenAI API token not found. Please set it in the settings or configure server environment variables.",
-      )
-    }
-
+    const customEndpoint = localStorage.getItem("openai_endpoint")
+    const customToken = localStorage.getItem("openai_token")
+    
     // Add a small delay to prevent rapid consecutive calls
     await new Promise((resolve) => setTimeout(resolve, 100))
 
-    const response = await fetch(`${endpoint}/chat/completions`, {
+    // Call our backend API route instead of OpenAI directly
+    const response = await fetch('/api/openai', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
+        prompt,
+        systemPrompt,
         model,
-        messages: [
-          ...(systemPrompt ? [{ role: "system", content: systemPrompt }] : []),
-          { role: "user", content: prompt },
-        ],
-        temperature: 0.7,
+        customEndpoint,
+        customToken,
       }),
     })
 
     if (!response.ok) {
       const error = await response.json()
-      throw new Error(error.error?.message || "Failed to call OpenAI API")
+      throw new Error(error.error || "Failed to call API")
     }
 
     const data = await response.json()
-    return data.choices[0].message.content
+    return data.result
   } catch (error) {
     console.error("Error calling OpenAI:", error)
     throw error
@@ -63,7 +46,14 @@ export async function evaluateAnswer(question: any, userAnswer: string, language
   const systemPrompt = `You are an expert technical interviewer. Evaluate the candidate's answer to the following question. 
   Provide a score from 0 to 1 for correctness, efficiency, and readability. 
   Also provide feedback and improvement suggestions. 
-  Return your evaluation in JSON format with the following structure:
+  
+  IMPORTANT FORMATTING INSTRUCTIONS:
+  1. Return your evaluation as raw JSON without any markdown formatting
+  2. DO NOT wrap your response in \`\`\`json or any code blocks
+  3. Your entire response must be valid JSON only
+  4. No text before or after the JSON
+  
+  Use this exact structure:
   {
     "overallScore": 0.85,
     "categoryScores": {
@@ -103,7 +93,44 @@ export async function evaluateAnswer(question: any, userAnswer: string, language
 
   try {
     const result = await callOpenAI(prompt, systemPrompt)
-    return JSON.parse(result)
+    
+    // 尝试解析JSON，处理可能的格式问题
+    try {
+      // 尝试直接解析
+      return JSON.parse(result)
+    } catch (parseError) {
+      console.error("Error parsing JSON response:", parseError)
+      
+      // 尝试提取JSON部分（如果响应包含额外文本）
+      const jsonMatch = result.match(/\{[\s\S]*\}/)
+      if (jsonMatch) {
+        try {
+          return JSON.parse(jsonMatch[0])
+        } catch (e) {
+          console.error("Error parsing extracted JSON:", e)
+        }
+      }
+      
+      // 返回回退评估
+      return {
+        overallScore: 0.5,
+        categoryScores: {
+          correctness: 0.5,
+          efficiency: 0.5,
+          readability: 0.5,
+        },
+        feedback: {
+          en: "We couldn't parse the evaluation. Please check your OpenAI API settings.",
+          zh: "我们无法解析评估结果。请检查您的 OpenAI API 设置。",
+        },
+        improvementSuggestions: [
+          {
+            en: "Make sure your API returns valid JSON responses.",
+            zh: "确保您的 API 返回有效的 JSON 响应。",
+          },
+        ],
+      }
+    }
   } catch (error) {
     console.error("Error evaluating answer:", error)
     // Return a fallback evaluation if API call fails
@@ -133,7 +160,20 @@ export async function getModelAnswer(question: any, language: string) {
   Your answer should be clear, efficient, and follow best practices.
   If it's a coding question, include well-commented code.
   If it's a conceptual question, provide a comprehensive explanation.
-  Return your answer in both English and Chinese.`
+  
+  IMPORTANT FORMATTING INSTRUCTIONS:
+  1. Return your answer as raw JSON without any markdown formatting
+  2. DO NOT wrap your response in \`\`\`json or any code blocks
+  3. Your entire response must be valid JSON only
+  4. No text before or after the JSON
+  
+  Format your response with this exact structure:
+  {
+    "answer": {
+      "en": "Your English answer here",
+      "zh": "Your Chinese answer here"
+    }
+  }`
 
   const questionTitle = question.translations[language]?.title || question.translations.en.title
   const questionDescription = question.translations[language]?.description || question.translations.en.description
