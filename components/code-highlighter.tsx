@@ -44,7 +44,7 @@ export default function CodeHighlighter({ code, language, fontSize = 14, theme =
 
   const getHighlightTheme = (monacoTheme: string): string => {
     const themeMap: Record<string, string> = {
-      vs: "github",
+      vs: "vs",
       "vs-dark": "github-dark",
       "hc-black": "github-dark-dimmed",
       "hc-light": "github",
