@@ -4,7 +4,9 @@
 // Default model (will be overridden by server-side value)
 const DEFAULT_OPENAI_MODEL = "gpt-4"
 
-export async function callOpenAI(prompt: string, systemPrompt?: string) {
+export async function callOpenAI(prompt: string, systemPrompt?: string, options?: {
+  onChunk?: (chunk: string) => void;
+}) {
   try {
     // Get user preferences from localStorage
     const model = localStorage.getItem("openai_model") || DEFAULT_OPENAI_MODEL
@@ -14,35 +16,54 @@ export async function callOpenAI(prompt: string, systemPrompt?: string) {
     // Add a small delay to prevent rapid consecutive calls
     await new Promise((resolve) => setTimeout(resolve, 100))
 
-    // Call our backend API route instead of OpenAI directly
-    const response = await fetch('/api/openai', {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        prompt,
-        systemPrompt,
+    // 构建消息数组
+    const messages = [
+      ...(systemPrompt ? [{ role: "system", content: systemPrompt }] : []),
+      { role: "user", content: prompt },
+    ]
+
+    // 如果提供了 onChunk 回调，使用流式响应
+    if (options?.onChunk) {
+      return sendMessageToOpenAI(messages, {
+        onChunk: options.onChunk,
         model,
         customEndpoint,
-        customToken,
-      }),
-    })
+        customToken
+      })
+    } else {
+      // 否则使用传统的非流式响应
+      // Call our backend API route instead of OpenAI directly
+      const response = await fetch('/api/openai', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          prompt,
+          systemPrompt,
+          model,
+          customEndpoint,
+          customToken,
+        }),
+      })
 
-    if (!response.ok) {
-      const error = await response.json()
-      throw new Error(error.error || "Failed to call API")
+      if (!response.ok) {
+        const error = await response.json()
+        throw new Error(error.error || "Failed to call API")
+      }
+
+      const data = await response.json()
+      return data.result
     }
-
-    const data = await response.json()
-    return data.result
   } catch (error) {
     console.error("Error calling OpenAI:", error)
     throw error
   }
 }
 
-export async function evaluateAnswer(question: any, userAnswer: string, language: string) {
+export async function evaluateAnswer(question: any, userAnswer: string, language: string, options?: {
+  onChunk?: (chunk: string) => void;
+}) {
   const systemPrompt = `You are an expert technical interviewer. Evaluate the candidate's answer to the following question. 
   Provide a score from 0 to 1 for correctness, efficiency, and readability. 
   Also provide feedback and improvement suggestions. 
@@ -92,8 +113,22 @@ export async function evaluateAnswer(question: any, userAnswer: string, language
   `
 
   try {
-    const result = await callOpenAI(prompt, systemPrompt)
-    return result
+    // 如果提供了 onChunk 回调，使用流式响应
+    if (options?.onChunk) {
+      const result = await callOpenAI(prompt, systemPrompt, {
+        onChunk: options.onChunk
+      })
+      try {
+        return JSON.parse(result)
+      } catch (e) {
+        console.error("Error parsing JSON result:", e)
+        return result
+      }
+    } else {
+      // 否则使用传统的非流式响应
+      const result = await callOpenAI(prompt, systemPrompt)
+      return result
+    }
   } catch (error) {
     console.error("Error evaluating answer:", error)
     // Return a fallback evaluation if API call fails
@@ -118,7 +153,9 @@ export async function evaluateAnswer(question: any, userAnswer: string, language
   }
 }
 
-export async function getModelAnswer(question: any, language: string) {
+export async function getModelAnswer(question: any, language: string, options?: {
+  onChunk?: (chunk: string) => void;
+}) {
   const systemPrompt = `You are an expert in technical interviews. Provide a model answer to the following question.
   Your answer should be clear, efficient, and follow best practices.
   If it's a coding question, include well-commented code.
@@ -157,8 +194,22 @@ export async function getModelAnswer(question: any, language: string) {
   `
 
   try {
-    const result = await callOpenAI(prompt, systemPrompt)
-    return JSON.parse(result)
+    // 如果提供了 onChunk 回调，使用流式响应
+    if (options?.onChunk) {
+      const result = await callOpenAI(prompt, systemPrompt, {
+        onChunk: options.onChunk
+      })
+      try {
+        return JSON.parse(result)
+      } catch (e) {
+        console.error("Error parsing JSON result:", e)
+        return { answer: { en: result, zh: result } }
+      }
+    } else {
+      // 否则使用传统的非流式响应
+      const result = await callOpenAI(prompt, systemPrompt)
+      return JSON.parse(result)
+    }
   } catch (error) {
     console.error("Error getting model answer:", error)
     // Return a fallback answer if API call fails
@@ -168,6 +219,89 @@ export async function getModelAnswer(question: any, language: string) {
         zh: "由于错误，我们无法生成模型答案。请检查您的 OpenAI API 设置。",
       },
     }
+  }
+}
+
+// 修改 sendMessageToOpenAI 函数以支持自定义设置
+export async function sendMessageToOpenAI(
+  messages: any[],
+  options?: {
+    onChunk?: (chunk: string) => void;
+    model?: string;
+    customEndpoint?: string;
+    customToken?: string;
+  }
+) {
+  try {
+    // 获取用户首选项
+    const model = options?.model || localStorage.getItem("openai_model") || DEFAULT_OPENAI_MODEL;
+    const customEndpoint = options?.customEndpoint || localStorage.getItem("openai_endpoint");
+    const customToken = options?.customToken || localStorage.getItem("openai_token");
+    
+    // 添加小延迟以防止快速连续调用
+    await new Promise((resolve) => setTimeout(resolve, 100));
+
+    const response = await fetch("/api/openai", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        messages,
+        model,
+        customEndpoint,
+        customToken,
+        stream: !!options?.onChunk, // 如果提供了onChunk回调，则启用流式响应
+      }),
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.error || "Failed to fetch from OpenAI");
+    }
+
+    // 处理流式响应
+    if (options?.onChunk && response.body) {
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let result = "";
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        
+        const text = decoder.decode(value, { stream: true });
+        
+        // 处理SSE格式的响应
+        const lines = text.split('\n').filter(line => line.trim() !== '');
+        for (const line of lines) {
+          if (line.startsWith('data: ')) {
+            const data = line.slice(6);
+            if (data === '[DONE]') continue;
+            
+            try {
+              const parsed = JSON.parse(data);
+              const content = parsed.choices[0]?.delta?.content || '';
+              if (content) {
+                result += content;
+                options.onChunk(content);
+              }
+            } catch (e) {
+              console.error('Error parsing SSE data:', e);
+            }
+          }
+        }
+      }
+      
+      return result;
+    } else {
+      // 如果没有提供 onChunk 回调，则等待整个响应
+      const data = await response.json();
+      return data.result;
+    }
+  } catch (error) {
+    console.error("Error sending message to OpenAI:", error);
+    throw error;
   }
 }
 

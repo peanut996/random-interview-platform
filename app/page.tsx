@@ -31,8 +31,8 @@ export default function Page() {
   const [showSettingsModal, setShowSettingsModal] = useState(false)
   const [showHistoryModal, setShowHistoryModal] = useState(false)
   const [confirmationStep, setConfirmationStep] = useState(0)
-  const [results, setResults] = useState(null)
-  const [answer, setAnswer] = useState(null)
+  const [results, setResults] = useState<any>(null)
+  const [answer, setAnswer] = useState<any>(null)
   const { toast } = useToast() // Move useToast here
 
   useEffect(() => {
@@ -63,23 +63,58 @@ export default function Page() {
   // Replace the onSubmit function
   const onSubmit = async () => {
     setIsSubmitted(true)
+    
+    // 创建一个临时结果对象，用于存储流式响应的结果
+    let tempResults = {
+      overallScore: 0,
+      categoryScores: {
+        correctness: 0,
+        efficiency: 0,
+        readability: 0
+      },
+      feedback: {
+        en: "",
+        zh: ""
+      },
+      improvementSuggestions: []
+    }
+    
+    // 显示加载状态
+    setResults(tempResults)
+    setShowResultsModal(true)
 
     try {
-      // Call OpenAI to evaluate the answer
-      const evaluationResults = await evaluateAnswer(currentQuestion, userAnswer.content, language)
-
-      setResults(evaluationResults)
-      setShowResultsModal(true)
+      // 使用流式响应评估答案，但只累积文本而不尝试解析 JSON
+      let fullResponse = "";
+      
+      await evaluateAnswer(currentQuestion, userAnswer.content, language, {
+        onChunk: (chunk) => {
+          // 直接将每个块添加到反馈中，不尝试解析 JSON
+          fullResponse += chunk;
+          tempResults.feedback.en = fullResponse;
+          tempResults.feedback.zh = fullResponse;
+          setResults({...tempResults});
+        }
+      });
+      
+      // 评估完成后，尝试解析完整的响应为 JSON
+      try {
+        const finalResult = JSON.parse(fullResponse);
+        setResults(finalResult);
+      } catch (e) {
+        console.error("Error parsing final JSON:", e);
+        // 如果无法解析，保留文本格式
+      }
     } catch (error) {
-      console.error("Error submitting answer:", error)
+      console.error("Error submitting answer:", error);
       toast({
         title: t("toast.error.title"),
         description: t("toast.error.description"),
         variant: "destructive",
         duration: 5000,
-      })
+      });
     }
-  }
+  };
 
   const onNextQuestion = useCallback(() => {
     setCurrentQuestionIndex((prevIndex) => prevIndex + 1)
@@ -96,35 +131,64 @@ export default function Page() {
   // Replace the handleConfirmation function
   const handleConfirmation = async () => {
     if (confirmationStep < 2) {
-      setConfirmationStep((prevStep) => prevStep + 1)
+      setConfirmationStep((prevStep) => prevStep + 1);
     } else {
-      setShowConfirmationModal(false)
+      setShowConfirmationModal(false);
+
+      // 创建一个临时答案对象，用于存储流式响应的结果
+      let tempAnswer = {
+        answer: {
+          en: "",
+          zh: ""
+        }
+      };
+      
+      // 显示加载状态
+      setAnswer(tempAnswer);
+      setShowAnswerModal(true);
 
       try {
-        // Show loading state
+        // 显示加载状态
         toast({
           title: t("toast.loading.title"),
           description: t("toast.loading.description"),
           duration: 3000,
-        })
+        });
 
-        // Call OpenAI to get the model answer
-        const modelAnswer = await getModelAnswer(currentQuestion, language)
-
-        setAnswer(modelAnswer)
-        setShowAnswerModal(true)
-        setIsSubmitted(true)
+        // 使用流式响应获取模型答案，但只累积文本
+        let fullResponse = "";
+        
+        await getModelAnswer(currentQuestion, language, {
+          onChunk: (chunk) => {
+            // 直接将每个块添加到答案中，不尝试解析 JSON
+            fullResponse += chunk;
+            tempAnswer.answer.en = fullResponse;
+            tempAnswer.answer.zh = fullResponse;
+            setAnswer({...tempAnswer});
+          }
+        });
+        
+        // 完成后，尝试解析完整的响应为 JSON
+        try {
+          const finalAnswer = JSON.parse(fullResponse);
+          setAnswer(finalAnswer);
+        } catch (e) {
+          console.error("Error parsing final JSON:", e);
+          // 如果无法解析，保留文本格式
+        }
+        
+        setIsSubmitted(true);
       } catch (error) {
-        console.error("Error getting model answer:", error)
+        console.error("Error getting model answer:", error);
         toast({
           title: t("toast.error.title"),
           description: t("toast.error.description"),
           variant: "destructive",
           duration: 5000,
-        })
+        });
       }
     }
-  }
+  };
 
   const handleCancelConfirmation = () => {
     setShowConfirmationModal(false)
