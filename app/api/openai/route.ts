@@ -50,16 +50,15 @@ export async function POST(request: NextRequest) {
     // 检查是否是纯JSON响应
     let result = data.choices[0].message.content;
     
-    // 尝试解析并重新序列化，以确保是纯JSON
     try {
+      // 解析但不重新序列化，直接返回解析后的对象
       const parsed = JSON.parse(result);
-      result = JSON.stringify(parsed);
+      return NextResponse.json({ result: parsed });
     } catch (e) {
-      // 如果不是有效的JSON，保持原样
+      // 如果不是有效的JSON，保持原样返回文本
       console.warn("Response is not valid JSON:", result);
+      return NextResponse.json({ result });
     }
-    
-    return NextResponse.json({ result });
   } catch (error: any) {
     console.error("Error calling OpenAI:", error);
     return NextResponse.json(

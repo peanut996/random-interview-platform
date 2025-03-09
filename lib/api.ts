@@ -93,44 +93,7 @@ export async function evaluateAnswer(question: any, userAnswer: string, language
 
   try {
     const result = await callOpenAI(prompt, systemPrompt)
-    
-    // 尝试解析JSON，处理可能的格式问题
-    try {
-      // 尝试直接解析
-      return JSON.parse(result)
-    } catch (parseError) {
-      console.error("Error parsing JSON response:", parseError)
-      
-      // 尝试提取JSON部分（如果响应包含额外文本）
-      const jsonMatch = result.match(/\{[\s\S]*\}/)
-      if (jsonMatch) {
-        try {
-          return JSON.parse(jsonMatch[0])
-        } catch (e) {
-          console.error("Error parsing extracted JSON:", e)
-        }
-      }
-      
-      // 返回回退评估
-      return {
-        overallScore: 0.5,
-        categoryScores: {
-          correctness: 0.5,
-          efficiency: 0.5,
-          readability: 0.5,
-        },
-        feedback: {
-          en: "We couldn't parse the evaluation. Please check your OpenAI API settings.",
-          zh: "我们无法解析评估结果。请检查您的 OpenAI API 设置。",
-        },
-        improvementSuggestions: [
-          {
-            en: "Make sure your API returns valid JSON responses.",
-            zh: "确保您的 API 返回有效的 JSON 响应。",
-          },
-        ],
-      }
-    }
+    return result
   } catch (error) {
     console.error("Error evaluating answer:", error)
     // Return a fallback evaluation if API call fails
