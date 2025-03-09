@@ -180,7 +180,15 @@ export default function MonacoEditor({
     if (language === "python") {
       // Add Python snippets
       monaco.languages.registerCompletionItemProvider("python", {
-        provideCompletionItems: () => {
+        provideCompletionItems: (model, position) => {
+          const word = model.getWordUntilPosition(position);
+          const range = {
+            startLineNumber: position.lineNumber,
+            startColumn: word.startColumn,
+            endLineNumber: position.lineNumber,
+            endColumn: word.endColumn,
+          };
+
           return {
             suggestions: [
               {
@@ -189,6 +197,7 @@ export default function MonacoEditor({
                 insertText: "def ${1:function_name}(${2:parameters}):\n\t${3:pass}",
                 insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
                 documentation: "Define a new function",
+                range: range, // Add the range here
               },
               {
                 label: "class",
@@ -196,6 +205,7 @@ export default function MonacoEditor({
                 insertText: "class ${1:ClassName}:\n\tdef __init__(self, ${2:parameters}):\n\t\t${3:pass}",
                 insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
                 documentation: "Define a new class",
+                range: range, // Add the range here
               },
               {
                 label: "for",
@@ -203,6 +213,7 @@ export default function MonacoEditor({
                 insertText: "for ${1:item} in ${2:iterable}:\n\t${3:pass}",
                 insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
                 documentation: "For loop",
+                range: range, // Add the range here
               },
               {
                 label: "if",
@@ -210,11 +221,12 @@ export default function MonacoEditor({
                 insertText: "if ${1:condition}:\n\t${2:pass}",
                 insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
                 documentation: "If statement",
+                range: range, // Add the range here
               },
             ],
-          }
+          };
         },
-      })
+      });
     }
   }
 
@@ -287,4 +299,3 @@ export default function MonacoEditor({
     </div>
   )
 }
-

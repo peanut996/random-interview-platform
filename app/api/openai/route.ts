@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { createOpenAI } from '@ai-sdk/openai'
-import { streamText } from 'ai'
+import { LanguageModel, streamText } from 'ai'
 
 
 // Default server-side settings from environment variables
@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
     });
     const completion = openaiClient.chat(model)
     const { textStream } = await streamText({
-      model: completion,
+      model: completion as LanguageModel,
       messages,
       temperature: 0.7,
     })
