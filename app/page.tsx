@@ -61,12 +61,12 @@ export default function Page() {
 
   const currentQuestion = questions[currentQuestionIndex]
 
-  // Updated onSubmit function with streaming support
   const onSubmit = async () => {
+    setShowResultsModal(true)
     setIsSubmitted(true)
     setResults(null)
     setIsStreaming(true)
-    setShowResultsModal(true)
+
 
     try {
       // Call OpenAI to evaluate the answer with streaming

@@ -5,9 +5,10 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Button } from "@/components/ui/button"
 import { useTranslation } from "@/lib/i18n"
 import { Loader2 } from "lucide-react"
+import { cleanupJsonResponse } from "@/lib/utils"
 
 interface AnswerModalProps {
-  answer: any
+  answer: string
   language: string
   onClose: () => void
   isStreaming?: boolean
@@ -17,24 +18,17 @@ export default function AnswerModal({ answer, language, onClose, isStreaming = f
   const { t } = useTranslation()
   const [parsedAnswer, setParsedAnswer] = useState<any>(null)
 
-  // Parse answer as it comes in
   useEffect(() => {
     if (!answer) return
-
-    try {
-      // If answer is a string (streaming), try to parse it
-      if (typeof answer === "string") {
-        const parsed = JSON.parse(answer)
-        setParsedAnswer(parsed)
-      } else {
-        // If answer is already an object, use it directly
-        setParsedAnswer(answer)
-      }
+    if(isStreaming) return
+    try{
+      const cleanedResults = cleanupJsonResponse(answer)
+      const parsed = JSON.parse(cleanedResults)
+      setParsedAnswer(parsed)
     } catch (e) {
-      // If parsing fails, it might be incomplete JSON
-      console.log("Couldn't parse answer yet:", e)
+      setParsedAnswer(answer)
     }
-  }, [answer])
+  }, [answer, isStreaming])
 
   if (!answer) return null
 

@@ -1,5 +1,7 @@
 "use client"
 
+import { cleanupJsonResponse } from "./utils"
+
 // Default server-side settings (will be loaded from environment variables on the server)
 const DEFAULT_OPENAI_MODEL = "gpt-4"
 
@@ -141,7 +143,10 @@ export async function evaluateAnswer(
       finalResult = await callOpenAI(prompt, systemPrompt)
     }
 
-    return JSON.parse(finalResult)
+    // Clean up the final result before parsing
+    const cleanedResult = cleanupJsonResponse(finalResult);
+    console.log(cleanedResult)
+    return JSON.parse(cleanedResult);
   } catch (error) {
     console.error("Error evaluating answer:", error)
     // Return a fallback evaluation if API call fails
@@ -196,21 +201,14 @@ export async function getModelAnswer(question: any, language: string, onStream?:
 
     // If we have a streaming handler, use it
     if (onStream) {
-      finalResult = await callOpenAI(prompt, systemPrompt, (chunk) => {
-        try {
-          // Try to parse the JSON as it comes in
-          const parsedJson = JSON.parse(chunk)
-          onStream(chunk)
-        } catch (e) {
-          // If parsing fails, just pass the raw chunk
-          onStream(chunk)
-        }
-      })
+      finalResult = await callOpenAI(prompt, systemPrompt, onStream)
     } else {
       finalResult = await callOpenAI(prompt, systemPrompt)
     }
 
-    return JSON.parse(finalResult)
+    // Clean up the final result before parsing
+    const cleanedResult = cleanupJsonResponse(finalResult);
+    return cleanedResult;
   } catch (error) {
     console.error("Error getting model answer:", error)
     // Return a fallback answer if API call fails

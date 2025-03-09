@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { useTranslation } from "@/lib/i18n"
 import { Progress } from "@/components/ui/progress"
 import { Loader2 } from "lucide-react"
+import { cleanupJsonResponse } from "@/lib/utils"
 
 interface ResultsModalProps {
   results: any
@@ -18,29 +19,22 @@ export default function ResultsModal({ results, language, onClose, isStreaming =
   const { t } = useTranslation()
   const [parsedResults, setParsedResults] = useState<any>(null)
 
-  // Parse results as they come in
   useEffect(() => {
     if (!results) return
-
-    try {
-      // If results is a string (streaming), try to parse it
-      if (typeof results === "string") {
-        const parsed = JSON.parse(results)
-        setParsedResults(parsed)
-      } else {
-        // If results is already an object, use it directly
-        setParsedResults(results)
-      }
+    if(isStreaming) return
+    try{
+      const cleanedResults = cleanupJsonResponse(results)
+      const parsed = JSON.parse(cleanedResults)
+      setParsedResults(parsed)
     } catch (e) {
-      // If parsing fails, it might be incomplete JSON
-      console.log("Couldn't parse results yet:", e)
+      setParsedResults(results)
     }
-  }, [results])
+  }, [results, isStreaming])
 
   if (!results) return null
 
   // Show loading state while streaming and before we have parsed results
-  if (isStreaming && !parsedResults) {
+  if (isStreaming) {
     return (
       <Dialog open={true} onOpenChange={() => onClose()}>
         <DialogContent className="sm:max-w-md backdrop-blur-xl bg-white/90 dark:bg-gray-900/90 border border-gray-200 dark:border-gray-800">
