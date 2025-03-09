@@ -6,6 +6,10 @@ import { Button } from "@/components/ui/button"
 import { useTranslation } from "@/lib/i18n"
 import { Loader2 } from "lucide-react"
 import { cleanupJsonResponse } from "@/lib/utils"
+import ReactMarkdown from "react-markdown"
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { vscDarkPlus, vs } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import { useTheme } from "next-themes"
 
 interface AnswerModalProps {
   answer: string
@@ -17,6 +21,8 @@ interface AnswerModalProps {
 export default function AnswerModal({ answer, language, onClose, isStreaming = false }: AnswerModalProps) {
   const { t } = useTranslation()
   const [parsedAnswer, setParsedAnswer] = useState<any>(null)
+  const { resolvedTheme } = useTheme()
+  const isDark = resolvedTheme === 'dark'
 
   useEffect(() => {
     if (!answer) return
@@ -36,7 +42,7 @@ export default function AnswerModal({ answer, language, onClose, isStreaming = f
   if (isStreaming && !parsedAnswer) {
     return (
       <Dialog open={true} onOpenChange={() => onClose()}>
-        <DialogContent className="sm:max-w-md backdrop-blur-xl bg-white/90 dark:bg-gray-900/90 border border-gray-200 dark:border-gray-800">
+        <DialogContent className="sm:max-w-4xl md:max-w-5xl backdrop-blur-xl bg-white/90 dark:bg-gray-900/90 border border-gray-200 dark:border-gray-800">
           <DialogHeader>
             <DialogTitle>{t("answer.modalTitle")}</DialogTitle>
           </DialogHeader>
@@ -56,7 +62,7 @@ export default function AnswerModal({ answer, language, onClose, isStreaming = f
   if (typeof displayAnswer === "string") {
     return (
       <Dialog open={true} onOpenChange={() => onClose()}>
-        <DialogContent className="sm:max-w-md backdrop-blur-xl bg-white/90 dark:bg-gray-900/90 border border-gray-200 dark:border-gray-800">
+        <DialogContent className="sm:max-w-4xl md:max-w-5xl backdrop-blur-xl bg-white/90 dark:bg-gray-900/90 border border-gray-200 dark:border-gray-800">
           <DialogHeader>
             <DialogTitle>{t("answer.modalTitle")}</DialogTitle>
           </DialogHeader>
@@ -73,14 +79,39 @@ export default function AnswerModal({ answer, language, onClose, isStreaming = f
 
   return (
     <Dialog open={true} onOpenChange={() => onClose()}>
-      <DialogContent className="sm:max-w-md backdrop-blur-xl bg-white/90 dark:bg-gray-900/90 border border-gray-200 dark:border-gray-800">
+      <DialogContent className="sm:max-w-4xl md:max-w-5xl max-h-[80vh] overflow-y-auto backdrop-blur-xl bg-white/90 dark:bg-gray-900/90 border border-gray-200 dark:border-gray-800">
         <DialogHeader>
           <DialogTitle>{t("answer.modalTitle")}</DialogTitle>
         </DialogHeader>
 
         <div className="py-4">
           <div className="prose dark:prose-invert max-w-none">
-            <pre className="bg-gray-50 dark:bg-gray-800 p-4 rounded-md overflow-auto">{answerContent}</pre>
+            <div className="markdown-content">
+              <ReactMarkdown
+                components={{
+                  code({node, className, children, ...props}: any) {
+                    const match = /language-(\w+)/.exec(className || '')
+                    const inline = !match
+                    return !inline && match ? (
+                      <SyntaxHighlighter
+                        style={isDark ? vscDarkPlus : vs}
+                        language={match[1]}
+                        PreTag="div"
+                        {...props}
+                      >
+                        {String(children).replace(/\n$/, '')}
+                      </SyntaxHighlighter>
+                    ) : (
+                      <code className={className} {...props}>
+                        {children}
+                      </code>
+                    )
+                  }
+                }}
+              >
+                {answerContent}
+              </ReactMarkdown>
+            </div>
           </div>
         </div>
 
