@@ -144,7 +144,7 @@ const translations = {
     "toast.error.description": "出现了问题。请检查您的 API 设置并重试。",
     "toast.loading.title": "加载中",
     "toast.loading.description": "正在生成模型答案...",
-    "settings.apiNote": "默认 API 设置从服务器环境变量加载。下面���自定义设置将覆盖默认值。",
+    "settings.apiNote": "默认 API 设置从服务器环境变量加载。下面自定义设置将覆盖默认值。",
   },
 }
 
