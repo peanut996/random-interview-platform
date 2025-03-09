@@ -9,7 +9,6 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata = {
   title: "AI Interview Simulator",
   description: "A technical interview simulation platform with an Apple-style UI",
-    generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -28,6 +27,3 @@ export default function RootLayout({
   )
 }
 
-
-
-import './globals.css'
