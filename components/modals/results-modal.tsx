@@ -1,25 +1,87 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { useTranslation } from "@/lib/i18n"
 import { Progress } from "@/components/ui/progress"
+import { Loader2 } from "lucide-react"
 
 interface ResultsModalProps {
   results: any
   language: string
   onClose: () => void
+  isStreaming?: boolean
 }
 
-export default function ResultsModal({ results, language, onClose }: ResultsModalProps) {
+export default function ResultsModal({ results, language, onClose, isStreaming = false }: ResultsModalProps) {
   const { t } = useTranslation()
+  const [parsedResults, setParsedResults] = useState<any>(null)
+
+  // Parse results as they come in
+  useEffect(() => {
+    if (!results) return
+
+    try {
+      // If results is a string (streaming), try to parse it
+      if (typeof results === "string") {
+        const parsed = JSON.parse(results)
+        setParsedResults(parsed)
+      } else {
+        // If results is already an object, use it directly
+        setParsedResults(results)
+      }
+    } catch (e) {
+      // If parsing fails, it might be incomplete JSON
+      console.log("Couldn't parse results yet:", e)
+    }
+  }, [results])
 
   if (!results) return null
 
-  const feedback = results.feedback[language] || results.feedback.en
-  const suggestions = results.improvementSuggestions.map((suggestion: any) => suggestion[language] || suggestion.en)
+  // Show loading state while streaming and before we have parsed results
+  if (isStreaming && !parsedResults) {
+    return (
+      <Dialog open={true} onOpenChange={() => onClose()}>
+        <DialogContent className="sm:max-w-md backdrop-blur-xl bg-white/90 dark:bg-gray-900/90 border border-gray-200 dark:border-gray-800">
+          <DialogHeader>
+            <DialogTitle>{t("results.title")}</DialogTitle>
+          </DialogHeader>
+          <div className="flex flex-col items-center justify-center py-8 space-y-4">
+            <Loader2 className="h-8 w-8 animate-spin text-primary" />
+            <p>{t("results.analyzing")}</p>
+          </div>
+        </DialogContent>
+      </Dialog>
+    )
+  }
 
-  const overallScorePercentage = Math.round(results.overallScore * 100)
+  // Use parsed results if available, otherwise fall back to the original results
+  const displayResults = parsedResults || results
+
+  // If we're still getting string data but couldn't parse it yet
+  if (typeof displayResults === "string") {
+    return (
+      <Dialog open={true} onOpenChange={() => onClose()}>
+        <DialogContent className="sm:max-w-md backdrop-blur-xl bg-white/90 dark:bg-gray-900/90 border border-gray-200 dark:border-gray-800">
+          <DialogHeader>
+            <DialogTitle>{t("results.title")}</DialogTitle>
+          </DialogHeader>
+          <div className="flex flex-col items-center justify-center py-8 space-y-4">
+            <Loader2 className="h-8 w-8 animate-spin text-primary" />
+            <p>{t("results.processing")}</p>
+          </div>
+        </DialogContent>
+      </Dialog>
+    )
+  }
+
+  const feedback = displayResults.feedback[language] || displayResults.feedback.en
+  const suggestions = displayResults.improvementSuggestions.map(
+    (suggestion: any) => suggestion[language] || suggestion.en,
+  )
+
+  const overallScorePercentage = Math.round(displayResults.overallScore * 100)
 
   return (
     <Dialog open={true} onOpenChange={() => onClose()}>
@@ -40,25 +102,25 @@ export default function ResultsModal({ results, language, onClose }: ResultsModa
             <div>
               <div className="flex justify-between mb-1">
                 <span>{t("results.correctness")}</span>
-                <span>{Math.round(results.categoryScores.correctness * 100)}%</span>
+                <span>{Math.round(displayResults.categoryScores.correctness * 100)}%</span>
               </div>
-              <Progress value={results.categoryScores.correctness * 100} className="h-2" />
+              <Progress value={displayResults.categoryScores.correctness * 100} className="h-2" />
             </div>
 
             <div>
               <div className="flex justify-between mb-1">
                 <span>{t("results.efficiency")}</span>
-                <span>{Math.round(results.categoryScores.efficiency * 100)}%</span>
+                <span>{Math.round(displayResults.categoryScores.efficiency * 100)}%</span>
               </div>
-              <Progress value={results.categoryScores.efficiency * 100} className="h-2" />
+              <Progress value={displayResults.categoryScores.efficiency * 100} className="h-2" />
             </div>
 
             <div>
               <div className="flex justify-between mb-1">
                 <span>{t("results.readability")}</span>
-                <span>{Math.round(results.categoryScores.readability * 100)}%</span>
+                <span>{Math.round(displayResults.categoryScores.readability * 100)}%</span>
               </div>
-              <Progress value={results.categoryScores.readability * 100} className="h-2" />
+              <Progress value={displayResults.categoryScores.readability * 100} className="h-2" />
             </div>
           </div>
 

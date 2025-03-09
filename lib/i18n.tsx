@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react"
+import type React from "react"
 
 import { useState, useEffect, createContext, useContext } from "react"
 
@@ -18,6 +18,8 @@ const translations = {
     "answer.textPlaceholder": "Write your answer here...",
     "answer.noCode": "No code entered yet",
     "answer.modalTitle": "AI-Generated Answer",
+    "answer.generating": "No code entered yet",
+    "answer.processing": "Processing answer...",
     "button.notMyStack": "Not My Stack",
     "button.submit": "Submit",
     "button.nextQuestion": "Next Question",
@@ -33,6 +35,8 @@ const translations = {
     "results.readability": "Readability",
     "results.feedback": "Feedback",
     "results.suggestions": "Improvement Suggestions",
+    "results.analyzing": "Analyzing your answer...",
+    "results.processing": "Processing results...",
     "confirmation.step1.title": "View Answer?",
     "confirmation.step1.description":
       "Are you sure you want to see the answer? You won't be able to submit your own solution after viewing.",
@@ -85,6 +89,8 @@ const translations = {
     "answer.textPlaceholder": "在这里写下你的回答...",
     "answer.noCode": "尚未输入代码",
     "answer.modalTitle": "AI 生成的答案",
+    "answer.generating": "正在生成模型答案...",
+    "answer.processing": "正在处理答案...",
     "button.notMyStack": "不是我的技术栈",
     "button.submit": "提交",
     "button.nextQuestion": "下一题",
@@ -100,6 +106,8 @@ const translations = {
     "results.readability": "可读性",
     "results.feedback": "反馈",
     "results.suggestions": "改进建议",
+    "results.analyzing": "正在分析您的答案...",
+    "results.processing": "正在处理结果...",
     "confirmation.step1.title": "查看答案？",
     "confirmation.step1.description": "你确定要查看答案吗？查看后将无法提交自己的解决方案。",
     "confirmation.step2.title": "认真的吗？",
@@ -136,7 +144,7 @@ const translations = {
     "toast.error.description": "出现了问题。请检查您的 API 设置并重试。",
     "toast.loading.title": "加载中",
     "toast.loading.description": "正在生成模型答案...",
-    "settings.apiNote": "默认 API 设置从服务器环境变量加载。下面的自定义设置将覆盖默认值。",
+    "settings.apiNote": "默认 API 设置从服务器环境变量加载。下面���自定义设置将覆盖默认值。",
   },
 }
 
@@ -170,9 +178,7 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
 
   // Translation function
   const t = (key: string) => {
-    return (translations[language as keyof typeof translations] as Record<string, string>)?.[key] || 
-           (translations.en as Record<string, string>)[key] || 
-           key
+    return translations[language as keyof typeof translations]?.[key] || translations.en[key] || key
   }
 
   return <I18nContext.Provider value={{ t, language, setLanguage }}>{children}</I18nContext.Provider>

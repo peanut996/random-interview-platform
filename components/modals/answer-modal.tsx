@@ -1,21 +1,81 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { useTranslation } from "@/lib/i18n"
+import { Loader2 } from "lucide-react"
 
 interface AnswerModalProps {
   answer: any
   language: string
   onClose: () => void
+  isStreaming?: boolean
 }
 
-export default function AnswerModal({ answer, language, onClose }: AnswerModalProps) {
+export default function AnswerModal({ answer, language, onClose, isStreaming = false }: AnswerModalProps) {
   const { t } = useTranslation()
+  const [parsedAnswer, setParsedAnswer] = useState<any>(null)
+
+  // Parse answer as it comes in
+  useEffect(() => {
+    if (!answer) return
+
+    try {
+      // If answer is a string (streaming), try to parse it
+      if (typeof answer === "string") {
+        const parsed = JSON.parse(answer)
+        setParsedAnswer(parsed)
+      } else {
+        // If answer is already an object, use it directly
+        setParsedAnswer(answer)
+      }
+    } catch (e) {
+      // If parsing fails, it might be incomplete JSON
+      console.log("Couldn't parse answer yet:", e)
+    }
+  }, [answer])
 
   if (!answer) return null
 
-  const answerContent = answer.answer[language] || answer.answer.en
+  // Show loading state while streaming and before we have parsed answer
+  if (isStreaming && !parsedAnswer) {
+    return (
+      <Dialog open={true} onOpenChange={() => onClose()}>
+        <DialogContent className="sm:max-w-md backdrop-blur-xl bg-white/90 dark:bg-gray-900/90 border border-gray-200 dark:border-gray-800">
+          <DialogHeader>
+            <DialogTitle>{t("answer.modalTitle")}</DialogTitle>
+          </DialogHeader>
+          <div className="flex flex-col items-center justify-center py-8 space-y-4">
+            <Loader2 className="h-8 w-8 animate-spin text-primary" />
+            <p>{t("answer.generating")}</p>
+          </div>
+        </DialogContent>
+      </Dialog>
+    )
+  }
+
+  // Use parsed answer if available, otherwise fall back to the original answer
+  const displayAnswer = parsedAnswer || answer
+
+  // If we're still getting string data but couldn't parse it yet
+  if (typeof displayAnswer === "string") {
+    return (
+      <Dialog open={true} onOpenChange={() => onClose()}>
+        <DialogContent className="sm:max-w-md backdrop-blur-xl bg-white/90 dark:bg-gray-900/90 border border-gray-200 dark:border-gray-800">
+          <DialogHeader>
+            <DialogTitle>{t("answer.modalTitle")}</DialogTitle>
+          </DialogHeader>
+          <div className="flex flex-col items-center justify-center py-8 space-y-4">
+            <Loader2 className="h-8 w-8 animate-spin text-primary" />
+            <p>{t("answer.processing")}</p>
+          </div>
+        </DialogContent>
+      </Dialog>
+    )
+  }
+
+  const answerContent = displayAnswer.answer[language] || displayAnswer.answer.en
 
   return (
     <Dialog open={true} onOpenChange={() => onClose()}>

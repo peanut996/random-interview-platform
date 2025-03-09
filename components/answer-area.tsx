@@ -16,7 +16,7 @@ interface AnswerAreaProps {
 interface CodeEditorProps {
   userAnswer: UserAnswer
   setUserAnswer: (answer: UserAnswer) => void
-  textareaRef: React.RefObject<HTMLTextAreaElement>
+  textareaRef: React.RefObject<HTMLTextAreaElement | null>
   activeTab: string
   t: (key: string) => string
 }
