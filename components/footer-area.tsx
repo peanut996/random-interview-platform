@@ -31,29 +31,31 @@ export default function FooterArea({
   }
 
   return (
-    <Card className="shadow-sm border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#2c2c2e] rounded-xl">
-      <CardContent className="p-4">
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          <div className={`text-xl font-mono font-semibold ${timerWarning ? "text-red-500 animate-pulse" : ""}`}>
-            {formatTime(timeRemaining)}
+    <div className="footer-container">
+      <Card className="shadow-sm border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#2c2c2e] rounded-xl">
+        <CardContent className="p-4">
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div className={`text-xl font-mono font-semibold ${timerWarning ? "text-red-500 animate-pulse" : ""}`}>
+              {formatTime(timeRemaining)}
+            </div>
+
+            <div className="flex flex-wrap gap-3">
+              <Button variant="outline" onClick={onViewAnswer}>
+                {t("button.viewAnswer")}
+              </Button>
+
+              <Button variant="outline" onClick={onNextQuestion} disabled={!isSubmitted}>
+                {t("button.nextQuestion")}
+              </Button>
+
+              <Button onClick={onSubmit} disabled={isSubmitted}>
+                {t("button.submit")}
+              </Button>
+            </div>
           </div>
-
-          <div className="flex flex-wrap gap-3">
-            <Button variant="outline" onClick={onViewAnswer}>
-              {t("button.viewAnswer")}
-            </Button>
-
-            <Button variant="outline" onClick={onNextQuestion} disabled={!isSubmitted}>
-              {t("button.nextQuestion")}
-            </Button>
-
-            <Button onClick={onSubmit} disabled={isSubmitted}>
-              {t("button.submit")}
-            </Button>
-          </div>
-        </div>
-      </CardContent>
-    </Card>
+        </CardContent>
+      </Card>
+    </div>
   )
 }
 

@@ -102,3 +102,19 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
+
+/* Footer styles */
+.footer-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem;
+  z-index: 10;
+  background-color: var(--background);
+}
+
+/* Add padding to the bottom of the main content to prevent footer overlap */
+main {
+  padding-bottom: 5rem; /* Adjust based on your footer height */
+}
