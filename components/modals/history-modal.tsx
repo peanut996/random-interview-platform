@@ -1,118 +1,124 @@
 "use client"
 
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-import { Button } from "@/components/ui/button"
 import { useTranslation } from "@/lib/i18n"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { ScrollArea } from "@/components/ui/scroll-area"
+import { Button } from "@/components/ui/button"
+import { formatDistanceToNow } from "date-fns"
+import { zhCN, enUS } from "date-fns/locale"
 import { Badge } from "@/components/ui/badge"
-import { AlertTriangle } from "lucide-react"
+import { QuestionHistory } from "@/lib/types"
+import { Clock, CheckCircle, XCircle } from "lucide-react"
+import { useState } from "react"
 
 interface HistoryModalProps {
   language: string
   onClose: () => void
+  history: QuestionHistory[]
+  onSelectQuestion: (historyItem: QuestionHistory) => void
+  onClearHistory: () => void
 }
 
-export default function HistoryModal({ language, onClose }: HistoryModalProps) {
+export default function HistoryModal({ language, onClose, history: initialHistory, onSelectQuestion, onClearHistory }: HistoryModalProps) {
   const { t } = useTranslation()
-
-  // Mock history data
-  const historyItems = [
-    {
-      id: 1,
-      date: "2023-08-24",
-      title: {
-        en: "Reverse a String",
-        zh: "反转字符串",
-      },
-      category: "Algorithms",
-      difficulty: "Easy",
-      score: 0.85,
-      feedback: {
-        en: "Good solution with minor improvements needed.",
-        zh: "良好的解决方案，需要小的改进。",
-      },
-    },
-    {
-      id: 2,
-      date: "2023-08-23",
-      title: {
-        en: "Explain TCP Handshake",
-        zh: "解释 TCP 握手",
-      },
-      category: "TCP",
-      difficulty: "Medium",
-      score: 0.72,
-      feedback: {
-        en: "Decent explanation but missing some key details.",
-        zh: "解释不错，但缺少一些关键细节。",
-      },
-    },
-  ]
-
-  const handleReportMistake = (id: number) => {
-    console.log("Report mistake for item:", id)
-    // In a real app, this would open a GitHub issue creation form
+  const [history, setHistory] = useState<QuestionHistory[]>(initialHistory)
+  
+  const getLocale = () => {
+    return language === "zh" ? zhCN : enUS;
   }
+  
+  const formatTime = (timestamp: string) => {
+    try {
+      return formatDistanceToNow(new Date(timestamp), { 
+        addSuffix: true,
+        locale: getLocale()
+      });
+    } catch (e) {
+      return timestamp;
+    }
+  }
+  
+  const getDifficultyColor = (difficulty: string) => {
+    switch(difficulty) {
+      case "Easy":
+        return "bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 border-green-200 dark:border-green-800";
+      case "Medium":
+        return "bg-yellow-50 dark:bg-yellow-900/20 text-yellow-600 dark:text-yellow-400 border-yellow-200 dark:border-yellow-800";
+      case "Hard":
+        return "bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 border-red-200 dark:border-red-800";
+      default:
+        return "";
+    }
+  };
+  
+  const handleClearHistory = () => {
+    setHistory([]);
+    onClearHistory();
+    onClose();
+  };
 
   return (
-    <Dialog open={true} onOpenChange={() => onClose()}>
-      <DialogContent className="sm:max-w-2xl backdrop-blur-xl bg-white/90 dark:bg-gray-900/90 border border-gray-200 dark:border-gray-800">
+    <Dialog open={true} onOpenChange={onClose}>
+      <DialogContent className="sm:max-w-[600px] max-h-[80vh]">
         <DialogHeader>
           <DialogTitle>{t("history.title")}</DialogTitle>
         </DialogHeader>
-
-        <div className="py-4 space-y-4 max-h-[60vh] overflow-y-auto pr-2">
-          {historyItems.map((item) => (
-            <Card key={item.id} className="shadow-sm">
-              <CardHeader className="pb-2">
-                <div className="flex justify-between items-start">
-                  <CardTitle className="text-base">
-                    {item.title[language as keyof typeof item.title] || item.title.en}
-                  </CardTitle>
-                  <div className="text-sm text-muted-foreground">{item.date}</div>
-                </div>
-              </CardHeader>
-              <CardContent className="pb-2">
-                <div className="flex flex-wrap gap-2 mb-2">
-                  <Badge variant="outline">{item.category}</Badge>
-                  <Badge
-                    variant="outline"
-                    className={`
-                    ${item.difficulty === "Easy" ? "bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 border-green-200 dark:border-green-800" : ""}
-                    ${item.difficulty === "Medium" ? "bg-yellow-50 dark:bg-yellow-900/20 text-yellow-600 dark:text-yellow-400 border-yellow-200 dark:border-yellow-800" : ""}
-                    ${item.difficulty === "Hard" ? "bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 border-red-200 dark:border-red-800" : ""}
-                  `}
-                  >
-                    {item.difficulty}
-                  </Badge>
-                  <Badge
-                    variant="outline"
-                    className="bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-800"
-                  >
-                    {Math.round(item.score * 100)}%
-                  </Badge>
-                </div>
-                <p className="text-sm text-gray-700 dark:text-gray-300">
-                  {item.feedback[language as keyof typeof item.feedback] || item.feedback.en}
-                </p>
-              </CardContent>
-              <CardFooter>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="text-red-600 dark:text-red-400"
-                  onClick={() => handleReportMistake(item.id)}
+        
+        {history.length === 0 ? (
+          <div className="py-8 text-center text-muted-foreground">
+            {t("history.empty")}
+          </div>
+        ) : (
+          <ScrollArea className="max-h-[60vh] pr-4">
+            <div className="space-y-4">
+              {history.map((item) => (
+                <div 
+                  key={item.id + item.timestamp} 
+                  className="p-4 border rounded-lg hover:bg-accent/50 transition-colors cursor-pointer"
+                  onClick={() => onSelectQuestion(item)}
                 >
-                  <AlertTriangle className="h-4 w-4 mr-1" />
-                  {t("history.reportMistake")}
-                </Button>
-              </CardFooter>
-            </Card>
-          ))}
-        </div>
-
-        <div className="flex justify-end">
-          <Button onClick={onClose}>{t("button.close")}</Button>
+                  <div className="flex justify-between items-start mb-2">
+                    <h3 className="font-medium line-clamp-2">{item.title}</h3>
+                    <Badge variant={item.answered ? "default" : "outline"}>
+                      {item.answered ? (
+                        <><CheckCircle className="h-3 w-3 mr-1" /> {t("history.answered")}</>
+                      ) : (
+                        <><XCircle className="h-3 w-3 mr-1" /> {t("history.unanswered")}</>
+                      )}
+                    </Badge>
+                  </div>
+                  <div className="flex flex-wrap gap-2 mb-2">
+                    <Badge variant="outline">{item.question.category}</Badge>
+                    <Badge
+                      variant="outline"
+                      className={getDifficultyColor(item.question.difficulty)}
+                    >
+                      {item.question.difficulty}
+                    </Badge>
+                  </div>
+                  <div className="text-sm text-muted-foreground flex justify-between items-center">
+                    <span className="flex items-center">
+                      <Clock className="h-3 w-3 mr-1" /> {formatTime(item.timestamp)}
+                    </span>
+                    <span>{item.language === "zh" ? "中文" : "English"}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </ScrollArea>
+        )}
+        
+        <div className="flex justify-between">
+          <Button 
+            variant="destructive" 
+            size="sm" 
+            onClick={handleClearHistory}
+          >
+            {t("history.clearAll")}
+          </Button>
+          <Button variant="outline" onClick={onClose}>
+            {t("common.close")}
+          </Button>
         </div>
       </DialogContent>
     </Dialog>

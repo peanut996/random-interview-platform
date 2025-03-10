@@ -1,6 +1,6 @@
 "use client"
 
-import {Globe, Settings, User} from "lucide-react"
+import {Globe, Settings, History} from "lucide-react"
 import {Button} from "@/components/ui/button"
 import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger} from "@/components/ui/dropdown-menu"
 import {useTranslation} from "@/lib/i18n"
@@ -54,7 +54,7 @@ export default function Header({ language, setLanguage, onOpenSettings, onOpenHi
           </Button>
 
           <Button variant="ghost" size="icon" className="rounded-full" onClick={onOpenHistory}>
-            <User className="h-5 w-5" />
+            <History className="h-5 w-5" />
           </Button>
 
           <a href={githubRepoUrl} target="_blank" rel="noopener noreferrer" title={t("header.github")}>

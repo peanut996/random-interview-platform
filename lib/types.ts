@@ -20,3 +20,12 @@ export interface UserAnswer {
   content: string
 }
 
+export interface QuestionHistory {
+  id: string
+  title: string
+  timestamp: string
+  answered: boolean
+  language: string
+  question: Question
+}
+

@@ -11,7 +11,7 @@ import SettingsModal from "@/components/modals/settings-modal"
 import HistoryModal from "@/components/modals/history-modal"
 import LoadingQuestionModal from "@/components/modals/loading-question-modal"
 import { useState, useEffect, useCallback } from "react"
-import type { Question, UserAnswer } from "@/lib/types"
+import type { Question, UserAnswer, QuestionHistory } from "@/lib/types"
 import { generateRandomQuestion } from "@/lib/data"
 import { useTranslation } from "@/lib/i18n"
 import { useToast } from "@/hooks/use-toast"
@@ -35,8 +35,21 @@ export default function Page() {
   const [answer, setAnswer] = useState<any>(null)
   const [isStreaming, setIsStreaming] = useState(false)
   const { toast } = useToast()
+  const [questionHistory, setQuestionHistory] = useState<QuestionHistory[]>([])
 
   const [isLoadingQuestion, setIsLoadingQuestion] = useState(true)
+
+  // 在组件加载时从本地存储加载历史记录
+  useEffect(() => {
+    const savedHistory = localStorage.getItem("questionHistory");
+    if (savedHistory) {
+      try {
+        setQuestionHistory(JSON.parse(savedHistory));
+      } catch (e) {
+        console.error("Error parsing question history:", e);
+      }
+    }
+  }, []);
 
   useEffect(() => {
     const fetchQuestion = async () => {
@@ -44,6 +57,27 @@ export default function Page() {
       try {
         const question = await generateRandomQuestion();
         setCurrentQuestion(question);
+        
+        // 记录新获取的问题到历史记录
+        const newHistoryItem: QuestionHistory = {
+          id: question.id,
+          title: question.translations[language]?.title || question.translations.en.title,
+          timestamp: new Date().toISOString(),
+          answered: false,
+          language: language,
+          question: question
+        };
+        
+        setQuestionHistory(prevHistory => {
+          // 检查是否已存在相同ID的问题
+          const exists = prevHistory.some(item => item.id === question.id);
+          if (!exists) {
+            const updatedHistory = [newHistoryItem, ...prevHistory];
+            localStorage.setItem("questionHistory", JSON.stringify(updatedHistory));
+            return updatedHistory;
+          }
+          return prevHistory;
+        });
       } catch (error) {
         console.error("Error fetching question:", error);
         toast({
@@ -84,7 +118,6 @@ export default function Page() {
     setResults(null)
     setIsStreaming(true)
 
-
     try {
       // Call OpenAI to evaluate the answer with streaming
       await evaluateAnswer(currentQuestion, userAnswer.content, language, (streamingResults) => {
@@ -92,6 +125,19 @@ export default function Page() {
       })
 
       setIsStreaming(false)
+      
+      // 更新历史记录中的问题状态为已回答
+      if (currentQuestion) {
+        setQuestionHistory(prevHistory => {
+          const updatedHistory = prevHistory.map(item => 
+            item.id === currentQuestion.id 
+              ? { ...item, answered: true } 
+              : item
+          );
+          localStorage.setItem("questionHistory", JSON.stringify(updatedHistory));
+          return updatedHistory;
+        });
+      }
     } catch (error) {
       console.error("Error submitting answer:", error)
       setIsStreaming(false)
@@ -112,6 +158,27 @@ export default function Page() {
     try {
       const question = await generateRandomQuestion();
       setCurrentQuestion(question);
+      
+      // 记录新问题到历史
+      const newHistoryItem: QuestionHistory = {
+        id: question.id,
+        title: question.translations[language]?.title || question.translations.en.title,
+        timestamp: new Date().toISOString(),
+        answered: false,
+        language: language,
+        question: question
+      };
+      
+      setQuestionHistory(prevHistory => {
+        // 检查是否已存在相同ID的问题
+        const exists = prevHistory.some(item => item.id === question.id);
+        if (!exists) {
+          const updatedHistory = [newHistoryItem, ...prevHistory];
+          localStorage.setItem("questionHistory", JSON.stringify(updatedHistory));
+          return updatedHistory;
+        }
+        return prevHistory;
+      });
     } catch (error) {
       console.error("Error fetching next question:", error);
       toast({
@@ -123,7 +190,7 @@ export default function Page() {
     } finally {
       setIsLoadingQuestion(false);
     }
-  }, [toast, t]);
+  }, [toast, t, language]);
 
   const onViewAnswer = () => {
     setConfirmationStep(0)
@@ -148,6 +215,19 @@ export default function Page() {
 
         setIsStreaming(false)
         setIsSubmitted(true)
+        
+        // 更新历史记录中的问题状态为已回答
+        if (currentQuestion) {
+          setQuestionHistory(prevHistory => {
+            const updatedHistory = prevHistory.map(item => 
+              item.id === currentQuestion.id 
+                ? { ...item, answered: true } 
+                : item
+            );
+            localStorage.setItem("questionHistory", JSON.stringify(updatedHistory));
+            return updatedHistory;
+          });
+        }
       } catch (error) {
         console.error("Error getting model answer:", error)
         setIsStreaming(false)
@@ -207,6 +287,21 @@ export default function Page() {
   const onCloseHistory = () => {
     setShowHistoryModal(false)
   }
+  
+  // 从历史记录加载问题
+  const loadQuestionFromHistory = (historyItem: QuestionHistory) => {
+    setCurrentQuestion(historyItem.question);
+    setUserAnswer({ content: "" });
+    setIsSubmitted(false);
+    setTimeRemaining(600);
+    setShowHistoryModal(false);
+  };
+
+  // 在 Page 组件中添加一个函数来清除历史记录
+  const clearQuestionHistory = () => {
+    localStorage.removeItem("questionHistory");
+    setQuestionHistory([]);
+  };
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -259,7 +354,15 @@ export default function Page() {
 
       {showSettingsModal && <SettingsModal language={language} onClose={onCloseSettings} />}
 
-      {showHistoryModal && <HistoryModal language={language} onClose={onCloseHistory} />}
+      {showHistoryModal && (
+        <HistoryModal 
+          language={language} 
+          onClose={onCloseHistory} 
+          history={questionHistory}
+          onSelectQuestion={loadQuestionFromHistory}
+          onClearHistory={clearQuestionHistory}
+        />
+      )}
 
       <LoadingQuestionModal isOpen={isLoadingQuestion} />
     </div>
