@@ -33,6 +33,7 @@ export enum QuestionCategory {
     UDP = "UDP",
     DataStructures = "Data Structures",
     LeetCode = "LeetCode",
+    LeetCodeHot100 = "LeetCode Hot 100",
     Java = "Java",
     SystemDesign = "System Design",
     Behavioral = "Behavioral",
