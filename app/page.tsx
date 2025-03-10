@@ -9,6 +9,7 @@ import AnswerModal from "@/components/modals/answer-modal"
 import ConfirmationModal from "@/components/modals/confirmation-modal"
 import SettingsModal from "@/components/modals/settings-modal"
 import HistoryModal from "@/components/modals/history-modal"
+import LoadingQuestionModal from "@/components/modals/loading-question-modal"
 import { useState, useEffect, useCallback } from "react"
 import type { Question, UserAnswer } from "@/lib/types"
 import { generateRandomQuestion } from "@/lib/data"
@@ -35,10 +36,25 @@ export default function Page() {
   const [isStreaming, setIsStreaming] = useState(false)
   const { toast } = useToast()
 
+  const [isLoadingQuestion, setIsLoadingQuestion] = useState(true)
+
   useEffect(() => {
     const fetchQuestion = async () => {
-      const question = await generateRandomQuestion();
-      setCurrentQuestion(question);
+      setIsLoadingQuestion(true);
+      try {
+        const question = await generateRandomQuestion();
+        setCurrentQuestion(question);
+      } catch (error) {
+        console.error("Error fetching question:", error);
+        toast({
+          title: t("toast.error.title"),
+          description: t("toast.error.questionLoad"),
+          variant: "destructive",
+          duration: 5000,
+        });
+      } finally {
+        setIsLoadingQuestion(false);
+      }
     };
     fetchQuestion();
   }, []);
@@ -92,8 +108,22 @@ export default function Page() {
     setUserAnswer({ content: "" });
     setIsSubmitted(false);
     setTimeRemaining(600);
-    setCurrentQuestion(await generateRandomQuestion());
-  }, []);
+    setIsLoadingQuestion(true);
+    try {
+      const question = await generateRandomQuestion();
+      setCurrentQuestion(question);
+    } catch (error) {
+      console.error("Error fetching next question:", error);
+      toast({
+        title: t("toast.error.title"),
+        description: t("toast.error.questionLoad"),
+        variant: "destructive",
+        duration: 5000,
+      });
+    } finally {
+      setIsLoadingQuestion(false);
+    }
+  }, [toast, t]);
 
   const onViewAnswer = () => {
     setConfirmationStep(0)
@@ -188,12 +218,16 @@ export default function Page() {
       />
 
       <main className="container mx-auto px-4 py-8 max-w-5xl flex-grow">
-        {currentQuestion && (
+        {currentQuestion && !isLoadingQuestion ? (
           <>
             <QuestionArea question={currentQuestion} language={language} onNotMyStack={handleNotMyStack} />
             <AnswerArea question={currentQuestion} userAnswer={userAnswer} setUserAnswer={setUserAnswer} />
           </>
-        )}
+        ) : !currentQuestion && !isLoadingQuestion ? (
+          <div className="flex flex-col items-center justify-center py-16 space-y-4">
+            <p className="text-lg">{t("question.error")}</p>
+          </div>
+        ) : null}
       </main>
 
       <FooterArea
@@ -225,6 +259,8 @@ export default function Page() {
       {showSettingsModal && <SettingsModal language={language} onClose={onCloseSettings} />}
 
       {showHistoryModal && <HistoryModal language={language} onClose={onCloseHistory} />}
+
+      <LoadingQuestionModal isOpen={isLoadingQuestion} />
     </div>
   )
 }
