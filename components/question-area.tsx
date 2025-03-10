@@ -1,23 +1,36 @@
-"use client"
+"use client";
 
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import type { Question } from "@/lib/types"
-import { useTranslation } from "@/lib/i18n"
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import type { Question } from "@/lib/types";
+import { useTranslation } from "@/lib/i18n";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
 
 interface QuestionAreaProps {
-  question: Question
-  language: string
-  onNotMyStack: () => void
+  question: Question;
+  language: string;
+  onNotMyStack: () => void;
 }
 
-export default function QuestionArea({ question, language, onNotMyStack }: QuestionAreaProps) {
-  const { t } = useTranslation()
+export default function QuestionArea({
+  question,
+  language,
+  onNotMyStack,
+}: QuestionAreaProps) {
+  const { t } = useTranslation();
 
-  const title = question.translations[language]?.title || question.translations.en.title
-  const description = question.translations[language]?.description || question.translations.en.description
-  const topic = question.translations[language]?.topic || question.translations.en.topic
+  const title =
+    question.translations[language]?.title || question.translations.en.title;
+  const description =
+    question.translations[language]?.description ||
+    question.translations.en.description;
+  const topic =
+    question.translations[language]?.topic || question.translations.en.topic;
+
+  const correctedDescription = description.replace(/\n/g, "<br>");
 
   return (
     <Card className="mb-6 shadow-sm border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#2c2c2e] rounded-xl">
@@ -51,19 +64,31 @@ export default function QuestionArea({ question, language, onNotMyStack }: Quest
         </div>
 
         <div className="prose dark:prose-invert max-w-none">
-          <p>{description}</p>
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            rehypePlugins={[rehypeRaw]}
+          >
+            {correctedDescription}
+          </ReactMarkdown>
 
           {question.type === "Coding" && question.testCases && (
             <div className="mt-4">
-              <h3 className="text-lg font-medium mb-2">{t("question.testCases")}</h3>
+              <h3 className="text-lg font-medium mb-2">
+                {t("question.testCases")}
+              </h3>
               <div className="space-y-2">
                 {question.testCases.map((testCase, index) => (
-                  <div key={index} className="bg-gray-50 dark:bg-gray-800 p-3 rounded-md">
+                  <div
+                    key={index}
+                    className="bg-gray-50 dark:bg-gray-800 p-3 rounded-md"
+                  >
                     <div>
-                      <strong>{t("question.input")}:</strong> {JSON.stringify(testCase.input)}
+                      <strong>{t("question.input")}:</strong>{" "}
+                      {JSON.stringify(testCase.input).replace(/\\n/g, "\n")}
                     </div>
                     <div>
-                      <strong>{t("question.output")}:</strong> {JSON.stringify(testCase.output)}
+                      <strong>{t("question.output")}:</strong>{" "}
+                      {JSON.stringify(testCase.output).replace(/\\n/g, "\n")}
                     </div>
                   </div>
                 ))}
@@ -79,6 +104,5 @@ export default function QuestionArea({ question, language, onNotMyStack }: Quest
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }
-
