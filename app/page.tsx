@@ -12,7 +12,7 @@ import HistoryModal from "@/components/modals/history-modal"
 import LoadingQuestionModal from "@/components/modals/loading-question-modal"
 import { useState, useEffect, useCallback } from "react"
 import type { Question, UserAnswer, QuestionHistory } from "@/lib/types"
-import { generateRandomQuestion } from "@/lib/data"
+import { generateRandomQuestion } from "@/lib/question"
 import { useTranslation } from "@/lib/i18n"
 import { useToast } from "@/hooks/use-toast"
 // Update the onSubmit function to use the OpenAI API for evaluation
