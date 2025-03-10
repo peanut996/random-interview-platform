@@ -8,8 +8,7 @@ import { Loader2 } from "lucide-react"
 import { cleanupJsonResponse } from "@/lib/utils"
 import ReactMarkdown from "react-markdown"
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { vscDarkPlus, vs } from 'react-syntax-highlighter/dist/cjs/styles/prism'
-import { useTheme } from "next-themes"
+import {github} from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 interface AnswerModalProps {
   answer: string
@@ -21,25 +20,25 @@ interface AnswerModalProps {
 export default function AnswerModal({ answer, language, onClose, isStreaming = false }: AnswerModalProps) {
   const { t } = useTranslation()
   const [parsedAnswer, setParsedAnswer] = useState<any>(null)
-  const { resolvedTheme } = useTheme()
-  const isDark = resolvedTheme === 'dark'
 
   useEffect(() => {
-    if (!answer) return
-    if(isStreaming) return
-    try{
-      const cleanedResults = cleanupJsonResponse(answer)
-      const parsed = JSON.parse(cleanedResults)
-      setParsedAnswer(parsed)
+    try {
+      if (!isStreaming) {
+        const cleanedResults = cleanupJsonResponse(answer)
+        const parsed = JSON.parse(cleanedResults)
+        setParsedAnswer(parsed)
+      }else {
+        setParsedAnswer(answer)
+      }
     } catch (e) {
-      setParsedAnswer(answer)
+      if (!isStreaming) {
+        setParsedAnswer(answer)
+      }
     }
   }, [answer, isStreaming])
 
-  if (!answer) return null
-
-  // Show loading state while streaming and before we have parsed answer
-  if (isStreaming && !parsedAnswer) {
+  // 显示加载状态
+  if (isStreaming) {
     return (
       <Dialog open={true} onOpenChange={() => onClose()}>
         <DialogContent className="sm:max-w-4xl md:max-w-5xl backdrop-blur-xl bg-white/90 dark:bg-gray-900/90 border border-gray-200 dark:border-gray-800">
@@ -60,6 +59,7 @@ export default function AnswerModal({ answer, language, onClose, isStreaming = f
 
   // If we're still getting string data but couldn't parse it yet
   if (typeof displayAnswer === "string") {
+    // Only show loading if we haven't parsed the answer yet
     return (
       <Dialog open={true} onOpenChange={() => onClose()}>
         <DialogContent className="sm:max-w-4xl md:max-w-5xl backdrop-blur-xl bg-white/90 dark:bg-gray-900/90 border border-gray-200 dark:border-gray-800">
@@ -68,14 +68,15 @@ export default function AnswerModal({ answer, language, onClose, isStreaming = f
           </DialogHeader>
           <div className="flex flex-col items-center justify-center py-8 space-y-4">
             <Loader2 className="h-8 w-8 animate-spin text-primary" />
-            <p>{t("answer.processing")}</p>
+            <p>{t("answer.processFailure")} : {displayAnswer}</p>
           </div>
         </DialogContent>
       </Dialog>
     )
   }
 
-  const answerContent = displayAnswer.answer[language] || displayAnswer.answer.en
+  const answerContent = typeof displayAnswer === "string" ?
+      displayAnswer : displayAnswer.answer?.[language] || displayAnswer.answer?.en || displayAnswer
 
   return (
     <Dialog open={true} onOpenChange={() => onClose()}>
@@ -94,7 +95,7 @@ export default function AnswerModal({ answer, language, onClose, isStreaming = f
                     const inline = !match
                     return !inline && match ? (
                       <SyntaxHighlighter
-                        style={isDark ? vscDarkPlus : vs}
+                        style={github}
                         language={match[1]}
                         PreTag="div"
                         {...props}

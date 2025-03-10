@@ -18,23 +18,28 @@ interface ResultsModalProps {
 export default function ResultsModal({ results, language, onClose, isStreaming = false }: ResultsModalProps) {
   const { t } = useTranslation()
   const [parsedResults, setParsedResults] = useState<any>(null)
-
+  
   useEffect(() => {
-    if (!results) return
-    if(isStreaming) return
-    try{
-      const cleanedResults = cleanupJsonResponse(results)
-      const parsed = JSON.parse(cleanedResults)
-      setParsedResults(parsed)
+    try {
+      if (!isStreaming) {
+        const cleanedResults = cleanupJsonResponse(results)
+        const parsed = JSON.parse(cleanedResults)
+        setParsedResults(parsed)
+      }else{
+        setParsedResults(results)
+      }
     } catch (e) {
-      setParsedResults(results)
+      if (!isStreaming) {
+        setParsedResults(results)
+      }
     }
   }, [results, isStreaming])
 
-  if (!results) return null
+  // 移除这个条件判断，让弹窗始终显示
+  // if (!results) return null
 
-  // Show loading state while streaming and before we have parsed results
-  if (isStreaming) {
+  // 修改条件为 isStreaming 或 !results
+  if (isStreaming || !parsedResults) {
     return (
       <Dialog open={true} onOpenChange={() => onClose()}>
         <DialogContent className="sm:max-w-md backdrop-blur-xl bg-white/90 dark:bg-gray-900/90 border border-gray-200 dark:border-gray-800">
@@ -50,10 +55,9 @@ export default function ResultsModal({ results, language, onClose, isStreaming =
     )
   }
 
-  // Use parsed results if available, otherwise fall back to the original results
+  // 使用解析后的结果（如果可用），否则回退到原始结果
   const displayResults = parsedResults || results
 
-  // If we're still getting string data but couldn't parse it yet
   if (typeof displayResults === "string") {
     return (
       <Dialog open={true} onOpenChange={() => onClose()}>
@@ -63,7 +67,7 @@ export default function ResultsModal({ results, language, onClose, isStreaming =
           </DialogHeader>
           <div className="flex flex-col items-center justify-center py-8 space-y-4">
             <Loader2 className="h-8 w-8 animate-spin text-primary" />
-            <p>{t("results.processing")}</p>
+            <p>{t("results.processFailure")}: + {displayResults}</p>
           </div>
         </DialogContent>
       </Dialog>
