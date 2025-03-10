@@ -33,7 +33,7 @@ export default function FooterArea({
   }
 
   return (
-    <div className="footer-container">
+    <div className="fixed bottom-0 left-0 right-0 z-10 p-4 bg-background">
       <Card className="shadow-sm border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#2c2c2e] rounded-xl">
         <CardContent className="p-4">
           <div className="flex flex-wrap items-center justify-between gap-4">

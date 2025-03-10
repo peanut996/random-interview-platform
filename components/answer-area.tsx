@@ -29,7 +29,7 @@ export default function AnswerArea({ question, userAnswer, setUserAnswer }: Answ
   const { toast } = useToast()
   const [activeTab, setActiveTab] = useState("editor")
   const textareaRef = useRef<HTMLTextAreaElement>(null)
-  const [editorLanguage, setEditorLanguage] = useState("javascript")
+  const [editorLanguage, setEditorLanguage] = useState("java")
   const [editorFontSize, setEditorFontSize] = useState(14)
   const [editorTheme, setEditorTheme] = useState("vs-dark")
   const [isCopied, setIsCopied] = useState(false)
@@ -49,8 +49,8 @@ export default function AnswerArea({ question, userAnswer, setUserAnswer }: Answ
       } else if (category.includes("c++") || category.includes("cpp")) {
         setEditorLanguage("cpp")
       } else {
-        // Default to JavaScript for other categories
-        setEditorLanguage("javascript")
+        // Default to Java for other categories
+        setEditorLanguage("java")
       }
     }
   }, [question.category])

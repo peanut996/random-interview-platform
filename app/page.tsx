@@ -217,7 +217,7 @@ export default function Page() {
         onOpenHistory={onOpenHistory}
       />
 
-      <main className="container mx-auto px-4 py-8 max-w-5xl flex-grow">
+      <main className="container mx-auto px-4 py-8 pb-24 max-w-5xl flex-grow">
         {currentQuestion && !isLoadingQuestion ? (
           <>
             <QuestionArea question={currentQuestion} language={language} onNotMyStack={handleNotMyStack} />
