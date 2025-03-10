@@ -129,24 +129,22 @@ export async function evaluateAnswer(
     if (onStream) {
       finalResult = await callOpenAI(prompt, systemPrompt, (chunk) => {
         try {
-          // Try to parse the JSON as it comes in
-          // This might fail for partial chunks, which is expected
-          console.log(chunk)
-          const parsedJson = JSON.parse(chunk)
-          onStream(chunk)
-        } catch (e) {
-          // If parsing fails, just pass the raw chunk
-          onStream(chunk)
-        }
+          JSON.parse(chunk)
+        } catch (e) {}
+        onStream(chunk)
       })
     } else {
       finalResult = await callOpenAI(prompt, systemPrompt)
     }
 
-    // Clean up the final result before parsing
+    // 清理最终结果并解析
     const cleanedResult = cleanupJsonResponse(finalResult);
-    console.log(cleanedResult)
-    return JSON.parse(cleanedResult);
+    try {
+      return JSON.parse(cleanedResult);
+    } catch (error) {
+      console.error("JSON parse error:", error);
+      throw new Error("Failed to parse AI response as JSON");
+    }
   } catch (error) {
     console.error("Error evaluating answer:", error)
     // Return a fallback evaluation if API call fails
@@ -201,14 +199,23 @@ export async function getModelAnswer(question: any, language: string, onStream?:
 
     // If we have a streaming handler, use it
     if (onStream) {
-      finalResult = await callOpenAI(prompt, systemPrompt, onStream)
+      finalResult = await callOpenAI(prompt, systemPrompt, (chunk) => {
+        // 清理流式数据中的 markdown 代码块
+        const cleanedChunk = cleanupJsonResponse(chunk);
+        onStream(cleanedChunk);
+      })
     } else {
       finalResult = await callOpenAI(prompt, systemPrompt)
     }
 
-    // Clean up the final result before parsing
+
     const cleanedResult = cleanupJsonResponse(finalResult);
-    return cleanedResult;
+    try {
+      return JSON.parse(cleanedResult);
+    } catch (error) {
+      console.warn("Could not parse model answer as JSON, returning raw text");
+      return { answer: { en: cleanedResult, zh: cleanedResult } };
+    }
   } catch (error) {
     console.error("Error getting model answer:", error)
     // Return a fallback answer if API call fails
@@ -263,14 +270,19 @@ export async function generateQuestion(type: string, category: string, difficult
   try {
     const result = await callOpenAI(prompt, systemPrompt)
     const cleanedResult = cleanupJsonResponse(result)
-    
-    // Parse the result to ensure it's valid JSON
-    const questionData = JSON.parse(cleanedResult)
-    
-    // Generate a more reliable unique ID
-    questionData.id = `generated_${Date.now()}_${Math.floor(Math.random() * 1000)}`
-    
-    return questionData
+
+    try {
+      // 解析结果以确保它是有效的 JSON
+      const questionData = JSON.parse(cleanedResult)
+      
+      // 生成更可靠的唯一 ID
+      questionData.id = `generated_${Date.now()}_${Math.floor(Math.random() * 1000)}`
+      
+      return questionData
+    } catch (error) {
+      console.error("JSON parse error:", error);
+      throw new Error("Failed to parse generated question as JSON");
+    }
   } catch (error) {
     console.error("Error generating question:", error)
     throw new Error("Failed to generate question. Please check your API settings and try again.")

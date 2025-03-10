@@ -23,8 +23,8 @@ export async function POST(req: NextRequest) {
 
     // Add instruction to not use markdown code blocks in the system prompt
     const enhancedSystemPrompt = systemPrompt 
-      ? `${systemPrompt}\n\nIMPORTANT: Do not wrap your response in markdown code blocks like \`\`\`json or any other format.`
-      : "IMPORTANT: Do not wrap your response in markdown code blocks like ```json or any other format.";
+      ? `${systemPrompt}\n\nIMPORTANT: Do not wrap your response in markdown code blocks like \`\`\`json or any other format. Return raw JSON without any markdown formatting.`
+      : "IMPORTANT: Do not wrap your response in markdown code blocks like ```json or any other format. Return raw JSON without any markdown formatting.";
 
     const messages = [
       { role: "system" as const, content: enhancedSystemPrompt },
