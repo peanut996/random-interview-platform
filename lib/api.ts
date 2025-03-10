@@ -228,24 +228,27 @@ export async function getModelAnswer(question: any, language: string, onStream?:
   }
 }
 
-export async function generateQuestion(type: string, category: string, difficulty: string, language: string = 'en') {
+export async function generateQuestion(type: string, categories: string[], difficulty: string, language: string = 'en') {
+  const categoriesStr = categories.join(", ")
+  
   const systemPrompt = `You are an expert at creating technical interview questions. 
-  Generate a new ${type} question in the ${category} category with ${difficulty} difficulty.
+  Generate a new ${type} question in the [${categoriesStr}] category with ${difficulty} difficulty.
   The question should be challenging but solvable within a reasonable time frame.
   Return your response in JSON format exactly matching the structure provided, with no additional text.`
 
   const prompt = `
   Create a new technical interview question with the following parameters:
-  - Type: (e.g., Must be "Coding" or "Question")
-  - Category: (e.g., "Algorithms", "TCP", "Data Structures", etc.)
-  - Difficulty: (e.g., Must be "Easy", "Medium", "Hard")
+  - Type: ${type} (e.g., "Coding" or "Question")
+  - Category: ${categoriesStr} (e.g., "Algorithms", "TCP", "Data Structures", etc.)
+  - Difficulty: ${difficulty} (e.g., "Easy", "Medium", "Hard")
   
   Generate a question that follows this exact JSON structure:
   {
     "id": "generated_unique_id",
-    "type": "",
-    "category": "",
-    "difficulty": "",
+    "type": "${type}",
+    "category": "${categories[0]}", // Use the first category as primary
+    "categories": ${JSON.stringify(categories)}, // Include all selected categories
+    "difficulty": "${difficulty}",
     "translations": {
       "en": {
         "title": "English title here",
@@ -264,7 +267,8 @@ export async function generateQuestion(type: string, category: string, difficult
     ]` : ''}
   }
   
-  Make sure the question is appropriate for the difficulty level and category specified.
+  Make sure the question is appropriate for the difficulty level and incorporates concepts from all the specified categories.
+  If multiple categories are provided, create a question that combines elements from these categories.
   `
 
   try {
@@ -280,6 +284,7 @@ export async function generateQuestion(type: string, category: string, difficult
       
       return questionData
     } catch (error) {
+      console.log(result)
       console.error("JSON parse error:", error);
       throw new Error("Failed to parse generated question as JSON");
     }

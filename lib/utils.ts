@@ -26,3 +26,19 @@ export function cleanupJsonResponse(text: string): string {
   }
 }
 
+// Add this function to help with category display
+export function formatCategories(categories: string[]): string {
+  if (!categories || categories.length === 0) {
+    return "";
+  }
+  
+  if (categories.length === 1) {
+    return categories[0];
+  }
+  
+  const lastCategory = categories[categories.length - 1];
+  const otherCategories = categories.slice(0, categories.length - 1);
+  
+  return `${otherCategories.join(", ")} and ${lastCategory}`;
+}
+
