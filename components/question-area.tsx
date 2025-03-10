@@ -96,12 +96,6 @@ export default function QuestionArea({
             </div>
           )}
         </div>
-
-        <div className="mt-4 flex justify-end">
-          <Button variant="outline" onClick={onNotMyStack}>
-            {t("button.notMyStack")}
-          </Button>
-        </div>
       </CardContent>
     </Card>
   );

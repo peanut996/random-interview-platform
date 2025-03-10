@@ -10,6 +10,7 @@ interface FooterAreaProps {
   onSubmit: () => void
   onNextQuestion: () => void
   onViewAnswer: () => void
+  onNotMyStack: () => void
   isSubmitted: boolean
 }
 
@@ -19,6 +20,7 @@ export default function FooterArea({
   onSubmit,
   onNextQuestion,
   onViewAnswer,
+  onNotMyStack,
   isSubmitted,
 }: FooterAreaProps) {
   const { t } = useTranslation()
@@ -40,6 +42,10 @@ export default function FooterArea({
             </div>
 
             <div className="flex flex-wrap gap-3">
+              <Button variant="outline" onClick={onNotMyStack}>
+                {t("button.notMyStack")}
+              </Button>
+              
               <Button variant="outline" onClick={onViewAnswer}>
                 {t("button.viewAnswer")}
               </Button>

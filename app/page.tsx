@@ -237,6 +237,7 @@ export default function Page() {
         onNextQuestion={onNextQuestion}
         onViewAnswer={onViewAnswer}
         isSubmitted={isSubmitted}
+        onNotMyStack={handleNotMyStack}
       />
 
       {showResultsModal && (
