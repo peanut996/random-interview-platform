@@ -1,0 +1,45 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="512" height="512" rx="128" fill="#0F172A"/>
+  
+  <!-- 大脑回路图案 -->
+  <path d="M256 96C167.634 96 96 167.634 96 256C96 344.366 167.634 416 256 416C344.366 416 416 344.366 416 256C416 167.634 344.366 96 256 96Z" stroke="#60A5FA" stroke-width="12" stroke-dasharray="24 12"/>
+  
+  <!-- 中央连接点 -->
+  <circle cx="256" cy="256" r="48" fill="#2563EB"/>
+  
+  <!-- 连接线 -->
+  <path d="M256 208V128" stroke="#60A5FA" stroke-width="8"/>
+  <path d="M256 384V304" stroke="#60A5FA" stroke-width="8"/>
+  <path d="M208 256H128" stroke="#60A5FA" stroke-width="8"/>
+  <path d="M384 256H304" stroke="#60A5FA" stroke-width="8"/>
+  
+  <!-- 节点 -->
+  <circle cx="256" cy="128" r="16" fill="#60A5FA"/>
+  <circle cx="256" cy="384" r="16" fill="#60A5FA"/>
+  <circle cx="128" cy="256" r="16" fill="#60A5FA"/>
+  <circle cx="384" cy="256" r="16" fill="#60A5FA"/>
+  
+  <!-- 对角线连接 -->
+  <path d="M192 192L144 144" stroke="#60A5FA" stroke-width="8"/>
+  <path d="M320 192L368 144" stroke="#60A5FA" stroke-width="8"/>
+  <path d="M192 320L144 368" stroke="#60A5FA" stroke-width="8"/>
+  <path d="M320 320L368 368" stroke="#60A5FA" stroke-width="8"/>
+  
+  <!-- 对角线节点 -->
+  <circle cx="144" cy="144" r="16" fill="#60A5FA"/>
+  <circle cx="368" cy="144" r="16" fill="#60A5FA"/>
+  <circle cx="144" cy="368" r="16" fill="#60A5FA"/>
+  <circle cx="368" cy="368" r="16" fill="#60A5FA"/>
+  
+  <!-- 中心光晕 -->
+  <circle cx="256" cy="256" r="80" fill="url(#paint0_radial)"/>
+  
+  <!-- 渐变定义 -->
+  <defs>
+    <radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(256 256) rotate(90) scale(80)">
+      <stop stop-color="#3B82F6" stop-opacity="0.6"/>
+      <stop offset="1" stop-color="#3B82F6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg> 

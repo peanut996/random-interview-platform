@@ -1,4 +1,5 @@
 <p align="center">
+   <img src="public/logo.svg" alt="AI Interview Simulator Logo" width="120" height="120" />
    <br> <a href="README.md">中文</a> | English
 </p>
 

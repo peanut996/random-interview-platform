@@ -9,6 +9,11 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata = {
   title: "AI Interview Simulator",
   description: "A technical interview simulation platform with an Apple-style UI",
+  icons: {
+    icon: [
+      { url: '/logo.svg', type: 'image/svg+xml' },
+    ],
+  },
 }
 
 export default function RootLayout({
