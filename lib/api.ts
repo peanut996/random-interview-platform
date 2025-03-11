@@ -22,6 +22,16 @@ function getCustomSettings() {
   return Object.keys(settings).length > 0 ? settings : null
 }
 
+// Helper function to get custom system prompts
+function getCustomSystemPrompt(type: 'question' | 'answer'): string | undefined {
+  if (typeof window === "undefined") return undefined
+
+  const key = type === 'question' ? "system_prompt_question" : "system_prompt_answer"
+  const customPrompt = localStorage.getItem(key)
+  
+  return customPrompt || undefined
+}
+
 // Function to call our backend API endpoint
 export async function callOpenAI(prompt: string, systemPrompt?: string, onStream?: (chunk: string) => void) {
   try {
@@ -170,11 +180,14 @@ export async function evaluateAnswer(
 }
 
 export async function getModelAnswer(question: any, language: string, onStream?: (chunk: string) => void) {
-  const systemPrompt = `You are an expert in technical interviews. Provide a model answer to the following question.
+  // Use custom system prompt if available
+  const customSystemPrompt = getCustomSystemPrompt('answer');
+  
+  const systemPrompt = customSystemPrompt || `You are an expert in technical interviews. Provide a model answer to the following question.
   Your answer should be clear, efficient, and follow best practices.
   If it's a coding question, include well-commented code.
   If it's a conceptual question, provide a comprehensive explanation.
-  Return your answer in both English and Chinese.`
+  Return your answer in both English and Chinese.`;
 
   const questionTitle = question.translations[language]?.title || question.translations.en.title
   const questionDescription = question.translations[language]?.description || question.translations.en.description
@@ -230,10 +243,13 @@ export async function getModelAnswer(question: any, language: string, onStream?:
 
 export async function generateQuestion(type: string, category: string, difficulty: string, language: string = 'en') {
   
-  const systemPrompt = `You are an expert at creating technical interview questions. 
+  // Use custom system prompt if available
+  const customSystemPrompt = getCustomSystemPrompt('question');
+  
+  const systemPrompt = customSystemPrompt || `You are an expert at creating technical interview questions. 
   Generate a new ${type} question in the ${category} category with ${difficulty} difficulty.
   The question should be challenging but solvable within a reasonable time frame.
-  Return your response in JSON format exactly matching the structure provided, with no additional text.`
+  Return your response in JSON format exactly matching the structure provided, with no additional text.`;
 
   const prompt = `
   Create a new technical interview question with the following parameters:

@@ -36,6 +36,7 @@ import {
   safeLocalStorage
 } from "@/lib/question";
 import { PlusIcon, XIcon } from "lucide-react";
+import { Textarea } from "@/components/ui/textarea";
 
 interface SettingsModalProps {
   language: string;
@@ -62,6 +63,12 @@ export default function SettingsModal({
   const [isCustomModel, setIsCustomModel] = useState(
     !["gpt-4", "gpt-4o", "gpt-3.5-turbo"].includes(openAISettings.model),
   );
+
+  // Load system prompts from localStorage
+  const [systemPrompts, setSystemPrompts] = useState({
+    questionPrompt: safeLocalStorage.getItem("system_prompt_question") || "",
+    answerPrompt: safeLocalStorage.getItem("system_prompt_answer") || "",
+  });
 
   const [questionSettings, setQuestionSettings] = useState({
     type: safeLocalStorage.getItem("question_type") || "all",
@@ -162,6 +169,14 @@ export default function SettingsModal({
       safeLocalStorage.setItem("openai_token", openAISettings.token);
     }
 
+    // Save system prompts if they exist
+    if (systemPrompts.questionPrompt) {
+      safeLocalStorage.setItem("system_prompt_question", systemPrompts.questionPrompt);
+    }
+    if (systemPrompts.answerPrompt) {
+      safeLocalStorage.setItem("system_prompt_answer", systemPrompts.answerPrompt);
+    }
+
     toast({
       title: t("toast.settings.title"),
       description: t("toast.settings.description"),
@@ -258,6 +273,12 @@ export default function SettingsModal({
       token: "",
     });
 
+    // Reset system prompts
+    setSystemPrompts({
+      questionPrompt: "",
+      answerPrompt: "",
+    });
+
     // Reset custom model flag
     setIsCustomModel(false);
     
@@ -279,6 +300,8 @@ export default function SettingsModal({
     safeLocalStorage.removeItem("openai_endpoint");
     safeLocalStorage.removeItem("openai_model");
     safeLocalStorage.removeItem("openai_token");
+    safeLocalStorage.removeItem("system_prompt_question");
+    safeLocalStorage.removeItem("system_prompt_answer");
 
     setShowResetConfirmation(false);
 
@@ -304,11 +327,12 @@ export default function SettingsModal({
           </DialogHeader>
 
           <Tabs defaultValue="questions" onValueChange={setActiveTab}>
-            <TabsList className="grid grid-cols-2 mb-4">
+            <TabsList className="grid grid-cols-3 mb-4">
               <TabsTrigger value="questions">
                 {t("settings.questions")}
               </TabsTrigger>
               <TabsTrigger value="openai">{t("settings.openai")}</TabsTrigger>
+              <TabsTrigger value="prompts">{t("settings.prompts")}</TabsTrigger>
             </TabsList>
 
             <TabsContent value="questions" className="space-y-4">
@@ -673,6 +697,66 @@ export default function SettingsModal({
                     {t("settings.tokenDescription")}
                   </p>
                 </div>
+              </div>
+            </TabsContent>
+
+            <TabsContent value="prompts" className="space-y-4">
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <Label>{t("settings.questionSystemPrompt") || "Question Generation System Prompt"}</Label>
+                  <Textarea
+                    placeholder={t("settings.questionSystemPromptPlaceholder") || "Enter system prompt for question generation..."}
+                    value={systemPrompts.questionPrompt}
+                    onChange={(e) => 
+                      setSystemPrompts({
+                        ...systemPrompts,
+                        questionPrompt: e.target.value
+                      })
+                    }
+                    className="min-h-24"
+                  />
+                  <p className="text-xs text-muted-foreground">
+                    {t("settings.questionSystemPromptHelp") || "This prompt guides the AI in generating interview questions."}
+                  </p>
+                </div>
+
+                <div className="space-y-2">
+                  <Label>{t("settings.answerSystemPrompt") || "Answer Generation System Prompt"}</Label>
+                  <Textarea
+                    placeholder={t("settings.answerSystemPromptPlaceholder") || "Enter system prompt for answer generation..."}
+                    value={systemPrompts.answerPrompt}
+                    onChange={(e) => 
+                      setSystemPrompts({
+                        ...systemPrompts,
+                        answerPrompt: e.target.value
+                      })
+                    }
+                    className="min-h-24"
+                  />
+                  <p className="text-xs text-muted-foreground">
+                    {t("settings.answerSystemPromptHelp") || "This prompt guides the AI in generating model answers to questions."}
+                  </p>
+                </div>
+
+                <Button 
+                  variant="outline" 
+                  onClick={() => {
+                    setSystemPrompts({
+                      questionPrompt: "",
+                      answerPrompt: ""
+                    });
+                    safeLocalStorage.removeItem("system_prompt_question");
+                    safeLocalStorage.removeItem("system_prompt_answer");
+                    toast({
+                      title: t("settings.promptsReset") || "Prompts Reset",
+                      description: t("settings.promptsResetDesc") || "System prompts have been reset to default",
+                      duration: 3000,
+                    });
+                  }}
+                  className="w-full"
+                >
+                  {t("settings.resetPrompts") || "Reset Prompts to Default"}
+                </Button>
               </div>
             </TabsContent>
           </Tabs>
