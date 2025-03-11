@@ -197,6 +197,14 @@ export default function SettingsModal({
           .replace("{category}", newCustomCategory.trim()),
         duration: 3000,
       });
+    } else if (questionSettings.type === "all") {
+      // Show a toast notification that a type must be selected
+      toast({
+        title: t("settings.cannotAddCategory") || "Cannot Add Category",
+        description: t("settings.selectTypeForCustomCategory") || "Please select a question type (Coding or Question) to add custom categories.",
+        variant: "destructive",
+        duration: 3000,
+      });
     }
   };
 
@@ -309,14 +317,18 @@ export default function SettingsModal({
                 <Select
                   value={questionSettings.type}
                   onValueChange={(value) => {
-                    // Reset custom category flag when type changes
-                    setIsCustomCategory(false);
+                    // Only reset the category if switching to "all" from a specific type
+                    const newCategory = value === "all" ? "all" : questionSettings.category;
                     
-                    // If switching to "all", reset the category to "all" as well
+                    // Reset custom category flag if changing types
+                    if (value !== questionSettings.type) {
+                      setIsCustomCategory(false);
+                    }
+                    
                     setQuestionSettings({ 
                       ...questionSettings, 
                       type: value,
-                      category: value === "all" ? "all" : "all"
+                      category: newCategory
                     });
                   }}
                 >
@@ -362,83 +374,132 @@ export default function SettingsModal({
                         {category.value}
                       </SelectItem>
                     ))}
-                    {questionSettings.type !== "all" && (
-                      <SelectItem value="custom">
-                        {t("settings.custom")}
-                      </SelectItem>
-                    )}
+                    {/* Always show the custom option */}
+                    <SelectItem value="custom">
+                      {t("settings.custom")}
+                    </SelectItem>
                   </SelectContent>
                 </Select>
               </div>
 
               {/* Custom Category Section - only shown when Custom is selected */}
-              {isCustomCategory && questionSettings.type !== "all" && (
+              {isCustomCategory && (
                 <div className="space-y-2 pt-2 border-t border-gray-200 dark:border-gray-700">
                   <Label>{t("settings.customCategory") || "Custom Category"}</Label>
-                  <div className="flex space-x-2">
-                    <Input
-                      placeholder={t("settings.addCustomCategory") || "Add custom category..."}
-                      value={newCustomCategory}
-                      onChange={(e) => setNewCustomCategory(e.target.value)}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter') {
-                          handleAddCustomCategory();
-                        }
-                      }}
-                    />
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      onClick={handleAddCustomCategory}
-                      disabled={!newCustomCategory.trim()}
-                    >
-                      <PlusIcon className="h-4 w-4" />
-                    </Button>
-                  </div>
-                  
-                  {/* Display existing custom categories for the selected type */}
-                  {customCategories[
-                    questionSettings.type === "coding" ? QuestionType.Coding : QuestionType.Question
-                  ].length > 0 && (
-                    <div>
-                      <Label className="mt-4 mb-2 block">
-                        {t("settings.existingCustomCategories") || "Your Custom Categories"}
-                      </Label>
-                      <div className="flex flex-wrap gap-2 mt-2">
-                        {customCategories[
-                          questionSettings.type === "coding" ? QuestionType.Coding : QuestionType.Question
-                        ].map((category) => (
-                          <div 
-                            key={category} 
-                            className="flex items-center bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-md text-sm"
-                          >
-                            <span 
-                              className={
-                                questionSettings.category === category ? 
-                                "font-bold text-primary" : ""
-                              }
-                              role="button"
-                              onClick={() => {
-                                setQuestionSettings({
-                                  ...questionSettings,
-                                  category: category
-                                });
-                              }}
-                            >
-                              {category}
-                            </span>
-                            <Button
-                              variant="ghost"
-                              size="icon"
-                              className="h-5 w-5 ml-1"
-                              onClick={() => handleRemoveCustomCategory(category)}
-                            >
-                              <XIcon className="h-3 w-3" />
-                            </Button>
-                          </div>
-                        ))}
-                      </div>
+                  {/* If "all" is selected, show a note that a type must be chosen */}
+                  {questionSettings.type === "all" ? (
+                    <div className="text-sm text-amber-600 dark:text-amber-400 mb-2">
+                      {t("settings.selectTypeForCustomCategory") || "Please select a question type (Coding or Question) to add custom categories."}
                     </div>
+                  ) : (
+                    <div className="flex space-x-2">
+                      <Input
+                        placeholder={t("settings.addCustomCategory") || "Add custom category..."}
+                        value={newCustomCategory}
+                        onChange={(e) => setNewCustomCategory(e.target.value)}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter') {
+                            handleAddCustomCategory();
+                          }
+                        }}
+                      />
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        onClick={handleAddCustomCategory}
+                        disabled={!newCustomCategory.trim()}
+                      >
+                        <PlusIcon className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  )}
+                  
+                  {/* Show both types of custom categories when "all" is selected */}
+                  {questionSettings.type === "all" ? (
+                    <>
+                      {/* Show Coding custom categories */}
+                      {customCategories[QuestionType.Coding].length > 0 && (
+                        <div className="mt-4">
+                          <Label className="mb-2 block">
+                            {t("settings.codingCustomCategories") || "Custom Coding Categories"}
+                          </Label>
+                          <div className="flex flex-wrap gap-2 mt-2">
+                            {customCategories[QuestionType.Coding].map((category) => (
+                              <div 
+                                key={category} 
+                                className="flex items-center bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-md text-sm"
+                              >
+                                <span>{category}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                      
+                      {/* Show Question custom categories */}
+                      {customCategories[QuestionType.Question].length > 0 && (
+                        <div className="mt-4">
+                          <Label className="mb-2 block">
+                            {t("settings.questionCustomCategories") || "Custom Question Categories"}
+                          </Label>
+                          <div className="flex flex-wrap gap-2 mt-2">
+                            {customCategories[QuestionType.Question].map((category) => (
+                              <div 
+                                key={category} 
+                                className="flex items-center bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-md text-sm"
+                              >
+                                <span>{category}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    /* Display existing custom categories for the selected type */
+                    customCategories[
+                      questionSettings.type === "coding" ? QuestionType.Coding : QuestionType.Question
+                    ].length > 0 && (
+                      <div>
+                        <Label className="mt-4 mb-2 block">
+                          {t("settings.existingCustomCategories") || "Your Custom Categories"}
+                        </Label>
+                        <div className="flex flex-wrap gap-2 mt-2">
+                          {customCategories[
+                            questionSettings.type === "coding" ? QuestionType.Coding : QuestionType.Question
+                          ].map((category) => (
+                            <div 
+                              key={category} 
+                              className="flex items-center bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-md text-sm"
+                            >
+                              <span 
+                                className={
+                                  questionSettings.category === category ? 
+                                  "font-bold text-primary" : ""
+                                }
+                                role="button"
+                                onClick={() => {
+                                  setQuestionSettings({
+                                    ...questionSettings,
+                                    category: category
+                                  });
+                                }}
+                              >
+                                {category}
+                              </span>
+                              <Button
+                                variant="ghost"
+                                size="icon"
+                                className="h-5 w-5 ml-1"
+                                onClick={() => handleRemoveCustomCategory(category)}
+                              >
+                                <XIcon className="h-3 w-3" />
+                              </Button>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )
                   )}
                 </div>
               )}
