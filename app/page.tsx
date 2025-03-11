@@ -27,6 +27,7 @@ export default function Page() {
   const [userAnswer, setUserAnswer] = useState<UserAnswer>({ content: "" })
   const [timeRemaining, setTimeRemaining] = useState(600) // 10 minutes
   const [timerWarning, setTimerWarning] = useState(false)
+  const [isTimerRunning, setIsTimerRunning] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [showResultsModal, setShowResultsModal] = useState(false)
   const [showAnswerModal, setShowAnswerModal] = useState(false)
@@ -96,31 +97,43 @@ export default function Page() {
         });
       } finally {
         setIsLoadingQuestion(false);
+        // Reset the timer and start it when question loading is complete
+        setTimeRemaining(600);
+        setIsTimerRunning(true);
       }
     };
     fetchQuestion();
   }, []);
 
   useEffect(() => {
+    // Only run the timer if isTimerRunning is true and we're not loading a question
+    if (!isTimerRunning || isLoadingQuestion) {
+      return;
+    }
+
+    // Don't auto-submit when timer reaches zero, just show a warning
     if (timeRemaining <= 0) {
-      onSubmit()
-      return
+      setTimerWarning(true);
+      return;
     }
 
     if (timeRemaining <= 60) {
-      setTimerWarning(true)
+      setTimerWarning(true);
     } else {
-      setTimerWarning(false)
+      setTimerWarning(false);
     }
 
     const intervalId = setInterval(() => {
-      setTimeRemaining((prevTime) => prevTime - 1)
-    }, 1000)
+      setTimeRemaining((prevTime) => prevTime - 1);
+    }, 1000);
 
-    return () => clearInterval(intervalId)
-  }, [timeRemaining]) // Added onSubmit to dependency array
+    return () => clearInterval(intervalId);
+  }, [timeRemaining, isTimerRunning, isLoadingQuestion]);
 
   const onSubmit = async () => {
+    // Stop the timer when submitting
+    setIsTimerRunning(false);
+    
     setShowResultsModal(true)
     setIsSubmitted(true)
     setResults(null)
@@ -163,6 +176,9 @@ export default function Page() {
     setIsSubmitted(false);
     setTimeRemaining(600);
     setIsLoadingQuestion(true);
+    // Reset timer state
+    setIsTimerRunning(false);
+    
     try {
       const question = await generateRandomQuestion();
       setCurrentQuestion(question);
@@ -197,6 +213,8 @@ export default function Page() {
       });
     } finally {
       setIsLoadingQuestion(false);
+      // Start the timer after loading is complete
+      setIsTimerRunning(true);
     }
   }, [toast, t, language]);
 
@@ -222,6 +240,9 @@ export default function Page() {
     if (!currentQuestion) {
       return
     }
+
+    // Stop the timer when viewing answer
+    setIsTimerRunning(false);
 
     // Set streaming state and prepare to display inline answer
     setIsStreaming(true)
@@ -338,6 +359,8 @@ export default function Page() {
     setUserAnswer({ content: "" });
     setIsSubmitted(false);
     setTimeRemaining(600);
+    // Reset and start the timer when loading a question from history
+    setIsTimerRunning(true);
     setShowHistoryModal(false);
   };
 
@@ -358,6 +381,10 @@ export default function Page() {
       
       setCurrentQuestion(updatedQuestion);
       setForcedQuestionType("Coding");
+      
+      // Reset the timer when switching question type
+      setTimeRemaining(600);
+      setIsTimerRunning(true);
       
       toast({
         title: t("toast.switchedToCode.title") || "Switched to Code Editor",
