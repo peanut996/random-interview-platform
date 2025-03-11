@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import type { Question } from "@/lib/types";
 import { useTranslation } from "@/lib/i18n";
+import { cleanupTestCase } from "@/lib/utils";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
@@ -84,11 +85,11 @@ export default function QuestionArea({
                   >
                     <div>
                       <strong>{t("question.input")}:</strong>{" "}
-                      {JSON.stringify(testCase.input).replace(/\\n/g, "\n")}
+                      {cleanupTestCase(testCase.input)}
                     </div>
                     <div>
                       <strong>{t("question.output")}:</strong>{" "}
-                      {JSON.stringify(testCase.output).replace(/\\n/g, "\n")}
+                      {cleanupTestCase(testCase.output)}
                     </div>
                   </div>
                 ))}

@@ -52,3 +52,24 @@ export function formatCategories(categories: string[]): string {
   return `${otherCategories.join(", ")} and ${lastCategory}`;
 }
 
+// Function to clean up test case displays by removing extra quotes
+export function cleanupTestCase(value: any): string {
+  if (typeof value !== 'string') {
+    return JSON.stringify(value);
+  }
+  
+  // If the value is a string that starts and ends with quotes and contains escaped quotes
+  if (value.startsWith('"') && value.endsWith('"')) {
+    try {
+      // Try to parse the JSON string to get the actual value
+      const parsed = JSON.parse(value);
+      return typeof parsed === 'string' ? parsed : JSON.stringify(parsed);
+    } catch (e) {
+      // If parsing fails, just return the original with basic cleanup
+      return value.replace(/\\"/g, '"');
+    }
+  }
+  
+  return value;
+}
+

@@ -5,6 +5,7 @@ import {Button} from "@/components/ui/button"
 import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger} from "@/components/ui/dropdown-menu"
 import {useTranslation} from "@/lib/i18n"
 import Image from "next/image"
+import { useEffect } from "react"
 
 interface HeaderProps {
   language: string
@@ -17,6 +18,11 @@ export default function Header({ language, setLanguage, onOpenSettings, onOpenHi
   const { t } = useTranslation()
 
   const githubRepoUrl = 'https://github.com/peanut996/random-interview-platform'; // 替换为您的 GitHub 仓库 URL
+
+  // Update document title when language changes
+  useEffect(() => {
+    document.title = t("app.title")
+  }, [t, language])
 
   return (
     <header className="sticky top-0 z-10 backdrop-blur-md bg-[#f5f5f7]/80 dark:bg-[#1c1c1e]/80 border-b border-gray-200 dark:border-gray-800">
