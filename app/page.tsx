@@ -172,12 +172,19 @@ export default function Page() {
   }
 
   const onNextQuestion = useCallback(async () => {
+    // Reset answer states when getting a new question
     setUserAnswer({ content: "" });
     setIsSubmitted(false);
     setTimeRemaining(600);
     setIsLoadingQuestion(true);
     // Reset timer state
     setIsTimerRunning(false);
+    
+    // Close any open answer displays
+    setShowAnswerModal(false);
+    setShowInlineAnswer(false);
+    setAnswer(null);
+    setParsedAnswer(null);
     
     try {
       const question = await generateRandomQuestion();
@@ -322,6 +329,12 @@ export default function Page() {
         duration: 3000,
       })
     }
+
+    // Close any open answer displays before moving to the next question
+    setShowAnswerModal(false);
+    setShowInlineAnswer(false);
+    setAnswer(null);
+    setParsedAnswer(null);
 
     // Move to the next question
     onNextQuestion()
