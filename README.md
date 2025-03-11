@@ -1,111 +1,102 @@
 <p align="center">
-   <img src="public/logo.svg" alt="AI Interview Simulator Logo" width="120" height="120" />
-   <br>  中文 | <a href="README_EN.md">English</a>
+  <img src="public/logo.svg" alt="AI 随机面试模拟器" width="150" height="150" />
 </p>
 
-# AI 随机面试模拟器
+<h1 align="center">AI 随机面试模拟器</h1>
 
-一个技术面试模拟平台，拥有 Apple 风格的 UI，旨在帮助你练习和提高你的编码和技术技能。
+<p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/peanut996/random-interview-platform?style=flat-square" alt="License"></a>
+  <img src="https://img.shields.io/badge/React-18-blue?style=flat-square&logo=react" alt="React">
+  <img src="https://img.shields.io/badge/Next.js-13-black?style=flat-square&logo=next.js" alt="Next.js">
+  <img src="https://img.shields.io/badge/OpenAI-GPT--4o-green?style=flat-square&logo=openai" alt="OpenAI">
+  <br>
+  <strong>中文</strong> | <a href="README_EN.md">English</a>
+</p>
 
-## 功能特性
+<p align="center">
+  🚀 一款极具 Apple 风格的 AI 驱动技术面试平台，助你轻松提升编码技能与技术实力
+</p>
 
-*   **真实的面试模拟：** 体验真实的面试环境，包含编码挑战和技术问题。
-*   **Apple 风格 UI：** 干净、现代且直观的用户界面，灵感来自 Apple 的设计原则。
-*   **AI 驱动的反馈：** 接收由 OpenAI 提供支持的详细反馈和改进建议。
-*   **可定制的设置：** 配置问题类型、类别、难度级别，甚至你的 OpenAI API 端点和模型。
-*   **多语言支持：** 使用你喜欢的语言进行练习（目前支持英语和中文）。
-*   **个性化学习：** 平台会跟踪你的错误并优先处理你需要加强的问题。
-*   **"非我的技术栈" 功能：** 排除与你的技术栈无关的问题。
-*   **历史记录跟踪：** 查看你过去的表现并确定需要改进的领域。
-*   **GitHub 集成：** 通过 GitHub 贡献新问题或报告问题。
+<p align="center">
+  <img src="public/screenshots/app-screenshot.png" alt="应用截图" width="80%" />
+</p>
 
-## 使用的技术
+## ✨ 主要功能
 
-*   [React](https://reactjs.org/) (或你选择的前端框架)
-*   [Node.js](https://nodejs.org/en/) (或你选择的后端环境)
-*   [Express](https://expressjs.com/) (或你选择的后端框架)
-*   [OpenAI API](https://openai.com/api/)
-*   [react-i18next](https://react.i18next.com/) (或你选择的 i18n 库)
-*   [Monaco Editor](https://microsoft.github.io/monaco-editor/) (或类似的编辑器)
+- 🎯 **真实的面试体验**：模拟真实面试环境，提供编码挑战与技术问题
+- 🍎 **精美 Apple 风格 UI**：优雅、现代且直观的用户界面，灵感源自 Apple 设计语言
+- 🤖 **AI 驱动反馈**：获取由 OpenAI 支持的专业详细反馈与改进建议
+- ⚙️ **全面可定制**：自由配置问题类型、类别、难度级别，以及 OpenAI API 设置
+- 🌐 **多语言支持**：切换使用中文或英文进行练习
+- 📊 **智能学习**：系统会追踪你的错误并优先安排你需要加强的问题
+- 🔄 **灵活筛选**：通过"重新生成问题"功能快速跳过不相关问题
+- 📝 **历史记录**：查看过往表现，识别需要改进的领域
+- 🔧 **完全可扩展**：轻松通过 GitHub 贡献新问题或报告改进建议
 
-## 设置说明
+## 🛠️ 技术栈
 
-1.  **克隆存储库：**
+- [Next.js](https://nextjs.org/) - React 框架
+- [Tailwind CSS](https://tailwindcss.com/) - 实用优先的 CSS 框架
+- [shadcn/ui](https://ui.shadcn.com/) - 精美 UI 组件库
+- [OpenAI API](https://openai.com/api/) - AI 驱动的问题生成和答案评估
+- [Monaco Editor](https://microsoft.github.io/monaco-editor/) - 强大的代码编辑器
 
-    ```bash
-    git clone https://github.com/your-username/ai-interview-simulator.git
-    cd ai-interview-simulator
-    ```
+## 🚀 快速开始
 
-2.  **安装依赖项：**
+### 本地开发
 
-    ```bash
-    npm install  # 或 yarn install
-    ```
+```bash
+# 克隆仓库
+git clone https://github.com/peanut996/random-interview-platform.git
+cd random-interview-platform
 
-3.  **配置你的 OpenAI API 密钥：**
+# 安装依赖
+npm install
 
-    *   设置 `OPENAI_API_KEY` 环境变量。 例如：
-
-        ```bash
-        export OPENAI_API_KEY="YOUR_OPENAI_API_KEY"
-        ```
-
-    *   **重要提示：** 安全地存储你的 API 密钥，不要将其提交到你的存储库。
-
-4.  **配置 i18n：**
-
-    *   确保你已使用必要的语言文件（`en.json`、`zh.json` 等）正确配置了你的 i18n 库（例如 `react-i18next`）。
-    *   有关详细说明，请参阅你选择的 i18n 库的文档。
-
-5.  **运行应用程序：**
-
-    ```bash
-    npm start  # 或 yarn start
-    ```
-
-6.  **在浏览器中访问应用程序：** `http://localhost:3000` （或你的应用程序正在运行的端口）。
-
-## 贡献
-
-欢迎贡献！ 请参阅我们的 [CONTRIBUTING.md](CONTRIBUTING.md) 文件，了解如何贡献新问题、报告错误或提出改进建议的详细信息。
-
-*   **添加问题：** 通过创建包含格式正确的 JSON 文件的拉取请求来提交新问题。 有关详细信息，请参阅[问题数据结构](#question-data-structure)。
-*   **报告问题：** 使用 GitHub 问题跟踪器来报告错误或提出新功能。
-
-## 问题数据结构
-
-问题存储在具有以下结构的 JSON 文件中：
-
-```json
-[
-  {
-    "id": "1",
-    "type": "Coding",
-    "category": "Algorithms",
-    "difficulty": "Easy",
-    "translations": {
-      "en": {
-        "title": "Reverse a String",
-        "description": "Write a function to reverse a string.",
-        "topic": "Strings"
-      },
-      "zh": {
-        "title": "反转字符串",
-        "description": "编写一个函数来反转给定的字符串。",
-        "topic": "字符串"
-      }
-    },
-    "testCases": [
-      {
-        "input": "hello",
-        "output": "olleh"
-      }
-    ]
-  }
-]
+# 启动开发服务器
+npm run dev
 ```
 
-## 许可证
+应用将在 http://localhost:3000 运行
+
+### 配置 OpenAI
+
+在应用的设置菜单中，配置以下内容：
+
+1. OpenAI API 端点 (通常为 `https://api.openai.com/v1`)
+2. 选择模型 (推荐使用 `gpt-4o`)
+3. 输入你的 OpenAI API 密钥
+
+## 🎯 自定义设置
+
+通过设置面板，你可以：
+
+- 选择问题类型：编程题或概念问答题
+- 自定义技术类别：添加你想要练习的特定技术领域
+- 设置难度级别：从简单到困难
+- 配置 OpenAI 参数：端点、模型和 API 密钥
+
+## 🌟 特色功能
+
+### ✅ 自定义问题类别
+
+添加符合你职业方向的问题类别，获得更加针对性的面试练习体验。
+
+### 📱 响应式设计
+
+在任何设备上都能获得出色的使用体验 - 桌面端、平板或手机。
+
+### 🔍 详细分析
+
+提交答案后获取全面评分和详细反馈，包括代码正确性、效率和可读性方面的建议。
+
+## 📬 问题反馈
+
+如果你有任何问题或建议，欢迎：
+
+- 提交 [GitHub Issue](https://github.com/peanut996/random-interview-platform/issues)
+- 发送邮件至：[your-email@example.com](mailto:your-email@example.com)
+
+## 📄 许可证
 
 [MIT](LICENSE)
