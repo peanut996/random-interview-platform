@@ -18,7 +18,7 @@
 </p>
 
 <p align="center">
-  <img src="public/screenshots/app-screenshot.png" alt="Application Screenshot" width="80%" />
+  <img src="assets/screenshot_en.png" alt="Application Screenshot" width="80%" />
 </p>
 
 ## ✨ Key Features

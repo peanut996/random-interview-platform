@@ -18,7 +18,7 @@
 </p>
 
 <p align="center">
-  <img src="public/screenshots/app-screenshot.png" alt="应用截图" width="80%" />
+  <img src="assets/screenshot.png" alt="应用截图" width="80%" />
 </p>
 
 ## ✨ 主要功能
