@@ -27,7 +27,7 @@ export async function generateRandomQuestion(): Promise<Question> {
     isNaN(Number(key)),
   ) as QuestionDifficulty[];
 
-  const questionType = savedQuestionType || types[Math.random() * types.length];
+  const questionType = savedQuestionType || types[Math.floor(Math.random() * types.length)];
   const questionCategory =
     savedQuestionCategory ||
     allCategories[Math.floor(Math.random() * allCategories.length)];
