@@ -23,7 +23,19 @@ import {
 import { Switch } from "@/components/ui/switch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
-import { QuestionCategory } from "@/lib/types";
+import { 
+  QuestionCategory, 
+  CodingCategory, 
+  QuestionType 
+} from "@/lib/types";
+import { 
+  addCustomCategory, 
+  removeCustomCategory, 
+  getCategoriesForType,
+  loadCustomCategories,
+  safeLocalStorage
+} from "@/lib/question";
+import { PlusIcon, XIcon } from "lucide-react";
 
 interface SettingsModalProps {
   language: string;
@@ -37,12 +49,13 @@ export default function SettingsModal({
   const { t } = useTranslation();
   const { toast } = useToast();
   const [showResetConfirmation, setShowResetConfirmation] = useState(false);
+  const [newCustomCategory, setNewCustomCategory] = useState("");
 
   // Load saved settings from localStorage
   const [openAISettings, setOpenAISettings] = useState({
-    endpoint: localStorage.getItem("openai_endpoint") || "",
-    model: localStorage.getItem("openai_model") || "gpt-4o",
-    token: localStorage.getItem("openai_token") || "",
+    endpoint: safeLocalStorage.getItem("openai_endpoint") || "",
+    model: safeLocalStorage.getItem("openai_model") || "gpt-4o",
+    token: safeLocalStorage.getItem("openai_token") || "",
   });
 
   // Track if custom model is selected
@@ -51,20 +64,78 @@ export default function SettingsModal({
   );
 
   const [questionSettings, setQuestionSettings] = useState({
-    type: localStorage.getItem("question_type") || "",
-    category: localStorage.getItem("question_category") || "",
-    difficulty: localStorage.getItem("question_difficulty") || "",
-    weightedMistakes: localStorage.getItem("weighted_mistakes") === "true",
+    type: safeLocalStorage.getItem("question_type") || "all",
+    category: safeLocalStorage.getItem("question_category") || "all",
+    difficulty: safeLocalStorage.getItem("question_difficulty") || "all",
+    weightedMistakes: safeLocalStorage.getItem("weighted_mistakes") === "true",
   });
+
+  const [customCategories, setCustomCategories] = useState<{
+    [QuestionType.Question]: string[];
+    [QuestionType.Coding]: string[];
+  }>({
+    [QuestionType.Question]: [],
+    [QuestionType.Coding]: [],
+  });
+
+  // Track if custom category is selected
+  const [isCustomCategory, setIsCustomCategory] = useState(false);
 
   const [activeTab, setActiveTab] = useState("questions");
 
+  // Load custom categories on mount
+  useEffect(() => {
+    loadCustomCategories();
+    const saved = safeLocalStorage.getItem("custom_categories");
+    if (saved) {
+      try {
+        setCustomCategories(JSON.parse(saved));
+      } catch (e) {
+        console.error("Failed to parse custom categories", e);
+      }
+    }
+
+    // Check if the saved category is custom
+    const savedCategory = safeLocalStorage.getItem("question_category") || "";
+    const savedType = safeLocalStorage.getItem("question_type");
+    
+    if (savedCategory && savedType && savedType !== "all") {
+      const selectedType = savedType === "coding" 
+        ? QuestionType.Coding 
+        : QuestionType.Question;
+          
+      const standardCategories = selectedType === QuestionType.Coding
+        ? Object.values(CodingCategory) as string[]
+        : Object.values(QuestionCategory) as string[];
+        
+      // If the saved category is not in standard categories, it must be custom
+      if (savedCategory !== "all" && !standardCategories.includes(savedCategory) && savedCategory !== "custom") {
+        setIsCustomCategory(true);
+      }
+    }
+  }, []);
+
   // Define different categories based on question type
-
-  const categories = (
-    Object.keys(QuestionCategory) as (keyof typeof QuestionCategory)[]
-  ).map((k) => ({ key: k, value: QuestionCategory[k] }));
-
+  const getCategories = () => {
+    const selectedType = questionSettings.type === "coding" ? QuestionType.Coding : 
+                         questionSettings.type === "question" ? QuestionType.Question : null;
+    
+    if (questionSettings.type === "all" || !selectedType) {
+      // If no specific type selected, return all categories
+      return [
+        ...Object.values(QuestionCategory).map(value => ({ key: value, value })),
+        ...Object.values(CodingCategory).map(value => ({ key: value, value })),
+      ];
+    }
+    
+    // Return categories specific to the selected type
+    const standardCategories = selectedType === QuestionType.Coding
+      ? Object.values(CodingCategory).map(value => ({ key: value, value }))
+      : Object.values(QuestionCategory).map(value => ({ key: value, value }));
+    
+    return standardCategories;
+  };
+  
   // Check if all OpenAI fields are filled
   const allOpenAIFieldsFilled =
     openAISettings.endpoint && openAISettings.model && openAISettings.token;
@@ -76,19 +147,19 @@ export default function SettingsModal({
 
   const handleSave = () => {
     // Always save question settings
-    localStorage.setItem("question_type", questionSettings.type);
-    localStorage.setItem("question_category", questionSettings.category);
-    localStorage.setItem("question_difficulty", questionSettings.difficulty);
-    localStorage.setItem(
+    safeLocalStorage.setItem("question_type", questionSettings.type);
+    safeLocalStorage.setItem("question_category", questionSettings.category);
+    safeLocalStorage.setItem("question_difficulty", questionSettings.difficulty);
+    safeLocalStorage.setItem(
       "weighted_mistakes",
       questionSettings.weightedMistakes.toString(),
     );
 
     // Only save OpenAI settings if all three fields are filled
     if (allOpenAIFieldsFilled) {
-      localStorage.setItem("openai_endpoint", openAISettings.endpoint);
-      localStorage.setItem("openai_model", openAISettings.model);
-      localStorage.setItem("openai_token", openAISettings.token);
+      safeLocalStorage.setItem("openai_endpoint", openAISettings.endpoint);
+      safeLocalStorage.setItem("openai_model", openAISettings.model);
+      safeLocalStorage.setItem("openai_token", openAISettings.token);
     }
 
     toast({
@@ -100,6 +171,64 @@ export default function SettingsModal({
     onClose();
   };
 
+  const handleAddCustomCategory = () => {
+    if (newCustomCategory.trim() && questionSettings.type !== "all") {
+      const type = questionSettings.type === "coding" ? QuestionType.Coding : QuestionType.Question;
+      
+      addCustomCategory(type, newCustomCategory.trim());
+      
+      // Update local state to reflect the change
+      setCustomCategories({
+        ...customCategories,
+        [type]: [...customCategories[type], newCustomCategory.trim()]
+      });
+      
+      // Set the new custom category as the selected category
+      setQuestionSettings({
+        ...questionSettings,
+        category: newCustomCategory.trim()
+      });
+      
+      setNewCustomCategory("");
+      
+      toast({
+        title: t("settings.customCategoryAdded") || "Custom Category Added",
+        description: (t("settings.customCategoryAddedDesc") || "Added \"{category}\" to your categories")
+          .replace("{category}", newCustomCategory.trim()),
+        duration: 3000,
+      });
+    }
+  };
+
+  const handleRemoveCustomCategory = (category: string) => {
+    if (questionSettings.type === "all") return;
+    
+    const type = questionSettings.type === "coding" ? QuestionType.Coding : QuestionType.Question;
+    
+    removeCustomCategory(type, category);
+    
+    // Update local state to reflect the change
+    setCustomCategories({
+      ...customCategories,
+      [type]: customCategories[type].filter(c => c !== category)
+    });
+    
+    // If the currently selected category is being removed, set to "custom"
+    if (questionSettings.category === category) {
+      setQuestionSettings({
+        ...questionSettings,
+        category: "custom",
+      });
+    }
+    
+    toast({
+      title: t("settings.customCategoryRemoved") || "Custom Category Removed",
+      description: (t("settings.customCategoryRemovedDesc") || "Removed \"{category}\" from your categories")
+        .replace("{category}", category),
+      duration: 3000,
+    });
+  };
+
   // Function to reset all settings to default
   const resetSettings = () => {
     setShowResetConfirmation(true);
@@ -108,9 +237,9 @@ export default function SettingsModal({
   const confirmReset = () => {
     // Reset question settings
     setQuestionSettings({
-      type: "",
-      category: "",
-      difficulty: "",
+      type: "all",
+      category: "all",
+      difficulty: "all",
       weightedMistakes: false,
     });
 
@@ -123,15 +252,25 @@ export default function SettingsModal({
 
     // Reset custom model flag
     setIsCustomModel(false);
+    
+    // Reset custom category flag
+    setIsCustomCategory(false);
+    
+    // Reset custom categories
+    setCustomCategories({
+      [QuestionType.Question]: [],
+      [QuestionType.Coding]: [],
+    });
+    safeLocalStorage.removeItem("custom_categories");
 
     // Clear settings from localStorage
-    localStorage.removeItem("question_type");
-    localStorage.removeItem("question_category");
-    localStorage.removeItem("question_difficulty");
-    localStorage.removeItem("weighted_mistakes");
-    localStorage.removeItem("openai_endpoint");
-    localStorage.removeItem("openai_model");
-    localStorage.removeItem("openai_token");
+    safeLocalStorage.removeItem("question_type");
+    safeLocalStorage.removeItem("question_category");
+    safeLocalStorage.removeItem("question_difficulty");
+    safeLocalStorage.removeItem("weighted_mistakes");
+    safeLocalStorage.removeItem("openai_endpoint");
+    safeLocalStorage.removeItem("openai_model");
+    safeLocalStorage.removeItem("openai_token");
 
     setShowResetConfirmation(false);
 
@@ -169,9 +308,17 @@ export default function SettingsModal({
                 <Label>{t("settings.questionType")}</Label>
                 <Select
                   value={questionSettings.type}
-                  onValueChange={(value) =>
-                    setQuestionSettings({ ...questionSettings, type: value })
-                  }
+                  onValueChange={(value) => {
+                    // Reset custom category flag when type changes
+                    setIsCustomCategory(false);
+                    
+                    // If switching to "all", reset the category to "all" as well
+                    setQuestionSettings({ 
+                      ...questionSettings, 
+                      type: value,
+                      category: value === "all" ? "all" : "all"
+                    });
+                  }}
                 >
                   <SelectTrigger>
                     <SelectValue placeholder={t("settings.all")} />
@@ -191,26 +338,110 @@ export default function SettingsModal({
               <div className="space-y-2">
                 <Label>{t("settings.category")}</Label>
                 <Select
-                  value={questionSettings.category}
-                  onValueChange={(value) =>
-                    setQuestionSettings({
-                      ...questionSettings,
-                      category: value,
-                    })
-                  }
+                  value={isCustomCategory ? "custom" : questionSettings.category}
+                  onValueChange={(value) => {
+                    if (value === "custom") {
+                      setIsCustomCategory(true);
+                      // Keep the current category if it's already custom
+                    } else {
+                      setIsCustomCategory(false);
+                      setQuestionSettings({
+                        ...questionSettings,
+                        category: value,
+                      });
+                    }
+                  }}
                 >
                   <SelectTrigger>
                     <SelectValue placeholder={t("settings.all")} />
                   </SelectTrigger>
                   <SelectContent>
-                    {categories.map((category) => (
+                    <SelectItem value="all">{t("settings.all")}</SelectItem>
+                    {getCategories().map((category) => (
                       <SelectItem key={category.key} value={category.value}>
                         {category.value}
                       </SelectItem>
                     ))}
+                    {questionSettings.type !== "all" && (
+                      <SelectItem value="custom">
+                        {t("settings.custom")}
+                      </SelectItem>
+                    )}
                   </SelectContent>
                 </Select>
               </div>
+
+              {/* Custom Category Section - only shown when Custom is selected */}
+              {isCustomCategory && questionSettings.type !== "all" && (
+                <div className="space-y-2 pt-2 border-t border-gray-200 dark:border-gray-700">
+                  <Label>{t("settings.customCategory") || "Custom Category"}</Label>
+                  <div className="flex space-x-2">
+                    <Input
+                      placeholder={t("settings.addCustomCategory") || "Add custom category..."}
+                      value={newCustomCategory}
+                      onChange={(e) => setNewCustomCategory(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                          handleAddCustomCategory();
+                        }
+                      }}
+                    />
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      onClick={handleAddCustomCategory}
+                      disabled={!newCustomCategory.trim()}
+                    >
+                      <PlusIcon className="h-4 w-4" />
+                    </Button>
+                  </div>
+                  
+                  {/* Display existing custom categories for the selected type */}
+                  {customCategories[
+                    questionSettings.type === "coding" ? QuestionType.Coding : QuestionType.Question
+                  ].length > 0 && (
+                    <div>
+                      <Label className="mt-4 mb-2 block">
+                        {t("settings.existingCustomCategories") || "Your Custom Categories"}
+                      </Label>
+                      <div className="flex flex-wrap gap-2 mt-2">
+                        {customCategories[
+                          questionSettings.type === "coding" ? QuestionType.Coding : QuestionType.Question
+                        ].map((category) => (
+                          <div 
+                            key={category} 
+                            className="flex items-center bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-md text-sm"
+                          >
+                            <span 
+                              className={
+                                questionSettings.category === category ? 
+                                "font-bold text-primary" : ""
+                              }
+                              role="button"
+                              onClick={() => {
+                                setQuestionSettings({
+                                  ...questionSettings,
+                                  category: category
+                                });
+                              }}
+                            >
+                              {category}
+                            </span>
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              className="h-5 w-5 ml-1"
+                              onClick={() => handleRemoveCustomCategory(category)}
+                            >
+                              <XIcon className="h-3 w-3" />
+                            </Button>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
 
               <div className="space-y-2">
                 <Label>{t("settings.difficulty")}</Label>

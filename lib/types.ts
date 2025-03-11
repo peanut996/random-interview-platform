@@ -31,14 +31,20 @@ export enum QuestionCategory {
     Algorithms = "Algorithms",
     TCP = "TCP",
     UDP = "UDP",
-    DataStructures = "Data Structures",
-    LeetCode = "LeetCode",
-    LeetCodeHot100 = "LeetCode Hot 100",
+    IP = "IP",
+    Spring = "Spring",
+    Redis = "Redis",
+    MySQL = "MySQL",
+    RocketMQ = "RocketMQ",
+    Kafka = "Kafka",
     Java = "Java",
-    SystemDesign = "System Design",
-    Behavioral = "Behavioral",
     OperationSystem = "Operation System",
-    Spring = "Spring"
+    SystemDesign = "System Design",
+}
+
+export enum CodingCategory{
+    LeetCode = "LeetCode",
+    LeetCodeHot100 = "LeetCode Hot 100"
 }
 
 export interface UserAnswer {

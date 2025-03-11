@@ -59,16 +59,47 @@ export default function AnswerModal({ answer, language, onClose, isStreaming = f
 
   // If we're still getting string data but couldn't parse it yet
   if (typeof displayAnswer === "string") {
-    // Only show loading if we haven't parsed the answer yet
     return (
       <Dialog open={true} onOpenChange={() => onClose()}>
         <DialogContent className="sm:max-w-4xl md:max-w-5xl backdrop-blur-xl bg-white/90 dark:bg-gray-900/90 border border-gray-200 dark:border-gray-800">
           <DialogHeader>
             <DialogTitle>{t("answer.modalTitle")}</DialogTitle>
           </DialogHeader>
-          <div className="flex flex-col items-center justify-center py-8 space-y-4">
-            <Loader2 className="h-8 w-8 animate-spin text-primary" />
-            <p>{t("answer.processFailure")} : {displayAnswer}</p>
+          <div className="p-4">
+            <div className="mb-4 p-2 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 rounded-md">
+              <p>{t("answer.processFailure")}</p>
+            </div>
+            <div className="prose dark:prose-invert max-w-none">
+              <div className="markdown-content">
+                <ReactMarkdown
+                  components={{
+                    code({node, className, children, ...props}: any) {
+                      const match = /language-(\w+)/.exec(className || '')
+                      const inline = !match
+                      return !inline && match ? (
+                        <SyntaxHighlighter
+                          style={github}
+                          language={match[1]}
+                          PreTag="div"
+                          {...props}
+                        >
+                          {String(children).replace(/\n$/, '')}
+                        </SyntaxHighlighter>
+                      ) : (
+                        <code className={className} {...props}>
+                          {children}
+                        </code>
+                      )
+                    }
+                  }}
+                >
+                  {displayAnswer}
+                </ReactMarkdown>
+              </div>
+            </div>
+          </div>
+          <div className="flex justify-end">
+            <Button onClick={onClose}>{t("button.close")}</Button>
           </div>
         </DialogContent>
       </Dialog>

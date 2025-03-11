@@ -10,13 +10,16 @@ import ConfirmationModal from "@/components/modals/confirmation-modal"
 import SettingsModal from "@/components/modals/settings-modal"
 import HistoryModal from "@/components/modals/history-modal"
 import LoadingQuestionModal from "@/components/modals/loading-question-modal"
+import AnswerDisplay from "@/components/answer-display"
 import { useState, useEffect, useCallback } from "react"
 import type { Question, UserAnswer, QuestionHistory } from "@/lib/types"
+import { QuestionType } from "@/lib/types"
 import { generateRandomQuestion } from "@/lib/question"
 import { useTranslation } from "@/lib/i18n"
 import { useToast } from "@/hooks/use-toast"
 // Update the onSubmit function to use the OpenAI API for evaluation
 import { evaluateAnswer, getModelAnswer } from "@/lib/api"
+import { cleanupJsonResponse } from "@/lib/utils"
 
 export default function Page() {
   const { t, language, setLanguage } = useTranslation()
@@ -36,8 +39,13 @@ export default function Page() {
   const [isStreaming, setIsStreaming] = useState(false)
   const { toast } = useToast()
   const [questionHistory, setQuestionHistory] = useState<QuestionHistory[]>([])
+  
+  // State for showing answer in the main content area instead of modal
+  const [showInlineAnswer, setShowInlineAnswer] = useState(false)
+  const [parsedAnswer, setParsedAnswer] = useState<any>(null)
 
   const [isLoadingQuestion, setIsLoadingQuestion] = useState(true)
+  const [forcedQuestionType, setForcedQuestionType] = useState<string | null>(null)
 
   // 在组件加载时从本地存储加载历史记录
   useEffect(() => {
@@ -197,47 +205,81 @@ export default function Page() {
     setShowConfirmationModal(true)
   }
 
-  // Updated handleConfirmation function with streaming support
+  // Updated handleConfirmation function to show answers inline
   const handleConfirmation = async () => {
+    // Make sure modals are properly managed
+    setShowAnswerModal(false);
+    
     if (confirmationStep < 2) {
       setConfirmationStep((prevStep) => prevStep + 1)
-    } else {
-      setShowConfirmationModal(false)
-      setAnswer(null)
-      setIsStreaming(true)
-      setShowAnswerModal(true)
+      return
+    }
 
-      try {
-        // Call OpenAI to get the model answer with streaming
-        await getModelAnswer(currentQuestion, language, (streamingAnswer) => {
-          setAnswer(streamingAnswer)
-        })
+    // Reset to start
+    setConfirmationStep(0)
+    setShowConfirmationModal(false)
+    
+    if (!currentQuestion) {
+      return
+    }
 
-        setIsStreaming(false)
-        setIsSubmitted(true)
+    // Set streaming state and prepare to display inline answer
+    setIsStreaming(true)
+    setShowInlineAnswer(true)
+    setAnswer(null)
+    setParsedAnswer(null)
+
+    try {
+      // Call OpenAI to get the model answer with streaming
+      await getModelAnswer(currentQuestion, language, (streamingAnswer) => {
+        setAnswer(streamingAnswer)
         
-        // 更新历史记录中的问题状态为已回答
-        if (currentQuestion) {
-          setQuestionHistory(prevHistory => {
-            const updatedHistory = prevHistory.map(item => 
-              item.id === currentQuestion.id 
-                ? { ...item, answered: true } 
-                : item
-            );
-            localStorage.setItem("questionHistory", JSON.stringify(updatedHistory));
-            return updatedHistory;
-          });
+        // Try to parse the streaming answer as it comes in
+        try {
+          const cleanedAnswer = cleanupJsonResponse(streamingAnswer)
+          const parsed = JSON.parse(cleanedAnswer)
+          setParsedAnswer(parsed)
+        } catch (e) {
+          // It's okay if parsing fails during streaming
         }
-      } catch (error) {
-        console.error("Error getting model answer:", error)
-        setIsStreaming(false)
-        toast({
-          title: t("toast.error.title"),
-          description: t("toast.error.description"),
-          variant: "destructive",
-          duration: 5000,
-        })
+      })
+
+      setIsStreaming(false)
+      setIsSubmitted(true)
+      
+      // Once streaming is complete, try to parse the final answer
+      try {
+        if (answer) {
+          const cleanedAnswer = cleanupJsonResponse(answer)
+          const parsed = JSON.parse(cleanedAnswer)
+          setParsedAnswer(parsed)
+        }
+      } catch (e) {
+        // Keep using the raw answer if parsing fails
+        console.error("Failed to parse answer:", e)
       }
+      
+      // 更新历史记录中的问题状态为已回答
+      if (currentQuestion) {
+        setQuestionHistory(prevHistory => {
+          const updatedHistory = prevHistory.map(item => 
+            item.id === currentQuestion.id 
+              ? { ...item, answered: true } 
+              : item
+          );
+          localStorage.setItem("questionHistory", JSON.stringify(updatedHistory));
+          return updatedHistory;
+        });
+      }
+    } catch (error) {
+      console.error("Error getting model answer:", error)
+      setIsStreaming(false)
+      toast({
+        title: t("toast.error.title"),
+        description: t("toast.error.description"),
+        variant: "destructive",
+        duration: 5000,
+      })
     }
   }
 
@@ -270,6 +312,8 @@ export default function Page() {
 
   const onCloseAnswerModal = () => {
     setShowAnswerModal(false)
+    // For inline answers
+    setShowInlineAnswer(false)
   }
 
   const onOpenSettings = () => {
@@ -303,6 +347,36 @@ export default function Page() {
     setQuestionHistory([]);
   };
 
+  // Function to handle switching to code editor
+  const handleSwitchToCode = () => {
+    if (currentQuestion && currentQuestion.type !== QuestionType.Coding) {
+      // Clone the current question and change the type
+      const updatedQuestion = {
+        ...currentQuestion,
+        type: QuestionType.Coding
+      };
+      
+      setCurrentQuestion(updatedQuestion);
+      setForcedQuestionType("Coding");
+      
+      toast({
+        title: t("toast.switchedToCode.title") || "Switched to Code Editor",
+        description: t("toast.switchedToCode.description") || "The question type has been changed to coding",
+        duration: 3000,
+      });
+    }
+  };
+
+  // Add a handler function to close the inline answer display
+  const handleCloseInlineAnswer = () => {
+    setShowInlineAnswer(false);
+  }
+
+  // Add a handler function to edit the answer
+  const handleEditAnswer = () => {
+    setShowInlineAnswer(false);
+  }
+
   return (
     <div className="flex flex-col min-h-screen">
       <Header
@@ -316,7 +390,20 @@ export default function Page() {
         {currentQuestion && !isLoadingQuestion ? (
           <>
             <QuestionArea question={currentQuestion} language={language} onNotMyStack={handleNotMyStack} />
-            <AnswerArea question={currentQuestion} userAnswer={userAnswer} setUserAnswer={setUserAnswer} />
+            
+            {/* Show AI answer if requested */}
+            {showInlineAnswer ? (
+              <AnswerDisplay 
+                answer={answer} 
+                language={language} 
+                isStreaming={isStreaming}
+                parsedAnswer={parsedAnswer}
+                onClose={handleCloseInlineAnswer}
+                onEdit={handleEditAnswer}
+              />
+            ) : (
+              <AnswerArea question={currentQuestion} userAnswer={userAnswer} setUserAnswer={setUserAnswer} />
+            )}
           </>
         ) : !currentQuestion && !isLoadingQuestion ? (
           <div className="flex flex-col items-center justify-center py-16 space-y-4">
@@ -333,13 +420,16 @@ export default function Page() {
         onViewAnswer={onViewAnswer}
         isSubmitted={isSubmitted}
         onNotMyStack={handleNotMyStack}
+        showSwitchTypeButton={currentQuestion?.type !== QuestionType.Coding}
+        onSwitchToCode={handleSwitchToCode}
       />
 
       {showResultsModal && (
         <ResultsModal results={results} language={language} onClose={onCloseResultsModal} isStreaming={isStreaming} />
       )}
 
-      {showAnswerModal && (
+      {/* AnswerModal is only used if not showing inline answers */}
+      {showAnswerModal && !showInlineAnswer && (
         <AnswerModal answer={answer} language={language} onClose={onCloseAnswerModal} isStreaming={isStreaming} />
       )}
 

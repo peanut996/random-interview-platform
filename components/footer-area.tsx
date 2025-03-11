@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { useTranslation } from "@/lib/i18n"
+import { Code } from "lucide-react"
 
 interface FooterAreaProps {
   timeRemaining: number
@@ -11,7 +12,9 @@ interface FooterAreaProps {
   onNextQuestion: () => void
   onViewAnswer: () => void
   onNotMyStack: () => void
+  onSwitchToCode?: () => void
   isSubmitted: boolean
+  showSwitchTypeButton?: boolean
 }
 
 export default function FooterArea({
@@ -21,7 +24,9 @@ export default function FooterArea({
   onNextQuestion,
   onViewAnswer,
   onNotMyStack,
+  onSwitchToCode,
   isSubmitted,
+  showSwitchTypeButton = false,
 }: FooterAreaProps) {
   const { t } = useTranslation()
 
@@ -45,6 +50,13 @@ export default function FooterArea({
               <Button variant="outline" onClick={onNotMyStack}>
                 {t("button.notMyStack")}
               </Button>
+              
+              {showSwitchTypeButton && onSwitchToCode && (
+                <Button variant="outline" onClick={onSwitchToCode}>
+                  <Code className="mr-2 h-4 w-4" />
+                  {t("button.switchToCode") || "Switch to Code Editor"}
+                </Button>
+              )}
               
               <Button variant="outline" onClick={onViewAnswer}>
                 {t("button.viewAnswer")}
