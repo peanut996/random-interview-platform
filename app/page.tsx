@@ -9,7 +9,7 @@ import AnswerModal from "@/components/modals/answer-modal"
 import ConfirmationModal from "@/components/modals/confirmation-modal"
 import SettingsModal from "@/components/modals/settings-modal"
 import HistoryModal from "@/components/modals/history-modal"
-import LoadingQuestionModal from "@/components/modals/loading-question-modal"
+import QuestionLoading from "@/components/question-loading"
 import AnswerDisplay from "@/components/answer-display"
 import { useState, useEffect, useCallback } from "react"
 import type { Question, UserAnswer, QuestionHistory } from "@/lib/types"
@@ -387,7 +387,9 @@ export default function Page() {
       />
 
       <main className="container mx-auto px-4 py-8 pb-24 max-w-5xl flex-grow">
-        {currentQuestion && !isLoadingQuestion ? (
+        {isLoadingQuestion ? (
+          <QuestionLoading />
+        ) : currentQuestion ? (
           <>
             <QuestionArea question={currentQuestion} language={language} onNotMyStack={handleNotMyStack} />
             
@@ -405,11 +407,11 @@ export default function Page() {
               <AnswerArea question={currentQuestion} userAnswer={userAnswer} setUserAnswer={setUserAnswer} />
             )}
           </>
-        ) : !currentQuestion && !isLoadingQuestion ? (
+        ) : (
           <div className="flex flex-col items-center justify-center py-16 space-y-4">
             <p className="text-lg">{t("question.error")}</p>
           </div>
-        ) : null}
+        )}
       </main>
 
       <FooterArea
@@ -453,8 +455,6 @@ export default function Page() {
           onClearHistory={clearQuestionHistory}
         />
       )}
-
-      <LoadingQuestionModal isOpen={isLoadingQuestion} />
     </div>
   )
 }
