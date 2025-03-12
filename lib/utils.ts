@@ -22,7 +22,7 @@ export function processAnswerWithRegexImproved(jsonData: string): string {
 }
 
 export function decodeProcessedAnswer(jsonData: string): string {
-  const regex = /("en"|"zh"):\s*"((?:[^"\\]|\\.)*)"/g;
+  const regex = /("en"|"zh"|"code"):\s*"((?:[^"\\]|\\.)*)"/g;
 
   return jsonData.replace(regex, (match, key, value) => {
     try {
@@ -45,7 +45,7 @@ export function encodeCodeBlocks(text: string): string {
 
 export function cleanupJsonResponse(text: string): string {
   // Step 1: Remove any outer code blocks like ```json, ```js, etc.
-  const cleaned = text.replace(/^```(?:json|javascript|js)?\s*|\s*```$/gm, '').trim();
+  const cleaned = text.replace(/^```(?:json)?\s*|\s*```$/gm, '').trim();
   
   // Step 2: Extract and store code blocks for later restoration
   const codeBlocks: string[] = [];

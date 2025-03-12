@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button"
 import { useTranslation } from "@/lib/i18n"
 import { Progress } from "@/components/ui/progress"
 import { Loader2 } from "lucide-react"
-import { cleanupJsonResponse } from "@/lib/utils"
 
 interface ResultsModalProps {
   results: any
@@ -22,8 +21,7 @@ export default function ResultsModal({ results, language, onClose, isStreaming =
   useEffect(() => {
     try {
       if (!isStreaming) {
-        const cleanedResults = cleanupJsonResponse(results)
-        const parsed = JSON.parse(cleanedResults)
+        const parsed = JSON.parse(results)
         setParsedResults(parsed)
       }else{
         setParsedResults(results)

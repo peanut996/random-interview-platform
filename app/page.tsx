@@ -5,7 +5,6 @@ import QuestionArea from "@/components/question-area"
 import AnswerArea from "@/components/answer-area"
 import FooterArea from "@/components/footer-area"
 import ResultsModal from "@/components/modals/results-modal"
-import AnswerModal from "@/components/modals/answer-modal"
 import ConfirmationModal from "@/components/modals/confirmation-modal"
 import SettingsModal from "@/components/modals/settings-modal"
 import HistoryModal from "@/components/modals/history-modal"
@@ -19,7 +18,6 @@ import { useTranslation } from "@/lib/i18n"
 import { useToast } from "@/hooks/use-toast"
 // Update the onSubmit function to use the OpenAI API for evaluation
 import { evaluateAnswer, getModelAnswer } from "@/lib/api"
-import { cleanupJsonResponse } from "@/lib/utils"
 
 export default function Page() {
   const { t, language, setLanguage } = useTranslation()
@@ -265,11 +263,8 @@ export default function Page() {
       // Pass the editor language as a code language hint
       await getModelAnswer(currentQuestion, language, (streamingAnswer) => {
         setAnswer(streamingAnswer)
-        
-        // Try to parse the streaming answer as it comes in
         try {
-          const cleanedAnswer = cleanupJsonResponse(streamingAnswer)
-          const parsed = JSON.parse(cleanedAnswer)
+          const parsed = JSON.parse(streamingAnswer)
           setParsedAnswer(parsed)
         } catch (e) {
           // It's okay if parsing fails during streaming
@@ -282,8 +277,7 @@ export default function Page() {
       // Once streaming is complete, try to parse the final answer
       try {
         if (answer) {
-          const cleanedAnswer = cleanupJsonResponse(answer)
-          const parsed = JSON.parse(cleanedAnswer)
+          const parsed = JSON.parse(answer)
           setParsedAnswer(parsed)
         }
       } catch (e) {
@@ -438,10 +432,8 @@ export default function Page() {
       await getModelAnswer(currentQuestion, language, (streamingAnswer) => {
         setAnswer(streamingAnswer)
         
-        // Try to parse the streaming answer as it comes in
         try {
-          const cleanedAnswer = cleanupJsonResponse(streamingAnswer)
-          const parsed = JSON.parse(cleanedAnswer)
+          const parsed = JSON.parse(streamingAnswer)
           setParsedAnswer(parsed)
         } catch (e) {
           // It's okay if parsing fails during streaming
@@ -453,8 +445,7 @@ export default function Page() {
       // Once streaming is complete, try to parse the final answer
       try {
         if (answer) {
-          const cleanedAnswer = cleanupJsonResponse(answer)
-          const parsed = JSON.parse(cleanedAnswer)
+          const parsed = JSON.parse(answer)
           setParsedAnswer(parsed)
         }
       } catch (e) {
@@ -530,17 +521,6 @@ export default function Page() {
 
       {showResultsModal && (
         <ResultsModal results={results} language={language} onClose={onCloseResultsModal} isStreaming={isStreaming} />
-      )}
-
-      {/* AnswerModal is only used if not showing inline answers */}
-      {showAnswerModal && !showInlineAnswer && (
-        <AnswerModal 
-          answer={answer} 
-          language={language} 
-          onClose={onCloseAnswerModal} 
-          isStreaming={isStreaming} 
-          onRetry={handleRetry}
-        />
       )}
 
       {showConfirmationModal && (

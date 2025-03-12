@@ -1,6 +1,6 @@
 "use client"
 
-import {cleanupJsonResponse, encodeCodeBlocks, processAnswerWithRegexImproved} from "./utils"
+import {processAnswerWithRegexImproved} from "./utils"
 
 // Default server-side settings (will be loaded from environment variables on the server)
 const DEFAULT_OPENAI_MODEL = "gpt-4"
@@ -152,10 +152,9 @@ export async function evaluateAnswer(
       finalResult = await callOpenAI(prompt, systemPrompt, undefined, "evaluation")
     }
 
-    // 清理最终结果并解析
-    const cleanedResult = cleanupJsonResponse(finalResult);
+
     try {
-      return JSON.parse(cleanedResult);
+      return JSON.parse(finalResult);
     } catch (error) {
       console.error("JSON parse error:", error);
       throw new Error("Failed to parse AI response as JSON");
@@ -304,22 +303,8 @@ export async function generateQuestion(type: string, category: string, difficult
   `
 
   try {
-    const result = await callOpenAI(prompt, systemPrompt, undefined, "question")
-    const cleanedResult = cleanupJsonResponse(result)
-
-    try {
-      // 解析结果以确保它是有效的 JSON
-      const questionData = JSON.parse(cleanedResult)
-      
-      // 生成更可靠的唯一 ID
-      questionData.id = `generated_${Date.now()}_${Math.floor(Math.random() * 1000)}`
-      
-      return questionData
-    } catch (error) {
-      console.log(result)
-      console.error("JSON parse error:", error);
-      throw new Error("Failed to parse generated question as JSON");
-    }
+    const result = await callOpenAI(prompt, systemPrompt, (_) => {}, "question")
+    return JSON.parse(result)
   } catch (error) {
     console.error("Error generating question:", error)
     throw new Error("Failed to generate question. Please check your API settings and try again.")
