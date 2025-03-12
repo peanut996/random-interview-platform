@@ -8,6 +8,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import {github} from "react-syntax-highlighter/dist/esm/styles/hljs"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import { formatCodeBlock, preprocessCodeInAnswer } from "@/lib/utils"
 
 interface AnswerDisplayProps {
   answer: string
@@ -49,7 +50,7 @@ export default function AnswerDisplay({
   }
 
   // Use parsed answer if available, otherwise fall back to the original answer
-  const displayAnswer = parsedAnswer || answer
+  const displayAnswer = parsedAnswer ? preprocessCodeInAnswer(parsedAnswer) : answer
 
   // If we're getting string data but couldn't parse it
   if (typeof displayAnswer === "string") {
@@ -85,20 +86,30 @@ export default function AnswerDisplay({
                     code({node, className, children, ...props}: any) {
                       const match = /language-(\w+)/.exec(className || '')
                       const inline = !match
-                      return !inline && match ? (
-                        <SyntaxHighlighter
-                          style={github}
-                          language={match[1]}
-                          PreTag="div"
-                          {...props}
-                        >
-                          {String(children).replace(/\n$/, '')}
-                        </SyntaxHighlighter>
-                      ) : (
-                        <code className={className} {...props}>
-                          {children}
-                        </code>
-                      )
+                      
+                      if (!inline) {
+                        // Format code using our utility function 
+                        const { code, language: detectedLanguage } = formatCodeBlock(String(children));
+                        // Use either the detected language or the one from className
+                        const langToUse = match ? match[1] : detectedLanguage;
+                        
+                        return (
+                          <SyntaxHighlighter
+                            style={github}
+                            language={langToUse}
+                            PreTag="div"
+                            {...props}
+                          >
+                            {code}
+                          </SyntaxHighlighter>
+                        );
+                      } else {
+                        return (
+                          <code className={className} {...props}>
+                            {children}
+                          </code>
+                        );
+                      }
                     }
                   }}
                 >
@@ -143,20 +154,30 @@ export default function AnswerDisplay({
                 code({node, className, children, ...props}: any) {
                   const match = /language-(\w+)/.exec(className || '')
                   const inline = !match
-                  return !inline && match ? (
-                    <SyntaxHighlighter
-                      style={github}
-                      language={match[1]}
-                      PreTag="div"
-                      {...props}
-                    >
-                      {String(children).replace(/\n$/, '')}
-                    </SyntaxHighlighter>
-                  ) : (
-                    <code className={className} {...props}>
-                      {children}
-                    </code>
-                  )
+                  
+                  if (!inline) {
+                    // Format code using our utility function 
+                    const { code, language: detectedLanguage } = formatCodeBlock(String(children));
+                    // Use either the detected language or the one from className
+                    const langToUse = match ? match[1] : detectedLanguage;
+                    
+                    return (
+                      <SyntaxHighlighter
+                        style={github}
+                        language={langToUse}
+                        PreTag="div"
+                        {...props}
+                      >
+                        {code}
+                      </SyntaxHighlighter>
+                    );
+                  } else {
+                    return (
+                      <code className={className} {...props}>
+                        {children}
+                      </code>
+                    );
+                  }
                 }
               }}
             >

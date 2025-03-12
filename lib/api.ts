@@ -33,7 +33,7 @@ function getCustomSystemPrompt(type: 'question' | 'answer'): string | undefined 
 }
 
 // Function to call our backend API endpoint
-export async function callOpenAI(prompt: string, systemPrompt?: string, onStream?: (chunk: string) => void) {
+export async function callOpenAI(prompt: string, systemPrompt?: string, onStream?: (chunk: string) => void, requestType?: string) {
   try {
     const customSettings = getCustomSettings()
 
@@ -46,6 +46,7 @@ export async function callOpenAI(prompt: string, systemPrompt?: string, onStream
         prompt,
         systemPrompt,
         customSettings,
+        requestType,
       }),
     })
 
@@ -93,7 +94,11 @@ export async function evaluateAnswer(
   const systemPrompt = `You are an expert technical interviewer. Evaluate the candidate's answer to the following question. 
   Provide a score from 0 to 1 for correctness, efficiency, and readability. 
   Also provide feedback and improvement suggestions. 
-  IMPORTANT: Do not wrap your response in markdown code blocks like \`\`\`json or any other format.
+  
+  IMPORTANT: Return pure, parseable JSON without any markdown formatting. DO NOT wrap your response in code blocks with backticks (\`\`\`json or any other format). 
+  The response MUST be directly parseable as JSON without any cleanup needed.
+  Ensure all special characters in strings are properly escaped according to JSON standards.
+  
   Return your evaluation in JSON format with the following structure:
   {
     "overallScore": 0.85,
@@ -142,9 +147,9 @@ export async function evaluateAnswer(
           JSON.parse(chunk)
         } catch (e) {}
         onStream(chunk)
-      })
+      }, "evaluation")
     } else {
-      finalResult = await callOpenAI(prompt, systemPrompt)
+      finalResult = await callOpenAI(prompt, systemPrompt, undefined, "evaluation")
     }
 
     // 清理最终结果并解析
@@ -187,7 +192,14 @@ export async function getModelAnswer(question: any, language: string, onStream?:
   Your answer should be clear, efficient, and follow best practices.
   If it's a coding question, include well-commented code.
   If it's a conceptual question, provide a comprehensive explanation.
-  Return your answer in both English and Chinese.`;
+  Return your answer in both English and Chinese.
+  
+  IMPORTANT: Return pure, parseable JSON without any markdown formatting. DO NOT wrap your response in code blocks with backticks (\`\`\`json or any other format).
+  The response MUST be directly parseable as JSON without any cleanup needed.
+  Ensure all special characters in strings are properly escaped according to JSON standards.
+  
+  When including code examples in your answer, make sure to properly escape them as JSON strings.
+  For example, if you need to include a code snippet with backticks, escape them properly in the JSON.`;
 
   const questionTitle = question.translations[language]?.title || question.translations.en.title
   const questionDescription = question.translations[language]?.description || question.translations.en.description
@@ -216,9 +228,9 @@ export async function getModelAnswer(question: any, language: string, onStream?:
         // 清理流式数据中的 markdown 代码块
         const cleanedChunk = cleanupJsonResponse(chunk);
         onStream(cleanedChunk);
-      })
+      }, "modelAnswer")
     } else {
-      finalResult = await callOpenAI(prompt, systemPrompt)
+      finalResult = await callOpenAI(prompt, systemPrompt, undefined, "modelAnswer")
     }
 
 
@@ -249,6 +261,11 @@ export async function generateQuestion(type: string, category: string, difficult
   const systemPrompt = customSystemPrompt || `You are an expert at creating technical interview questions. 
   Generate a new ${type} question in the ${category} category with ${difficulty} difficulty.
   The question should be challenging but solvable within a reasonable time frame.
+  
+  IMPORTANT: Return pure, parseable JSON without any markdown formatting. DO NOT wrap your response in code blocks with backticks (\`\`\`json or any other format).
+  The response MUST be directly parseable as JSON without any cleanup needed.
+  Ensure all special characters in strings are properly escaped according to JSON standards.
+  
   Return your response in JSON format exactly matching the structure provided, with no additional text.`;
 
   const prompt = `
@@ -286,7 +303,7 @@ export async function generateQuestion(type: string, category: string, difficult
   `
 
   try {
-    const result = await callOpenAI(prompt, systemPrompt)
+    const result = await callOpenAI(prompt, systemPrompt, undefined, "question")
     const cleanedResult = cleanupJsonResponse(result)
 
     try {

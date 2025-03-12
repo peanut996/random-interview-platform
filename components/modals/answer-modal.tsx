@@ -5,7 +5,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Button } from "@/components/ui/button"
 import { useTranslation } from "@/lib/i18n"
 import { Loader2 } from "lucide-react"
-import { cleanupJsonResponse } from "@/lib/utils"
+import { cleanupJsonResponse, formatCodeBlock, preprocessCodeInAnswer } from "@/lib/utils"
 import ReactMarkdown from "react-markdown"
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import {github} from "react-syntax-highlighter/dist/esm/styles/hljs";
@@ -26,7 +26,9 @@ export default function AnswerModal({ answer, language, onClose, isStreaming = f
       if (!isStreaming) {
         const cleanedResults = cleanupJsonResponse(answer)
         const parsed = JSON.parse(cleanedResults)
-        setParsedAnswer(parsed)
+        // Apply our preprocessor to fix code blocks
+        const processedAnswer = preprocessCodeInAnswer(parsed)
+        setParsedAnswer(processedAnswer)
       }else {
         setParsedAnswer(answer)
       }
@@ -76,20 +78,30 @@ export default function AnswerModal({ answer, language, onClose, isStreaming = f
                     code({node, className, children, ...props}: any) {
                       const match = /language-(\w+)/.exec(className || '')
                       const inline = !match
-                      return !inline && match ? (
-                        <SyntaxHighlighter
-                          style={github}
-                          language={match[1]}
-                          PreTag="div"
-                          {...props}
-                        >
-                          {String(children).replace(/\n$/, '')}
-                        </SyntaxHighlighter>
-                      ) : (
-                        <code className={className} {...props}>
-                          {children}
-                        </code>
-                      )
+                      
+                      if (!inline) {
+                        // Format code using our utility function 
+                        const { code, language: detectedLanguage } = formatCodeBlock(String(children));
+                        // Use either the detected language or the one from className
+                        const langToUse = match ? match[1] : detectedLanguage;
+                        
+                        return (
+                          <SyntaxHighlighter
+                            style={github}
+                            language={langToUse || 'text'}
+                            PreTag="div"
+                            {...props}
+                          >
+                            {code}
+                          </SyntaxHighlighter>
+                        );
+                      } else {
+                        return (
+                          <code className={className} {...props}>
+                            {children}
+                          </code>
+                        );
+                      }
                     }
                   }}
                 >
@@ -124,20 +136,30 @@ export default function AnswerModal({ answer, language, onClose, isStreaming = f
                   code({node, className, children, ...props}: any) {
                     const match = /language-(\w+)/.exec(className || '')
                     const inline = !match
-                    return !inline && match ? (
-                      <SyntaxHighlighter
-                        style={github}
-                        language={match[1]}
-                        PreTag="div"
-                        {...props}
-                      >
-                        {String(children).replace(/\n$/, '')}
-                      </SyntaxHighlighter>
-                    ) : (
-                      <code className={className} {...props}>
-                        {children}
-                      </code>
-                    )
+                    
+                    if (!inline) {
+                      // Format code using our utility function 
+                      const { code, language: detectedLanguage } = formatCodeBlock(String(children));
+                      // Use either the detected language or the one from className
+                      const langToUse = match ? match[1] : detectedLanguage;
+                      
+                      return (
+                        <SyntaxHighlighter
+                          style={github}
+                          language={langToUse || 'text'}
+                          PreTag="div"
+                          {...props}
+                        >
+                          {code}
+                        </SyntaxHighlighter>
+                      );
+                    } else {
+                      return (
+                        <code className={className} {...props}>
+                          {children}
+                        </code>
+                      );
+                    }
                   }
                 }}
               >
