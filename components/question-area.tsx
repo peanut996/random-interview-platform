@@ -31,7 +31,13 @@ export default function QuestionArea({
   const topic =
     question.translations[language]?.topic || question.translations.en.topic;
 
-  const correctedDescription = description.replace(/\n/g, "<br>");
+  // 移除不必要的 \n 到 <br> 转换，让 Markdown 处理换行
+  // const correctedDescription = description.replace(/\n/g, "<br>");
+  
+  // 处理转义引号问题
+  const correctedDescription = description
+    .replace(/\\"/g, '"')  // 将 \" 转换为 "
+    .replace(/\\'/g, "'"); // 将 \' 转换为 '
 
   return (
     <Card className="mb-6 shadow-sm border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#2c2c2e] rounded-xl">

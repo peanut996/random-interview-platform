@@ -47,6 +47,9 @@ export default function Page() {
 
   const [isLoadingQuestion, setIsLoadingQuestion] = useState(true)
   const [forcedQuestionType, setForcedQuestionType] = useState<string | null>(null)
+  
+  // 存储编辑器选择的编程语言
+  const [editorLanguage, setEditorLanguage] = useState("java")
 
   // 在组件加载时从本地存储加载历史记录
   useEffect(() => {
@@ -259,6 +262,7 @@ export default function Page() {
 
     try {
       // Call OpenAI to get the model answer with streaming
+      // Pass the editor language as a code language hint
       await getModelAnswer(currentQuestion, language, (streamingAnswer) => {
         setAnswer(streamingAnswer)
         
@@ -270,7 +274,7 @@ export default function Page() {
         } catch (e) {
           // It's okay if parsing fails during streaming
         }
-      })
+      }, editorLanguage) // Pass the editor language as a hint
 
       setIsStreaming(false)
       setIsSubmitted(true)
@@ -417,6 +421,58 @@ export default function Page() {
     setShowInlineAnswer(false);
   }
 
+  // Add a handler function to retry generating answer
+  const handleRetry = async () => {
+    if (!currentQuestion) {
+      return
+    }
+
+    // Set streaming state and prepare to regenerate answer
+    setIsStreaming(true)
+    setAnswer(null)
+    setParsedAnswer(null)
+
+    try {
+      // Call OpenAI to get the model answer with streaming
+      // Pass the editor language as a code language hint
+      await getModelAnswer(currentQuestion, language, (streamingAnswer) => {
+        setAnswer(streamingAnswer)
+        
+        // Try to parse the streaming answer as it comes in
+        try {
+          const cleanedAnswer = cleanupJsonResponse(streamingAnswer)
+          const parsed = JSON.parse(cleanedAnswer)
+          setParsedAnswer(parsed)
+        } catch (e) {
+          // It's okay if parsing fails during streaming
+        }
+      }, editorLanguage) // Pass the editor language as a hint
+
+      setIsStreaming(false)
+      
+      // Once streaming is complete, try to parse the final answer
+      try {
+        if (answer) {
+          const cleanedAnswer = cleanupJsonResponse(answer)
+          const parsed = JSON.parse(cleanedAnswer)
+          setParsedAnswer(parsed)
+        }
+      } catch (e) {
+        // Keep using the raw answer if parsing fails
+        console.error("Failed to parse answer:", e)
+      }
+    } catch (error) {
+      console.error("Error getting model answer:", error)
+      setIsStreaming(false)
+      toast({
+        title: t("toast.error.title"),
+        description: t("toast.error.description"),
+        variant: "destructive",
+        duration: 5000,
+      })
+    }
+  }
+
   return (
     <div className="flex flex-col min-h-screen">
       <Header
@@ -442,9 +498,15 @@ export default function Page() {
                 parsedAnswer={parsedAnswer}
                 onClose={handleCloseInlineAnswer}
                 onEdit={handleEditAnswer}
+                onRetry={handleRetry}
               />
             ) : (
-              <AnswerArea question={currentQuestion} userAnswer={userAnswer} setUserAnswer={setUserAnswer} />
+              <AnswerArea 
+                question={currentQuestion} 
+                userAnswer={userAnswer} 
+                setUserAnswer={setUserAnswer}
+                onEditorLanguageChange={setEditorLanguage} 
+              />
             )}
           </>
         ) : (
@@ -472,7 +534,13 @@ export default function Page() {
 
       {/* AnswerModal is only used if not showing inline answers */}
       {showAnswerModal && !showInlineAnswer && (
-        <AnswerModal answer={answer} language={language} onClose={onCloseAnswerModal} isStreaming={isStreaming} />
+        <AnswerModal 
+          answer={answer} 
+          language={language} 
+          onClose={onCloseAnswerModal} 
+          isStreaming={isStreaming} 
+          onRetry={handleRetry}
+        />
       )}
 
       {showConfirmationModal && (

@@ -17,6 +17,7 @@ interface AnswerDisplayProps {
   parsedAnswer: any
   onClose?: () => void
   onEdit?: () => void
+  onRetry?: () => void
 }
 
 export default function AnswerDisplay({ 
@@ -25,7 +26,8 @@ export default function AnswerDisplay({
   isStreaming = false,
   parsedAnswer,
   onClose,
-  onEdit
+  onEdit,
+  onRetry
 }: AnswerDisplayProps) {
   const { t } = useTranslation()
 
@@ -63,6 +65,11 @@ export default function AnswerDisplay({
               <Badge variant="outline" className="bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-800">
                 AI
               </Badge>
+              {onRetry && (
+                <Button variant="ghost" size="icon" onClick={onRetry} className="h-8 w-8" title={t("answer.regenerate")}>
+                  <Loader2 className={`h-4 w-4 ${isStreaming ? 'animate-spin' : ''}`} />
+                </Button>
+              )}
               {onEdit && (
                 <Button variant="ghost" size="icon" onClick={onEdit} className="h-8 w-8" title={t("answer.editAnswer")}>
                   <Edit className="h-4 w-4" />
@@ -135,6 +142,11 @@ export default function AnswerDisplay({
             <Badge variant="outline" className="bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-800">
               AI
             </Badge>
+            {onRetry && (
+              <Button variant="ghost" size="icon" onClick={onRetry} className="h-8 w-8" title={t("answer.regenerate")}>
+                <Loader2 className={`h-4 w-4 ${isStreaming ? 'animate-spin' : ''}`} />
+              </Button>
+            )}
             {onEdit && (
               <Button variant="ghost" size="icon" onClick={onEdit} className="h-8 w-8" title={t("answer.editAnswer")}>
                 <Edit className="h-4 w-4" />

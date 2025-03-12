@@ -184,7 +184,7 @@ export async function evaluateAnswer(
   }
 }
 
-export async function getModelAnswer(question: any, language: string, onStream?: (chunk: string) => void) {
+export async function getModelAnswer(question: any, language: string, onStream?: (chunk: string) => void, codeLanguage?: string) {
   // Use custom system prompt if available
   const customSystemPrompt = getCustomSystemPrompt('answer');
   
@@ -199,7 +199,7 @@ export async function getModelAnswer(question: any, language: string, onStream?:
   Ensure all special characters in strings are properly escaped according to JSON standards.
   
   When including code examples in your answer, make sure to properly escape them as JSON strings.
-  For example, if you need to include a code snippet with backticks, escape them properly in the JSON.`;
+  For example, if you need to include a code snippet with backticks, escape them properly in the JSON.${codeLanguage ? `\n\nIf code is required in the answer, prefer to use ${codeLanguage} programming language unless the question specifically requires a different language.` : ''}`;
 
   const questionTitle = question.translations[language]?.title || question.translations.en.title
   const questionDescription = question.translations[language]?.description || question.translations.en.description
@@ -208,6 +208,7 @@ export async function getModelAnswer(question: any, language: string, onStream?:
   Question: ${questionTitle}
   Description: ${questionDescription}
   ${question.testCases ? `Test Cases: ${JSON.stringify(question.testCases)}` : ""}
+  ${codeLanguage ? `\nPreferred Code Language: ${codeLanguage}\n` : ""}
   
   Provide a model answer to this question in both English and Chinese.
   Format your response as a JSON object with this structure:

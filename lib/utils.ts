@@ -124,19 +124,23 @@ export function cleanupTestCase(value: any): string {
     return JSON.stringify(value);
   }
   
-  // If the value is a string that starts and ends with quotes and contains escaped quotes
-  if (value.startsWith('"') && value.endsWith('"')) {
+  // 先尝试直接处理转义引号
+  let cleanedValue = value.replace(/\\"/g, '"').replace(/\\'/g, "'");
+  
+  // 如果字符串以引号开始和结束，可能是 JSON 字符串
+  if ((cleanedValue.startsWith('"') && cleanedValue.endsWith('"')) || 
+      (cleanedValue.startsWith("'") && cleanedValue.endsWith("'"))) {
     try {
       // Try to parse the JSON string to get the actual value
-      const parsed = JSON.parse(value);
+      const parsed = JSON.parse(cleanedValue);
       return typeof parsed === 'string' ? parsed : JSON.stringify(parsed);
     } catch (e) {
-      // If parsing fails, just return the original with basic cleanup
-      return value.replace(/\\"/g, '"');
+      // If parsing fails, return the cleaned value
+      return cleanedValue;
     }
   }
   
-  return value;
+  return cleanedValue;
 }
 
 // Function to format code blocks for display

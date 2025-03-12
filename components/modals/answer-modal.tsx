@@ -15,9 +15,10 @@ interface AnswerModalProps {
   language: string
   onClose: () => void
   isStreaming?: boolean
+  onRetry?: () => void
 }
 
-export default function AnswerModal({ answer, language, onClose, isStreaming = false }: AnswerModalProps) {
+export default function AnswerModal({ answer, language, onClose, isStreaming = false, onRetry }: AnswerModalProps) {
   const { t } = useTranslation()
   const [parsedAnswer, setParsedAnswer] = useState<any>(null)
 
@@ -110,7 +111,15 @@ export default function AnswerModal({ answer, language, onClose, isStreaming = f
               </div>
             </div>
           </div>
-          <div className="flex justify-end">
+          <div className="flex justify-between">
+            <div>
+              {onRetry && (
+                <Button onClick={onRetry} variant="outline" disabled={isStreaming}>
+                  <Loader2 className={`h-4 w-4 mr-2 ${isStreaming ? 'animate-spin' : 'hidden'}`} />
+                  {t("button.regenerate")}
+                </Button>
+              )}
+            </div>
             <Button onClick={onClose}>{t("button.close")}</Button>
           </div>
         </DialogContent>
@@ -169,7 +178,15 @@ export default function AnswerModal({ answer, language, onClose, isStreaming = f
           </div>
         </div>
 
-        <div className="flex justify-end">
+        <div className="flex justify-between">
+          <div>
+            {onRetry && (
+              <Button onClick={onRetry} variant="outline" disabled={isStreaming}>
+                <Loader2 className={`h-4 w-4 mr-2 ${isStreaming ? 'animate-spin' : 'hidden'}`} />
+                {t("button.regenerate")}
+              </Button>
+            )}
+          </div>
           <Button onClick={onClose}>{t("button.close")}</Button>
         </div>
       </DialogContent>

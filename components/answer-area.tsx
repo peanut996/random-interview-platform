@@ -22,9 +22,10 @@ interface AnswerAreaProps {
   question: Question
   userAnswer: UserAnswer
   setUserAnswer: (answer: UserAnswer) => void
+  onEditorLanguageChange?: (language: string) => void
 }
 
-export default function AnswerArea({ question, userAnswer, setUserAnswer }: AnswerAreaProps) {
+export default function AnswerArea({ question, userAnswer, setUserAnswer, onEditorLanguageChange }: AnswerAreaProps) {
   const { t } = useTranslation()
   const { toast } = useToast()
   const [activeTab, setActiveTab] = useState("editor")
@@ -54,6 +55,13 @@ export default function AnswerArea({ question, userAnswer, setUserAnswer }: Answ
       }
     }
   }, [question.category])
+
+  // Notify parent component when editor language changes
+  useEffect(() => {
+    if (onEditorLanguageChange) {
+      onEditorLanguageChange(editorLanguage);
+    }
+  }, [editorLanguage, onEditorLanguageChange]);
 
   // Load saved settings from localStorage
   useEffect(() => {
