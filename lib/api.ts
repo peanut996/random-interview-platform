@@ -1,6 +1,6 @@
 "use client"
 
-import { cleanupJsonResponse } from "./utils"
+import {cleanupJsonResponse, encodeCodeBlocks, processAnswerWithRegexImproved} from "./utils"
 
 // Default server-side settings (will be loaded from environment variables on the server)
 const DEFAULT_OPENAI_MODEL = "gpt-4"
@@ -226,21 +226,21 @@ export async function getModelAnswer(question: any, language: string, onStream?:
     // If we have a streaming handler, use it
     if (onStream) {
       finalResult = await callOpenAI(prompt, systemPrompt, (chunk) => {
-        // 清理流式数据中的 markdown 代码块
-        const cleanedChunk = cleanupJsonResponse(chunk);
-        onStream(cleanedChunk);
+        onStream(chunk);
       }, "modelAnswer")
     } else {
       finalResult = await callOpenAI(prompt, systemPrompt, undefined, "modelAnswer")
+      // Encode code blocks in the complete response
+      finalResult = processAnswerWithRegexImproved(finalResult);
     }
 
-
-    const cleanedResult = cleanupJsonResponse(finalResult);
+    let cleanedResult;
     try {
+      cleanedResult = processAnswerWithRegexImproved(finalResult)
       return JSON.parse(cleanedResult);
     } catch (error) {
       console.warn("Could not parse model answer as JSON, returning raw text");
-      return { answer: { en: cleanedResult, zh: cleanedResult } };
+      return { answer: { en: finalResult, zh: finalResult } };
     }
   } catch (error) {
     console.error("Error getting model answer:", error)

@@ -51,6 +51,12 @@ export interface UserAnswer {
     content: string
 }
 
+export interface AIAnswer{
+    answer: {
+        [key: string]: string
+    }
+}
+
 export interface QuestionHistory {
     id: string
     title: string

@@ -5,6 +5,44 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
+
+// 改进版本，处理转义字符
+export function processAnswerWithRegexImproved(jsonData: string): string {
+  const regex = /("en"|"zh"):\s*"((?:[^"\\]|\\.)*)"/g;
+
+  return jsonData.replace(regex, (match, key, value) => {
+    const unescapedValue = value.replace(/\\(.)/g, "$1");
+    // 使用 encodeURIComponent 和 btoa 进行 Base64 编码
+    const encodedValue = btoa(encodeURIComponent(unescapedValue));
+
+    // 3. 重新添加转义字符（如果需要）- 通常不需要，因为 Base64 编码后的字符串通常不需要转义
+    // const reescapedValue = encodedValue.replace(/([\\"])/g, '\\$1'); // 如果确实需要
+    return `${key}: "${encodedValue}"`; // 通常返回这个就足够了
+  });
+}
+
+export function decodeProcessedAnswer(jsonData: string): string {
+  const regex = /("en"|"zh"):\s*"((?:[^"\\]|\\.)*)"/g;
+
+  return jsonData.replace(regex, (match, key, value) => {
+    try {
+      // 使用 atob 和 decodeURIComponent 进行 Base64 解码
+      const decodedValue = decodeURIComponent(atob(value));
+      return `${key}: "${decodedValue}"`;
+
+    } catch (error) {
+      console.error("Base64 decoding failed:", error);
+      return match;
+    }
+  });
+}
+
+
+// Encode code blocks to Base64
+export function encodeCodeBlocks(text: string): string {
+  return processAnswerWithRegexImproved(text)
+}
+
 export function cleanupJsonResponse(text: string): string {
   // Step 1: Remove any outer code blocks like ```json, ```js, etc.
   const cleaned = text.replace(/^```(?:json|javascript|js)?\s*|\s*```$/gm, '').trim();

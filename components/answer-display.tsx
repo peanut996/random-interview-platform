@@ -8,7 +8,8 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import {github} from "react-syntax-highlighter/dist/esm/styles/hljs"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { formatCodeBlock, preprocessCodeInAnswer } from "@/lib/utils"
+import {decodeProcessedAnswer, formatCodeBlock, preprocessCodeInAnswer} from "@/lib/utils"
+import { AIAnswer } from "@/lib/types";
 
 interface AnswerDisplayProps {
   answer: string
@@ -20,9 +21,26 @@ interface AnswerDisplayProps {
   onRetry?: () => void
 }
 
-export default function AnswerDisplay({ 
-  answer, 
-  language, 
+
+// Decode any encoded code blocks
+const processContent = (content: string) => {
+  return decodeProcessedAnswer(content);
+}
+
+// Process the answer to decode Base64 encoded blocks
+const getProcessedContent = (displayAnswer: string | AIAnswer, language: string) => {
+  if (typeof displayAnswer === "string") {
+    return processContent(displayAnswer);
+  } else if (displayAnswer && displayAnswer.answer) {
+    const content = displayAnswer.answer[language] || displayAnswer.answer.en || "";
+    return processContent(content);
+  }
+  return "";
+}
+
+export default function AnswerDisplay({
+  answer,
+  language,
   isStreaming = false,
   parsedAnswer,
   onClose,
@@ -51,8 +69,11 @@ export default function AnswerDisplay({
     )
   }
 
+
+
   // Use parsed answer if available, otherwise fall back to the original answer
-  const displayAnswer = parsedAnswer ? preprocessCodeInAnswer(parsedAnswer) : answer
+  let displayAnswer = parsedAnswer ? preprocessCodeInAnswer(parsedAnswer) : answer
+
 
   // If we're getting string data but couldn't parse it
   if (typeof displayAnswer === "string") {
@@ -93,13 +114,13 @@ export default function AnswerDisplay({
                     code({node, className, children, ...props}: any) {
                       const match = /language-(\w+)/.exec(className || '')
                       const inline = !match
-                      
+
                       if (!inline) {
-                        // Format code using our utility function 
+                        // Format code using our utility function
                         const { code, language: detectedLanguage } = formatCodeBlock(String(children));
                         // Use either the detected language or the one from className
                         const langToUse = match ? match[1] : detectedLanguage;
-                        
+
                         return (
                           <SyntaxHighlighter
                             style={github}
@@ -130,8 +151,7 @@ export default function AnswerDisplay({
     )
   }
 
-  const answerContent = typeof displayAnswer === "string" ?
-    displayAnswer : displayAnswer.answer?.[language] || displayAnswer.answer?.en || displayAnswer
+  const answerContent = getProcessedContent(displayAnswer, language);
 
   return (
     <Card className="mb-6 shadow-sm border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#2c2c2e] rounded-xl">
@@ -166,13 +186,13 @@ export default function AnswerDisplay({
                 code({node, className, children, ...props}: any) {
                   const match = /language-(\w+)/.exec(className || '')
                   const inline = !match
-                  
+
                   if (!inline) {
-                    // Format code using our utility function 
+                    // Format code using our utility function
                     const { code, language: detectedLanguage } = formatCodeBlock(String(children));
                     // Use either the detected language or the one from className
                     const langToUse = match ? match[1] : detectedLanguage;
-                    
+
                     return (
                       <SyntaxHighlighter
                         style={github}
