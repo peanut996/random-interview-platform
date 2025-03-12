@@ -1,6 +1,7 @@
 "use client"
 
 import {processAnswerWithRegexImproved} from "./utils"
+import {jsonrepair} from "jsonrepair";
 
 // Default server-side settings (will be loaded from environment variables on the server)
 const DEFAULT_OPENAI_MODEL = "gpt-4"
@@ -143,9 +144,6 @@ export async function evaluateAnswer(
     // If we have a streaming handler, use it
     if (onStream) {
       finalResult = await callOpenAI(prompt, systemPrompt, (chunk) => {
-        try {
-          JSON.parse(chunk)
-        } catch (e) {}
         onStream(chunk)
       }, "evaluation")
     } else {
@@ -154,7 +152,7 @@ export async function evaluateAnswer(
 
 
     try {
-      return JSON.parse(finalResult);
+      return JSON.parse(jsonrepair(finalResult));
     } catch (error) {
       console.error("JSON parse error:", error);
       throw new Error("Failed to parse AI response as JSON");
@@ -236,7 +234,7 @@ export async function getModelAnswer(question: any, language: string, onStream?:
     let cleanedResult;
     try {
       cleanedResult = processAnswerWithRegexImproved(finalResult)
-      return JSON.parse(cleanedResult);
+      return JSON.parse(jsonrepair(cleanedResult));
     } catch (error) {
       console.warn("Could not parse model answer as JSON, returning raw text");
       return { answer: { en: finalResult, zh: finalResult } };
@@ -304,7 +302,8 @@ export async function generateQuestion(type: string, category: string, difficult
 
   try {
     const result = await callOpenAI(prompt, systemPrompt, (_) => {}, "question")
-    return JSON.parse(result)
+
+    return JSON.parse(jsonrepair(result))
   } catch (error) {
     console.error("Error generating question:", error)
     throw new Error("Failed to generate question. Please check your API settings and try again.")

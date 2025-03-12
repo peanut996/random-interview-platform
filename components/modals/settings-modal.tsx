@@ -37,6 +37,7 @@ import {
 } from "@/lib/question";
 import { PlusIcon, XIcon } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
+import {jsonrepair} from "jsonrepair";
 
 interface SettingsModalProps {
   language: string;
@@ -96,7 +97,7 @@ export default function SettingsModal({
     const saved = safeLocalStorage.getItem("custom_categories");
     if (saved) {
       try {
-        setCustomCategories(JSON.parse(saved));
+        setCustomCategories(JSON.parse(jsonrepair(saved)));
       } catch (e) {
         console.error("Failed to parse custom categories", e);
       }

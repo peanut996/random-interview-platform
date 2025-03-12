@@ -1,7 +1,7 @@
 "use client"
 
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import { github, monokai, dracula, nord, vs, defaultStyle, dark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import { githubGist, monokai, dracula, nord, vs, defaultStyle, dark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 import { useEffect, useState } from "react"
 import { Loader2 } from "lucide-react"
@@ -47,7 +47,7 @@ export default function CodeHighlighter({ code, language, fontSize = 14, theme =
       case "vs-dark":
         return dark;
       case "github":
-        return github;
+        return githubGist;
       case "monokai":
         return monokai;
       case "dracula":

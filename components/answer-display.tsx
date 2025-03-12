@@ -4,8 +4,8 @@ import { Card, CardContent } from "@/components/ui/card"
 import { useTranslation } from "@/lib/i18n"
 import { Loader2, X, Edit } from "lucide-react"
 import ReactMarkdown from "react-markdown"
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import {github} from "react-syntax-highlighter/dist/esm/styles/hljs"
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { githubGist } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import {decodeProcessedAnswer, formatCodeBlock, preprocessCodeInAnswer} from "@/lib/utils"
@@ -123,7 +123,7 @@ export default function AnswerDisplay({
 
                         return (
                           <SyntaxHighlighter
-                            style={github}
+                            style={githubGist}
                             language={langToUse}
                             PreTag="div"
                             {...props}
@@ -195,7 +195,7 @@ export default function AnswerDisplay({
 
                     return (
                       <SyntaxHighlighter
-                        style={github}
+                        style={githubGist}
                         language={langToUse}
                         PreTag="div"
                         {...props}

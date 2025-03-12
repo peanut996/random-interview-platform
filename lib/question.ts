@@ -6,6 +6,7 @@ import {
   QuestionDifficulty,
   QuestionType,
 } from "./types";
+import {jsonrepair} from "jsonrepair";
 
 // Utility function to safely access localStorage (SSR-safe)
 export const safeLocalStorage = {
@@ -46,7 +47,7 @@ export function loadCustomCategories() {
   const saved = safeLocalStorage.getItem("custom_categories");
   if (saved) {
     try {
-      const parsed = JSON.parse(saved);
+      const parsed = JSON.parse(jsonrepair(saved));
       Object.assign(customCategories, parsed);
     } catch (e) {
       console.error("Failed to parse custom categories", e);

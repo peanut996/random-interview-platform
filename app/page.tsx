@@ -18,6 +18,7 @@ import { useTranslation } from "@/lib/i18n"
 import { useToast } from "@/hooks/use-toast"
 // Update the onSubmit function to use the OpenAI API for evaluation
 import { evaluateAnswer, getModelAnswer } from "@/lib/api"
+import {jsonrepair} from "jsonrepair";
 
 export default function Page() {
   const { t, language, setLanguage } = useTranslation()
@@ -54,7 +55,7 @@ export default function Page() {
     const savedHistory = localStorage.getItem("questionHistory");
     if (savedHistory) {
       try {
-        setQuestionHistory(JSON.parse(savedHistory));
+        setQuestionHistory(JSON.parse(jsonrepair(savedHistory)));
       } catch (e) {
         console.error("Error parsing question history:", e);
       }
@@ -263,12 +264,6 @@ export default function Page() {
       // Pass the editor language as a code language hint
       await getModelAnswer(currentQuestion, language, (streamingAnswer) => {
         setAnswer(streamingAnswer)
-        try {
-          const parsed = JSON.parse(streamingAnswer)
-          setParsedAnswer(parsed)
-        } catch (e) {
-          // It's okay if parsing fails during streaming
-        }
       }, editorLanguage) // Pass the editor language as a hint
 
       setIsStreaming(false)
@@ -277,7 +272,7 @@ export default function Page() {
       // Once streaming is complete, try to parse the final answer
       try {
         if (answer) {
-          const parsed = JSON.parse(answer)
+          const parsed = JSON.parse(jsonrepair(answer))
           setParsedAnswer(parsed)
         }
       } catch (e) {
@@ -431,13 +426,6 @@ export default function Page() {
       // Pass the editor language as a code language hint
       await getModelAnswer(currentQuestion, language, (streamingAnswer) => {
         setAnswer(streamingAnswer)
-        
-        try {
-          const parsed = JSON.parse(streamingAnswer)
-          setParsedAnswer(parsed)
-        } catch (e) {
-          // It's okay if parsing fails during streaming
-        }
       }, editorLanguage) // Pass the editor language as a hint
 
       setIsStreaming(false)
@@ -445,7 +433,7 @@ export default function Page() {
       // Once streaming is complete, try to parse the final answer
       try {
         if (answer) {
-          const parsed = JSON.parse(answer)
+          const parsed = JSON.parse(jsonrepair(answer))
           setParsedAnswer(parsed)
         }
       } catch (e) {

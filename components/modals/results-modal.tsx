@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { useTranslation } from "@/lib/i18n"
 import { Progress } from "@/components/ui/progress"
 import { Loader2 } from "lucide-react"
+import {jsonrepair} from "jsonrepair";
 
 interface ResultsModalProps {
   results: any
@@ -21,7 +22,7 @@ export default function ResultsModal({ results, language, onClose, isStreaming =
   useEffect(() => {
     try {
       if (!isStreaming) {
-        const parsed = JSON.parse(results)
+        const parsed = JSON.parse(jsonrepair(results))
         setParsedResults(parsed)
       }else{
         setParsedResults(results)
@@ -32,9 +33,6 @@ export default function ResultsModal({ results, language, onClose, isStreaming =
       }
     }
   }, [results, isStreaming])
-
-  // 移除这个条件判断，让弹窗始终显示
-  // if (!results) return null
 
   // 修改条件为 isStreaming 或 !results
   if (isStreaming || !parsedResults) {
