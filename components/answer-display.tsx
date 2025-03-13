@@ -112,7 +112,7 @@ export default function AnswerDisplay({
           <div className="markdown-content">
             <ReactMarkdown
               components={{
-                p: ({ children }) => <p style={{ marginBottom: "1em" }}>{children}</p>,
+                p: ({ children }) => <p style={{ marginBottom: "1em", marginTop: "1em" }}>{children}</p>,
                 code({node, className, children, ...props}: any) {
                   const match = /language-(\w+)/.exec(className || '')
                   const inline = !match

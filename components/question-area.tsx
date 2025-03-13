@@ -65,7 +65,7 @@ export default function QuestionArea({
             remarkPlugins={[remarkGfm]}
             rehypePlugins={[rehypeRaw]}
             components={{
-              p: ({ children }) => <p style={{ marginBottom: "1em" }}>{children}</p>,
+              p: ({ children }) => <p style={{ marginBottom: "1em", marginTop: "1em" }}>{children}</p>,
             }}
           >
             {description}

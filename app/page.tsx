@@ -9,6 +9,7 @@ import ConfirmationModal from "@/components/modals/confirmation-modal"
 import SettingsModal from "@/components/modals/settings-modal"
 import HistoryModal from "@/components/modals/history-modal"
 import QuestionLoading from "@/components/question-loading"
+import QuestionError from "@/components/question-error"
 import AnswerDisplay from "@/components/answer-display"
 import { useState, useEffect, useCallback } from "react"
 import type { Question, UserAnswer, QuestionHistory } from "@/lib/types"
@@ -26,6 +27,7 @@ export default function Page() {
 
   // Question states
   const [isLoadingQuestion, setIsLoadingQuestion] = useState(true)
+  const [loadingError, setLoadingError] = useState(false)
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null)
   const [questionHistory, setQuestionHistory] = useState<QuestionHistory[]>([])
 
@@ -76,6 +78,7 @@ export default function Page() {
   useEffect(() => {
     const fetchQuestion = async () => {
       setIsLoadingQuestion(true);
+      setLoadingError(false);
       try {
         const question = await generateRandomQuestion();
         setCurrentQuestion(question);
@@ -102,6 +105,7 @@ export default function Page() {
         });
       } catch (error) {
         console.error("Error fetching question:", error);
+        setLoadingError(true);
         toast({
           title: t("toast.error.title"),
           description: t("toast.error.questionLoad"),
@@ -110,9 +114,11 @@ export default function Page() {
         });
       } finally {
         setIsLoadingQuestion(false);
-        // Reset the timer and start it when question loading is complete
-        setTimeRemaining(600);
-        setIsTimerRunning(true);
+        if (!loadingError) {
+          // Only reset and start timer if there's no error
+          setTimeRemaining(600);
+          setIsTimerRunning(true);
+        }
       }
     };
     fetchQuestion();
@@ -190,6 +196,7 @@ export default function Page() {
     setIsSubmitted(false);
     setTimeRemaining(600);
     setIsLoadingQuestion(true);
+    setLoadingError(false);
     // Reset timer state
     setIsTimerRunning(false);
     
@@ -225,6 +232,7 @@ export default function Page() {
       });
     } catch (error) {
       console.error("Error fetching next question:", error);
+      setLoadingError(true);
       toast({
         title: t("toast.error.title"),
         description: t("toast.error.questionLoad"),
@@ -233,10 +241,12 @@ export default function Page() {
       });
     } finally {
       setIsLoadingQuestion(false);
-      // Start the timer after loading is complete
-      setIsTimerRunning(true);
+      if (!loadingError) {
+        // Start the timer only if there was no error
+        setIsTimerRunning(true);
+      }
     }
-  }, [toast, t, language]);
+  }, [toast, t, language, loadingError]);
 
   const onViewAnswer = () => {
     setConfirmationStep(0)
@@ -413,6 +423,11 @@ export default function Page() {
     }
   }
 
+  // Handler for retrying question loading
+  const handleRetryLoading = () => {
+    onNextQuestion();
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
       <Header
@@ -425,6 +440,8 @@ export default function Page() {
       <main className="container mx-auto px-4 py-8 pb-24 max-w-5xl flex-grow">
         {isLoadingQuestion ? (
           <QuestionLoading />
+        ) : loadingError ? (
+          <QuestionError onRetry={handleRetryLoading} />
         ) : currentQuestion ? (
           <>
             <QuestionArea question={currentQuestion} language={language} onNotMyStack={handleNotMyStack} />
