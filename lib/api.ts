@@ -260,6 +260,17 @@ export async function generateQuestion(type: string, category: string, difficult
   The response MUST be directly parseable as JSON without any cleanup needed.
   Ensure all special characters in strings are properly escaped according to JSON standards.
   
+  When creating coding questions with test cases, format the input as a plain string rather than a JSON object.
+  For example, use 'a = "helloworld", b = "world"' rather than {a: "helloworld", b: "world"}.
+  
+  IMPORTANT: If a test case output is a string, you MUST enclose it in additional double quotes and escape them properly in JSON.
+  For example: 
+  - For string output "hello": { "input": "some input", "output": "\"hello\"" }
+  - For empty string: { "input": "some input", "output": "\"\"" }
+  - For numbers: { "input": "some input", "output": "42" } (no extra quotes for numbers)
+  
+  DO NOT leave string outputs without proper double quotes. Only add the extra quotes for string outputs, not for numbers or other types.
+  
   Return your response in JSON format exactly matching the structure provided, with no additional text.`;
 
   const prompt = `
@@ -287,19 +298,37 @@ export async function generateQuestion(type: string, category: string, difficult
       }
     }${type === 'Coding' ? `,
     "testCases": [
-      { "input": "example input 1", "output": "expected output 1" },
-      { "input": "example input 2", "output": "expected output 2" }
+      { "input": "a = \"helloworld\", b = \"world\"", "output": "\"world\"" },
+      {"input": "a = \"programming\", b = \"prog\"", "output": "\"prog\"" },
+      { "input": "x = 5, y = 10", "output": "50" },
+      { "input": "str = \"\"", "output": "\"\"" },
+      { "input": "", "output": "\"\"" }
     ]` : ''}
   }
   
   Make sure the question is appropriate for the difficulty level and incorporates concepts from all the specified categories.
   If multiple categories are provided, create a question that combines elements from these categories.
+  
+  IMPORTANT: For test cases where the output is a string, ALWAYS enclose the output in additional double quotes:
+  - For string output: "output": "\"hello\""
+  - For empty string: "output": "\"\""
+  - For number output: "output": "42" (no extra quotes for numbers)
+  
+  Pay careful attention to the data type of the expected output and format it accordingly.
   `
 
   try {
     const result = await callOpenAI(prompt, systemPrompt, (_) => {}, "question")
+    
+    // Preprocess the JSON to handle incorrectly formatted empty strings
+    const preprocessedResult = result
+      // Replace four consecutive double quotes """" with the properly escaped empty string "\"\""
+      .replace(/""""/g, "\"\\\"\\\"\"")
+      // Replace two consecutive double quotes "" with the properly escaped empty string "\"\""
+      // But avoid replacing already properly escaped empty strings "\"\"" 
+      .replace(/(?<!\\)""/g, "\"\\\"\\\"\"");
 
-    return JSON.parse(jsonrepair(result))
+    return JSON.parse(jsonrepair(preprocessedResult))
   } catch (error) {
     console.error("Error generating question:", error)
     throw new Error("Failed to generate question. Please check your API settings and try again.")

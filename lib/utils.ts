@@ -43,31 +43,6 @@ export function encodeCodeBlocks(text: string): string {
   return processAnswerWithRegexImproved(text)
 }
 
-// Function to clean up test case displays by removing extra quotes
-export function cleanupTestCase(value: any): string {
-  if (typeof value !== 'string') {
-    return JSON.stringify(value);
-  }
-  
-  // 先尝试直接处理转义引号
-  let cleanedValue = value.replace(/\\"/g, '"').replace(/\\'/g, "'");
-  
-  // 如果字符串以引号开始和结束，可能是 JSON 字符串
-  if ((cleanedValue.startsWith('"') && cleanedValue.endsWith('"')) || 
-      (cleanedValue.startsWith("'") && cleanedValue.endsWith("'"))) {
-    try {
-      // Try to parse the JSON string to get the actual value
-      const parsed = JSON.parse(cleanedValue);
-      return typeof parsed === 'string' ? parsed : JSON.stringify(parsed);
-    } catch (e) {
-      // If parsing fails, return the cleaned value
-      return cleanedValue;
-    }
-  }
-  
-  return cleanedValue;
-}
-
 // Function to format code blocks for display
 export function formatCodeBlock(codeText: string): { code: string; language: string } {
   // Default values

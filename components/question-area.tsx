@@ -1,11 +1,9 @@
 "use client";
 
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import type { Question } from "@/lib/types";
 import { useTranslation } from "@/lib/i18n";
-import { cleanupTestCase } from "@/lib/utils";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
@@ -30,14 +28,6 @@ export default function QuestionArea({
     question.translations.en.description;
   const topic =
     question.translations[language]?.topic || question.translations.en.topic;
-
-  // 移除不必要的 \n 到 <br> 转换，让 Markdown 处理换行
-  // const correctedDescription = description.replace(/\n/g, "<br>");
-  
-  // 处理转义引号问题
-  const correctedDescription = description
-    .replace(/\\"/g, '"')  // 将 \" 转换为 "
-    .replace(/\\'/g, "'"); // 将 \' 转换为 '
 
   return (
     <Card className="mb-6 shadow-sm border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#2c2c2e] rounded-xl">
@@ -75,7 +65,7 @@ export default function QuestionArea({
             remarkPlugins={[remarkGfm]}
             rehypePlugins={[rehypeRaw]}
           >
-            {correctedDescription}
+            {description}
           </ReactMarkdown>
 
           {question.type === "Coding" && question.testCases && (
@@ -91,11 +81,11 @@ export default function QuestionArea({
                   >
                     <div>
                       <strong>{t("question.input")}:</strong>{" "}
-                      {cleanupTestCase(testCase.input)}
+                      {testCase.input}
                     </div>
                     <div>
                       <strong>{t("question.output")}:</strong>{" "}
-                      {cleanupTestCase(testCase.output)}
+                      {testCase.output}
                     </div>
                   </div>
                 ))}
