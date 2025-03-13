@@ -18,7 +18,7 @@ export default function MonacoEditor({
   value,
   onChange,
   language = "javascript",
-  height = "300px",
+  height = "600px", // Changed from 300px to 600px for a more comfortable editing experience
   fontSize = 14,
   theme: editorTheme = "github",
   autoFocus = false,

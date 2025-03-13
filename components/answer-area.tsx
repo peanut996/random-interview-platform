@@ -255,19 +255,21 @@ export default function AnswerArea({ question, userAnswer, setUserAnswer, onEdit
               )}
             </div>
 
-            <TabsContent value="editor" className="h-[300px]">
-              <MonacoEditor
-                value={userAnswer.content}
-                onChange={(value) => setUserAnswer({ content: value })}
-                language={editorLanguage}
-                height="300px"
-                fontSize={editorFontSize}
-                theme={editorTheme}
-                autoFocus={activeTab === "editor"}
-              />
+            <TabsContent value="editor" className="h-[600px]">
+              <div className="min-h-[600px]">
+                <MonacoEditor
+                  value={userAnswer.content}
+                  onChange={(value) => setUserAnswer({ content: value })}
+                  language={editorLanguage}
+                  height="600px"
+                  fontSize={editorFontSize}
+                  theme={editorTheme}
+                  autoFocus={activeTab === "editor"}
+                />
+              </div>
             </TabsContent>
-            <TabsContent value="preview">
-              <div className="bg-gray-50 dark:bg-gray-900 p-4 rounded-md h-[300px] overflow-auto">
+            <TabsContent value="preview" className="h-[600px]">
+              <div className="bg-gray-50 dark:bg-gray-900 p-4 rounded-md h-[600px] overflow-auto">
                 {userAnswer.content ? (
                   <CodeHighlighter
                     code={userAnswer.content}
