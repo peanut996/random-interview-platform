@@ -160,7 +160,7 @@ const translations = {
     "answer.generating": "生成答案中...",
     "answer.processing": "正在处理答案...",
     "answer.processFailure": "答案无法正确处理。请重试！\n 显示原始输出：",
-    "button.notMyStack": "重新生成问题",
+    "button.notMyStack": "下一题",
     "button.submit": "提交",
     "button.nextQuestion": "下一题",
     "button.viewAnswer": "查看答案",

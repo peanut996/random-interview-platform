@@ -62,10 +62,6 @@ export default function FooterArea({
                 {t("button.viewAnswer")}
               </Button>
 
-              <Button variant="outline" onClick={onNextQuestion} disabled={!isSubmitted}>
-                {t("button.nextQuestion")}
-              </Button>
-
               <Button onClick={onSubmit} disabled={isSubmitted}>
                 {t("button.submit")}
               </Button>

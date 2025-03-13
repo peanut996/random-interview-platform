@@ -280,18 +280,8 @@ export default function Page() {
         console.error("Failed to parse answer:", e)
       }
       
-      // 更新历史记录中的问题状态为已回答
-      if (currentQuestion) {
-        setQuestionHistory(prevHistory => {
-          const updatedHistory = prevHistory.map(item => 
-            item.id === currentQuestion.id 
-              ? { ...item, answered: true } 
-              : item
-          );
-          localStorage.setItem("questionHistory", JSON.stringify(updatedHistory));
-          return updatedHistory;
-        });
-      }
+      // We no longer update the history record when viewing answers
+      // This way the question won't show as "answered" in history
     } catch (error) {
       console.error("Error getting model answer:", error)
       setIsStreaming(false)
@@ -309,20 +299,6 @@ export default function Page() {
   }
 
   const handleNotMyStack = useCallback(() => {
-    // Mark the current question as "not my stack"
-    const notMyStackQuestions = JSON.parse(localStorage.getItem("notMyStackQuestions") || "[]")
-    if (currentQuestion && !notMyStackQuestions.includes(currentQuestion.id)) {
-      notMyStackQuestions.push(currentQuestion.id)
-      localStorage.setItem("notMyStackQuestions", JSON.stringify(notMyStackQuestions))
-
-      // Show toast notification here instead
-      toast({
-        title: t("toast.notMyStack.title"),
-        description: t("toast.notMyStack.description"),
-        duration: 3000,
-      })
-    }
-
     // Close any open answer displays before moving to the next question
     setShowAnswerModal(false);
     setShowInlineAnswer(false);
@@ -331,7 +307,7 @@ export default function Page() {
 
     // Move to the next question
     onNextQuestion()
-  }, [currentQuestion, onNextQuestion, toast, t])
+  }, [onNextQuestion])
 
   const onCloseResultsModal = () => {
     setShowResultsModal(false)
