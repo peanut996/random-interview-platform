@@ -14,6 +14,8 @@ const translations = {
     "question.generating": "Generating your question...",
     "question.generatingTitle": "Loading Question",
     "question.error": "Failed to load question. Please try again.",
+    "question.errorTitle": "Error", // Added translation
+    "question.retry": "Retry", // Added translation
     "toast.error.questionLoad": "Failed to load question. Please check your API settings and try again.",
     "answer.title": "Your Answer",
     "answer.editor": "Editor",
@@ -150,6 +152,8 @@ const translations = {
     "question.generating": "正在生成您的问题...",
     "question.generatingTitle": "加载问题中",
     "question.error": "加载问题失败。请重试。",
+    "question.errorTitle": "错误", // Added translation
+    "question.retry": "重试", // Added translation
     "toast.error.questionLoad": "加载问题失败。请检查您的 API 设置并重试。",
     "answer.title": "你的回答",
     "answer.editor": "编辑器",
