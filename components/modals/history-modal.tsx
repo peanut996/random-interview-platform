@@ -17,6 +17,7 @@ interface HistoryModalProps {
   history: QuestionHistory[]
   onSelectQuestion: (historyItem: QuestionHistory) => void
   onClearHistory: () => void
+  open?: boolean
 }
 
 export default function HistoryModal({ language, onClose, history: initialHistory, onSelectQuestion, onClearHistory }: HistoryModalProps) {

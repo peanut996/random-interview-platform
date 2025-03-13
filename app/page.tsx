@@ -363,6 +363,12 @@ export default function Page() {
     }
   };
 
+  // Add handler for clearing history
+  const handleClearHistory = () => {
+    setQuestionHistory([]);
+    localStorage.removeItem("questionHistory");
+  };
+
   // Add a handler function to close the inline answer display
   const handleCloseInlineAnswer = () => {
     setShowInlineAnswer(false);
@@ -451,31 +457,26 @@ export default function Page() {
       </main>
 
       <FooterArea
-        isTimerWarning={timerWarning}
+        timerWarning={timerWarning}
         timeRemaining={timeRemaining}
         onSubmit={onSubmit}
         onViewAnswer={onViewAnswer}
         onNextQuestion={onNextQuestion}
         isSubmitted={isSubmitted}
-        showViewAnswer={!isSubmitted && !showInlineAnswer}
-        isLoadingQuestion={isLoadingQuestion}
-        disableSubmit={!userAnswer.content || isSubmitted || isLoadingQuestion}
       />
 
       {showResultsModal && (
         <ResultsModal
-          open={showResultsModal}
           onClose={onCloseResultsModal}
           results={results}
-          question={currentQuestion}
-          isLoading={isStreaming}
+          isStreaming={isStreaming}
           language={language}
         />
       )}
 
       {showConfirmationModal && (
         <ConfirmationModal
-          open={showConfirmationModal}
+          language={language}
           onConfirm={handleConfirmation}
           onCancel={handleCancelConfirmation}
           step={confirmationStep}
@@ -484,7 +485,7 @@ export default function Page() {
 
       {showSettingsModal && (
         <SettingsModal
-          open={showSettingsModal}
+          language={language}
           onClose={onCloseSettings}
           onReload={onNextQuestion}
         />
@@ -495,7 +496,8 @@ export default function Page() {
           open={showHistoryModal}
           onClose={onCloseHistory}
           history={questionHistory}
-          onSelect={loadQuestionFromHistory}
+          onSelectQuestion={loadQuestionFromHistory}
+          onClearHistory={handleClearHistory}
           language={language}
         />
       )}

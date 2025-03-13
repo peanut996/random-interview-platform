@@ -11,7 +11,6 @@ interface FooterAreaProps {
   onSubmit: () => void
   onNextQuestion: () => void
   onViewAnswer: () => void
-  onNotMyStack: () => void
   onSwitchToCode?: () => void
   isSubmitted: boolean
   showSwitchTypeButton?: boolean
@@ -21,9 +20,7 @@ export default function FooterArea({
   timeRemaining,
   timerWarning,
   onSubmit,
-  onNextQuestion,
   onViewAnswer,
-  onNotMyStack,
   onSwitchToCode,
   isSubmitted,
   showSwitchTypeButton = false,
@@ -47,7 +44,7 @@ export default function FooterArea({
             </div>
 
             <div className="flex flex-wrap gap-3">
-              <Button variant="outline" onClick={onNotMyStack}>
+              <Button variant="outline">
                 {t("button.notMyStack")}
               </Button>
               

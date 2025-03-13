@@ -42,6 +42,7 @@ import {jsonrepair} from "jsonrepair";
 interface SettingsModalProps {
   language: string;
   onClose: () => void;
+  onReload?: () => Promise<void> | void;
 }
 
 export default function SettingsModal({
