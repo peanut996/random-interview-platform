@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { createOpenAI } from '@ai-sdk/openai'
-import { LanguageModel, streamObject } from 'ai'
+import {LanguageModel, streamObject, streamText} from 'ai'
 import { z } from 'zod'
 
 // Define the schema for the Question object
@@ -71,9 +71,13 @@ export async function POST(req: NextRequest) {
     }
 
     // Update system prompt to reflect we're using structured data
-    const enhancedSystemPrompt = systemPrompt 
-      ? `${systemPrompt}\n\nIMPORTANT: Return a valid structured object according to the provided schema. DO NOT use markdown formatting such as code blocks with backticks (\`\`\`). The response must be pure, parseable JSON without any markdown formatting or extra text surrounding it. Ensure all special characters in strings are properly escaped according to JSON standards.`
-      : "IMPORTANT: Return a valid structured object according to the provided schema. DO NOT use markdown formatting such as code blocks with backticks (```). The response must be pure, parseable JSON without any markdown formatting or extra text surrounding it. Ensure all special characters in strings are properly escaped according to JSON standards.";
+    const enhancedSystemPrompt = requestType === "modelAnswerText"
+      ? systemPrompt ? 
+        `${systemPrompt}\n\nIMPORTANT: Format your response as pure markdown. DO NOT wrap your entire response in markdown code blocks with \`\`\`markdown tags. The output should be directly renderable as markdown.` 
+        : "Format your response as pure markdown. DO NOT wrap your entire response in markdown code blocks with ```markdown tags. The output should be directly renderable as markdown."
+      : systemPrompt 
+        ? `${systemPrompt}\n\nIMPORTANT: Return a valid structured object according to the provided schema. DO NOT use markdown formatting such as code blocks with backticks (\`\`\`). The response must be pure, parseable JSON without any markdown formatting or extra text surrounding it. Ensure all special characters in strings are properly escaped according to JSON standards.`
+        : "IMPORTANT: Return a valid structured object according to the provided schema. DO NOT use markdown formatting such as code blocks with backticks (```). The response must be pure, parseable JSON without any markdown formatting or extra text surrounding it. Ensure all special characters in strings are properly escaped according to JSON standards.";
 
     const messages = [
       { role: "system" as const, content: enhancedSystemPrompt },
@@ -95,6 +99,14 @@ export async function POST(req: NextRequest) {
         messages,
         temperature: 0.7,
         mode: "json",
+      });
+      streamResult = result.textStream;
+    } else if (requestType === "modelAnswerText") {
+      // For text/markdown response, use the raw completion without schema validation
+      const result = await streamText({
+        model: completion as LanguageModel,
+        messages,
+        temperature: 0.7,
       });
       streamResult = result.textStream;
     } else if (requestType === "evaluation") {

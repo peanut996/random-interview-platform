@@ -433,8 +433,7 @@ export default function Page() {
       // Once streaming is complete, try to parse the final answer
       try {
         if (answer) {
-          const parsed = JSON.parse(jsonrepair(answer))
-          setParsedAnswer(parsed)
+          setParsedAnswer(answer)
         }
       } catch (e) {
         // Keep using the raw answer if parsing fails

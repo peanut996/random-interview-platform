@@ -181,6 +181,14 @@ export async function evaluateAnswer(
   }
 }
 
+// Function to clean markdown response by removing unnecessary markdown code block tags
+function cleanMarkdownResponse(response: string): string {
+  // Remove ```markdown at start and ``` at end if they exist
+  return response
+    .replace(/^```(markdown|md)?\s*\n/i, '') // Remove opening markdown tag
+    .replace(/\n```\s*$/i, '');              // Remove closing tag
+}
+
 export async function getModelAnswer(question: any, language: string, onStream?: (chunk: string) => void, codeLanguage?: string) {
   // Use custom system prompt if available
   const customSystemPrompt = getCustomSystemPrompt('answer');
@@ -189,17 +197,18 @@ export async function getModelAnswer(question: any, language: string, onStream?:
   Your answer should be clear, efficient, and follow best practices.
   If it's a coding question, include well-commented code.
   If it's a conceptual question, provide a comprehensive explanation.
-  Return your answer in both English and Chinese.
   
-  IMPORTANT: Return pure, parseable JSON without any markdown formatting. DO NOT wrap your response in code blocks with backticks (\`\`\`json or any other format).
-  The response MUST be directly parseable as JSON without any cleanup needed.
-  Ensure all special characters in strings are properly escaped according to JSON standards.
-  
-  When including code examples in your answer, make sure to properly escape them as JSON strings.
-  For example, if you need to include a code snippet with backticks, escape them properly in the JSON.${codeLanguage ? `\n\nIf code is required in the answer, prefer to use ${codeLanguage} programming language unless the question specifically requires a different language.` : ''}`;
+  IMPORTANT: You should format your response as markdown text. Use markdown features like **bold**, *italic*, code blocks with \`\`\` for code examples, and other formatting to make your answer clear and readable.
+  When including code examples, use proper markdown code blocks with language specification, e.g. \`\`\`javascript.
+  DO NOT wrap your entire response in a markdown code block. Your response should be pure markdown without outer \`\`\`markdown tags.
+  ${codeLanguage ? `\n\nIf code is required in the answer, prefer to use ${codeLanguage} programming language unless the question specifically requires a different language.` : ''}`;
 
   const questionTitle = question.translations[language]?.title || question.translations.en.title
   const questionDescription = question.translations[language]?.description || question.translations.en.description
+
+  // Determine language for the output
+  const outputLanguage = language === 'zh' ? 'Chinese' : 'English';
+  const languageComment = language === 'zh' ? '请用中文回答' : 'Please answer in English';
 
   const prompt = `
   Question: ${questionTitle}
@@ -207,14 +216,9 @@ export async function getModelAnswer(question: any, language: string, onStream?:
   ${question.testCases ? `Test Cases: ${JSON.stringify(question.testCases)}` : ""}
   ${codeLanguage ? `\nPreferred Code Language: ${codeLanguage}\n` : ""}
   
-  Provide a model answer to this question in both English and Chinese.
-  Format your response as a JSON object with this structure:
-  {
-    "answer": {
-      "en": "Your English answer here",
-      "zh": "Your Chinese answer here"
-    }
-  }
+  ${languageComment}. Provide a model answer to this question in ${outputLanguage}.
+  Format your response as markdown text with appropriate formatting.
+  IMPORTANT: DO NOT wrap your entire response in a markdown code block with \`\`\`markdown tags. Just provide the raw markdown content.
   `
 
   try {
@@ -223,31 +227,23 @@ export async function getModelAnswer(question: any, language: string, onStream?:
     // If we have a streaming handler, use it
     if (onStream) {
       finalResult = await callOpenAI(prompt, systemPrompt, (chunk) => {
-        onStream(chunk);
-      }, "modelAnswer")
+        // Clean the markdown tags from each chunk before sending to stream handler
+        onStream((chunk));
+      }, "modelAnswerText")
     } else {
-      finalResult = await callOpenAI(prompt, systemPrompt, undefined, "modelAnswer")
-      // Encode code blocks in the complete response
-      finalResult = processAnswerWithRegexImproved(finalResult);
+      finalResult = await callOpenAI(prompt, systemPrompt, undefined, "modelAnswerText")
     }
 
-    let cleanedResult;
-    try {
-      cleanedResult = processAnswerWithRegexImproved(finalResult)
-      return JSON.parse(jsonrepair(cleanedResult));
-    } catch (error) {
-      console.warn("Could not parse model answer as JSON, returning raw text");
-      return { answer: { en: finalResult, zh: finalResult } };
-    }
+    // Return the raw markdown text directly
+    return finalResult
   } catch (error) {
     console.error("Error getting model answer:", error)
     // Return a fallback answer if API call fails
-    return {
-      answer: {
-        en: "We couldn't generate a model answer due to an error. Please check your OpenAI API settings.",
-        zh: "由于错误，我们无法生成模型答案。请检查您的 OpenAI API 设置。",
-      },
-    }
+    const fallbackMessage = language === 'zh' 
+      ? "由于错误，我们无法生成模型答案。请检查您的 OpenAI API 设置。" 
+      : "We couldn't generate a model answer due to an error. Please check your OpenAI API settings.";
+    
+    return fallbackMessage;
   }
 }
 
