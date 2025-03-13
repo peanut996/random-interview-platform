@@ -495,7 +495,7 @@ export default function Page() {
           <QuestionError onRetry={handleRetryLoading} />
         ) : currentQuestion ? (
           <>
-            <QuestionArea question={currentQuestion} language={language} onNotMyStack={handleNotMyStack} />
+            <QuestionArea question={currentQuestion} language={language} />
             
             {/* Show AI answer or assessment results or user's answer area */}
             {showInlineAnswer ? (
