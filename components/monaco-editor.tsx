@@ -20,7 +20,7 @@ export default function MonacoEditor({
   language = "javascript",
   height = "300px",
   fontSize = 14,
-  theme: editorTheme = "vs",
+  theme: editorTheme = "github",
   autoFocus = false,
 }: MonacoEditorProps) {
   const editorRef = useRef<any>(null)
