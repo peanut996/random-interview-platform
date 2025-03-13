@@ -1,7 +1,8 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { createOpenAI } from '@ai-sdk/openai'
-import {LanguageModel, streamObject, streamText} from 'ai'
+import {LanguageModel, LanguageModelV1, streamObject, streamText} from 'ai'
 import { z } from 'zod'
+import { Message, MessageRole } from "@/lib/types"
 
 // Define the schema for the Question object
 const translationSchema = z.record(z.object({
@@ -32,6 +33,11 @@ const modelAnswerSchema = z.object({
   }),
 })
 
+const DEFAULT_OPENAI_API_KEY = process.env.OPENAI_TOKEN || ""
+const DEFAULT_OPENAI_MODEL = process.env.OPENAI_MODEL || "gpt-4"
+const DEFAULT_OPENAI_ENDPOINT = process.env.OPENAI_ENDPOINT || "https://api.openai.com/v1"
+
+
 // Define the schema for evaluation results
 const evaluationResultSchema = z.object({
   overallScore: z.number().min(0).max(1),
@@ -52,10 +58,6 @@ const evaluationResultSchema = z.object({
   ),
 })
 
-// Default server-side settings from environment variables
-const DEFAULT_OPENAI_API_KEY = process.env.OPENAI_TOKEN || ""
-const DEFAULT_OPENAI_MODEL = process.env.OPENAI_MODEL || "gpt-4"
-const DEFAULT_OPENAI_ENDPOINT = process.env.OPENAI_ENDPOINT || "https://api.openai.com/v1"
 
 export async function POST(req: NextRequest) {
   try {
@@ -80,55 +82,16 @@ export async function POST(req: NextRequest) {
         : "IMPORTANT: Return a valid structured object according to the provided schema. DO NOT use markdown formatting such as code blocks with backticks (```). The response must be pure, parseable JSON without any markdown formatting or extra text surrounding it. Ensure all special characters in strings are properly escaped according to JSON standards.";
 
     const messages = [
-      { role: "system" as const, content: enhancedSystemPrompt },
-      { role: "user" as const, content: prompt },
+      { role: MessageRole.system, content: enhancedSystemPrompt },
+      { role: MessageRole.user, content: prompt },
     ]
     const openaiClient = createOpenAI({
       apiKey,
       baseURL: endpoint,
     });
-    const completion = openaiClient.chat(model)
-
-    // Select schema based on request type and return appropriate stream
-    let streamResult;
+    const completion: LanguageModelV1 = openaiClient.chat(model)
     
-    if (requestType === "modelAnswer") {
-      const result = await streamObject({
-        model: completion as LanguageModel,
-        schema: modelAnswerSchema,
-        messages,
-        temperature: 0.7,
-        mode: "json",
-      });
-      streamResult = result.textStream;
-    } else if (requestType === "modelAnswerText") {
-      // For text/markdown response, use the raw completion without schema validation
-      const result = await streamText({
-        model: completion as LanguageModel,
-        messages,
-        temperature: 0.7,
-      });
-      streamResult = result.textStream;
-    } else if (requestType === "evaluation") {
-      const result = await streamObject({
-        model: completion as LanguageModel,
-        schema: evaluationResultSchema,
-        messages,
-        temperature: 0.7,
-        mode: "json",
-      });
-      streamResult = result.textStream;
-    } else {
-      // Default to question schema
-      const result = await streamObject({
-        model: completion as LanguageModel,
-        schema: questionSchema,
-        messages,
-        temperature: 0.7,
-        mode: "json",
-      });
-      streamResult = result.textStream;
-    }
+    let streamResult = await streamChatCompletion(requestType, completion, messages)
 
     return new Response(streamResult)
   } catch (error: any) {
@@ -138,5 +101,48 @@ export async function POST(req: NextRequest) {
       { status: 500 },
     )
   }
+}
+
+async function streamChatCompletion(requestType: string, completion: LanguageModelV1 , messages: Message[]) {
+  let streamResult
+
+  if (requestType === "modelAnswer") {
+    const result = await streamObject({
+      model: completion as LanguageModel,
+      schema: modelAnswerSchema,
+      messages,
+      temperature: 0.7,
+      mode: "json",
+    })
+    streamResult = result.textStream
+  } else if (requestType === "modelAnswerText") {
+    // For text/markdown response, use the raw completion without schema validation
+    const result = await streamText({
+      model: completion as LanguageModel,
+      messages,
+      temperature: 0.7,
+    })
+    streamResult = result.textStream
+  } else if (requestType === "evaluation") {
+    const result = await streamObject({
+      model: completion as LanguageModel,
+      schema: evaluationResultSchema,
+      messages,
+      temperature: 0.7,
+      mode: "json",
+    })
+    streamResult = result.textStream
+  } else {
+    // Default to question schema
+    const result = await streamObject({
+      model: completion as LanguageModel,
+      schema: questionSchema,
+      messages,
+      temperature: 0.7,
+      mode: "json",
+    })
+    streamResult = result.textStream
+  }
+  return streamResult
 }
 

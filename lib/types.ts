@@ -74,3 +74,13 @@ export interface QuestionHistory {
     question: Question
 }
 
+
+export interface Message  { 
+    role: MessageRole
+    content: string
+}
+
+export enum MessageRole {
+    user = "user",
+    system = "system"
+}
