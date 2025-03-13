@@ -479,6 +479,29 @@ export default function Page() {
     onNextQuestion();
   };
 
+  // Add this new handler function after other handler functions
+  const handleSwitchToCode = () => {
+    // Change current question type to Coding
+    if (currentQuestion) {
+      setCurrentQuestion({
+        ...currentQuestion,
+        type: QuestionType.Coding
+      });
+      
+      // Set editor language to a default if not already set
+      if (!editorLanguage) {
+        setEditorLanguage("java");
+      }
+      
+      // Show toast to indicate the switch
+      toast({
+        title: t("toast.switchedToCode.title") || "Switched to Code Editor",
+        description: t("toast.switchedToCode.description") || "Question type switched to coding",
+        duration: 3000,
+      });
+    }
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
       <Header
@@ -537,6 +560,8 @@ export default function Page() {
         onSubmit={onSubmit}
         onViewAnswer={onViewAnswer}
         onNextQuestion={onNextQuestion}
+        onSwitchToCode={handleSwitchToCode}
+        showSwitchTypeButton={!!currentQuestion && currentQuestion.type !== QuestionType.Coding}
         isSubmitted={isSubmitted}
       />
 
