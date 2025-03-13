@@ -563,6 +563,7 @@ export default function Page() {
         onSwitchToCode={handleSwitchToCode}
         showSwitchTypeButton={!!currentQuestion && currentQuestion.type !== QuestionType.Coding}
         isSubmitted={isSubmitted}
+        isAnswerEmpty={!userAnswer.content.trim()}
       />
 
       {/* Keep the ResultsModal for now, but it won't be shown under normal circumstances */}

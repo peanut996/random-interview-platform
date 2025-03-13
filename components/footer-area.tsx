@@ -13,6 +13,7 @@ interface FooterAreaProps {
   onViewAnswer: () => void
   onSwitchToCode?: () => void
   isSubmitted: boolean
+  isAnswerEmpty: boolean
   showSwitchTypeButton?: boolean
 }
 
@@ -24,6 +25,7 @@ export default function FooterArea({
   onViewAnswer,
   onSwitchToCode,
   isSubmitted,
+  isAnswerEmpty,
   showSwitchTypeButton = false,
 }: FooterAreaProps) {
   const { t } = useTranslation()
@@ -60,7 +62,7 @@ export default function FooterArea({
                 {t("button.viewAnswer")}
               </Button>
 
-              <Button onClick={onSubmit} disabled={isSubmitted}>
+              <Button onClick={onSubmit} disabled={isSubmitted || isAnswerEmpty}>
                 {t("button.submit")}
               </Button>
             </div>
