@@ -22,40 +22,51 @@ import {jsonrepair} from "jsonrepair";
 
 export default function Page() {
   const { t, language, setLanguage } = useTranslation()
+  const { toast } = useToast()
+
+  // Question states
+  const [isLoadingQuestion, setIsLoadingQuestion] = useState(true)
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null)
+  const [questionHistory, setQuestionHistory] = useState<QuestionHistory[]>([])
+
+  // Answer states
   const [userAnswer, setUserAnswer] = useState<UserAnswer>({ content: "" })
-  const [timeRemaining, setTimeRemaining] = useState(600) // 10 minutes
-  const [timerWarning, setTimerWarning] = useState(false)
-  const [isTimerRunning, setIsTimerRunning] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+
+  // Timer states
+  const [timeRemaining, setTimeRemaining] = useState(600) // 10 minutes
+  const [isTimerRunning, setIsTimerRunning] = useState(false)
+  const [timerWarning, setTimerWarning] = useState(false)
+
+  // Result and confirmation modal states
   const [showResultsModal, setShowResultsModal] = useState(false)
-  const [showAnswerModal, setShowAnswerModal] = useState(false)
   const [showConfirmationModal, setShowConfirmationModal] = useState(false)
-  const [showSettingsModal, setShowSettingsModal] = useState(false)
-  const [showHistoryModal, setShowHistoryModal] = useState(false)
   const [confirmationStep, setConfirmationStep] = useState(0)
   const [results, setResults] = useState<any>(null)
-  const [answer, setAnswer] = useState<any>(null)
   const [isStreaming, setIsStreaming] = useState(false)
-  const { toast } = useToast()
-  const [questionHistory, setQuestionHistory] = useState<QuestionHistory[]>([])
-  
-  // State for showing answer in the main content area instead of modal
+
+  // Settings and history modal states
+  const [showSettingsModal, setShowSettingsModal] = useState(false)
+  const [showHistoryModal, setShowHistoryModal] = useState(false)
+
+  // Editor language state
+  const [editorLanguage, setEditorLanguage] = useState("java")
+
+  // Answer modal states
+  const [showAnswerModal, setShowAnswerModal] = useState(false)
+  const [answer, setAnswer] = useState<string | null>(null)
   const [showInlineAnswer, setShowInlineAnswer] = useState(false)
   const [parsedAnswer, setParsedAnswer] = useState<any>(null)
 
-  const [isLoadingQuestion, setIsLoadingQuestion] = useState(true)
-  const [forcedQuestionType, setForcedQuestionType] = useState<string | null>(null)
-  
-  // 存储编辑器选择的编程语言
-  const [editorLanguage, setEditorLanguage] = useState("java")
-
-  // 在组件加载时从本地存储加载历史记录
+  // Initialize by loading questionHistory from localStorage
   useEffect(() => {
-    const savedHistory = localStorage.getItem("questionHistory");
-    if (savedHistory) {
+    // Check if window is available (client-side)
+    if (typeof window !== "undefined") {
       try {
-        setQuestionHistory(JSON.parse(jsonrepair(savedHistory)));
+        const savedHistory = localStorage.getItem("questionHistory")
+        if (savedHistory) {
+          setQuestionHistory(JSON.parse(savedHistory))
+        }
       } catch (e) {
         console.error("Error parsing question history:", e);
       }
@@ -256,32 +267,21 @@ export default function Page() {
     // Set streaming state and prepare to display inline answer
     setIsStreaming(true)
     setShowInlineAnswer(true)
-    setAnswer(null)
+    setAnswer("")
     setParsedAnswer(null)
 
     try {
       // Call OpenAI to get the model answer with streaming
       // Pass the editor language as a code language hint
       await getModelAnswer(currentQuestion, language, (streamingAnswer) => {
-        setAnswer(streamingAnswer)
+        // 直接设置最新内容，不进行累加
+        setAnswer(streamingAnswer);
       }, editorLanguage) // Pass the editor language as a hint
 
+      // Once streaming is complete
       setIsStreaming(false)
       setIsSubmitted(true)
       
-      // Once streaming is complete, try to parse the final answer
-      try {
-        if (answer) {
-          const parsed = JSON.parse(jsonrepair(answer))
-          setParsedAnswer(parsed)
-        }
-      } catch (e) {
-        // Keep using the raw answer if parsing fails
-        console.error("Failed to parse answer:", e)
-      }
-      
-      // We no longer update the history record when viewing answers
-      // This way the question won't show as "answered" in history
     } catch (error) {
       console.error("Error getting model answer:", error)
       setIsStreaming(false)
@@ -298,7 +298,7 @@ export default function Page() {
     setShowConfirmationModal(false)
   }
 
-  const handleNotMyStack = useCallback(() => {
+  const handleNotMyStack = () => {
     // Close any open answer displays before moving to the next question
     setShowAnswerModal(false);
     setShowInlineAnswer(false);
@@ -307,7 +307,7 @@ export default function Page() {
 
     // Move to the next question
     onNextQuestion()
-  }, [onNextQuestion])
+  }
 
   const onCloseResultsModal = () => {
     setShowResultsModal(false)
@@ -337,37 +337,24 @@ export default function Page() {
   
   // 从历史记录加载问题
   const loadQuestionFromHistory = (historyItem: QuestionHistory) => {
-    setCurrentQuestion(historyItem.question);
-    setUserAnswer({ content: "" });
-    setIsSubmitted(false);
-    setTimeRemaining(600);
-    // Reset and start the timer when loading a question from history
-    setIsTimerRunning(true);
-    setShowHistoryModal(false);
-  };
+    setCurrentQuestion(historyItem.question)
+    setIsLoadingQuestion(false)
+    setUserAnswer({ content: "" })
+    setIsSubmitted(false)
+    setTimeRemaining(600)
+    setIsTimerRunning(true)
+    setShowHistoryModal(false)
 
-  // 在 Page 组件中添加一个函数来清除历史记录
-  const clearQuestionHistory = () => {
-    localStorage.removeItem("questionHistory");
-    setQuestionHistory([]);
-  };
+    // Reset answer states
+    setShowAnswerModal(false)
+    setShowInlineAnswer(false)
+    setAnswer(null)
+    setParsedAnswer(null)
 
-  // Function to handle switching to code editor
-  const handleSwitchToCode = () => {
-    if (currentQuestion && currentQuestion.type !== QuestionType.Coding) {
-      // Clone the current question and change the type
-      const updatedQuestion = {
-        ...currentQuestion,
-        type: QuestionType.Coding
-      };
-      
-      setCurrentQuestion(updatedQuestion);
-      setForcedQuestionType("Coding");
-      
-      // Reset the timer when switching question type
-      setTimeRemaining(600);
-      setIsTimerRunning(true);
-      
+    // If the question type requires a code editor but we're not in code mode
+    if (historyItem.question.type === QuestionType.Coding && editorLanguage !== "java") {
+      // Set a default coding language
+      setEditorLanguage("java")
       toast({
         title: t("toast.switchedToCode.title") || "Switched to Code Editor",
         description: t("toast.switchedToCode.description") || "The question type has been changed to coding",
@@ -394,27 +381,20 @@ export default function Page() {
 
     // Set streaming state and prepare to regenerate answer
     setIsStreaming(true)
-    setAnswer(null)
+    setAnswer("")
     setParsedAnswer(null)
 
     try {
       // Call OpenAI to get the model answer with streaming
       // Pass the editor language as a code language hint
       await getModelAnswer(currentQuestion, language, (streamingAnswer) => {
-        setAnswer(streamingAnswer)
+        // 直接设置最新内容，不进行累加
+        setAnswer(streamingAnswer);
       }, editorLanguage) // Pass the editor language as a hint
 
+      // Once streaming is complete
       setIsStreaming(false)
       
-      // Once streaming is complete, try to parse the final answer
-      try {
-        if (answer) {
-          setParsedAnswer(answer)
-        }
-      } catch (e) {
-        // Keep using the raw answer if parsing fails
-        console.error("Failed to parse answer:", e)
-      }
     } catch (error) {
       console.error("Error getting model answer:", error)
       setIsStreaming(false)
@@ -446,7 +426,7 @@ export default function Page() {
             {/* Show AI answer if requested */}
             {showInlineAnswer ? (
               <AnswerDisplay 
-                answer={answer} 
+                answer={answer || ""}
                 language={language} 
                 isStreaming={isStreaming}
                 parsedAnswer={parsedAnswer}
@@ -465,45 +445,58 @@ export default function Page() {
           </>
         ) : (
           <div className="flex flex-col items-center justify-center py-16 space-y-4">
-            <p className="text-lg">{t("question.error")}</p>
+            <p>{t("question.error")}</p>
           </div>
         )}
       </main>
 
       <FooterArea
+        isTimerWarning={timerWarning}
         timeRemaining={timeRemaining}
-        timerWarning={timerWarning}
         onSubmit={onSubmit}
-        onNextQuestion={onNextQuestion}
         onViewAnswer={onViewAnswer}
+        onNextQuestion={onNextQuestion}
         isSubmitted={isSubmitted}
-        onNotMyStack={handleNotMyStack}
-        showSwitchTypeButton={currentQuestion?.type !== QuestionType.Coding}
-        onSwitchToCode={handleSwitchToCode}
+        showViewAnswer={!isSubmitted && !showInlineAnswer}
+        isLoadingQuestion={isLoadingQuestion}
+        disableSubmit={!userAnswer.content || isSubmitted || isLoadingQuestion}
       />
 
       {showResultsModal && (
-        <ResultsModal results={results} language={language} onClose={onCloseResultsModal} isStreaming={isStreaming} />
+        <ResultsModal
+          open={showResultsModal}
+          onClose={onCloseResultsModal}
+          results={results}
+          question={currentQuestion}
+          isLoading={isStreaming}
+          language={language}
+        />
       )}
 
       {showConfirmationModal && (
         <ConfirmationModal
-          step={confirmationStep}
-          language={language}
+          open={showConfirmationModal}
           onConfirm={handleConfirmation}
           onCancel={handleCancelConfirmation}
+          step={confirmationStep}
         />
       )}
 
-      {showSettingsModal && <SettingsModal language={language} onClose={onCloseSettings} />}
+      {showSettingsModal && (
+        <SettingsModal
+          open={showSettingsModal}
+          onClose={onCloseSettings}
+          onReload={onNextQuestion}
+        />
+      )}
 
       {showHistoryModal && (
-        <HistoryModal 
-          language={language} 
-          onClose={onCloseHistory} 
+        <HistoryModal
+          open={showHistoryModal}
+          onClose={onCloseHistory}
           history={questionHistory}
-          onSelectQuestion={loadQuestionFromHistory}
-          onClearHistory={clearQuestionHistory}
+          onSelect={loadQuestionFromHistory}
+          language={language}
         />
       )}
     </div>

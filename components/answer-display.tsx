@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import {decodeProcessedAnswer, formatCodeBlock, preprocessCodeInAnswer} from "@/lib/utils"
 import { AIAnswer } from "@/lib/types";
+import { useEffect, useState } from "react";
 
 interface AnswerDisplayProps {
   answer: string
@@ -48,9 +49,18 @@ export default function AnswerDisplay({
   onRetry
 }: AnswerDisplayProps) {
   const { t } = useTranslation()
+  // State to store the current streaming content
+  const [streamedContent, setStreamedContent] = useState<string>("");
 
-  // Display loading state
-  if (isStreaming) {
+  // Effect to update the streamed content when new answer chunks arrive
+  useEffect(() => {
+    if (answer) {
+      setStreamedContent(answer);
+    }
+  }, [answer]);
+
+  // Display loading state if streaming but no content yet
+  if (isStreaming && !streamedContent) {
     return (
       <Card className="mb-6 shadow-sm border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#2c2c2e] rounded-xl">
         <CardContent className="p-6">
@@ -69,8 +79,8 @@ export default function AnswerDisplay({
     )
   }
 
-
-  const answerContent = answer;
+  // Use streamed content if available, otherwise fall back to answer
+  const answerContent = streamedContent || answer;
 
   return (
     <Card className="mb-6 shadow-sm border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#2c2c2e] rounded-xl">
@@ -136,6 +146,12 @@ export default function AnswerDisplay({
               {answerContent}
             </ReactMarkdown>
           </div>
+          {isStreaming && (
+            <div className="flex items-center mt-2">
+              <Loader2 className="h-4 w-4 animate-spin mr-2" />
+              <span className="text-sm text-muted-foreground">{t("answer.stillGenerating")}</span>
+            </div>
+          )}
         </div>
       </CardContent>
     </Card>
