@@ -3,7 +3,6 @@
 import { useRef, useState, useEffect } from "react"
 import Editor, { type Monaco, type OnMount } from "@monaco-editor/react"
 import { Loader2 } from "lucide-react"
-import { useTheme } from "next-themes"
 
 interface MonacoEditorProps {
   value: string
@@ -21,24 +20,18 @@ export default function MonacoEditor({
   language = "javascript",
   height = "300px",
   fontSize = 14,
-  theme: editorTheme = "vs-dark",
+  theme: editorTheme = "vs",
   autoFocus = false,
 }: MonacoEditorProps) {
   const editorRef = useRef<any>(null)
-  const { theme: systemTheme } = useTheme()
-  const [isEditorReady, setIsEditorReady] = useState(false)
   const [monacoInstance, setMonacoInstance] = useState<Monaco | null>(null)
+  const [themesRegistered, setThemesRegistered] = useState(false)
+
 
   // Configure Monaco editor on mount
   const handleEditorDidMount: OnMount = (editor, monaco) => {
     editorRef.current = editor
     setMonacoInstance(monaco)
-    setIsEditorReady(true)
-
-    // Focus the editor if autoFocus is true
-    if (autoFocus) {
-      editor.focus()
-    }
 
     // Configure editor settings
     editor.updateOptions({
@@ -57,7 +50,36 @@ export default function MonacoEditor({
 
     // Register custom themes
     registerCustomThemes(monaco)
+
+    // Mark themes as registered
+    setThemesRegistered(true)
+
+    // Always start with a built-in theme to ensure stability
+    monaco.editor.setTheme('vs')
+
+    if (autoFocus) {
+      editor.focus()
+    }
   }
+
+  useEffect(() => {
+    if (!monacoInstance || !themesRegistered) return;
+
+    // Apply the theme with a longer delay to ensure registration is complete
+    const customThemes = ["github", "monokai", "dracula", "nord"]
+
+    if (customThemes.includes(editorTheme)) {
+      const timer = setTimeout(() => {
+        console.log("Applying custom theme:", editorTheme);
+        monacoInstance.editor.setTheme(editorTheme);
+      }, 300);
+
+      return () => clearTimeout(timer);
+    } else {
+      monacoInstance.editor.setTheme(editorTheme);
+    }
+  }, [monacoInstance, themesRegistered, editorTheme]);
+
 
   // Register custom editor themes
   const registerCustomThemes = (monaco: Monaco) => {
