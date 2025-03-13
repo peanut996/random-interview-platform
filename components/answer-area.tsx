@@ -32,7 +32,7 @@ export default function AnswerArea({ question, userAnswer, setUserAnswer, onEdit
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const [editorLanguage, setEditorLanguage] = useState("java")
   const [editorFontSize, setEditorFontSize] = useState(14)
-  const [editorTheme, setEditorTheme] = useState("vs-dark")
+  const [editorTheme, setEditorTheme] = useState("github")
   const [isCopied, setIsCopied] = useState(false)
 
   // Detect language based on question category or content
