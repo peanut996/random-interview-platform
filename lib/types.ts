@@ -1,8 +1,16 @@
+export interface QuestionShell {
+    id?: string;
+    type: QuestionType;
+    title: string;
+    category?: QuestionCategory[];
+    difficulty: QuestionDifficulty;
+  }
+
 export interface Question {
     id: string
     type: QuestionType
     category: string
-    difficulty: "Easy" | "Medium" | "Hard"
+    difficulty: QuestionDifficulty
     translations: {
         [key: string]: {
             title: string
