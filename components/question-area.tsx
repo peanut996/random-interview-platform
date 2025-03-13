@@ -1,6 +1,7 @@
 "use client";
 
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import type { Question } from "@/lib/types";
 import { useTranslation } from "@/lib/i18n";
@@ -57,6 +58,14 @@ export default function QuestionArea({
             >
               {question.difficulty}
             </Badge>
+            <Button 
+              variant="outline" 
+              size="sm"
+              onClick={onNotMyStack}
+              className="border-dashed"
+            >
+              {t("button.notMyStack") || "Not My Stack"}
+            </Button>
           </div>
         </div>
 

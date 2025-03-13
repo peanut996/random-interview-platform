@@ -20,6 +20,7 @@ export default function FooterArea({
   timeRemaining,
   timerWarning,
   onSubmit,
+  onNextQuestion,
   onViewAnswer,
   onSwitchToCode,
   isSubmitted,
@@ -44,7 +45,7 @@ export default function FooterArea({
             </div>
 
             <div className="flex flex-wrap gap-3">
-              <Button variant="outline">
+              <Button variant="outline" onClick={onNextQuestion}>
                 {t("button.notMyStack")}
               </Button>
               
