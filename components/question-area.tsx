@@ -64,6 +64,9 @@ export default function QuestionArea({
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             rehypePlugins={[rehypeRaw]}
+            components={{
+              p: ({ children }) => <p style={{ marginBottom: "1em" }}>{children}</p>,
+            }}
           >
             {description}
           </ReactMarkdown>
