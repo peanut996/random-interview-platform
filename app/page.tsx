@@ -11,6 +11,7 @@ import HistoryModal from "@/components/modals/history-modal"
 import QuestionLoading from "@/components/question-loading"
 import QuestionError from "@/components/question-error"
 import AnswerDisplay from "@/components/answer-display"
+import AssessmentDisplay from "@/components/assessment-display"
 import { useState, useEffect, useCallback } from "react"
 import type { Question, UserAnswer, QuestionHistory } from "@/lib/types"
 import { QuestionType } from "@/lib/types"
@@ -46,6 +47,7 @@ export default function Page() {
   const [confirmationStep, setConfirmationStep] = useState(0)
   const [results, setResults] = useState<any>(null)
   const [isStreaming, setIsStreaming] = useState(false)
+  const [showInlineAssessment, setShowInlineAssessment] = useState(false)
 
   // Settings and history modal states
   const [showSettingsModal, setShowSettingsModal] = useState(false)
@@ -153,7 +155,8 @@ export default function Page() {
     // Stop the timer when submitting
     setIsTimerRunning(false);
     
-    setShowResultsModal(true)
+    // Show inline assessment instead of modal
+    setShowInlineAssessment(true)
     setIsSubmitted(true)
     setResults(null)
     setIsStreaming(true)
@@ -200,9 +203,10 @@ export default function Page() {
     // Reset timer state
     setIsTimerRunning(false);
     
-    // Close any open answer displays
+    // Close any open answer and assessment displays
     setShowAnswerModal(false);
     setShowInlineAnswer(false);
+    setShowInlineAssessment(false);
     setAnswer(null);
     setParsedAnswer(null);
     
@@ -312,6 +316,7 @@ export default function Page() {
     // Close any open answer displays before moving to the next question
     setShowAnswerModal(false);
     setShowInlineAnswer(false);
+    setShowInlineAssessment(false);
     setAnswer(null);
     setParsedAnswer(null);
 
@@ -423,6 +428,52 @@ export default function Page() {
     }
   }
 
+  const handleViewAnswerFromAssessment = async () => {
+    // Hide assessment display
+    setShowInlineAssessment(false);
+    
+    if (!currentQuestion) {
+      return;
+    }
+
+    // Stop the timer when viewing answer
+    setIsTimerRunning(false);
+
+    // Set streaming state and prepare to display inline answer
+    setIsStreaming(true);
+    setShowInlineAnswer(true);
+    setAnswer("");
+    setParsedAnswer(null);
+
+    try {
+      // Call OpenAI to get the model answer with streaming
+      // Pass the editor language as a code language hint
+      await getModelAnswer(currentQuestion, language, (streamingAnswer) => {
+        // Set the latest content directly
+        setAnswer(streamingAnswer);
+      }, editorLanguage); // Pass the editor language as a hint
+
+      // Once streaming is complete
+      setIsStreaming(false);
+      setIsSubmitted(true);
+      
+    } catch (error) {
+      console.error("Error getting model answer:", error);
+      setIsStreaming(false);
+      toast({
+        title: t("toast.error.title"),
+        description: t("toast.error.description"),
+        variant: "destructive",
+        duration: 5000,
+      });
+    }
+  }
+
+  // Add handler to close inline assessment
+  const handleCloseInlineAssessment = () => {
+    setShowInlineAssessment(false);
+  }
+  
   // Handler for retrying question loading
   const handleRetryLoading = () => {
     onNextQuestion();
@@ -446,7 +497,7 @@ export default function Page() {
           <>
             <QuestionArea question={currentQuestion} language={language} onNotMyStack={handleNotMyStack} />
             
-            {/* Show AI answer if requested */}
+            {/* Show AI answer or assessment results or user's answer area */}
             {showInlineAnswer ? (
               <AnswerDisplay 
                 answer={answer || ""}
@@ -456,6 +507,13 @@ export default function Page() {
                 onClose={handleCloseInlineAnswer}
                 onEdit={handleEditAnswer}
                 onRetry={handleRetry}
+              />
+            ) : showInlineAssessment ? (
+              <AssessmentDisplay
+                results={results}
+                language={language}
+                isStreaming={isStreaming}
+                onViewAnswer={handleViewAnswerFromAssessment}
               />
             ) : (
               <AnswerArea 
@@ -482,6 +540,7 @@ export default function Page() {
         isSubmitted={isSubmitted}
       />
 
+      {/* Keep the ResultsModal for now, but it won't be shown under normal circumstances */}
       {showResultsModal && (
         <ResultsModal
           onClose={onCloseResultsModal}
