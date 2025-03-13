@@ -38,7 +38,7 @@ export async function callOpenAI(prompt: string, systemPrompt?: string, onStream
   try {
     const customSettings = getCustomSettings()
 
-    const response = await fetch("/api/openai", {
+    const response = await fetch("/api/chat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
