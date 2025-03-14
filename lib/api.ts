@@ -34,11 +34,27 @@ function getCustomSystemPrompt(type: 'question' | 'answer'): string | undefined 
 }
 
 // Function to call our backend API endpoint
-export async function callOpenAI(prompt: string, systemPrompt?: string, onStream?: (chunk: string) => void, requestType?: string) {
+export async function callLanguageModel(prompt: string, systemPrompt?: string, onStream?: (chunk: string) => void, requestType?: string) {
   try {
     const customSettings = getCustomSettings()
 
-    const response = await fetch("/api/chat", {
+    // Determine the API endpoint based on requestType
+    let endpoint = "/api/question"; // Default is now /api/question
+    
+    switch(requestType) {
+      case "modelAnswer":
+        endpoint = "/api/model-answer";
+        break;
+      case "modelAnswerText":
+        endpoint = "/api/model-answer-text";
+        break;
+      case "evaluation":
+        endpoint = "/api/evaluation";
+        break;
+      // Default case is now "/api/question"
+    }
+
+    const response = await fetch(endpoint, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -47,13 +63,12 @@ export async function callOpenAI(prompt: string, systemPrompt?: string, onStream
         prompt,
         systemPrompt,
         customSettings,
-        requestType,
       }),
     })
 
     if (!response.ok) {
       const error = await response.json()
-      throw new Error(error.error || "Failed to call OpenAI API")
+      throw new Error(error.error || "Failed to call AI API")
     }
 
     // If we have a streaming handler, process the stream
@@ -81,7 +96,7 @@ export async function callOpenAI(prompt: string, systemPrompt?: string, onStream
       return text
     }
   } catch (error) {
-    console.error("Error calling OpenAI:", error)
+    console.error("Error calling language model:", error)
     throw error
   }
 }
@@ -143,11 +158,11 @@ export async function evaluateAnswer(
 
     // If we have a streaming handler, use it
     if (onStream) {
-      finalResult = await callOpenAI(prompt, systemPrompt, (chunk) => {
+      finalResult = await callLanguageModel(prompt, systemPrompt, (chunk) => {
         onStream(chunk)
       }, "evaluation")
     } else {
-      finalResult = await callOpenAI(prompt, systemPrompt, undefined, "evaluation")
+      finalResult = await callLanguageModel(prompt, systemPrompt, undefined, "evaluation")
     }
 
 
@@ -226,12 +241,12 @@ export async function getModelAnswer(question: any, language: string, onStream?:
 
     // If we have a streaming handler, use it
     if (onStream) {
-      finalResult = await callOpenAI(prompt, systemPrompt, (chunk) => {
+      finalResult = await callLanguageModel(prompt, systemPrompt, (chunk) => {
         // Clean the markdown tags from each chunk before sending to stream handler
         onStream((chunk));
       }, "modelAnswerText")
     } else {
-      finalResult = await callOpenAI(prompt, systemPrompt, undefined, "modelAnswerText")
+      finalResult = await callLanguageModel(prompt, systemPrompt, undefined, "modelAnswerText")
     }
 
     // Return the raw markdown text directly
@@ -318,7 +333,7 @@ export async function generateQuestion(type: string, category: string, difficult
   `
 
   try {
-    const result = await callOpenAI(prompt, systemPrompt, (_) => {}, "question")
+    const result = await callLanguageModel(prompt, systemPrompt, (_) => {}, "question")
     
     // Preprocess the JSON to handle incorrectly formatted empty strings
     const preprocessedResult = result
