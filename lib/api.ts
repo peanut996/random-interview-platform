@@ -1,13 +1,10 @@
 "use client"
 
-import {processAnswerWithRegexImproved} from "./utils"
-import {jsonrepair} from "jsonrepair";
+import { CustomSettings, GenerateQuestionParams, QuestionCategories, QuestionDifficulty, QuestionType } from "./types";
+import { jsonrepair } from "jsonrepair";
 
-// Default server-side settings (will be loaded from environment variables on the server)
-const DEFAULT_OPENAI_MODEL = "gpt-4"
 
-// Helper function to get custom settings from localStorage
-function getCustomSettings() {
+function getCustomSettings(): CustomSettings | null {
   if (typeof window === "undefined") return null
 
   const endpoint = localStorage.getItem("openai_endpoint") || undefined
@@ -15,7 +12,7 @@ function getCustomSettings() {
   const token = localStorage.getItem("openai_token") || undefined
 
   // Only return settings that are actually set
-  const settings: Record<string, string> = {}
+  const settings: CustomSettings = {}
   if (endpoint) settings.endpoint = endpoint
   if (model) settings.model = model
   if (token) settings.token = token
@@ -29,9 +26,69 @@ function getCustomSystemPrompt(type: 'question' | 'answer'): string | undefined 
 
   const key = type === 'question' ? "system_prompt_question" : "system_prompt_answer"
   const customPrompt = localStorage.getItem(key)
-  
+
   return customPrompt || undefined
 }
+
+export async function generateQuestion(type: QuestionType, category: QuestionCategories, difficulty: QuestionDifficulty, onStream?: (chunk: string) => void) {
+  try {
+    const customSettings = getCustomSettings()
+    const customSystemPrompt = getCustomSystemPrompt('question');
+    const generatedQuestionParam: GenerateQuestionParams = {
+      customSettings: customSettings ?? undefined,
+      category,
+      difficulty,
+      type,
+      useQuestionBank: false,
+      customPrompt: customSystemPrompt ? {
+        systemPrompt: customSystemPrompt,
+      } : undefined,
+    }
+
+    const response = await fetch('/api/question', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(generatedQuestionParam),
+    })
+
+    if (!response.ok) {
+      const error = await response.json()
+      throw new Error(error.error || "Failed to call AI API")
+    }
+
+    // If we have a streaming handler, process the stream
+    if (onStream && response.body) {
+      const reader = response.body.getReader()
+      const decoder = new TextDecoder()
+      let done = false
+      let accumulatedText = ""
+
+      while (!done) {
+        const { value, done: doneReading } = await reader.read()
+        done = doneReading
+
+        if (value) {
+          const chunkText = decoder.decode(value)
+          accumulatedText += chunkText
+          onStream(accumulatedText)
+        }
+      }
+
+      return accumulatedText
+    } else {
+      // Non-streaming response
+      const text = await response.text()
+      return text
+    }
+  } catch (error) {
+    console.error("Error generating question:", error)
+    throw new Error("Failed to generate question. Please check your API settings and try again.")
+  }
+
+}
+
 
 // Function to call our backend API endpoint
 export async function callLanguageModel(prompt: string, systemPrompt?: string, onStream?: (chunk: string) => void, requestType?: string) {
@@ -40,8 +97,8 @@ export async function callLanguageModel(prompt: string, systemPrompt?: string, o
 
     // Determine the API endpoint based on requestType
     let endpoint = "/api/question"; // Default is now /api/question
-    
-    switch(requestType) {
+
+    switch (requestType) {
       case "modelAnswer":
         endpoint = "/api/model-answer";
         break;
@@ -196,18 +253,10 @@ export async function evaluateAnswer(
   }
 }
 
-// Function to clean markdown response by removing unnecessary markdown code block tags
-function cleanMarkdownResponse(response: string): string {
-  // Remove ```markdown at start and ``` at end if they exist
-  return response
-    .replace(/^```(markdown|md)?\s*\n/i, '') // Remove opening markdown tag
-    .replace(/\n```\s*$/i, '');              // Remove closing tag
-}
-
 export async function getModelAnswer(question: any, language: string, onStream?: (chunk: string) => void, codeLanguage?: string) {
   // Use custom system prompt if available
   const customSystemPrompt = getCustomSystemPrompt('answer');
-  
+
   const systemPrompt = customSystemPrompt || `You are an expert in technical interviews. Provide a model answer to the following question.
   Your answer should be clear, efficient, and follow best practices.
   If it's a coding question, include well-commented code.
@@ -254,99 +303,10 @@ export async function getModelAnswer(question: any, language: string, onStream?:
   } catch (error) {
     console.error("Error getting model answer:", error)
     // Return a fallback answer if API call fails
-    const fallbackMessage = language === 'zh' 
-      ? "由于错误，我们无法生成模型答案。请检查您的 OpenAI API 设置。" 
+    const fallbackMessage = language === 'zh'
+      ? "由于错误，我们无法生成模型答案。请检查您的 OpenAI API 设置。"
       : "We couldn't generate a model answer due to an error. Please check your OpenAI API settings.";
-    
+
     return fallbackMessage;
   }
 }
-
-export async function generateQuestion(type: string, category: string, difficulty: string, language: string = 'en') {
-  
-  // Use custom system prompt if available
-  const customSystemPrompt = getCustomSystemPrompt('question');
-  
-  const systemPrompt = customSystemPrompt || `You are an expert at creating technical interview questions. 
-  Generate a new ${type} question in the ${category} category with ${difficulty} difficulty.
-  The question should be challenging but solvable within a reasonable time frame.
-  
-  IMPORTANT: Return pure, parseable JSON without any markdown formatting. DO NOT wrap your response in code blocks with backticks (\`\`\`json or any other format).
-  The response MUST be directly parseable as JSON without any cleanup needed.
-  Ensure all special characters in strings are properly escaped according to JSON standards.
-  
-  When creating coding questions with test cases, format the input as a plain string rather than a JSON object.
-  For example, use 'a = "helloworld", b = "world"' rather than {a: "helloworld", b: "world"}.
-  
-  IMPORTANT: If a test case output is a string, you MUST enclose it in additional double quotes and escape them properly in JSON.
-  For example: 
-  - For string output "hello": { "input": "some input", "output": "\"hello\"" }
-  - For empty string: { "input": "some input", "output": "\"\"" }
-  - For numbers: { "input": "some input", "output": "42" } (no extra quotes for numbers)
-  
-  DO NOT leave string outputs without proper double quotes. Only add the extra quotes for string outputs, not for numbers or other types.
-  
-  Return your response in JSON format exactly matching the structure provided, with no additional text.`;
-
-  const prompt = `
-  Create a new technical interview question with the following parameters:
-  - Type: ${type} (e.g., "Coding" or "Question")
-  - Category: ${category} (e.g., "Algorithms", "TCP", "Data Structures", etc.)
-  - Difficulty: ${difficulty} (e.g., "Easy", "Medium", "Hard")
-  
-  Generate a question that follows this exact JSON structure:
-  {
-    "id": "generated_unique_id",
-    "type": "${type}",
-    "category": "${category}", // Use the first category as primary
-    "difficulty": "${difficulty}",
-    "translations": {
-      "en": {
-        "title": "English title here",
-        "description": "Detailed English description here",
-        "topic": "Relevant topic here"
-      },
-      "zh": {
-        "title": "Chinese title here",
-        "description": "Detailed Chinese description here",
-        "topic": "Relevant topic in Chinese here"
-      }
-    }${type === 'Coding' ? `,
-    "testCases": [
-      { "input": "a = \"helloworld\", b = \"world\"", "output": "\"world\"" },
-      {"input": "a = \"programming\", b = \"prog\"", "output": "\"prog\"" },
-      { "input": "x = 5, y = 10", "output": "50" },
-      { "input": "str = \"\"", "output": "\"\"" },
-      { "input": "", "output": "\"\"" }
-    ]` : ''}
-  }
-  
-  Make sure the question is appropriate for the difficulty level and incorporates concepts from all the specified categories.
-  If multiple categories are provided, create a question that combines elements from these categories.
-  
-  IMPORTANT: For test cases where the output is a string, ALWAYS enclose the output in additional double quotes:
-  - For string output: "output": "\"hello\""
-  - For empty string: "output": "\"\""
-  - For number output: "output": "42" (no extra quotes for numbers)
-  
-  Pay careful attention to the data type of the expected output and format it accordingly.
-  `
-
-  try {
-    const result = await callLanguageModel(prompt, systemPrompt, (_) => {}, "question")
-    
-    // Preprocess the JSON to handle incorrectly formatted empty strings
-    const preprocessedResult = result
-      // Replace four consecutive double quotes """" with the properly escaped empty string "\"\""
-      .replace(/""""/g, "\"\\\"\\\"\"")
-      // Replace two consecutive double quotes "" with the properly escaped empty string "\"\""
-      // But avoid replacing already properly escaped empty strings "\"\"" 
-      .replace(/(?<!\\)""/g, "\"\\\"\\\"\"");
-
-    return JSON.parse(jsonrepair(preprocessedResult))
-  } catch (error) {
-    console.error("Error generating question:", error)
-    throw new Error("Failed to generate question. Please check your API settings and try again.")
-  }
-}
-

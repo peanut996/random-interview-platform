@@ -1,10 +1,17 @@
+import { string } from "zod";
+
 export interface QuestionShell {
     id?: string;
     type: QuestionType;
     title: string;
     category?: QuestionCategory[];
     difficulty: QuestionDifficulty;
-  }
+}
+
+export interface CustomPrompt {
+    userPrompt?: string
+    systemPrompt?: string
+}
 
 export interface Question {
     id: string
@@ -34,6 +41,8 @@ export enum QuestionDifficulty {
     Medium = "Medium",
     Hard = "Hard"
 }
+
+export type QuestionCategories = QuestionCategory | CodingCategory | string 
 
 export enum QuestionCategory {
     Algorithms = "Algorithms",
@@ -83,4 +92,21 @@ export interface Message  {
 export enum MessageRole {
     user = "user",
     system = "system"
+}
+
+export interface CustomSettings {
+    token?: string
+    endpoint?: string
+    model?: string
+}
+
+export interface GenerateQuestionParams {
+    type: QuestionType
+    category: QuestionCategories
+    difficulty: QuestionDifficulty
+    customPrompt?: CustomPrompt
+    useQuestionBank: boolean
+
+    customSettings?: CustomSettings
+    customePrompt?: CustomPrompt
 }

@@ -5,19 +5,21 @@ import {
   prepareMessages, 
   questionSchema
 } from '../utils'
+import { GenerateQuestionParams } from "@/lib/types"
+import { getQuestionPrompt } from "@/lib/server/prompt"
 
 export async function POST(req: NextRequest) {
   try {
-    const { prompt, systemPrompt, customSettings } = await req.json()
+    const params: GenerateQuestionParams = await req.json()
+    const { type, category, difficulty, customSettings, customPrompt } = params;
 
-    // Create OpenAI client
+    const {userPrompt, systemPrompt} = getQuestionPrompt(type, category, difficulty, customPrompt)
+
     const { client, model } = createOpenAIClient(customSettings)
     const completion: LanguageModelV1 = client.chat(model)
     
-    // Prepare messages with a JSON schema
-    const messages = prepareMessages(prompt, systemPrompt)
+    const messages = prepareMessages(userPrompt, systemPrompt)
     
-    // Use question schema by default
     const result = await streamObject({
       model: completion as LanguageModel,
       schema: questionSchema,
