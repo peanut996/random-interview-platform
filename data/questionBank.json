@@ -1,0 +1,12 @@
+[
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "Linked List",
+      "Reverse"
+    ],
+    "difficulty": "Easy",
+    "title": "Leetcode 反转链表"
+  }
+]
