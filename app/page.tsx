@@ -116,7 +116,7 @@ export default function Page() {
       }
     };
     fetchQuestion();
-  }, [language, loadingError, t, toast]);
+  }, [language]);
 
   useEffect(() => {
     // Only run the timer if isTimerRunning is true and we're not loading a question

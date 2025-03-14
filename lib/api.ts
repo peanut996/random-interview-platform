@@ -45,12 +45,16 @@ export async function generateQuestion(
   try {
     const customSettings = getCustomSettings();
     const customSystemPrompt = getCustomSystemPrompt('question');
+
+    // Get the useQuestionBank setting from localStorage, default is false
+    const useQuestionBank = localStorage.getItem('use_question_bank') === 'true';
+
     const generatedQuestionParam: GenerateQuestionParams = {
       customSettings: customSettings ?? undefined,
       category,
       difficulty,
       type,
-      useQuestionBank: false,
+      useQuestionBank,
       customPrompt: customSystemPrompt
         ? {
             systemPrompt: customSystemPrompt,
@@ -343,5 +347,29 @@ export async function getModelAnswer(
         : "We couldn't generate a model answer due to an error. Please check your OpenAI API settings.";
 
     return fallbackMessage;
+  }
+}
+
+// Function to parse a question title for QuestionBank
+export async function parseQuestion(questionTitle: string) {
+  try {
+    const response = await fetch('/api/questions/parse', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ questionTitle }),
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.error || 'Failed to parse question');
+    }
+
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error('Error parsing question:', error);
+    throw new Error('Failed to parse question. Please check your API settings and try again.');
   }
 }

@@ -67,6 +67,7 @@ const getRandomQuestionShell = async (): Promise<{
   const savedQuestionType = safeLocalStorage.getItem('question_type') || 'all';
   const savedQuestionCategory = safeLocalStorage.getItem('question_category') || 'all';
   const savedQuestionDifficulty = safeLocalStorage.getItem('question_difficulty') || 'all';
+  const useQuestionBank = safeLocalStorage.getItem('use_question_bank') === 'true';
 
   // Define possible values for each setting, based on enums in types.ts.
   const types = Object.keys(QuestionType).filter(key => isNaN(Number(key))) as QuestionType[];

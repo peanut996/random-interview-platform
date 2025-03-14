@@ -110,3 +110,7 @@ export function formatCodeBlock(codeText: string): { code: string; language: str
 
   return { code, language };
 }
+
+export function caseInsensitiveEqual(str1: string, str2: string): boolean {
+  return str1.toLowerCase() === str2.toLowerCase();
+}
