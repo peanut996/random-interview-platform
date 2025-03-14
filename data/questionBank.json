@@ -1,0 +1,14 @@
+[
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "Design",
+      "Data Structure",
+      "Cache",
+      "LRU Cache"
+    ],
+    "difficulty": "Medium",
+    "title": "Leetcode 实现LRU"
+  }
+]
