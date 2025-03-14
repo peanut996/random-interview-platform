@@ -1,0 +1,12 @@
+[
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "Cache",
+      "LFU"
+    ],
+    "difficulty": "Hard",
+    "title": "Leetcode 实现LFU"
+  }
+]
