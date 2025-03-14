@@ -15,7 +15,6 @@ interface AnswerDisplayProps {
   answer: string;
   language: string;
   isStreaming?: boolean;
-  parsedAnswer: any;
   onClose?: () => void;
   onEdit?: () => void;
   onRetry?: () => void;
@@ -119,6 +118,7 @@ export default function AnswerDisplay({
                 p: ({ children }) => (
                   <p style={{ marginBottom: '1em', marginTop: '1em' }}>{children}</p>
                 ),
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 code({ className, children, ...props }: any) {
                   const match = /language-(\w+)/.exec(className || '');
                   const inline = !match;

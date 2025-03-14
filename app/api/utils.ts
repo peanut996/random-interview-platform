@@ -1,5 +1,5 @@
 import { createOpenAI } from '@ai-sdk/openai';
-import { MessageRole } from '@/lib/types';
+import { CustomSettings, MessageRole } from '@/lib/types';
 import { z } from 'zod';
 
 // Schema definitions
@@ -74,7 +74,7 @@ export function prepareMessages(prompt: string, systemPrompt?: string, useJsonSc
   ];
 }
 
-export function createOpenAIClient(customSettings?: any) {
+export function createOpenAIClient(customSettings?: CustomSettings) {
   const apiKey = customSettings?.token || DEFAULT_OPENAI_API_KEY;
   const endpoint = customSettings?.endpoint || DEFAULT_OPENAI_ENDPOINT;
 

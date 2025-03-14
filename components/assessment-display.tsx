@@ -8,9 +8,10 @@ import { Badge } from '@/components/ui/badge';
 import { Loader2, X, RefreshCw } from 'lucide-react';
 import { jsonrepair } from 'jsonrepair';
 import { useState, useEffect } from 'react';
+import { EvaluateResult } from '@/lib/types';
 
 interface AssessmentDisplayProps {
-  results: any;
+  results: string;
   language: string;
   isStreaming?: boolean;
   onViewAnswer: () => void;
@@ -27,7 +28,7 @@ export default function AssessmentDisplay({
   onRetry,
 }: AssessmentDisplayProps) {
   const { t } = useTranslation();
-  const [parsedResults, setParsedResults] = useState<any>(null);
+  const [parsedResults, setParsedResults] = useState<EvaluateResult | string | null>(null);
 
   useEffect(() => {
     try {
@@ -110,7 +111,7 @@ export default function AssessmentDisplay({
   const displayResults = parsedResults;
   const feedback = displayResults.feedback[language] || displayResults.feedback.en;
   const suggestions = displayResults.improvementSuggestions.map(
-    (suggestion: any) => suggestion[language] || suggestion.en
+    suggestion => suggestion[language] || suggestion.en
   );
 
   const overallScorePercentage = Math.round(displayResults.overallScore * 100);

@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Editor, { type Monaco, type OnMount } from '@monaco-editor/react';
 import { Loader2 } from 'lucide-react';
 
@@ -23,13 +23,11 @@ export default function MonacoEditor({
   theme: editorTheme = 'github',
   autoFocus = false,
 }: MonacoEditorProps) {
-  const editorRef = useRef<any>(null);
   const [monacoInstance, setMonacoInstance] = useState<Monaco | null>(null);
   const [themesRegistered, setThemesRegistered] = useState(false);
 
   // Configure Monaco editor on mount
   const handleEditorDidMount: OnMount = (editor, monaco) => {
-    editorRef.current = editor;
     setMonacoInstance(monaco);
 
     // Configure editor settings

@@ -23,11 +23,11 @@ export async function POST(req: NextRequest) {
     });
 
     return new Response(result.textStream);
-  } catch (error: any) {
+  } catch (error) {
     console.error('Error in evaluation API route:', error);
-    return NextResponse.json(
-      { error: error.message || 'An error occurred while processing your request' },
-      { status: 500 }
-    );
+    const errorMessage =
+      error instanceof Error ? error.message : 'An error occurred while processing your request';
+
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }

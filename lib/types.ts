@@ -24,8 +24,8 @@ export interface Question {
     };
   };
   testCases?: Array<{
-    input: any;
-    output: any;
+    input: string;
+    output: string;
   }>;
 }
 
@@ -106,4 +106,19 @@ export interface GenerateQuestionParams {
 
   customSettings?: CustomSettings;
   customePrompt?: CustomPrompt;
+}
+
+export interface EvaluateResult {
+  overallScore: number;
+  categoryScores: {
+    correctness: number;
+    efficiency: number;
+    readability: number;
+  };
+  feedback: {
+    [key: string]: string;
+  };
+  improvementSuggestions: Array<{
+    [key: string]: string;
+  }>;
 }

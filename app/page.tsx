@@ -4,7 +4,6 @@ import Header from '@/components/header';
 import QuestionArea from '@/components/question-area';
 import AnswerArea from '@/components/answer-area';
 import FooterArea from '@/components/footer-area';
-import ResultsModal from '@/components/modals/results-modal';
 import ConfirmationModal from '@/components/modals/confirmation-modal';
 import SettingsModal from '@/components/modals/settings-modal';
 import HistoryModal from '@/components/modals/history-modal';
@@ -39,11 +38,9 @@ export default function Page() {
   const [isTimerRunning, setIsTimerRunning] = useState(false);
   const [timerWarning, setTimerWarning] = useState(false);
 
-  // Result and confirmation modal states
-  const [showResultsModal, setShowResultsModal] = useState(false);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [confirmationStep, setConfirmationStep] = useState(0);
-  const [results, setResults] = useState<any>(null);
+  const [results, setResults] = useState<string>('');
   const [isStreaming, setIsStreaming] = useState(false);
   const [showInlineAssessment, setShowInlineAssessment] = useState(false);
 
@@ -56,7 +53,6 @@ export default function Page() {
 
   const [answer, setAnswer] = useState<string | null>(null);
   const [showInlineAnswer, setShowInlineAnswer] = useState(false);
-  const [parsedAnswer, setParsedAnswer] = useState<any>(null);
 
   // Initialize by loading questionHistory from localStorage
   useEffect(() => {
@@ -154,10 +150,13 @@ export default function Page() {
     // Show inline assessment instead of modal
     setShowInlineAssessment(true);
     setIsSubmitted(true);
-    setResults(null);
+    setResults('');
     setIsStreaming(true);
 
     try {
+      if (!currentQuestion) {
+        return;
+      }
       // Call OpenAI to evaluate the answer with streaming
       await evaluateAnswer(currentQuestion, userAnswer.content, language, streamingResults => {
         setResults(streamingResults);
@@ -202,7 +201,6 @@ export default function Page() {
     setShowInlineAnswer(false);
     setShowInlineAssessment(false);
     setAnswer(null);
-    setParsedAnswer(null);
 
     try {
       const question = await generateRandomQuestion();
@@ -275,7 +273,6 @@ export default function Page() {
     setIsStreaming(true);
     setShowInlineAnswer(true);
     setAnswer('');
-    setParsedAnswer(null);
 
     try {
       // Call OpenAI to get the model answer with streaming
@@ -309,10 +306,6 @@ export default function Page() {
     setShowConfirmationModal(false);
   };
 
-  const onCloseResultsModal = () => {
-    setShowResultsModal(false);
-  };
-
   const onOpenSettings = () => {
     setShowSettingsModal(true);
   };
@@ -342,7 +335,6 @@ export default function Page() {
     // Reset answer states
     setShowInlineAnswer(false);
     setAnswer(null);
-    setParsedAnswer(null);
 
     // If the question type requires a code editor but we're not in code mode
     if (historyItem.question.type === QuestionType.Coding && editorLanguage !== 'java') {
@@ -382,7 +374,6 @@ export default function Page() {
     // Set streaming state and prepare to regenerate answer
     setIsStreaming(true);
     setAnswer('');
-    setParsedAnswer(null);
 
     try {
       // Call OpenAI to get the model answer with streaming
@@ -426,7 +417,6 @@ export default function Page() {
     setIsStreaming(true);
     setShowInlineAnswer(true);
     setAnswer('');
-    setParsedAnswer(null);
 
     try {
       // Call OpenAI to get the model answer with streaming
@@ -508,7 +498,6 @@ export default function Page() {
                 answer={answer || ''}
                 language={language}
                 isStreaming={isStreaming}
-                parsedAnswer={parsedAnswer}
                 onClose={handleCloseInlineAnswer}
                 onEdit={handleEditAnswer}
                 onRetry={handleRetry}
@@ -547,16 +536,6 @@ export default function Page() {
         isSubmitted={isSubmitted}
         isAnswerEmpty={!userAnswer.content.trim()}
       />
-
-      {/* Keep the ResultsModal for now, but it won't be shown under normal circumstances */}
-      {showResultsModal && (
-        <ResultsModal
-          onClose={onCloseResultsModal}
-          results={results}
-          isStreaming={isStreaming}
-          language={language}
-        />
-      )}
 
       {showConfirmationModal && (
         <ConfirmationModal

@@ -163,7 +163,9 @@ const getRandomQuestionShell = async (): Promise<{
   };
 };
 
-export async function generateRandomQuestion(onStream?: (chunk: any) => void): Promise<Question> {
+export async function generateRandomQuestion(
+  onStream?: (chunk: string) => void
+): Promise<Question> {
   const { type, category, difficulty } = await getRandomQuestionShell();
 
   try {

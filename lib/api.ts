@@ -3,6 +3,7 @@
 import {
   CustomSettings,
   GenerateQuestionParams,
+  Question,
   QuestionCategories,
   QuestionDifficulty,
   QuestionType,
@@ -174,7 +175,7 @@ export async function callLanguageModel(
 }
 
 export async function evaluateAnswer(
-  question: any,
+  question?: Question,
   userAnswer: string,
   language: string,
   onStream?: (chunk: string) => void
@@ -274,7 +275,7 @@ export async function evaluateAnswer(
 }
 
 export async function getModelAnswer(
-  question: any,
+  question: Question,
   language: string,
   onStream?: (chunk: string) => void,
   codeLanguage?: string
