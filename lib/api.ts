@@ -175,7 +175,7 @@ export async function callLanguageModel(
 }
 
 export async function evaluateAnswer(
-  question?: Question,
+  question: Question,
   userAnswer: string,
   language: string,
   onStream?: (chunk: string) => void
