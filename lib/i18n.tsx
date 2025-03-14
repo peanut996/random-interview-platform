@@ -161,14 +161,18 @@ const translations = {
       'Submit your interview question to help grow our question bank. Your contribution will be reviewed and added via a Pull Request.',
     'contribution.placeholder': 'Type your interview question here...',
     'contribution.requirementPlaceholder': 'Describe your question idea in one sentence...',
-    'contribution.hint': 'Keep it concise. We\'ll help translate your idea into a fully-formed question.',
+    'contribution.hint':
+      "Keep it concise. We'll help translate your idea into a fully-formed question.",
     'contribution.submit': 'Submit',
     'contribution.submitting': 'Submitting...',
     'contribution.success.title': 'Idea Received!',
-    'contribution.success.description': 'Thank you for your contribution! We\'ll work on creating a question from your idea.',
+    'contribution.success.description':
+      "Thank you for your contribution! We'll work on creating a question from your idea.",
     'contribution.error.title': 'Submission Failed',
-    'contribution.error.emptyRequirement': 'Please enter a brief description of your question idea.',
-    'contribution.error.submission': 'An error occurred while submitting your idea. Please try again.',
+    'contribution.error.emptyRequirement':
+      'Please enter a brief description of your question idea.',
+    'contribution.error.submission':
+      'An error occurred while submitting your idea. Please try again.',
     'contribution.emptyContent': 'Empty content',
     'contribution.emptyContentDesc': 'Please enter a question before submitting.',
     'contribution.prCreated': 'Pull Request Created',

@@ -86,10 +86,10 @@ export default function Header({
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Button 
-                    variant="ghost" 
-                    size="icon" 
-                    className="rounded-full relative" 
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="rounded-full relative"
                     onClick={() => setIsContributionModalOpen(true)}
                   >
                     <GitPullRequestArrow className="h-5 w-5 animate-pulse" />
@@ -120,7 +120,10 @@ export default function Header({
         </div>
       </header>
 
-      <ContributionModal isOpen={isContributionModalOpen} onOpenChange={setIsContributionModalOpen} />
+      <ContributionModal
+        isOpen={isContributionModalOpen}
+        onOpenChange={setIsContributionModalOpen}
+      />
     </>
   );
 }

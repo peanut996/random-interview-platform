@@ -144,16 +144,16 @@ export function ContributionModal({ isOpen, onOpenChange }: ContributionModalPro
                   </p>
                 </div>
               </div>
-              
-              <Button 
-                variant="outline" 
+
+              <Button
+                variant="outline"
                 onClick={openPrUrl}
                 className="flex items-center justify-center gap-2 bg-white dark:bg-gray-800"
               >
                 {t('contribution.viewPR')} <ExternalLink className="h-4 w-4" />
               </Button>
             </div>
-            
+
             <p className="text-sm text-muted-foreground text-center mt-2">
               {t('contribution.thankYou')}
             </p>
@@ -171,9 +171,7 @@ export function ContributionModal({ isOpen, onOpenChange }: ContributionModalPro
                 disabled={isSubmitting}
               />
               <div className="flex justify-between items-center">
-                <p className="text-xs text-muted-foreground">
-                  {t('contribution.hint')}
-                </p>
+                <p className="text-xs text-muted-foreground">{t('contribution.hint')}</p>
                 <p className="text-xs text-muted-foreground">
                   {requirement.length}/{maxLength}
                 </p>
@@ -186,13 +184,9 @@ export function ContributionModal({ isOpen, onOpenChange }: ContributionModalPro
           <Button variant="outline" onClick={() => handleOpenChange(false)}>
             {prUrl ? t('contribution.close') : t('button.cancel')}
           </Button>
-          
+
           {!prUrl && (
-            <Button 
-              onClick={handleSubmit} 
-              disabled={isSubmitting}
-              className="gap-1"
-            >
+            <Button onClick={handleSubmit} disabled={isSubmitting} className="gap-1">
               {isSubmitting ? (
                 <>
                   <Loader2 className="h-4 w-4 animate-spin" />
