@@ -1,0 +1,7 @@
+
+POST http://localhost:3000/api/questions/parse
+Content-Type: application/json
+
+{
+  "title": "接雨水"
+}

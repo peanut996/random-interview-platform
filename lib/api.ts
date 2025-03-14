@@ -1,5 +1,6 @@
 'use client';
 
+import { API_ROUTE_PARSE_QUESTION_TITLE } from './const';
 import {
   CustomSettings,
   GenerateQuestionParams,
@@ -60,7 +61,7 @@ export async function generateQuestion(
         : undefined,
     };
 
-    const response = await fetch('/api/question', {
+    const response = await fetch('/api/questions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -114,7 +115,7 @@ export async function callLanguageModel(
     const customSettings = getCustomSettings();
 
     // Determine the API endpoint based on requestType
-    let endpoint = '/api/question'; // Default is now /api/question
+    let endpoint = '/api/questions'; // Default is now /api/questions
 
     switch (requestType) {
       case 'modelAnswer':
@@ -126,7 +127,6 @@ export async function callLanguageModel(
       case 'evaluation':
         endpoint = '/api/evaluation';
         break;
-      // Default case is now "/api/question"
     }
 
     const response = await fetch(endpoint, {
@@ -351,7 +351,7 @@ export async function getModelAnswer(
 // Function to parse a question title for QuestionBank
 export async function parseQuestion(questionTitle: string) {
   try {
-    const response = await fetch('/api/questions/parse', {
+    const response = await fetch(API_ROUTE_PARSE_QUESTION_TITLE, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

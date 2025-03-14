@@ -13,15 +13,15 @@ const questionParseSchema = z.object({
     QuestionDifficulty.Medium.toString(),
     QuestionDifficulty.Hard.toString(),
   ]),
-  questionTitle: z.string(),
+  title: z.string(),
 });
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { questionTitle } = body;
+    const { title } = body;
 
-    if (!questionTitle || typeof questionTitle !== 'string') {
+    if (!title || typeof title !== 'string') {
       return NextResponse.json(
         { error: 'Question title is required and must be a string' },
         { status: 400 }
@@ -32,23 +32,24 @@ export async function POST(req: NextRequest) {
     const systemPrompt = `You are an AI assistant that helps categorize interview questions.
     Given a question title, determine:
     1. The type (Coding or Question)
-    2. The category as an array of relevant categories
+    2. The category as an array of relevant categories (e.g., ["LeetCode","Array", "String", and etc])
     3. The difficulty level (Easy, Medium, or Hard)
     
     IMPORTANT: Return pure, parseable JSON without any markdown formatting. DO NOT wrap your response in code blocks with backticks (\`\`\`json or any other format).
     The response MUST be directly parseable as JSON without any cleanup needed.
-    Ensure all special characters in strings are properly escaped according to JSON standards.`;
+    Ensure all special characters in strings are properly escaped according to JSON standards.
+    Just return one candidate answer based on the given question title.`;
 
     // User prompt for parsing the question
     const userPrompt = `Parse the following interview question title and categorize it:
-    "${questionTitle}"
+    "${title}"
     
     Return your analysis in the following JSON format:
     {
       "type": "Coding" or "Question",
-      "category": ["Primary category", "Secondary category"],
+      "category": ["Primary category", "Secondary category"...],
       "difficulty": "Easy" or "Medium" or "Hard",
-      "questionTitle": "${questionTitle}"
+      "title": "${title}"
     }`;
 
     // Create OpenAI client
@@ -66,7 +67,11 @@ export async function POST(req: NextRequest) {
       mode: 'json',
     });
 
-    return new Response(result.textStream);
+    return new Response(result.textStream, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
   } catch (error) {
     console.error('Error in question parsing API route:', error);
     const errorMessage =
