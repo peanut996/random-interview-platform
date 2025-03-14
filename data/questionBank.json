@@ -1,0 +1,14 @@
+[
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "Array",
+      "Two Pointers",
+      "Dynamic Programming",
+      "Stack"
+    ],
+    "difficulty": "Hard",
+    "title": "接雨水"
+  }
+]
