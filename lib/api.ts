@@ -40,14 +40,12 @@ export async function generateQuestion(
   type: QuestionType,
   category: QuestionCategories,
   difficulty: QuestionDifficulty,
+  useQuestionBank: boolean,
   onStream?: (chunk: string) => void
 ) {
   try {
     const customSettings = getCustomSettings();
     const customSystemPrompt = getCustomSystemPrompt('question');
-
-    // Get the useQuestionBank setting from localStorage, default is false
-    const useQuestionBank = localStorage.getItem('use_question_bank') === 'true';
 
     const generatedQuestionParam: GenerateQuestionParams = {
       customSettings: customSettings ?? undefined,
