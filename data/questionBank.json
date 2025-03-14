@@ -1,0 +1,12 @@
+[
+  {
+    "type": "Coding",
+    "category": [
+      "Algorithm",
+      "Linked List",
+      "Recursion"
+    ],
+    "difficulty": "Easy",
+    "title": "反转链表"
+  }
+]
