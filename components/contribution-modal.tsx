@@ -5,6 +5,7 @@ import { useTranslation } from '@/lib/i18n';
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogFooter,
@@ -12,8 +13,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from '@/components/ui/use-toast';
-import { Loader2, ExternalLink } from 'lucide-react';
-import { title } from 'process';
+import { Loader2, Sparkles, GitMerge, ExternalLink } from 'lucide-react';
 
 interface ContributionModalProps {
   isOpen: boolean;
@@ -22,25 +22,25 @@ interface ContributionModalProps {
 
 export function ContributionModal({ isOpen, onOpenChange }: ContributionModalProps) {
   const { t } = useTranslation();
-  const [questionContent, setQuestionContent] = useState('');
+  const [requirement, setRequirement] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [prUrl, setPrUrl] = useState<string | null>(null);
-  const maxLength = 2000;
+  const maxLength = 200; // Limit to one sentence
 
   // Reset state when modal closes
   const handleOpenChange = (open: boolean) => {
     if (!open) {
+      setRequirement('');
       setPrUrl(null);
-      setQuestionContent('');
     }
     onOpenChange(open);
   };
 
   const handleSubmit = async () => {
-    if (!questionContent.trim()) {
+    if (!requirement.trim()) {
       toast({
-        title: t('contribution.emptyContent'),
-        description: t('contribution.emptyContentDesc'),
+        title: t('contribution.error.title'),
+        description: t('contribution.error.emptyRequirement'),
         variant: 'destructive',
       });
       return;
@@ -55,7 +55,7 @@ export function ContributionModal({ isOpen, onOpenChange }: ContributionModalPro
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ title: questionContent }), // 修正参数名
+        body: JSON.stringify({ title: requirement }), // 修正参数名
       });
 
       if (!parseResponse.ok) {
@@ -86,8 +86,8 @@ export function ContributionModal({ isOpen, onOpenChange }: ContributionModalPro
 
       // Show success toast
       toast({
-        title: t('contribution.success'),
-        description: t('contribution.successDesc'),
+        title: t('contribution.success.title'),
+        description: t('contribution.success.description'),
       });
 
       // Store PR URL for display
@@ -99,12 +99,12 @@ export function ContributionModal({ isOpen, onOpenChange }: ContributionModalPro
       }
 
       // Clear content field but keep modal open to show success state
-      setQuestionContent('');
+      setRequirement('');
     } catch (error) {
       console.error('Contribution error:', error);
       toast({
-        title: t('contribution.error'),
-        description: error instanceof Error ? error.message : t('contribution.errorDesc'),
+        title: t('contribution.error.title'),
+        description: t('contribution.error.submission'),
         variant: 'destructive',
       });
     } finally {
@@ -112,62 +112,91 @@ export function ContributionModal({ isOpen, onOpenChange }: ContributionModalPro
     }
   };
 
+  const openPrUrl = () => {
+    if (prUrl) {
+      window.open(prUrl, '_blank', 'noopener,noreferrer');
+    }
+  };
+
   return (
     <Dialog open={isOpen} onOpenChange={handleOpenChange}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-md backdrop-blur-xl bg-white/90 dark:bg-gray-900/90 border border-gray-200 dark:border-gray-800">
         <DialogHeader>
-          <DialogTitle>{t('contribution.title')}</DialogTitle>
+          <div className="flex items-center space-x-2">
+            <GitMerge className="h-5 w-5 text-primary" />
+            <DialogTitle>{t('contribution.title')}</DialogTitle>
+          </div>
+          <DialogDescription>{t('contribution.description')}</DialogDescription>
         </DialogHeader>
 
         {prUrl ? (
-          // Success state - show PR link
-          <div className="space-y-4 py-4">
-            <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-md border border-green-200 dark:border-green-800">
-              <h3 className="font-medium text-green-800 dark:text-green-400 mb-2">
-                {t('contribution.prCreated')}
-              </h3>
-              <p className="text-sm text-green-700 dark:text-green-500 mb-4">
-                {t('contribution.prCreatedDesc')}
-              </p>
-              <Button
-                variant="outline"
-                className="w-full flex items-center justify-center gap-2 bg-white dark:bg-gray-800"
-                onClick={() => window.open(prUrl, '_blank')}
+          // Success state with PR URL
+          <div className="space-y-4 py-6">
+            <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-md border border-green-200 dark:border-green-800 flex flex-col">
+              <div className="flex items-start mb-3">
+                <Sparkles className="h-5 w-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
+                <div>
+                  <h3 className="font-medium text-green-800 dark:text-green-400 mb-1">
+                    {t('contribution.prCreated')}
+                  </h3>
+                  <p className="text-sm text-green-700 dark:text-green-500">
+                    {t('contribution.prCreatedDesc')}
+                  </p>
+                </div>
+              </div>
+              
+              <Button 
+                variant="outline" 
+                onClick={openPrUrl}
+                className="flex items-center justify-center gap-2 bg-white dark:bg-gray-800"
               >
-                {t('contribution.viewPR')} <ExternalLink size={16} />
+                {t('contribution.viewPR')} <ExternalLink className="h-4 w-4" />
               </Button>
             </div>
-            <p className="text-sm text-muted-foreground">{t('contribution.thankYou')}</p>
+            
+            <p className="text-sm text-muted-foreground text-center mt-2">
+              {t('contribution.thankYou')}
+            </p>
           </div>
         ) : (
-          // Input state - show question input field
-          <div className="space-y-4 py-4">
-            <p className="text-sm text-muted-foreground">{t('contribution.description')}</p>
-            <Textarea
-              value={questionContent}
-              onChange={e => setQuestionContent(e.target.value)}
-              placeholder={t('contribution.placeholder')}
-              className="min-h-[200px]"
-              maxLength={maxLength}
-              disabled={isSubmitting}
-            />
-            <div className="text-xs text-muted-foreground text-right">
-              {questionContent.length}/{maxLength}
+          // Input state
+          <div className="space-y-4 py-2">
+            <div className="grid gap-2">
+              <Textarea
+                value={requirement}
+                onChange={e => setRequirement(e.target.value)}
+                placeholder={t('contribution.requirementPlaceholder')}
+                className="min-h-[80px] resize-none"
+                maxLength={maxLength}
+                disabled={isSubmitting}
+              />
+              <div className="flex justify-between items-center">
+                <p className="text-xs text-muted-foreground">
+                  {t('contribution.hint')}
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  {requirement.length}/{maxLength}
+                </p>
+              </div>
             </div>
           </div>
         )}
 
-        <DialogFooter>
+        <DialogFooter className="flex space-x-2 justify-end">
           <Button variant="outline" onClick={() => handleOpenChange(false)}>
-            {prUrl ? t('contribution.close') : t('common.close')}
+            {prUrl ? t('contribution.close') : t('button.cancel')}
           </Button>
-
+          
           {!prUrl && (
-            <Button onClick={handleSubmit} disabled={isSubmitting}>
+            <Button 
+              onClick={handleSubmit} 
+              disabled={isSubmitting}
+              className="gap-1"
+            >
               {isSubmitting ? (
                 <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  {t('contribution.submitting')}
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                  <span>{t('contribution.submitting')}</span>
                 </>
               ) : (
                 t('contribution.submit')
