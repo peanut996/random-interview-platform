@@ -1,0 +1,13 @@
+[
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "Tree",
+      "Binary Tree",
+      "Recursion"
+    ],
+    "difficulty": "Easy",
+    "title": "LeetCode 二叉树的高度"
+  }
+]
