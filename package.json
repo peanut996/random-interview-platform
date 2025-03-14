@@ -75,6 +75,8 @@
     "@types/react-dom": "^18",
     "@types/react-syntax-highlighter": "^15.5.13",
     "autoprefixer": "^10.4.20",
+    "eslint": "^9",
+    "eslint-config-next": "15.2.2",
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-prettier": "^5.2.3",
     "eslint-plugin-react": "^7.37.4",
