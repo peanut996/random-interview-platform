@@ -2,7 +2,23 @@
   {
     "type": "Coding",
     "title": "接雨水",
-    "category": ["LeetCode", "Array", "Dynamic Programming", "Stack", "Two Pointers"],
+    "category": [
+      "LeetCode",
+      "Array",
+      "Dynamic Programming",
+      "Stack",
+      "Two Pointers"
+    ],
     "difficulty": "Hard"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "Array",
+      "Two Pointers"
+    ],
+    "difficulty": "Medium",
+    "title": "Leetcode 三数之和"
   }
 ]
