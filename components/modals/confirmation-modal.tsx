@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 import {
   Dialog,
@@ -7,36 +7,41 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog"
-import { Button } from "@/components/ui/button"
-import { useTranslation } from "@/lib/i18n"
+} from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
+import { useTranslation } from '@/lib/i18n';
 
 interface ConfirmationModalProps {
-  step: number
-  language: string
-  onConfirm: () => void
-  onCancel: () => void
+  step: number;
+  language: string;
+  onConfirm: () => void;
+  onCancel: () => void;
 }
 
-export default function ConfirmationModal({ step, language, onConfirm, onCancel }: ConfirmationModalProps) {
-  const { t } = useTranslation()
+export default function ConfirmationModal({
+  step,
+  language,
+  onConfirm,
+  onCancel,
+}: ConfirmationModalProps) {
+  const { t } = useTranslation();
 
   const messages = [
     {
-      title: t("confirmation.step1.title"),
-      description: t("confirmation.step1.description"),
+      title: t('confirmation.step1.title'),
+      description: t('confirmation.step1.description'),
     },
     {
-      title: t("confirmation.step2.title"),
-      description: t("confirmation.step2.description"),
+      title: t('confirmation.step2.title'),
+      description: t('confirmation.step2.description'),
     },
     {
-      title: t("confirmation.step3.title"),
-      description: t("confirmation.step3.description"),
+      title: t('confirmation.step3.title'),
+      description: t('confirmation.step3.description'),
     },
-  ]
+  ];
 
-  const currentMessage = messages[step]
+  const currentMessage = messages[step];
 
   return (
     <Dialog open={true} onOpenChange={() => onCancel()}>
@@ -48,12 +53,11 @@ export default function ConfirmationModal({ step, language, onConfirm, onCancel 
 
         <DialogFooter className="flex flex-row justify-end gap-2 sm:gap-0">
           <Button variant="outline" onClick={onCancel}>
-            {t("button.no")}
+            {t('button.no')}
           </Button>
-          <Button onClick={onConfirm}>{t("button.yes")}</Button>
+          <Button onClick={onConfirm}>{t('button.yes')}</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
-  )
+  );
 }
-

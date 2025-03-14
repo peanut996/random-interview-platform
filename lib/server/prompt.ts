@@ -1,7 +1,10 @@
-import { QuestionType, QuestionCategories, QuestionDifficulty, CustomPrompt } from "@/lib/types";
+import { QuestionType, QuestionCategories, QuestionDifficulty, CustomPrompt } from '@/lib/types';
 
-
-const defaultQuestionSystemPrompt = (type: string, category: string, difficulty: string) => `You are an expert at creating technical interview questions. 
+const defaultQuestionSystemPrompt = (
+  type: string,
+  category: string,
+  difficulty: string
+) => `You are an expert at creating technical interview questions. 
   Generate a new ${type} question in the ${category} category with ${difficulty} difficulty.
   The question should be challenging but solvable within a reasonable time frame.
   
@@ -21,7 +24,6 @@ const defaultQuestionSystemPrompt = (type: string, category: string, difficulty:
   DO NOT leave string outputs without proper double quotes. Only add the extra quotes for string outputs, not for numbers or other types.
   
   Return your response in JSON format exactly matching the structure provided, with no additional text.`;
-
 
 const defaultQuestionUserPrompt = (type: string, category: string, difficulty: string) => `
   Create a new technical interview question with the following parameters:
@@ -46,14 +48,18 @@ const defaultQuestionUserPrompt = (type: string, category: string, difficulty: s
         "description": "Detailed Chinese description here",
         "topic": "Relevant topic in Chinese here"
       }
-    }${type === 'Coding' ? `,
+    }${
+      type === 'Coding'
+        ? `,
     "testCases": [
       { "input": "a = \"helloworld\", b = \"world\"", "output": "\"world\"" },
       {"input": "a = \"programming\", b = \"prog\"", "output": "\"prog\"" },
       { "input": "x = 5, y = 10", "output": "50" },
       { "input": "str = \"\"", "output": "\"\"" },
       { "input": "", "output": "\"\"" }
-    ]` : ''}
+    ]`
+        : ''
+    }
   }
   
   Make sure the question is appropriate for the difficulty level and incorporates concepts from all the specified categories.
@@ -65,14 +71,19 @@ const defaultQuestionUserPrompt = (type: string, category: string, difficulty: s
   - For number output: "output": "42" (no extra quotes for numbers)
   
   Pay careful attention to the data type of the expected output and format it accordingly.
-  `
+  `;
 
-export const getQuestionPrompt = (type: QuestionType, category: QuestionCategories, difficulty: QuestionDifficulty,
-    customPrompt?: CustomPrompt) => {
-    const { userPrompt: customUserPrompt, systemPrompt: customSystemPrompt  } = customPrompt || {};
+export const getQuestionPrompt = (
+  type: QuestionType,
+  category: QuestionCategories,
+  difficulty: QuestionDifficulty,
+  customPrompt?: CustomPrompt
+) => {
+  const { userPrompt: customUserPrompt, systemPrompt: customSystemPrompt } = customPrompt || {};
 
-    const systemPrompt = customSystemPrompt || defaultQuestionSystemPrompt(type, category, difficulty);
-    const userPrompt = customUserPrompt || defaultQuestionUserPrompt(type, category, difficulty);
+  const systemPrompt =
+    customSystemPrompt || defaultQuestionSystemPrompt(type, category, difficulty);
+  const userPrompt = customUserPrompt || defaultQuestionUserPrompt(type, category, difficulty);
 
-    return { systemPrompt, userPrompt };
-}
+  return { systemPrompt, userPrompt };
+};
