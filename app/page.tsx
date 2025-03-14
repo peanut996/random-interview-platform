@@ -18,9 +18,7 @@ import { QuestionType } from '@/lib/types';
 import { generateRandomQuestion } from '@/lib/question';
 import { useTranslation } from '@/lib/i18n';
 import { useToast } from '@/hooks/use-toast';
-// Update the onSubmit function to use the OpenAI API for evaluation
 import { evaluateAnswer, getModelAnswer } from '@/lib/api';
-import { jsonrepair } from 'jsonrepair';
 
 export default function Page() {
   const { t, language, setLanguage } = useTranslation();
@@ -56,8 +54,6 @@ export default function Page() {
   // Editor language state
   const [editorLanguage, setEditorLanguage] = useState('java');
 
-  // Answer modal states
-  const [showAnswerModal, setShowAnswerModal] = useState(false);
   const [answer, setAnswer] = useState<string | null>(null);
   const [showInlineAnswer, setShowInlineAnswer] = useState(false);
   const [parsedAnswer, setParsedAnswer] = useState<any>(null);
@@ -124,7 +120,7 @@ export default function Page() {
       }
     };
     fetchQuestion();
-  }, []);
+  }, [language, loadingError, t, toast]);
 
   useEffect(() => {
     // Only run the timer if isTimerRunning is true and we're not loading a question
@@ -202,7 +198,7 @@ export default function Page() {
     setIsTimerRunning(false);
 
     // Close any open answer and assessment displays
-    setShowAnswerModal(false);
+
     setShowInlineAnswer(false);
     setShowInlineAssessment(false);
     setAnswer(null);
@@ -258,7 +254,6 @@ export default function Page() {
   // Updated handleConfirmation function to show answers inline
   const handleConfirmation = async () => {
     // Make sure modals are properly managed
-    setShowAnswerModal(false);
 
     if (confirmationStep < 2) {
       setConfirmationStep(prevStep => prevStep + 1);
@@ -314,26 +309,8 @@ export default function Page() {
     setShowConfirmationModal(false);
   };
 
-  const handleNotMyStack = () => {
-    // Close any open answer displays before moving to the next question
-    setShowAnswerModal(false);
-    setShowInlineAnswer(false);
-    setShowInlineAssessment(false);
-    setAnswer(null);
-    setParsedAnswer(null);
-
-    // Move to the next question
-    onNextQuestion();
-  };
-
   const onCloseResultsModal = () => {
     setShowResultsModal(false);
-  };
-
-  const onCloseAnswerModal = () => {
-    setShowAnswerModal(false);
-    // For inline answers
-    setShowInlineAnswer(false);
   };
 
   const onOpenSettings = () => {
@@ -363,7 +340,6 @@ export default function Page() {
     setShowHistoryModal(false);
 
     // Reset answer states
-    setShowAnswerModal(false);
     setShowInlineAnswer(false);
     setAnswer(null);
     setParsedAnswer(null);
@@ -478,11 +454,6 @@ export default function Page() {
         duration: 5000,
       });
     }
-  };
-
-  // Add handler to close inline assessment
-  const handleCloseInlineAssessment = () => {
-    setShowInlineAssessment(false);
   };
 
   // Handler for retrying question loading

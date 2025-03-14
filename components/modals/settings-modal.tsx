@@ -20,14 +20,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Switch } from '@/components/ui/switch';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useToast } from '@/hooks/use-toast';
 import { QuestionCategory, CodingCategory, QuestionType } from '@/lib/types';
 import {
   addCustomCategory,
   removeCustomCategory,
-  getCategoriesForType,
   loadCustomCategories,
   safeLocalStorage,
 } from '@/lib/question';
@@ -41,7 +39,7 @@ interface SettingsModalProps {
   onReload?: () => Promise<void> | void;
 }
 
-export default function SettingsModal({ language, onClose }: SettingsModalProps) {
+export default function SettingsModal({ onClose }: SettingsModalProps) {
   const { t } = useTranslation();
   const { toast } = useToast();
   const [showResetConfirmation, setShowResetConfirmation] = useState(false);
@@ -82,8 +80,6 @@ export default function SettingsModal({ language, onClose }: SettingsModalProps)
 
   // Track if custom category is selected
   const [isCustomCategory, setIsCustomCategory] = useState(false);
-
-  const [activeTab, setActiveTab] = useState('questions');
 
   // Load custom categories on mount
   useEffect(() => {
@@ -328,7 +324,7 @@ export default function SettingsModal({ language, onClose }: SettingsModalProps)
             <DialogTitle>{t('settings.title')}</DialogTitle>
           </DialogHeader>
 
-          <Tabs defaultValue="questions" onValueChange={setActiveTab}>
+          <Tabs defaultValue="questions">
             <TabsList className="grid grid-cols-3 mb-4">
               <TabsTrigger value="questions">{t('settings.questions')}</TabsTrigger>
               <TabsTrigger value="openai">{t('settings.openai')}</TabsTrigger>

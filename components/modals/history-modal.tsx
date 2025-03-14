@@ -41,6 +41,7 @@ export default function HistoryModal({
         locale: getLocale(),
       });
     } catch (e) {
+      console.error('[Client] Failed to format time', e);
       return timestamp;
     }
   };

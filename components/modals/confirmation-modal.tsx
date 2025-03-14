@@ -18,12 +18,7 @@ interface ConfirmationModalProps {
   onCancel: () => void;
 }
 
-export default function ConfirmationModal({
-  step,
-  language,
-  onConfirm,
-  onCancel,
-}: ConfirmationModalProps) {
+export default function ConfirmationModal({ step, onConfirm, onCancel }: ConfirmationModalProps) {
   const { t } = useTranslation();
 
   const messages = [

@@ -33,6 +33,7 @@ export default function ResultsModal({
         setParsedResults(results);
       }
     } catch (e) {
+      console.error('[Client] Failed to parse results', e);
       if (!isStreaming) {
         setParsedResults(results);
       }

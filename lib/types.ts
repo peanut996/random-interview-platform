@@ -1,5 +1,3 @@
-import { string } from 'zod';
-
 export interface QuestionShell {
   id?: string;
   type: QuestionType;

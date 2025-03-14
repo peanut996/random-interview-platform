@@ -29,7 +29,7 @@ export const safeLocalStorage = {
 };
 
 // In-memory storage for generated questions
-let generatedQuestions: Question[] = [];
+const generatedQuestions: Question[] = [];
 
 // In-memory storage for custom categories
 const customCategories: { [key: string]: string[] } = {
@@ -163,7 +163,7 @@ const getRandomQuestionShell = async (): Promise<{
   };
 };
 
-export async function generateRandomQuestion(onStream?: (chunk: any) => {}): Promise<Question> {
+export async function generateRandomQuestion(onStream?: (chunk: any) => void): Promise<Question> {
   const { type, category, difficulty } = await getRandomQuestionShell();
 
   try {

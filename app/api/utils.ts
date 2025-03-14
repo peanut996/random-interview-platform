@@ -1,6 +1,5 @@
-import { type NextRequest, NextResponse } from 'next/server';
 import { createOpenAI } from '@ai-sdk/openai';
-import { Message, MessageRole } from '@/lib/types';
+import { MessageRole } from '@/lib/types';
 import { z } from 'zod';
 
 // Schema definitions

@@ -8,8 +8,7 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 import { githubGist } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { decodeProcessedAnswer, formatCodeBlock, preprocessCodeInAnswer } from '@/lib/utils';
-import { AIAnswer } from '@/lib/types';
+import { formatCodeBlock } from '@/lib/utils';
 import { useEffect, useState } from 'react';
 
 interface AnswerDisplayProps {
@@ -22,27 +21,9 @@ interface AnswerDisplayProps {
   onRetry?: () => void;
 }
 
-// Decode any encoded code blocks
-const processContent = (content: string) => {
-  return decodeProcessedAnswer(content);
-};
-
-// Process the answer to decode Base64 encoded blocks
-const getProcessedContent = (displayAnswer: string | AIAnswer, language: string) => {
-  if (typeof displayAnswer === 'string') {
-    return processContent(displayAnswer);
-  } else if (displayAnswer && displayAnswer.answer) {
-    const content = displayAnswer.answer[language] || displayAnswer.answer.en || '';
-    return processContent(content);
-  }
-  return '';
-};
-
 export default function AnswerDisplay({
   answer,
-  language,
   isStreaming = false,
-  parsedAnswer,
   onClose,
   onEdit,
   onRetry,
@@ -138,7 +119,7 @@ export default function AnswerDisplay({
                 p: ({ children }) => (
                   <p style={{ marginBottom: '1em', marginTop: '1em' }}>{children}</p>
                 ),
-                code({ node, className, children, ...props }: any) {
+                code({ className, children, ...props }: any) {
                   const match = /language-(\w+)/.exec(className || '');
                   const inline = !match;
 

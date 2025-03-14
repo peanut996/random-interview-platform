@@ -151,30 +151,6 @@ export function preprocessCodeInAnswer(answer: any): any {
   if (typeof answer === 'object' && answer.answer) {
     const processedAnswer = { ...answer };
 
-    // Common programming language identifiers
-    const languageIdentifiers = [
-      'python',
-      'javascript',
-      'js',
-      'typescript',
-      'ts',
-      'java',
-      'c',
-      'cpp',
-      'csharp',
-      'cs',
-      'go',
-      'ruby',
-      'rust',
-      'php',
-      'swift',
-      'kotlin',
-      'scala',
-      'html',
-      'css',
-      'sql',
-    ];
-
     // Process English answer
     if (processedAnswer.answer.en) {
       let content = processedAnswer.answer.en;

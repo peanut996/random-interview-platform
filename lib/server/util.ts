@@ -16,8 +16,9 @@ export function loadQuestions(): QuestionShell[] {
     const questions = JSON.parse(fileContent) as QuestionShell[];
 
     return questions;
-  } catch (error) {
+  } catch (e) {
     // Return an empty array in case of error
+    console.log('[Server] load questions bank failed', e);
     return [];
   }
 }
