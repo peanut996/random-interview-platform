@@ -1,0 +1,24 @@
+# 构建输出
+.next
+out
+dist
+build
+
+# 依赖
+node_modules
+
+# 日志
+*.log
+
+# 环境和配置文件
+.env*
+!.env.example
+
+# package 文件
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# 其他
+.DS_Store
+coverage

@@ -1,41 +1,51 @@
-"use client"
+'use client';
 
-import {Globe, Settings, History} from "lucide-react"
-import {Button} from "@/components/ui/button"
-import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger} from "@/components/ui/dropdown-menu"
-import {useTranslation} from "@/lib/i18n"
-import Image from "next/image"
-import { useEffect } from "react"
+import { Globe, Settings, History } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { useTranslation } from '@/lib/i18n';
+import Image from 'next/image';
+import { useEffect } from 'react';
 
 interface HeaderProps {
-  language: string
-  setLanguage: (lang: string) => void
-  onOpenSettings: () => void
-  onOpenHistory: () => void
+  language: string;
+  setLanguage: (lang: string) => void;
+  onOpenSettings: () => void;
+  onOpenHistory: () => void;
 }
 
-export default function Header({ language, setLanguage, onOpenSettings, onOpenHistory }: HeaderProps) {
-  const { t } = useTranslation()
+export default function Header({
+  language,
+  setLanguage,
+  onOpenSettings,
+  onOpenHistory,
+}: HeaderProps) {
+  const { t } = useTranslation();
 
   const githubRepoUrl = 'https://github.com/peanut996/random-interview-platform'; // 替换为您的 GitHub 仓库 URL
 
   // Update document title when language changes
   useEffect(() => {
-    document.title = t("app.title")
-  }, [t, language])
+    document.title = t('app.title');
+  }, [t, language]);
 
   return (
     <header className="sticky top-0 z-10 backdrop-blur-md bg-[#f5f5f7]/80 dark:bg-[#1c1c1e]/80 border-b border-gray-200 dark:border-gray-800">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between max-w-5xl">
         <div className="flex items-center space-x-3">
-          <Image 
-            src="/logo.svg" 
-            alt="AI Interview Simulator Logo" 
-            width={32} 
-            height={32} 
+          <Image
+            src="/logo.svg"
+            alt="AI Interview Simulator Logo"
+            width={32}
+            height={32}
             className="h-8 w-8"
           />
-          <h1 className="text-2xl font-semibold">{t("app.title")}</h1>
+          <h1 className="text-2xl font-semibold">{t('app.title')}</h1>
         </div>
 
         <div className="flex items-center space-x-2">
@@ -46,10 +56,16 @@ export default function Header({ language, setLanguage, onOpenSettings, onOpenHi
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuItem onClick={() => setLanguage("en")} className={language === "en" ? "bg-accent" : ""}>
+              <DropdownMenuItem
+                onClick={() => setLanguage('en')}
+                className={language === 'en' ? 'bg-accent' : ''}
+              >
                 English
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setLanguage("zh")} className={language === "zh" ? "bg-accent" : ""}>
+              <DropdownMenuItem
+                onClick={() => setLanguage('zh')}
+                className={language === 'zh' ? 'bg-accent' : ''}
+              >
                 中文
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -63,10 +79,15 @@ export default function Header({ language, setLanguage, onOpenSettings, onOpenHi
             <History className="h-5 w-5" />
           </Button>
 
-          <a href={githubRepoUrl} target="_blank" rel="noopener noreferrer" title={t("header.github")}>
-            <svg 
+          <a
+            href={githubRepoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            title={t('header.github')}
+          >
+            <svg
               className="h-5 w-5 text-black dark:text-white hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
-              viewBox="0 0 16 16" 
+              viewBox="0 0 16 16"
               fill="currentColor"
               aria-hidden="true"
             >
@@ -76,5 +97,5 @@ export default function Header({ language, setLanguage, onOpenSettings, onOpenHi
         </div>
       </div>
     </header>
-  )
+  );
 }

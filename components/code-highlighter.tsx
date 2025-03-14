@@ -1,10 +1,18 @@
-"use client"
+'use client';
 
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import { githubGist, monokai, dracula, nord, vs, defaultStyle, dark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import {
+  githubGist,
+  monokai,
+  dracula,
+  nord,
+  vs,
+  defaultStyle,
+  dark,
+} from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
-import { useEffect, useState } from "react"
-import { Loader2 } from "lucide-react"
+import { useEffect, useState } from 'react';
+import { Loader2 } from 'lucide-react';
 
 interface CodeHighlighterProps {
   code: string;
@@ -15,25 +23,29 @@ interface CodeHighlighterProps {
 
 const mapLanguage = (monacoLanguage: string): string => {
   const languageMap: Record<string, string> = {
-    csharp: "csharp", // Keep consistent casing
-    cpp: "cpp",
-    javascript: "javascript",
-    typescript: "typescript",
-    python: "python",
-    java: "java",
-    go: "go",
-    ruby: "ruby",
-    php: "php",
-    sql: "sql",
-    html: "html",
-    css: "css",
+    csharp: 'csharp', // Keep consistent casing
+    cpp: 'cpp',
+    javascript: 'javascript',
+    typescript: 'typescript',
+    python: 'python',
+    java: 'java',
+    go: 'go',
+    ruby: 'ruby',
+    php: 'php',
+    sql: 'sql',
+    html: 'html',
+    css: 'css',
   };
   // Use the mapped language, but fall back to the original *and* check for supported languages.
   return languageMap[monacoLanguage] || monacoLanguage;
 };
 
-export default function CodeHighlighter({ code, language, fontSize = 14, theme = "oneDark" }: CodeHighlighterProps) {
-
+export default function CodeHighlighter({
+  code,
+  language,
+  fontSize = 14,
+  theme = 'oneDark',
+}: CodeHighlighterProps) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -42,17 +54,17 @@ export default function CodeHighlighter({ code, language, fontSize = 14, theme =
 
   const getTheme = (themeName: string) => {
     switch (themeName.toLowerCase()) {
-      case "vs":
+      case 'vs':
         return vs;
-      case "vs-dark":
+      case 'vs-dark':
         return dark;
-      case "github":
+      case 'github':
         return githubGist;
-      case "monokai":
+      case 'monokai':
         return monokai;
-      case "dracula":
+      case 'dracula':
         return dracula;
-      case "nord":
+      case 'nord':
         return nord;
       default:
         return defaultStyle;
@@ -61,7 +73,6 @@ export default function CodeHighlighter({ code, language, fontSize = 14, theme =
 
   const mappedLanguage = mapLanguage(language);
   const themeStyle = getTheme(theme);
-
 
   if (isLoading) {
     return (

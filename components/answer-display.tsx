@@ -1,56 +1,35 @@
-"use client"
+'use client';
 
-import { Card, CardContent } from "@/components/ui/card"
-import { useTranslation } from "@/lib/i18n"
-import { Loader2, X, Edit } from "lucide-react"
-import ReactMarkdown from "react-markdown"
+import { Card, CardContent } from '@/components/ui/card';
+import { useTranslation } from '@/lib/i18n';
+import { Loader2, X, Edit } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { githubGist } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import {decodeProcessedAnswer, formatCodeBlock, preprocessCodeInAnswer} from "@/lib/utils"
-import { AIAnswer } from "@/lib/types";
-import { useEffect, useState } from "react";
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { formatCodeBlock } from '@/lib/utils';
+import { useEffect, useState } from 'react';
 
 interface AnswerDisplayProps {
-  answer: string
-  language: string
-  isStreaming?: boolean
-  parsedAnswer: any
-  onClose?: () => void
-  onEdit?: () => void
-  onRetry?: () => void
-}
-
-
-// Decode any encoded code blocks
-const processContent = (content: string) => {
-  return decodeProcessedAnswer(content);
-}
-
-// Process the answer to decode Base64 encoded blocks
-const getProcessedContent = (displayAnswer: string | AIAnswer, language: string) => {
-  if (typeof displayAnswer === "string") {
-    return processContent(displayAnswer);
-  } else if (displayAnswer && displayAnswer.answer) {
-    const content = displayAnswer.answer[language] || displayAnswer.answer.en || "";
-    return processContent(content);
-  }
-  return "";
+  answer: string;
+  language: string;
+  isStreaming?: boolean;
+  onClose?: () => void;
+  onEdit?: () => void;
+  onRetry?: () => void;
 }
 
 export default function AnswerDisplay({
   answer,
-  language,
   isStreaming = false,
-  parsedAnswer,
   onClose,
   onEdit,
-  onRetry
+  onRetry,
 }: AnswerDisplayProps) {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   // State to store the current streaming content
-  const [streamedContent, setStreamedContent] = useState<string>("");
+  const [streamedContent, setStreamedContent] = useState<string>('');
 
   // Effect to update the streamed content when new answer chunks arrive
   useEffect(() => {
@@ -65,18 +44,21 @@ export default function AnswerDisplay({
       <Card className="mb-6 shadow-sm border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#2c2c2e] rounded-xl">
         <CardContent className="p-6">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-medium">{t("answer.modalTitle")}</h3>
-            <Badge variant="outline" className="bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-800">
+            <h3 className="text-lg font-medium">{t('answer.modalTitle')}</h3>
+            <Badge
+              variant="outline"
+              className="bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-800"
+            >
               AI
             </Badge>
           </div>
           <div className="flex flex-col items-center justify-center py-8 space-y-4">
             <Loader2 className="h-8 w-8 animate-spin text-primary" />
-            <p>{t("answer.generating")}</p>
+            <p>{t('answer.generating')}</p>
           </div>
         </CardContent>
       </Card>
-    )
+    );
   }
 
   // Use streamed content if available, otherwise fall back to answer
@@ -86,23 +68,44 @@ export default function AnswerDisplay({
     <Card className="mb-6 shadow-sm border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#2c2c2e] rounded-xl">
       <CardContent className="p-6">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-medium">{t("answer.modalTitle")}</h3>
+          <h3 className="text-lg font-medium">{t('answer.modalTitle')}</h3>
           <div className="flex items-center space-x-2">
-            <Badge variant="outline" className="bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-800">
+            <Badge
+              variant="outline"
+              className="bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-800"
+            >
               AI
             </Badge>
             {onRetry && (
-              <Button variant="ghost" size="icon" onClick={onRetry} className="h-8 w-8" title={t("answer.regenerate")}>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={onRetry}
+                className="h-8 w-8"
+                title={t('answer.regenerate')}
+              >
                 <Loader2 className={`h-4 w-4 ${isStreaming ? 'animate-spin' : ''}`} />
               </Button>
             )}
             {onEdit && (
-              <Button variant="ghost" size="icon" onClick={onEdit} className="h-8 w-8" title={t("answer.editAnswer")}>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={onEdit}
+                className="h-8 w-8"
+                title={t('answer.editAnswer')}
+              >
                 <Edit className="h-4 w-4" />
               </Button>
             )}
             {onClose && (
-              <Button variant="ghost" size="icon" onClick={onClose} className="h-8 w-8" title={t("answer.closeAnswer")}>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={onClose}
+                className="h-8 w-8"
+                title={t('answer.closeAnswer')}
+              >
                 <X className="h-4 w-4" />
               </Button>
             )}
@@ -112,10 +115,13 @@ export default function AnswerDisplay({
           <div className="markdown-content">
             <ReactMarkdown
               components={{
-                p: ({ children }) => <p style={{ marginBottom: "1em", marginTop: "1em" }}>{children}</p>,
-                code({node, className, children, ...props}: any) {
-                  const match = /language-(\w+)/.exec(className || '')
-                  const inline = !match
+                p: ({ children }) => (
+                  <p style={{ marginBottom: '1em', marginTop: '1em' }}>{children}</p>
+                ),
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                code({ className, children, ...props }: any) {
+                  const match = /language-(\w+)/.exec(className || '');
+                  const inline = !match;
 
                   if (!inline) {
                     // Format code using our utility function
@@ -140,7 +146,7 @@ export default function AnswerDisplay({
                       </code>
                     );
                   }
-                }
+                },
               }}
             >
               {answerContent}
@@ -149,11 +155,11 @@ export default function AnswerDisplay({
           {isStreaming && (
             <div className="flex items-center mt-2">
               <Loader2 className="h-4 w-4 animate-spin mr-2" />
-              <span className="text-sm text-muted-foreground">{t("answer.stillGenerating")}</span>
+              <span className="text-sm text-muted-foreground">{t('answer.stillGenerating')}</span>
             </div>
           )}
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }
