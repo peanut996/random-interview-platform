@@ -30,7 +30,7 @@ export async function POST(req: NextRequest) {
 
     // Generate a unique branch name
     const timestamp = Date.now();
-    const branchName = `feature/add-question-${timestamp}`;
+    const branchName = `feature/add-question/${timestamp}`;
 
     try {
       // 1. Get the SHA of the latest commit on the base branch
@@ -103,6 +103,7 @@ export async function POST(req: NextRequest) {
         title: `[BOT] Add question: ${question.title}`,
         head: branchName,
         base: BASE_BRANCH,
+        maintainer_can_modify: true,
         body: `This PR adds a new interview question to the question bank.
           
 **Question Details:**
