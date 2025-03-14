@@ -32,6 +32,7 @@ import {
 import { PlusIcon, XIcon } from 'lucide-react';
 import { Textarea } from '@/components/ui/textarea';
 import { jsonrepair } from 'jsonrepair';
+import { Switch } from '../ui/switch';
 
 interface SettingsModalProps {
   language: string;
@@ -68,6 +69,7 @@ export default function SettingsModal({ onClose }: SettingsModalProps) {
     category: safeLocalStorage.getItem('question_category') || 'all',
     difficulty: safeLocalStorage.getItem('question_difficulty') || 'all',
     weightedMistakes: safeLocalStorage.getItem('weighted_mistakes') === 'true',
+    useQuestionBank: safeLocalStorage.getItem('use_question_bank') === 'true',
   });
 
   const [customCategories, setCustomCategories] = useState<{
@@ -157,6 +159,7 @@ export default function SettingsModal({ onClose }: SettingsModalProps) {
     safeLocalStorage.setItem('question_category', questionSettings.category);
     safeLocalStorage.setItem('question_difficulty', questionSettings.difficulty);
     safeLocalStorage.setItem('weighted_mistakes', questionSettings.weightedMistakes.toString());
+    safeLocalStorage.setItem('use_question_bank', String(questionSettings.useQuestionBank));
 
     // Only save OpenAI settings if all three fields are filled
     if (allOpenAIFieldsFilled) {
@@ -264,6 +267,7 @@ export default function SettingsModal({ onClose }: SettingsModalProps) {
       category: 'all',
       difficulty: 'all',
       weightedMistakes: false,
+      useQuestionBank: false,
     });
 
     // Reset OpenAI settings
@@ -302,6 +306,7 @@ export default function SettingsModal({ onClose }: SettingsModalProps) {
     safeLocalStorage.removeItem('openai_token');
     safeLocalStorage.removeItem('system_prompt_question');
     safeLocalStorage.removeItem('system_prompt_answer');
+    safeLocalStorage.removeItem('use_question_bank');
 
     setShowResetConfirmation(false);
 
@@ -557,6 +562,23 @@ export default function SettingsModal({ onClose }: SettingsModalProps) {
                   onCheckedChange={(checked) => setQuestionSettings({ ...questionSettings, weightedMistakes: checked })}
                 />
               </div> */}
+
+              {/* QuestionBank toggle */}
+              <div className="flex items-center justify-between">
+                <div>
+                  <Label htmlFor="use-question-bank">{t('settings.useQuestionBank')}</Label>
+                  <p className="text-sm text-muted-foreground">
+                    {t('settings.useQuestionBankDesc')}
+                  </p>
+                </div>
+                <Switch
+                  id="use-question-bank"
+                  checked={questionSettings.useQuestionBank}
+                  onCheckedChange={checked => {
+                    setQuestionSettings({ ...questionSettings, useQuestionBank: checked });
+                  }}
+                />
+              </div>
             </TabsContent>
 
             <TabsContent value="openai" className="space-y-4">

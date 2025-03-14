@@ -62,11 +62,13 @@ const getRandomQuestionShell = async (): Promise<{
   type: QuestionType;
   category: QuestionCategories;
   difficulty: QuestionDifficulty;
+  useQuestionBank: boolean;
 }> => {
   // Load settings from localStorage, with defaults
   const savedQuestionType = safeLocalStorage.getItem('question_type') || 'all';
   const savedQuestionCategory = safeLocalStorage.getItem('question_category') || 'all';
   const savedQuestionDifficulty = safeLocalStorage.getItem('question_difficulty') || 'all';
+  const useQuestionBank = safeLocalStorage.getItem('use_question_bank') === 'true';
 
   // Define possible values for each setting, based on enums in types.ts.
   const types = Object.keys(QuestionType).filter(key => isNaN(Number(key))) as QuestionType[];
@@ -160,16 +162,23 @@ const getRandomQuestionShell = async (): Promise<{
     type: questionType,
     category: questionCategory,
     difficulty: questionDifficulty,
+    useQuestionBank,
   };
 };
 
 export async function generateRandomQuestion(
   onStream?: (chunk: string) => void
 ): Promise<Question> {
-  const { type, category, difficulty } = await getRandomQuestionShell();
+  const { type, category, difficulty, useQuestionBank } = await getRandomQuestionShell();
 
   try {
-    const res: string = await generateQuestion(type, category, difficulty, onStream);
+    const res: string = await generateQuestion(
+      type,
+      category,
+      difficulty,
+      useQuestionBank,
+      onStream
+    );
 
     const preprocessedResult = res.replace(/""""/g, '"\\"\\""').replace(/(?<!\\)""/g, '"\\"\\""');
 

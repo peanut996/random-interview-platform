@@ -73,17 +73,68 @@ const defaultQuestionUserPrompt = (type: string, category: string, difficulty: s
   Pay careful attention to the data type of the expected output and format it accordingly.
   `;
 
-export const getQuestionPrompt = (
+export const getEnhancementPrompt = (title: string) =>
+  `Analyze the technical interview question: ${title} with the following parameters:
+  
+- Type: (Must be one of ["Coding", "Question"]. "Coding" type questions require executable code. "Question" type questions are conceptual.)
+  - Category: (Can be one of ["Algorithms", "Data Structures", "Operating Systems", "Networking", "Databases", "System Design", "Concurrency"], you can add more categories if needed, based on the question.)
+  - Difficulty: (Must be one of ["Easy", "Medium", "Hard"]. Easy: Basic syntax and data structures. Medium: Algorithms and design patterns. Hard: Complex system design and optimization.)
+  
+  Generate a question that follows this exact JSON structure:
+  {
+    "type": "Coding",
+    "category": "Stack", 
+    "difficulty": "Easy",
+    "translations": {
+      "en": {
+        "title": "English title here",
+        "description": "Detailed English description here",
+        "topic": "Relevant topic here"
+      },
+      "zh": {
+        "title": "中文标题 (e.g., 实现一个二叉搜索树)",
+        "description": "详细的中文描述 (至少 3-5 句话，解释问题的背景、目的和约束条件)",
+        "topic": "相关的中文主题 (e.g., 二叉搜索树, 分治法)"
+      }
+    },
+
+    // Only include testCases if the question type is "Coding"
+    "testCases": [
+      { "input": "a = \"helloworld\", b = \"world\"", "output": "\"world\"" },
+      { "input": "a = \"programming\", b = \"prog\"", "output": "\"prog\"" },
+      { "input": "x = 5, y = 10", "output": "50" },
+      { "input": "str = \"\"", "output": "\"\"" },
+      { "input": "", "output": "\"\"" }
+    ]
+}
+  Ensure the output is valid JSON.
+  The question should be appropriate for the difficulty level and incorporates concepts from all the specified categories.
+  If multiple categories are provided, create a question that combines elements from these categories.
+  
+  IMPORTANT: For test cases where the output is a string, ALWAYS enclose the output in additional double quotes:
+  - For string output: "output": "\"hello\""
+  - For empty string: "output": "\"\""
+  - For number output: "output": "42" (no extra quotes for numbers)
+  
+  Pay careful attention to the data type of the expected output and format it accordingly.
+  If you cannot generate a valid JSON based on the provided title, return an error message or an empty JSON object.
+  `;
+
+export function getQuestionPrompt(
   type: QuestionType,
   category: QuestionCategories,
   difficulty: QuestionDifficulty,
-  customPrompt?: CustomPrompt
-) => {
+  customPrompt?: CustomPrompt,
+  title?: string
+): { systemPrompt: string; userPrompt: string } {
   const { userPrompt: customUserPrompt, systemPrompt: customSystemPrompt } = customPrompt || {};
 
   const systemPrompt =
     customSystemPrompt || defaultQuestionSystemPrompt(type, category, difficulty);
-  const userPrompt = customUserPrompt || defaultQuestionUserPrompt(type, category, difficulty);
+
+  const userPrompt =
+    (customUserPrompt ?? '') + (title ? getEnhancementPrompt(title) : '') ||
+    defaultQuestionUserPrompt(type, category, difficulty);
 
   return { systemPrompt, userPrompt };
-};
+}
