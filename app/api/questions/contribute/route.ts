@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Octokit } from '@octokit/rest';
+import { QuestionShell } from '@/lib/types';
 
 // Configuration for GitHub repository
 const REPO_OWNER = process.env.GITHUB_REPO_OWNER || 'peanut996';
@@ -49,7 +50,7 @@ export async function POST(req: NextRequest) {
       });
 
       // 3. Get the current content of the question bank file
-      let questionBankContent: any[] = [];
+      let questionBankContent: QuestionShell[] = [];
       let fileSHA: string | undefined;
       try {
         const { data: fileData } = await octokit.repos.getContent({
@@ -68,7 +69,7 @@ export async function POST(req: NextRequest) {
         }
       } catch (error) {
         // File may not exist yet, which is fine
-        console.log('Question bank file does not exist yet, will create it');
+        console.log('Question bank file does not exist yet, will create it', error);
       }
 
       // 4. Add the new question to the array
@@ -77,7 +78,7 @@ export async function POST(req: NextRequest) {
       // 5. Update or create the file
       const updatedContent = JSON.stringify(questionBankContent, null, 2);
 
-      const commitResponse = await octokit.repos.createOrUpdateFileContents({
+      await octokit.repos.createOrUpdateFileContents({
         owner: REPO_OWNER,
         repo: REPO_NAME,
         path: QUESTION_BANK_PATH,
