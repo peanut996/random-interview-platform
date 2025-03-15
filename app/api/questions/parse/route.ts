@@ -4,6 +4,8 @@ import { createOpenAIClient, prepareMessages } from '../../utils';
 import { z } from 'zod';
 import { QuestionType, QuestionDifficulty } from '@/lib/types';
 import puppeteer from 'puppeteer';
+import chromium from '@sparticuz/chromium';
+import puppeteerCore from 'puppeteer-core';
 
 // Define the schema for multiple questions parsing result
 const questionArraySchema = z.array(
@@ -21,18 +23,46 @@ const questionArraySchema = z.array(
 
 // Function to extract text content from a URL using Puppeteer
 async function extractTextFromUrl(url: string): Promise<string> {
-  const browser = await puppeteer.launch({
-    headless: true,
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
-  });
+  let browser;
 
   try {
-    const page = await browser.newPage();
-    await page.goto(url, { waitUntil: 'networkidle2', timeout: 30000 });
+    if (process.env.NODE_ENV === 'development') {
+      // For local development on Mac, use the default system Chrome
+      browser = await puppeteer.launch({
+        headless: true,
+        args: [
+          '--no-sandbox',
+          '--disable-setuid-sandbox',
+          '--disable-dev-shm-usage',
+          '--disable-gpu',
+        ],
+        ignoreDefaultArgs: ['--disable-extensions'],
+      });
+    } else {
+      // For production (Vercel/AWS Lambda)
+      browser = await puppeteerCore.launch({
+        args: chromium.args,
+        defaultViewport: chromium.defaultViewport,
+        executablePath: await chromium.executablePath(),
+        headless: chromium.headless,
+      });
+    }
 
-    // Extract main content (adjust selectors as needed for better targeting)
-    const content = await page.evaluate(() => {
-      // Try to extract main content
+    const page = await browser.newPage();
+
+    // Set a user-agent to avoid being blocked
+    await page.setUserAgent(
+      'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+    );
+
+    // Navigate with longer timeout
+    await page.goto(url, {
+      waitUntil: 'networkidle2',
+      timeout: 60000,
+    });
+
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
+    const content = await (page.evaluate as Function)(() => {
       const mainContent =
         document.querySelector('main') ||
         document.querySelector('article') ||
@@ -47,7 +77,9 @@ async function extractTextFromUrl(url: string): Promise<string> {
     console.error('Error extracting content from URL:', error);
     throw error;
   } finally {
-    await browser.close();
+    if (browser) {
+      await browser.close().catch(e => console.error('Error closing browser:', e));
+    }
   }
 }
 
