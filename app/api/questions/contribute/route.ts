@@ -18,8 +18,6 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Invalid or empty questions array' }, { status: 400 });
     }
 
-
-
     // Get GitHub token from environment variable
     const githubToken = process.env.GITHUB_TOKEN;
 
@@ -75,20 +73,24 @@ export async function POST(req: NextRequest) {
       }
 
       // 4. Add the new questions to the array, skipping duplicates based on title
-      const newQuestions = questions.filter(newQuestion => 
-        !questionBankContent.some(existingQuestion => 
-          existingQuestion.title === newQuestion.title
-        )
+      const newQuestions = questions.filter(
+        newQuestion =>
+          !questionBankContent.some(
+            existingQuestion => existingQuestion.title === newQuestion.title
+          )
       );
-      
+
       questionBankContent.push(...newQuestions);
-      
+
       // If no new questions were added (all were duplicates), return early
       if (newQuestions.length === 0) {
-        return NextResponse.json({
-          success: false,
-          message: 'All questions already exist in the question bank',
-        }, { status: 400 });
+        return NextResponse.json(
+          {
+            success: false,
+            message: 'All questions already exist in the question bank',
+          },
+          { status: 400 }
+        );
       }
 
       // 5. Update or create the file
@@ -113,7 +115,7 @@ export async function POST(req: NextRequest) {
       });
 
       // 6. Create a pull request
-      const questionTitles = questions.map(q => q.title).join(', ');
+      questions.map(q => q.title).join(', ');
       const { data: prData } = await octokit.pulls.create({
         owner: REPO_OWNER,
         repo: REPO_NAME,

@@ -4,7 +4,6 @@ import { createOpenAIClient, prepareMessages } from '../../utils';
 import { z } from 'zod';
 import { QuestionType, QuestionDifficulty } from '@/lib/types';
 import puppeteer from 'puppeteer';
-import { getEnhancementPrompt } from '@/lib/server/prompt';
 
 // Define the schema for multiple questions parsing result
 const questionArraySchema = z.array(
@@ -70,6 +69,10 @@ export async function POST(req: NextRequest) {
       try {
         textContent = await extractTextFromUrl(content);
       } catch (error) {
+        console.error(
+          `Error extracting content from URL: ${content}`,
+          error instanceof Error ? error.message : error
+        );
         return NextResponse.json({ error: 'Failed to extract content from URL' }, { status: 400 });
       }
     }
