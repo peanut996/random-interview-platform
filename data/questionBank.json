@@ -2,7 +2,146 @@
   {
     "type": "Coding",
     "title": "接雨水",
-    "category": ["LeetCode", "Array", "Dynamic Programming", "Stack", "Two Pointers"],
+    "category": [
+      "LeetCode",
+      "Array",
+      "Dynamic Programming",
+      "Stack",
+      "Two Pointers"
+    ],
     "difficulty": "Hard"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Thread Pool"
+    ],
+    "difficulty": "Medium",
+    "title": "线程池参数"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Thread Pool"
+    ],
+    "difficulty": "Medium",
+    "title": "线程池作用"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis"
+    ],
+    "difficulty": "Medium",
+    "title": "项目 redis 怎么用的"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "BitMap",
+      "Data Structure"
+    ],
+    "difficulty": "Medium",
+    "title": "BitMap 作用和优缺点+亿级用户场景"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "MySQL",
+      "Index",
+      "Query Optimization"
+    ],
+    "difficulty": "Medium",
+    "title": "mysql 语句的索引命中情况和查询效率排名"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "Math",
+      "Algorithm"
+    ],
+    "difficulty": "Medium",
+    "title": "手动开根号"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "MQ"
+    ],
+    "difficulty": "Medium",
+    "title": "MQ pull/push"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Inheritance"
+    ],
+    "difficulty": "Easy",
+    "title": "Java 是单继承吗，你知道什么语言是多继承的"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Memory Model"
+    ],
+    "difficulty": "Medium",
+    "title": "介绍 Java 内存模型"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Garbage Collection"
+    ],
+    "difficulty": "Medium",
+    "title": "介绍 Java 垃圾回收"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Cache Eviction"
+    ],
+    "difficulty": "Medium",
+    "title": "项目 redis 使用什么淘汰策略"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Persistence"
+    ],
+    "difficulty": "Medium",
+    "title": "项目 redis 做了持久化吗"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "C++",
+      "Java",
+      "Language Comparison"
+    ],
+    "difficulty": "Medium",
+    "title": "C 和 Java 的区别有什么"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Multi-threading",
+      "Concurrency"
+    ],
+    "difficulty": "Hard",
+    "title": "多线程，从底层到使用"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "Multi-threading",
+      "Concurrency"
+    ],
+    "difficulty": "Hard",
+    "title": "两线程打印，有提高要求"
   }
 ]
