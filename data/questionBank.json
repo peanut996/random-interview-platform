@@ -2,7 +2,109 @@
   {
     "type": "Coding",
     "title": "接雨水",
-    "category": ["LeetCode", "Array", "Dynamic Programming", "Stack", "Two Pointers"],
+    "category": [
+      "LeetCode",
+      "Array",
+      "Dynamic Programming",
+      "Stack",
+      "Two Pointers"
+    ],
     "difficulty": "Hard"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Medium",
+    "title": "线程池参数",
+    "title_zh": "线程池参数"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Medium",
+    "title": "线程池作用",
+    "title_zh": "线程池作用"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Data Structures",
+      "数据结构",
+      "Array",
+      "数组"
+    ],
+    "difficulty": "Medium",
+    "title": "BitMap作用和优缺点+亿级用户场景",
+    "title_zh": "BitMap作用和优缺点+亿级用户场景"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL"
+    ],
+    "difficulty": "Medium",
+    "title": "mysql语句的索引命中情况和查询效率排名",
+    "title_zh": "mysql语句的索引命中情况和查询效率排名"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Object-Oriented Programming",
+      "面向对象编程"
+    ],
+    "difficulty": "Medium",
+    "title": "Java是单继承吗，你知道什么语言是多继承的",
+    "title_zh": "Java是单继承吗，你知道什么语言是多继承的"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Medium",
+    "title": "介绍Java内存模型",
+    "title_zh": "介绍Java内存模型"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Garbage Collection",
+      "垃圾回收"
+    ],
+    "difficulty": "Medium",
+    "title": "介绍Java垃圾回收",
+    "title_zh": "介绍Java垃圾回收"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Hard",
+    "title": "两线程打印",
+    "title_zh": "两线程打印"
   }
 ]
