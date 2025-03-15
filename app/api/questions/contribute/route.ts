@@ -74,8 +74,22 @@ export async function POST(req: NextRequest) {
         console.log('Question bank file does not exist yet, will create it', error);
       }
 
-      // 4. Add the new questions to the array
-      questionBankContent.push(...questions);
+      // 4. Add the new questions to the array, skipping duplicates based on title
+      const newQuestions = questions.filter(newQuestion => 
+        !questionBankContent.some(existingQuestion => 
+          existingQuestion.title === newQuestion.title
+        )
+      );
+      
+      questionBankContent.push(...newQuestions);
+      
+      // If no new questions were added (all were duplicates), return early
+      if (newQuestions.length === 0) {
+        return NextResponse.json({
+          success: false,
+          message: 'All questions already exist in the question bank',
+        }, { status: 400 });
+      }
 
       // 5. Update or create the file
       const updatedContent = JSON.stringify(questionBankContent, null, 2);
