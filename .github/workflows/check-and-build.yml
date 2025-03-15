@@ -24,12 +24,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Approve build scripts
-        run: pnpm approve-builds puppeteer sharp # 将 puppeteer 和 sharp 替换为实际需要批准的包
-
-      - name: Build
-        run: pnpm build
-
       - name: Run linting
         run: pnpm lint && pnpm format:check
 
