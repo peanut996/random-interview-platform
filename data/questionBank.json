@@ -2,7 +2,133 @@
   {
     "type": "Coding",
     "title": "接雨水",
-    "category": ["LeetCode", "Array", "Dynamic Programming", "Stack", "Two Pointers"],
+    "category": [
+      "LeetCode",
+      "Array",
+      "Dynamic Programming",
+      "Stack",
+      "Two Pointers"
+    ],
     "difficulty": "Hard"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Medium",
+    "title": "线程池参数"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Medium",
+    "title": "线程池作用"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Data Structures",
+      "数据结构",
+      "Array",
+      "数组"
+    ],
+    "difficulty": "Medium",
+    "title": "BitMap作用和优缺点+亿级用户场景"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Index",
+      "索引"
+    ],
+    "difficulty": "Medium",
+    "title": "mysql语句的索引命中情况和查询效率排名"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Programming Language",
+      "编程语言",
+      "Java",
+      "Java",
+      "Inheritance",
+      "继承"
+    ],
+    "difficulty": "Medium",
+    "title": "Java是单继承吗，你知道什么语言是多继承的"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Programming Language",
+      "编程语言",
+      "Java",
+      "Java",
+      "Memory Model",
+      "内存模型"
+    ],
+    "difficulty": "Medium",
+    "title": "介绍Java内存模型"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Programming Language",
+      "编程语言",
+      "Java",
+      "Java",
+      "Garbage Collection",
+      "垃圾回收"
+    ],
+    "difficulty": "Medium",
+    "title": "介绍Java垃圾回收"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Concurrency",
+      "并发",
+      "Multithreading",
+      "多线程"
+    ],
+    "difficulty": "Hard",
+    "title": "多线程底层原理"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "Algorithms",
+      "算法",
+      "Concurrency",
+      "并发",
+      "Multithreading",
+      "多线程"
+    ],
+    "difficulty": "Hard",
+    "title": "两线程打印"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统"
+    ],
+    "difficulty": "Hard",
+    "title": "用户态内核态切换的底层原理"
   }
 ]
