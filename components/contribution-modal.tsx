@@ -13,7 +13,6 @@ import {
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
-import { toast } from '@/components/ui/use-toast';
 import { Loader2, GitMerge, ExternalLink, CheckCircle2, CheckIcon } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -26,6 +25,7 @@ import {
 } from '@/components/ui/select';
 import { QuestionType, QuestionDifficulty, QuestionCategory, QuestionShell } from '@/lib/types';
 import { Badge } from '@/components/ui/badge';
+import { useToast } from '@/hooks/use-toast';
 
 interface ContributionModalProps {
   isOpen: boolean;
@@ -50,6 +50,7 @@ export function ContributionModal({ isOpen, onOpenChange }: ContributionModalPro
       }
     >
   >([]);
+  const { toast } = useToast();
   const maxTextLength = 5000;
   const maxUrlLength = 500;
 

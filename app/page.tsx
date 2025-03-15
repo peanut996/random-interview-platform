@@ -17,6 +17,7 @@ import { QuestionType } from '@/lib/types';
 import { generateRandomQuestion } from '@/lib/question';
 import { useTranslation } from '@/lib/i18n';
 import { useToast } from '@/hooks/use-toast';
+import { Toaster } from '@/components/ui/sonner';
 import { evaluateAnswer, getModelAnswer } from '@/lib/api';
 
 export default function Page() {
@@ -476,6 +477,7 @@ export default function Page() {
 
   return (
     <div className="flex flex-col min-h-screen">
+      <Toaster />
       <Header
         language={language}
         setLanguage={setLanguage}
