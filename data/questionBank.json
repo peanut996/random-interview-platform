@@ -2,7 +2,22 @@
   {
     "type": "Coding",
     "title": "接雨水",
-    "category": ["LeetCode", "Array", "Dynamic Programming", "Stack", "Two Pointers"],
+    "category": [
+      "LeetCode",
+      "Array",
+      "Dynamic Programming",
+      "Stack",
+      "Two Pointers"
+    ],
     "difficulty": "Hard"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Garbage Collection"
+    ],
+    "difficulty": "Medium",
+    "title": "介绍 Java 垃圾回收"
   }
 ]
