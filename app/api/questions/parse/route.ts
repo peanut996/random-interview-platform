@@ -61,7 +61,7 @@ async function extractTextFromUrl(url: string): Promise<string> {
       timeout: 60000,
     });
 
-    // Extract main content with proper typing
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
     const content = await (page.evaluate as Function)(() => {
       const mainContent =
         document.querySelector('main') ||
