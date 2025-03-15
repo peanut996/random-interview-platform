@@ -2,7 +2,151 @@
   {
     "type": "Coding",
     "title": "接雨水",
-    "category": ["LeetCode", "Array", "Dynamic Programming", "Stack", "Two Pointers"],
+    "category": [
+      "LeetCode",
+      "Array",
+      "Dynamic Programming",
+      "Stack",
+      "Two Pointers"
+    ],
     "difficulty": "Hard"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Operating System",
+      "操作系统"
+    ],
+    "difficulty": "Medium",
+    "title": "线程池参数",
+    "newCategory": "",
+    "showCategoryInput": false,
+    "editingTitle": false
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Operating System",
+      "操作系统"
+    ],
+    "difficulty": "Medium",
+    "title": "线程池作用",
+    "newCategory": "",
+    "showCategoryInput": false,
+    "editingTitle": false
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "Redis",
+      "Redis"
+    ],
+    "difficulty": "Medium",
+    "title": "项目 redis 怎么用的",
+    "newCategory": "",
+    "showCategoryInput": false,
+    "editingTitle": false
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Data Structures",
+      "数据结构",
+      "Algorithms",
+      "算法"
+    ],
+    "difficulty": "Medium",
+    "title": "BitMap 作用和优缺点+亿级用户场景",
+    "newCategory": "",
+    "showCategoryInput": false,
+    "editingTitle": false
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL"
+    ],
+    "difficulty": "Medium",
+    "title": "mysql 语句的索引命中情况和查询效率排名",
+    "newCategory": "",
+    "showCategoryInput": false,
+    "editingTitle": false
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "Algorithms",
+      "算法",
+      "Math",
+      "数学"
+    ],
+    "difficulty": "Medium",
+    "title": "手动开根号",
+    "newCategory": "",
+    "showCategoryInput": false,
+    "editingTitle": false
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Message Queue",
+      "消息队列"
+    ],
+    "difficulty": "Medium",
+    "title": "MQ pull/push",
+    "newCategory": "",
+    "showCategoryInput": false,
+    "editingTitle": false
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Object-Oriented Programming",
+      "面向对象编程"
+    ],
+    "difficulty": "Medium",
+    "title": "Java 是单继承吗，你知道什么语言是多继承的",
+    "newCategory": "",
+    "showCategoryInput": false,
+    "editingTitle": false
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Medium",
+    "title": "介绍 Java 内存模型",
+    "newCategory": "",
+    "showCategoryInput": false,
+    "editingTitle": false
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Garbage Collection",
+      "垃圾回收"
+    ],
+    "difficulty": "Medium",
+    "title": "介绍 Java 垃圾回收",
+    "newCategory": "",
+    "showCategoryInput": false,
+    "editingTitle": false
   }
 ]
