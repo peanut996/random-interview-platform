@@ -2,7 +2,71 @@
   {
     "type": "Coding",
     "title": "接雨水",
-    "category": ["LeetCode", "Array", "Dynamic Programming", "Stack", "Two Pointers"],
+    "category": [
+      "LeetCode",
+      "Array",
+      "Dynamic Programming",
+      "Stack",
+      "Two Pointers"
+    ],
     "difficulty": "Hard"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Medium",
+    "title": "线程池参数"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Medium",
+    "title": "线程池作用"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java"
+    ],
+    "difficulty": "Medium",
+    "title": "Java 是单继承吗，你知道什么语言是多继承的"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Memory Model",
+      "内存模型"
+    ],
+    "difficulty": "Medium",
+    "title": "介绍 Java 内存模型"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Garbage Collection",
+      "垃圾回收"
+    ],
+    "difficulty": "Medium",
+    "title": "介绍 Java 垃圾回收"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Hard",
+    "title": "两线程打印，有提高要求"
   }
 ]
