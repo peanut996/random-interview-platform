@@ -22,3 +22,4 @@ yarn.lock
 # 其他
 .DS_Store
 coverage
+data/questionBank.json
