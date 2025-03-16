@@ -18,6 +18,7 @@ import { generateRandomQuestion } from '@/lib/question';
 import { useTranslation } from '@/lib/i18n';
 import { useToast } from '@/hooks/use-toast';
 import { evaluateAnswer, getModelAnswer } from '@/lib/api';
+import { Toaster } from 'sonner';
 
 export default function Page() {
   const { t, language, setLanguage } = useTranslation();
@@ -475,6 +476,7 @@ export default function Page() {
   };
 
   return (
+    
     <div className="flex flex-col min-h-screen">
       <Header
         language={language}
