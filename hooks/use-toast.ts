@@ -21,7 +21,7 @@ export function useToast() {
   const toast = useCallback(
     ({ title, description, variant = 'default', duration = 3000 }: ToastProps) => {
       const convertedVariant = convertVariant(variant);
-      
+
       sonnerToast({
         title,
         description,
