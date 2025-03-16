@@ -133,8 +133,8 @@ export function getQuestionPrompt(
     customSystemPrompt || defaultQuestionSystemPrompt(type, category, difficulty);
 
   const userPrompt =
-    (customUserPrompt ?? '') + (title ? getEnhancementPrompt(title) : '') ||
-    defaultQuestionUserPrompt(type, category, difficulty);
+    (customUserPrompt ?? '') +
+    (title ? getEnhancementPrompt(title) : defaultQuestionUserPrompt(type, category, difficulty));
 
   return { systemPrompt, userPrompt };
 }

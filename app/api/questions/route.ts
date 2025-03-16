@@ -20,9 +20,9 @@ export async function POST(req: NextRequest) {
           console.log('[Server] Found matching question in QuestionBank:', matchingQuestion);
           // Use the existing AI infrastructure to enhance the question
           const { userPrompt, systemPrompt } = getQuestionPrompt(
-            type,
-            category,
-            difficulty,
+            matchingQuestion.type,
+            matchingQuestion.category[0],
+            matchingQuestion.difficulty,
             customPrompt,
             matchingQuestion.title
           );
@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
             model: completion as LanguageModel,
             schema: questionSchema,
             messages,
-            temperature: 0.7,
+            temperature: 0.3,
             mode: 'json',
           });
 
