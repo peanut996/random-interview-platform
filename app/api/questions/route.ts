@@ -3,7 +3,7 @@ import { LanguageModel, LanguageModelV1, streamObject } from 'ai';
 import { createOpenAIClient, prepareMessages, questionSchema } from '../utils';
 import { GenerateQuestionParams } from '@/lib/types';
 import { getQuestionPrompt } from '@/lib/server/prompt';
-import { findMatchingQuestion } from '@/lib/server/questionBank';
+import { findMatchingQuestionFromBank } from '@/lib/server/questionBank';
 
 export async function POST(req: NextRequest) {
   try {
@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
     if (useQuestionBank) {
       try {
         // Try to find a matching question from the QuestionBank
-        const matchingQuestion = await findMatchingQuestion(type, category, difficulty);
+        const matchingQuestion = await findMatchingQuestionFromBank(type, category, difficulty);
 
         if (matchingQuestion) {
           // Use the existing AI infrastructure to enhance the question
