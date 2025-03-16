@@ -74,9 +74,9 @@ const defaultQuestionUserPrompt = (type: string, category: string, difficulty: s
   `;
 
 export const getEnhancementPrompt = (title: string) =>
-  `Analyze the technical interview question: ${title} with the following parameters:
+  `Expand the technical interview question: ${title} with the following parameters:
   
-- Type: (Must be one of ["Coding", "Question"]. "Coding" type questions require executable code. "Question" type questions are conceptual.)
+  - Type: (Must be one of ["Coding", "Question"]. "Coding" type questions require executable code. "Question" type questions are conceptual.)
   - Category: (Can be one of ["Algorithms", "Data Structures", "Operating Systems", "Networking", "Databases", "System Design", "Concurrency"], you can add more categories if needed, based on the question.)
   - Difficulty: (Must be one of ["Easy", "Medium", "Hard"]. Easy: Basic syntax and data structures. Medium: Algorithms and design patterns. Hard: Complex system design and optimization.)
   

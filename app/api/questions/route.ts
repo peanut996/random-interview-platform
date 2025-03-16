@@ -17,6 +17,7 @@ export async function POST(req: NextRequest) {
         const matchingQuestion = await findMatchingQuestionFromBank(type, category, difficulty);
 
         if (matchingQuestion) {
+          console.log('[Server] Found matching question in QuestionBank:', matchingQuestion);
           // Use the existing AI infrastructure to enhance the question
           const { userPrompt, systemPrompt } = getQuestionPrompt(
             type,

@@ -45,7 +45,7 @@ export async function findMatchingQuestionFromBank(
   try {
     loadQuestionBank();
     if (!questionBank || questionBank.length === 0) {
-      console.warn('Question bank is empty or not loaded.');
+      console.warn('[Server] Question bank is empty or not loaded.');
       return null;
     }
 
@@ -60,6 +60,7 @@ export async function findMatchingQuestionFromBank(
 
       return question.category.some(cat => caseInsensitiveEqual(cat, category));
     });
+    console.log('[Server] Matching questions count:', matchingQuestions);
 
     if (matchingQuestions.length === 0) {
       return questionBank[Math.floor(Math.random() * questionBank.length)];
