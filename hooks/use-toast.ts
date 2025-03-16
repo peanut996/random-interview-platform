@@ -1,30 +1,33 @@
 'use client';
 
 import { useCallback } from 'react';
-import { toast as sonnerToast } from 'sonner';
+import { toast as sonnerToast } from '@/components/ui/sonner';
 
 type ToastProps = {
-  title?: string;
+  title: string;
   description?: string;
-  variant?: 'default' | 'destructive';
+  variant?: 'default' | 'destructive' | 'success' | 'warning' | 'error';
   duration?: number;
 };
+
+function convertVariant(variant: ToastProps['variant']) {
+  if (variant === 'default') return 'success';
+  if (variant === 'destructive') return 'error';
+  return variant;
+}
 
 export function useToast() {
   // Use useCallback to memoize the toast function
   const toast = useCallback(
     ({ title, description, variant = 'default', duration = 3000 }: ToastProps) => {
-      if (variant === 'destructive') {
-        sonnerToast.error(title, {
-          description,
-          duration,
-        });
-      } else {
-        sonnerToast(title, {
-          description,
-          duration,
-        });
-      }
+      const convertedVariant = convertVariant(variant);
+
+      sonnerToast({
+        title,
+        description,
+        variant: convertedVariant,
+        duration,
+      });
     },
     []
   );
