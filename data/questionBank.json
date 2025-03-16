@@ -2,7 +2,107 @@
   {
     "type": "Coding",
     "title": "接雨水",
-    "category": ["LeetCode", "Array", "Dynamic Programming", "Stack", "Two Pointers"],
+    "category": [
+      "LeetCode",
+      "Array",
+      "Dynamic Programming",
+      "Stack",
+      "Two Pointers"
+    ],
     "difficulty": "Hard"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "Data Structures",
+      "数据结构",
+      "Redis"
+    ],
+    "difficulty": "Medium",
+    "title": "ZSET表的原理，怎么实现的用户登录限流，表占用过大时是手动还是自动删除数据，占用上限是如何设置的"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Networking",
+      "网络"
+    ],
+    "difficulty": "Hard",
+    "title": "Epoll的原理"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Data Structures",
+      "数据结构",
+      "Tree",
+      "树"
+    ],
+    "difficulty": "Hard",
+    "title": "红黑树的原理，在Epoll中红黑树的键值分别是什么"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Networking",
+      "网络"
+    ],
+    "difficulty": "Hard",
+    "title": "epoll_wait返回的队列是由谁将事件加入队列的"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "线程池有几个分别是什么作用"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统"
+    ],
+    "difficulty": "Medium",
+    "title": "Linux中的硬连接和软连接，硬连接软连接可以比作哪些智能指针"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统"
+    ],
+    "difficulty": "Medium",
+    "title": "虚拟内存，不同操作系统下页表是几级"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统"
+    ],
+    "difficulty": "Medium",
+    "title": "中断机制是怎么处理的"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "Algorithms",
+      "算法",
+      "Dynamic Programming",
+      "动态规划",
+      "LeetCode"
+    ],
+    "difficulty": "Medium",
+    "title": "最长公共子序列"
   }
 ]
