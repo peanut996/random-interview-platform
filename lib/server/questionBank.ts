@@ -19,14 +19,14 @@ const questionBankPath = path.join(process.cwd(), 'data', 'questionBank.json');
 
 // Function to load questions from the question bank
 function loadQuestionBank() {
-  if(questionBank && questionBank.length > 0) {
+  if (questionBank && questionBank.length > 0) {
     return;
   }
   try {
     if (!fs.existsSync(questionBankPath)) {
       fs.writeFileSync(questionBankPath, JSON.stringify([], null, 2));
-        console.log('[Server] Question bank file created:', questionBankPath);
-        questionBank = [];
+      console.log('[Server] Question bank file created:', questionBankPath);
+      questionBank = [];
     }
 
     const data = fs.readFileSync(questionBankPath, 'utf8');
@@ -49,8 +49,8 @@ export async function findMatchingQuestionFromBank(
       return null;
     }
 
-    if(!type || !category || !difficulty) {
-        return questionBank[Math.floor(Math.random() * questionBank.length)];
+    if (!type || !category || !difficulty) {
+      return questionBank[Math.floor(Math.random() * questionBank.length)];
     }
 
     const matchingQuestions = questionBank.filter(question => {
@@ -59,8 +59,6 @@ export async function findMatchingQuestionFromBank(
       if (!caseInsensitiveEqual(difficulty, question.difficulty)) return false;
 
       return question.category.some(cat => caseInsensitiveEqual(cat, category));
-
-
     });
 
     if (matchingQuestions.length === 0) {
