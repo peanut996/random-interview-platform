@@ -22,7 +22,14 @@ import {
 } from '@/components/ui/select';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useToast } from '@/hooks/use-toast';
-import { QuestionCategory, CodingCategory, QuestionType } from '@/lib/types';
+import {
+  QuestionCategory,
+  CodingCategory,
+  QuestionType,
+  All,
+  Custom,
+  QuestionDifficulty,
+} from '@/lib/types';
 import {
   addCustomCategory,
   removeCustomCategory,
@@ -65,9 +72,9 @@ export default function SettingsModal({ onClose }: SettingsModalProps) {
   });
 
   const [questionSettings, setQuestionSettings] = useState({
-    type: safeLocalStorage.getItem('question_type') || 'all',
-    category: safeLocalStorage.getItem('question_category') || 'all',
-    difficulty: safeLocalStorage.getItem('question_difficulty') || 'all',
+    type: safeLocalStorage.getItem('question_type') || All,
+    category: safeLocalStorage.getItem('question_category') || All,
+    difficulty: safeLocalStorage.getItem('question_difficulty') || All,
     weightedMistakes: safeLocalStorage.getItem('weighted_mistakes') === 'true',
     useQuestionBank: safeLocalStorage.getItem('use_question_bank') === 'true',
   });
@@ -99,8 +106,9 @@ export default function SettingsModal({ onClose }: SettingsModalProps) {
     const savedCategory = safeLocalStorage.getItem('question_category') || '';
     const savedType = safeLocalStorage.getItem('question_type');
 
-    if (savedCategory && savedType && savedType !== 'all') {
-      const selectedType = savedType === 'coding' ? QuestionType.Coding : QuestionType.Question;
+    if (savedCategory && savedType && savedType !== All) {
+      const selectedType =
+        savedType === QuestionType.Coding ? QuestionType.Coding : QuestionType.Question;
 
       const standardCategories =
         selectedType === QuestionType.Coding
@@ -109,9 +117,9 @@ export default function SettingsModal({ onClose }: SettingsModalProps) {
 
       // If the saved category is not in standard categories, it must be custom
       if (
-        savedCategory !== 'all' &&
+        savedCategory !== All &&
         !standardCategories.includes(savedCategory) &&
-        savedCategory !== 'custom'
+        savedCategory !== Custom
       ) {
         setIsCustomCategory(true);
       }
@@ -121,13 +129,13 @@ export default function SettingsModal({ onClose }: SettingsModalProps) {
   // Define different categories based on question type
   const getCategories = () => {
     const selectedType =
-      questionSettings.type === 'coding'
+      questionSettings.type === QuestionType.Coding
         ? QuestionType.Coding
-        : questionSettings.type === 'question'
+        : questionSettings.type === QuestionType.Question
           ? QuestionType.Question
           : null;
 
-    if (questionSettings.type === 'all' || !selectedType) {
+    if (questionSettings.type === All || !selectedType) {
       // If no specific type selected, return all categories
       return [
         ...Object.values(QuestionCategory).map(value => ({ key: value, value })),
@@ -186,8 +194,9 @@ export default function SettingsModal({ onClose }: SettingsModalProps) {
   };
 
   const handleAddCustomCategory = () => {
-    if (newCustomCategory.trim() && questionSettings.type !== 'all') {
-      const type = questionSettings.type === 'coding' ? QuestionType.Coding : QuestionType.Question;
+    if (newCustomCategory.trim() && questionSettings.type !== All) {
+      const type =
+        questionSettings.type === QuestionType.Coding ? QuestionType.Coding : QuestionType.Question;
 
       addCustomCategory(type, newCustomCategory.trim());
 
@@ -212,7 +221,7 @@ export default function SettingsModal({ onClose }: SettingsModalProps) {
         ).replace('{category}', newCustomCategory.trim()),
         duration: 3000,
       });
-    } else if (questionSettings.type === 'all') {
+    } else if (questionSettings.type === All) {
       // Show a toast notification that a type must be selected
       toast({
         title: t('settings.cannotAddCategory') || 'Cannot Add Category',
@@ -226,9 +235,10 @@ export default function SettingsModal({ onClose }: SettingsModalProps) {
   };
 
   const handleRemoveCustomCategory = (category: string) => {
-    if (questionSettings.type === 'all') return;
+    if (questionSettings.type === All) return;
 
-    const type = questionSettings.type === 'coding' ? QuestionType.Coding : QuestionType.Question;
+    const type =
+      questionSettings.type === QuestionType.Coding ? QuestionType.Coding : QuestionType.Question;
 
     removeCustomCategory(type, category);
 
@@ -242,7 +252,7 @@ export default function SettingsModal({ onClose }: SettingsModalProps) {
     if (questionSettings.category === category) {
       setQuestionSettings({
         ...questionSettings,
-        category: 'custom',
+        category: Custom,
       });
     }
 
@@ -263,9 +273,9 @@ export default function SettingsModal({ onClose }: SettingsModalProps) {
   const confirmReset = () => {
     // Reset question settings
     setQuestionSettings({
-      type: 'all',
-      category: 'all',
-      difficulty: 'all',
+      type: All,
+      category: All,
+      difficulty: All,
       weightedMistakes: false,
       useQuestionBank: false,
     });
@@ -343,7 +353,7 @@ export default function SettingsModal({ onClose }: SettingsModalProps) {
                   value={questionSettings.type}
                   onValueChange={value => {
                     // Only reset the category if switching to "all" from a specific type
-                    const newCategory = value === 'all' ? 'all' : questionSettings.category;
+                    const newCategory = value === All ? All : questionSettings.category;
 
                     // Reset custom category flag if changing types
                     if (value !== questionSettings.type) {
@@ -361,9 +371,9 @@ export default function SettingsModal({ onClose }: SettingsModalProps) {
                     <SelectValue placeholder={t('settings.all')} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="all">{t('settings.all')}</SelectItem>
-                    <SelectItem value="coding">{t('settings.coding')}</SelectItem>
-                    <SelectItem value="question">{t('settings.question')}</SelectItem>
+                    <SelectItem value={All}>{t('settings.all')}</SelectItem>
+                    <SelectItem value={QuestionType.Coding}>{t('settings.coding')}</SelectItem>
+                    <SelectItem value={QuestionType.Question}>{t('settings.question')}</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -371,9 +381,9 @@ export default function SettingsModal({ onClose }: SettingsModalProps) {
               <div className="space-y-2">
                 <Label>{t('settings.category')}</Label>
                 <Select
-                  value={isCustomCategory ? 'custom' : questionSettings.category}
+                  value={isCustomCategory ? Custom : questionSettings.category}
                   onValueChange={value => {
-                    if (value === 'custom') {
+                    if (value === Custom) {
                       setIsCustomCategory(true);
                       // Keep the current category if it's already custom
                     } else {
@@ -389,14 +399,14 @@ export default function SettingsModal({ onClose }: SettingsModalProps) {
                     <SelectValue placeholder={t('settings.all')} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="all">{t('settings.all')}</SelectItem>
+                    <SelectItem value={All}>{t('settings.all')}</SelectItem>
                     {getCategories().map(category => (
                       <SelectItem key={category.key} value={category.value}>
                         {category.value}
                       </SelectItem>
                     ))}
                     {/* Always show the custom option */}
-                    <SelectItem value="custom">{t('settings.custom')}</SelectItem>
+                    <SelectItem value={Custom}>{t('settings.custom')}</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -406,7 +416,7 @@ export default function SettingsModal({ onClose }: SettingsModalProps) {
                 <div className="space-y-2 pt-2 border-t border-gray-200 dark:border-gray-700">
                   <Label>{t('settings.customCategory') || 'Custom Category'}</Label>
                   {/* If "all" is selected, show a note that a type must be chosen */}
-                  {questionSettings.type === 'all' ? (
+                  {questionSettings.type === All ? (
                     <div className="text-sm text-amber-600 dark:text-amber-400 mb-2">
                       {t('settings.selectTypeForCustomCategory') ||
                         'Please select a question type (Coding or Question) to add custom categories.'}
@@ -435,7 +445,7 @@ export default function SettingsModal({ onClose }: SettingsModalProps) {
                   )}
 
                   {/* Show both types of custom categories when "all" is selected */}
-                  {questionSettings.type === 'all' ? (
+                  {questionSettings.type === All ? (
                     <>
                       {/* Show Coding custom categories */}
                       {customCategories[QuestionType.Coding].length > 0 && (
@@ -478,7 +488,7 @@ export default function SettingsModal({ onClose }: SettingsModalProps) {
                   ) : (
                     /* Display existing custom categories for the selected type */
                     customCategories[
-                      questionSettings.type === 'coding'
+                      questionSettings.type === QuestionType.Coding
                         ? QuestionType.Coding
                         : QuestionType.Question
                     ].length > 0 && (
@@ -488,7 +498,7 @@ export default function SettingsModal({ onClose }: SettingsModalProps) {
                         </Label>
                         <div className="flex flex-wrap gap-2 mt-2">
                           {customCategories[
-                            questionSettings.type === 'coding'
+                            questionSettings.type === QuestionType.Coding
                               ? QuestionType.Coding
                               : QuestionType.Question
                           ].map(category => (
@@ -544,24 +554,15 @@ export default function SettingsModal({ onClose }: SettingsModalProps) {
                     <SelectValue placeholder={t('settings.all')} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="all">{t('settings.all')}</SelectItem>
-                    <SelectItem value="easy">{t('settings.easy')}</SelectItem>
-                    <SelectItem value="medium">{t('settings.medium')}</SelectItem>
-                    <SelectItem value="hard">{t('settings.hard')}</SelectItem>
+                    <SelectItem value={All}>{t('settings.all')}</SelectItem>
+                    <SelectItem value={QuestionDifficulty.Easy}>{t('settings.easy')}</SelectItem>
+                    <SelectItem value={QuestionDifficulty.Medium}>
+                      {t('settings.medium')}
+                    </SelectItem>
+                    <SelectItem value={QuestionDifficulty.Hard}>{t('settings.hard')}</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
-
-              {/* <div className="flex items-center justify-between">
-                <div className="space-y-0.5">
-                  <Label>{t("settings.weightedMistakes")}</Label>
-                  <div className="text-sm text-muted-foreground">{t("settings.weightedMistakesDescription")}</div>
-                </div>
-                <Switch
-                  checked={questionSettings.weightedMistakes}
-                  onCheckedChange={(checked) => setQuestionSettings({ ...questionSettings, weightedMistakes: checked })}
-                />
-              </div> */}
 
               {/* QuestionBank toggle */}
               <div className="flex items-center justify-between">
@@ -628,9 +629,9 @@ export default function SettingsModal({ onClose }: SettingsModalProps) {
                     {t('settings.model')} <span className="text-red-500">*</span>
                   </Label>
                   <Select
-                    value={isCustomModel ? 'custom' : openAISettings.model}
+                    value={isCustomModel ? Custom : openAISettings.model}
                     onValueChange={value => {
-                      if (value === 'custom') {
+                      if (value === Custom) {
                         setIsCustomModel(true);
                         // Keep the current model value if it's already custom
                         if (!isCustomModel) {
