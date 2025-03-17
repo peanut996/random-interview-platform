@@ -104,5 +104,165 @@
     ],
     "difficulty": "Medium",
     "title": "最长公共子序列"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "Algorithms",
+      "算法",
+      "String",
+      "字符串",
+      "LeetCode"
+    ],
+    "difficulty": "Medium",
+    "title": "无重复最长子串"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "TCP",
+      "UDP"
+    ],
+    "difficulty": "Medium",
+    "title": "TCP和UDP的区别"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "Algorithms",
+      "算法",
+      "Array",
+      "数组",
+      "LeetCode"
+    ],
+    "difficulty": "Medium",
+    "title": "区间合并"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Golang",
+      "Go"
+    ],
+    "difficulty": "Medium",
+    "title": "进程线程协程，gmp调度？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "MySQL"
+    ],
+    "difficulty": "Medium",
+    "title": "乐观锁和悲观锁？讲讲怎么实现？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Medium",
+    "title": "死锁的条件？解决办法？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL"
+    ],
+    "difficulty": "Medium",
+    "title": "MySQL事务特性以及实现"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "System Design",
+      "系统设计"
+    ],
+    "difficulty": "Hard",
+    "title": "如果你的项目有千万级的用户量，你怎么优化"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Design Patterns",
+      "设计模式"
+    ],
+    "difficulty": "Easy",
+    "title": "设计模式了解过哪些"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "Algorithms",
+      "算法",
+      "Graph",
+      "图",
+      "LeetCode"
+    ],
+    "difficulty": "Medium",
+    "title": "岛屿数量"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "TCP",
+      "UDP",
+      "HTTP"
+    ],
+    "difficulty": "Medium",
+    "title": "TCP和UDP区别，HTTP用的谁，为什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP"
+    ],
+    "difficulty": "Easy",
+    "title": "HTTP状态码"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP",
+      "TCP",
+      "UDP"
+    ],
+    "difficulty": "Medium",
+    "title": "HTTP是长连接还是短连接，如何用UDP实现"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL"
+    ],
+    "difficulty": "Medium",
+    "title": "MySQL索引如何实现的。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL"
+    ],
+    "difficulty": "Medium",
+    "title": "MySQL索引为什么用B+不用B树？如果把内容存在内存上，用B树会不会快一点。"
   }
 ]
