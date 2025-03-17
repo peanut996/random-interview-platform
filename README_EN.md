@@ -77,6 +77,17 @@ Through the settings panel, you can:
 - Configure editor: choose theme, font size, and programming language
 - Configure OpenAI parameters: endpoint, model, and API key
 
+## 🤝 Contribute Questions
+
+Through the built-in contribution feature, you can easily add new questions to the platform:
+
+- **Text Contribution**: Directly paste text content containing interview questions
+- **URL Contribution**: Provide a link to a webpage containing interview questions
+- **Edit & Confirm**: After parsing, you can edit question details including title, type, difficulty and categories
+- **Automatic Processing**: The system will automatically create a Pull Request to help merge your questions into the database
+
+Contributed questions will help all platform users improve their skills.
+
 ## 🌟 Featured Capabilities
 
 ### ✅ Professional Coding Environment
