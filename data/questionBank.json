@@ -106,7 +106,7 @@
     "title": "最长公共子序列"
   },
   {
-    "type": "Question",
+    "type": "Coding",
     "category": [
       "Algorithms",
       "算法",
@@ -121,13 +121,15 @@
     "type": "Question",
     "category": [
       "Networking",
-      "网络"
+      "网络",
+      "TCP",
+      "UDP"
     ],
     "difficulty": "Medium",
     "title": "TCP和UDP的区别"
   },
   {
-    "type": "Question",
+    "type": "Coding",
     "category": [
       "Algorithms",
       "算法",
@@ -143,7 +145,8 @@
     "category": [
       "Operating System",
       "操作系统",
-      "Golang"
+      "Golang",
+      "Go"
     ],
     "difficulty": "Medium",
     "title": "进程线程协程，gmp调度？"
@@ -197,7 +200,7 @@
     "title": "设计模式了解过哪些"
   },
   {
-    "type": "Question",
+    "type": "Coding",
     "category": [
       "Algorithms",
       "算法",
@@ -235,7 +238,9 @@
     "category": [
       "Networking",
       "网络",
-      "HTTP"
+      "HTTP",
+      "TCP",
+      "UDP"
     ],
     "difficulty": "Medium",
     "title": "HTTP是长连接还是短连接，如何用UDP实现"
@@ -248,7 +253,7 @@
       "MySQL"
     ],
     "difficulty": "Medium",
-    "title": "平时用什么mysql的软件，索引如何实现的。"
+    "title": "MySQL索引如何实现的。"
   },
   {
     "type": "Question",
@@ -258,6 +263,6 @@
       "MySQL"
     ],
     "difficulty": "Medium",
-    "title": "为什么用B+不用B树？如果把内容存在内存上，用B树会不会快一点。"
+    "title": "MySQL索引为什么用B+不用B树？如果把内容存在内存上，用B树会不会快一点。"
   }
 ]
