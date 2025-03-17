@@ -21,6 +21,10 @@
   <img src="assets/screenshot.png" alt="应用截图" width="80%" />
 </p>
 
+## 🚀 快速尝鲜
+
+https://devinterview.org
+
 ## ✨ 主要功能
 
 - 🎯 **真实的面试体验**：模拟真实面试环境，提供编码挑战与技术问题
