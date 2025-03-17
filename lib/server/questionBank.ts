@@ -41,34 +41,81 @@ export async function findMatchingQuestionFromBank(
   type?: QuestionType,
   category?: QuestionCategories,
   difficulty?: QuestionDifficulty
-): Promise<QuestionBankItem | null> {
+): Promise<QuestionBankItem> {
   try {
     loadQuestionBank();
     if (!questionBank || questionBank.length === 0) {
       console.warn('[Server] Question bank is empty or not loaded.');
-      return null;
+      throw new Error('Question bank is empty or not loaded');
     }
 
     if (!type || !category || !difficulty) {
       return questionBank[Math.floor(Math.random() * questionBank.length)];
     }
 
-    const matchingQuestions = questionBank.filter(question => {
-      if (!caseInsensitiveEqual(type, question.type)) return false;
-
-      if (!caseInsensitiveEqual(difficulty, question.difficulty)) return false;
-
-      return question.category.some(cat => caseInsensitiveEqual(cat, category));
-    });
-    console.log('[Server] Matching questions count:', matchingQuestions);
-
-    if (matchingQuestions.length === 0) {
-      return questionBank[Math.floor(Math.random() * questionBank.length)];
+    const matchedQuestion = getMatchingQuestion(questionBank, type, category, difficulty);
+    if (!matchedQuestion) {
+      throw new Error('No matching question found');
     }
-
-    return matchingQuestions[Math.floor(Math.random() * matchingQuestions.length)];
+    return matchedQuestion;
   } catch (error) {
     console.error('Error finding matching question:', error);
-    return null;
+    throw error;
   }
 }
+
+/**
+ * Finds a question matching the specified criteria with a progressive fallback strategy.
+ * Attempts to match all criteria (category, type, difficulty), falling back to broader matches
+ * when specific matches aren't available.
+ *
+ * @param questionBank - The complete array of questions to search through
+ * @param type - The desired question type (e.g., 'multiple-choice', 'coding')
+ * @param category - The desired question category (e.g., 'javascript', 'algorithms')
+ * @param difficulty - The desired difficulty level (e.g., 'easy', 'medium', 'hard')
+ * @returns A question that best matches the given criteria
+ */
+const getMatchingQuestion = (
+  questionBank: QuestionBankItem[],
+  type: QuestionType,
+  category: QuestionCategories,
+  difficulty: QuestionDifficulty
+): QuestionBankItem => {
+  // Helper function to get a random item from an array
+  const getRandomItem = (items: QuestionBankItem[]): QuestionBankItem =>
+    items[Math.floor(Math.random() * items.length)];
+
+  // Step 1: Filter by category (most important criterion)
+  const categoryMatches = questionBank.filter(question =>
+    question.category.some(cat => caseInsensitiveEqual(cat, category))
+  );
+
+  // If no category matches, return a random question from the entire bank
+  if (categoryMatches.length === 0) {
+    // try filter with type and difficulty
+    const fallback = questionBank
+      .filter(question => caseInsensitiveEqual(type, question.type))
+      .filter(question => caseInsensitiveEqual(difficulty, question.difficulty));
+    return fallback.length > 0 ? getRandomItem(fallback) : getRandomItem(questionBank);
+  }
+
+  // Step 2: From category matches, filter by type
+  const typeAndCategoryMatches = categoryMatches.filter(question =>
+    caseInsensitiveEqual(type, question.type)
+  );
+
+  // If no type+category matches, return a random category match
+  if (typeAndCategoryMatches.length === 0) {
+    return getRandomItem(categoryMatches);
+  }
+
+  // Step 3: From type+category matches, filter by difficulty
+  const fullMatches = typeAndCategoryMatches.filter(question =>
+    caseInsensitiveEqual(difficulty, question.difficulty)
+  );
+
+  // Return the most specific match available
+  return fullMatches.length > 0
+    ? getRandomItem(fullMatches)
+    : getRandomItem(typeAndCategoryMatches);
+};
