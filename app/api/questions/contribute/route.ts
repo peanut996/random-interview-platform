@@ -100,7 +100,7 @@ export async function POST(req: NextRequest) {
         owner: REPO_OWNER,
         repo: REPO_NAME,
         path: QUESTION_BANK_PATH,
-        message: `Add ${questions.length} new question${questions.length > 1 ? 's' : ''}`,
+        message: `[BOT] feat: Add ${questions.length} new question${questions.length > 1 ? 's' : ''}`,
         content: Buffer.from(updatedContent).toString('base64'),
         branch: branchName,
         sha: fileSHA, // Only needed when updating an existing file,
