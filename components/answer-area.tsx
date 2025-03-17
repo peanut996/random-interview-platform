@@ -172,18 +172,18 @@ export default function AnswerArea({
 
         {question.type === 'Coding' ? (
           <Tabs defaultValue="editor" value={activeTab} onValueChange={setActiveTab}>
-            <div className="flex justify-between items-center mb-4">
-              <TabsList>
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 mb-4">
+              <TabsList className="mb-2 sm:mb-0">
                 <TabsTrigger value="editor">{t('answer.editor')}</TabsTrigger>
                 <TabsTrigger value="preview">{t('answer.preview')}</TabsTrigger>
               </TabsList>
 
               {activeTab === 'editor' ? (
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2">
                   <div className="flex items-center">
-                    <Code className="mr-2 h-4 w-4 text-muted-foreground" />
+                    <Code className="mr-1 h-4 w-4 text-muted-foreground" />
                     <Select value={editorLanguage} onValueChange={setEditorLanguage}>
-                      <SelectTrigger className="w-[140px] h-8">
+                      <SelectTrigger className="w-[100px] sm:w-[140px] h-8">
                         <SelectValue placeholder="Language" />
                       </SelectTrigger>
                       <SelectContent>
@@ -196,28 +196,29 @@ export default function AnswerArea({
                     </Select>
                   </div>
 
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <Button variant="outline" size="icon" className="h-8 w-8">
-                        <Type className="h-4 w-4" />
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-80">
-                      <div className="space-y-2">
-                        <h4 className="font-medium text-sm">
-                          {t('editor.fontSize')}: {editorFontSize}px
-                        </h4>
-                        <Slider
-                          defaultValue={[editorFontSize]}
-                          max={24}
-                          min={10}
-                          step={1}
-                          onValueChange={handleFontSizeChange}
-                        />
-                      </div>
-                    </PopoverContent>
-                  </Popover>
-
+                  <div className="flex items-center gap-1">
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <Button variant="outline" size="icon" className="h-8 w-8">
+                          <Type className="h-4 w-4" />
+                        </Button>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-80">
+                        <div className="space-y-2">
+                          <h4 className="font-medium text-sm">
+                            {t('editor.fontSize')}: {editorFontSize}px
+                          </h4>
+                          <Slider
+                            defaultValue={[editorFontSize]}
+                            max={24}
+                            min={10}
+                            step={1}
+                            onValueChange={handleFontSizeChange}
+                          />
+                        </div>
+                      </PopoverContent>
+                    </Popover>
+                  </div>
                   <Popover>
                     <PopoverTrigger asChild>
                       <Button variant="outline" size="icon" className="h-8 w-8">
@@ -247,7 +248,7 @@ export default function AnswerArea({
                 <Button
                   variant="outline"
                   size="sm"
-                  className="h-8"
+                  className="h-8 ml-auto"
                   onClick={handleCopyCode}
                   disabled={!userAnswer.content || isCopied}
                 >
