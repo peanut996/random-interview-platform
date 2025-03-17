@@ -6,6 +6,8 @@ import {
   QuestionDifficulty,
   QuestionType,
   QuestionCategories,
+  All,
+  Custom,
 } from './types';
 import { jsonrepair } from 'jsonrepair';
 
@@ -65,9 +67,9 @@ const getRandomQuestionShell = async (): Promise<{
   useQuestionBank: boolean;
 }> => {
   // Load settings from localStorage, with defaults
-  const savedQuestionType = safeLocalStorage.getItem('question_type') || 'all';
-  const savedQuestionCategory = safeLocalStorage.getItem('question_category') || 'all';
-  const savedQuestionDifficulty = safeLocalStorage.getItem('question_difficulty') || 'all';
+  const savedQuestionType = safeLocalStorage.getItem('question_type') || All;
+  const savedQuestionCategory = safeLocalStorage.getItem('question_category') || All;
+  const savedQuestionDifficulty = safeLocalStorage.getItem('question_difficulty') || All;
   const useQuestionBank = safeLocalStorage.getItem('use_question_bank') === 'true';
 
   // Define possible values for each setting, based on enums in types.ts.
@@ -88,16 +90,16 @@ const getRandomQuestionShell = async (): Promise<{
 
   // Select random question type or use saved value
   const questionType =
-    savedQuestionType === 'all'
+    savedQuestionType === All
       ? types[Math.floor(Math.random() * types.length)]
-      : savedQuestionType === 'coding'
+      : savedQuestionType === QuestionType.Coding
         ? QuestionType.Coding
         : QuestionType.Question;
 
   // Select category based on question type
   let questionCategory;
 
-  if (savedQuestionCategory === 'all') {
+  if (savedQuestionCategory === All) {
     // If no specific category is saved, pick randomly based on question type
     if (questionType === QuestionType.Coding) {
       // For coding questions, use coding categories + custom coding categories
@@ -125,12 +127,12 @@ const getRandomQuestionShell = async (): Promise<{
       ];
       questionCategory = allCategories[Math.floor(Math.random() * allCategories.length)];
     }
-  } else if (savedQuestionCategory === 'custom') {
+  } else if (savedQuestionCategory === Custom) {
     // If custom is selected, pick a random custom category from the appropriate type
     const type =
-      savedQuestionType === 'coding'
+      savedQuestionType === QuestionType.Coding
         ? QuestionType.Coding
-        : savedQuestionType === 'question'
+        : savedQuestionType === QuestionType.Question
           ? QuestionType.Question
           : types[Math.floor(Math.random() * types.length)];
 
@@ -154,7 +156,7 @@ const getRandomQuestionShell = async (): Promise<{
   }
 
   const questionDifficulty =
-    savedQuestionDifficulty === 'all'
+    savedQuestionDifficulty === All
       ? difficulties[Math.floor(Math.random() * difficulties.length)]
       : (savedQuestionDifficulty as QuestionDifficulty);
 

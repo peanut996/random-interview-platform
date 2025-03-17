@@ -4,6 +4,7 @@ import { API_ROUTE_PARSE_QUESTION_TITLE } from './const';
 import {
   CustomSettings,
   GenerateQuestionParams,
+  PromptUsage,
   Question,
   QuestionCategories,
   QuestionDifficulty,
@@ -28,10 +29,10 @@ function getCustomSettings(): CustomSettings | null {
 }
 
 // Helper function to get custom system prompts
-function getCustomSystemPrompt(type: 'question' | 'answer'): string | undefined {
+function getCustomSystemPrompt(type: PromptUsage): string | undefined {
   if (typeof window === 'undefined') return undefined;
 
-  const key = type === 'question' ? 'system_prompt_question' : 'system_prompt_answer';
+  const key = type === PromptUsage.Question ? 'system_prompt_question' : 'system_prompt_answer';
   const customPrompt = localStorage.getItem(key);
 
   return customPrompt || undefined;
@@ -46,7 +47,7 @@ export async function generateQuestion(
 ) {
   try {
     const customSettings = getCustomSettings();
-    const customSystemPrompt = getCustomSystemPrompt('question');
+    const customSystemPrompt = getCustomSystemPrompt(PromptUsage.Question);
 
     const generatedQuestionParam: GenerateQuestionParams = {
       customSettings: customSettings ?? undefined,
@@ -283,7 +284,7 @@ export async function getModelAnswer(
   codeLanguage?: string
 ) {
   // Use custom system prompt if available
-  const customSystemPrompt = getCustomSystemPrompt('answer');
+  const customSystemPrompt = getCustomSystemPrompt(PromptUsage.Answer);
 
   const systemPrompt =
     customSystemPrompt ||

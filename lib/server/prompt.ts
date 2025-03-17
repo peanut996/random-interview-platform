@@ -1,6 +1,6 @@
 import { QuestionType, QuestionCategories, QuestionDifficulty, CustomPrompt } from '@/lib/types';
 
-const defaultQuestionSystemPrompt = (
+const defaultCreateQuestionSystemPrompt = (
   type: string,
   category: string,
   difficulty: string
@@ -73,7 +73,7 @@ const defaultQuestionUserPrompt = (type: string, category: string, difficulty: s
   Pay careful attention to the data type of the expected output and format it accordingly.
   `;
 
-export const getEnhancementPrompt = (title: string) =>
+export const getDefaultEnhanceQuestionPrompt = (title: string) =>
   `Expand the technical interview question: ${title} with the following parameters:
   
   - Type: (Must be one of ["Coding", "Question"]. "Coding" type questions require executable code. "Question" type questions are conceptual.)
@@ -129,12 +129,15 @@ export function getQuestionPrompt(
 ): { systemPrompt: string; userPrompt: string } {
   const { userPrompt: customUserPrompt, systemPrompt: customSystemPrompt } = customPrompt || {};
 
-  const systemPrompt =
-    customSystemPrompt || defaultQuestionSystemPrompt(type, category, difficulty);
-
-  const userPrompt =
-    (customUserPrompt ?? '') +
-    (title ? getEnhancementPrompt(title) : defaultQuestionUserPrompt(type, category, difficulty));
-
-  return { systemPrompt, userPrompt };
+  if (title) {
+    return {
+      systemPrompt: customSystemPrompt ?? '',
+      userPrompt: customUserPrompt ?? getDefaultEnhanceQuestionPrompt(title),
+    };
+  }
+  return {
+    systemPrompt:
+      (customSystemPrompt ?? '') + defaultCreateQuestionSystemPrompt(type, category, difficulty),
+    userPrompt: (customUserPrompt ?? '') + defaultQuestionUserPrompt(type, category, difficulty),
+  };
 }

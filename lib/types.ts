@@ -1,3 +1,5 @@
+export const All = 'All';
+export const Custom = 'Custom';
 export interface QuestionShell {
   id?: string;
   type: QuestionType;
@@ -40,7 +42,12 @@ export enum QuestionDifficulty {
   Hard = 'Hard',
 }
 
-export type QuestionCategories = QuestionCategory | CodingCategory | string;
+export type QuestionCategories =
+  | QuestionCategory
+  | CodingCategory
+  | string
+  | typeof All
+  | typeof Custom;
 
 export enum QuestionCategory {
   Algorithms = 'Algorithms',
@@ -121,4 +128,9 @@ export interface EvaluateResult {
   improvementSuggestions: Array<{
     [key: string]: string;
   }>;
+}
+
+export enum PromptUsage {
+  Question = 'question',
+  Answer = 'answer',
 }
