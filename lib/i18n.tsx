@@ -210,7 +210,7 @@ const translations = {
     'button.add': 'Add',
   },
   zh: {
-    'app.title': 'AI 面试模拟器',
+    'app.title': '八股文生成器',
     'question.testCases': '测试用例',
     'question.input': '输入',
     'question.output': '输出',
