@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="public/logo.svg" alt="AI 随机八股文面试模拟器" width="150" height="150" />
+  <img src="public/logo.svg" alt="AI 随机八股文" width="150" height="150" />
 </p>
 
-<h1 align="center">AI 随机八股文生成器</h1>
+<h1 align="center">随机八股文生成器</h1>
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/github/license/peanut996/random-interview-platform?style=flat-square" alt="License"></a>
