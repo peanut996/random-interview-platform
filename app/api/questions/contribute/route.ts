@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Octokit } from '@octokit/rest';
 import { QuestionShell } from '@/lib/types';
-import {format} from "date-fns";
+import { format } from 'date-fns';
 
 // Configuration for GitHub repository
 const REPO_OWNER = process.env.GITHUB_REPO_OWNER || 'peanut996';
@@ -30,8 +30,6 @@ export async function POST(req: NextRequest) {
     const octokit = new Octokit({ auth: githubToken });
 
     // Generate a unique branch name
-    const timestamp = Date.now();
-
     const now = new Date();
     const formattedDate = format(now, 'yyyy-MM-dd-HH-mm-ss');
     const branchName = `feature/add-questions/${formattedDate}`;
