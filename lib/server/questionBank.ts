@@ -1,18 +1,14 @@
 import fs from 'fs';
 import path from 'path';
-import { QuestionType, QuestionDifficulty, QuestionCategories } from '@/lib/types';
+import { QuestionType, QuestionDifficulty, QuestionCategories, QuestionShell } from '@/lib/types';
 import { caseInsensitiveEqual } from '../utils';
 
 let questionBank: QuestionBankItem[];
 
 // Define the structure for QuestionBank items
-export interface QuestionBankItem {
-  title: string;
-  type: QuestionType;
-  category: string[];
-  difficulty: QuestionDifficulty;
-  questionTitle: string;
-}
+export type QuestionBankItem = QuestionShell & {
+  category: QuestionCategories[];
+};
 
 // Path to the JSON file that contains question bank data
 const questionBankPath = path.join(process.cwd(), 'data', 'questionBank.json');

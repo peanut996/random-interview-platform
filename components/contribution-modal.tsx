@@ -26,6 +26,7 @@ import {
 } from '@/components/ui/select';
 import { QuestionType, QuestionDifficulty, QuestionCategory, QuestionShell } from '@/lib/types';
 import { Badge } from '@/components/ui/badge';
+import { parseTextToQuestions, contributeQuestionBank } from '@/lib/api';
 
 interface ContributionModalProps {
   isOpen: boolean;
@@ -114,27 +115,7 @@ export function ContributionModal({ isOpen, onOpenChange }: ContributionModalPro
     setIsParsingInput(true);
 
     try {
-      const parseResponse = await fetch('/api/questions/parse', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          content: input,
-          type: inputType,
-        }),
-      });
-
-      if (!parseResponse.ok) {
-        throw new Error(`API responded with status: ${parseResponse.status}`);
-      }
-
-      const parsedData = await parseResponse.json();
-
-      // Validate returned data
-      if (!Array.isArray(parsedData)) {
-        throw new Error('Invalid format returned: expected an array of questions');
-      }
+      const parsedData = await parseTextToQuestions(input, inputType);
 
       // Mark all questions as selected by default and add newCategory field
       const questionsWithSelection = parsedData.map(q => ({
@@ -188,17 +169,7 @@ export function ContributionModal({ isOpen, onOpenChange }: ContributionModalPro
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('/api/questions/contribute', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ questions: selectedQuestions }),
-      });
-
-      if (!response.ok) {
-        throw new Error(`Failed to submit contribution: ${response.status} ${response.statusText}`);
-      }
+      const response = await contributeQuestionBank(selectedQuestions);
 
       const { url } = await response.json();
       setPrUrl(url);

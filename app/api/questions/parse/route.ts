@@ -146,8 +146,8 @@ export async function POST(req: NextRequest) {
     1. Return pure, parseable JSON without any markdown formatting. DO NOT wrap your response in code blocks with backticks.
     2. The response MUST be an array of question objects, directly parseable as JSON.
     3. Ensure all special characters in strings are properly escaped according to JSON standards.
-    4. Return at most 10 questions in a single response.
-    5. STRONGLY PRIORITIZE CHINESE for titles and include Chinese category names.`;
+    4. STRONGLY PRIORITIZE CHINESE for titles and include Chinese category names.
+    5. If it's a LeetCode coding question, include the LeetCode problem number in the title and add the LeetCode category.`;
 
     // User prompt asking for Chinese output
     const userPrompt = `Parse the following text and extract interview questions:
@@ -164,9 +164,18 @@ export async function POST(req: NextRequest) {
       },
       ... (more questions)
     ]
+
+    If it's a LeetCode coding question, include the LeetCode problem number in the title and add the LeetCode tag to it's category, like: 
+    { 
+      "type": "Coding",
+      "category": ["LeetCode", "LeetCode", "Array", "数组"],
+      "difficulty": "Easy",
+      "title": "1. Two Sum"
+    }
     
     If no valid interview questions are found, return an empty array.
-    IMPORTANT: Please prioritize extracting and generating content in Chinese whenever possible.`;
+    IMPORTANT: Please prioritize extracting and generating content in Chinese whenever possible.
+    CRITICALLY IMPORTANT: Ensure the JSON is valid and parseable.`;
 
     // Create OpenAI client
     const { client, model } = createOpenAIClient();

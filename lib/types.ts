@@ -4,7 +4,7 @@ export interface QuestionShell {
   id?: string;
   type: QuestionType;
   title: string;
-  category?: QuestionCategory[];
+  category?: QuestionCategories[];
   difficulty: QuestionDifficulty;
 }
 
