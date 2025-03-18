@@ -580,5 +580,69 @@
     ],
     "difficulty": "Hard",
     "title": "Hashmap 为什么选择红黑树而不是AVL"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Reflection",
+      "反射"
+    ],
+    "difficulty": "Medium",
+    "title": "你对Java的反射如何理解的，原理是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Reflection",
+      "反射"
+    ],
+    "difficulty": "Medium",
+    "title": "反射机制对于其他没有反射的语言有什么好处？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Reflection",
+      "反射"
+    ],
+    "difficulty": "Medium",
+    "title": "Java中哪些效率高的功能是基于反射做的呢？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "String",
+      "字符串",
+      "Java",
+      "Java"
+    ],
+    "difficulty": "Easy",
+    "title": "byte怎么转字符串？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Reflection",
+      "反射"
+    ],
+    "difficulty": "Medium",
+    "title": "反射的应用场景"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Reflection",
+      "反射"
+    ],
+    "difficulty": "Medium",
+    "title": "反射为什么性能开销高"
   }
 ]
