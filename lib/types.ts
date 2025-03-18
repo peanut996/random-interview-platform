@@ -88,6 +88,20 @@ export enum QuestionCategory {
   // 通用分类 (如果需要)
   Frameworks = 'Frameworks',
   Tools = 'Tools',
+
+  // 编程语言
+  JavaScript = 'JavaScript',
+  TypeScript = 'TypeScript',
+  Python = 'Python',
+  C = 'C',
+  Cpp = 'C++',
+  Go = 'Go',
+  Rust = 'Rust',
+  PHP = 'PHP',
+  CSharp = 'C#',
+  Kotlin = 'Kotlin',
+  Swift = 'Swift',
+  Ruby = 'Ruby',
 }
 
 export enum CodingCategory {
