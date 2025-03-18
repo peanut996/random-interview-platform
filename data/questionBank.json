@@ -420,5 +420,165 @@
     ],
     "difficulty": "Medium",
     "title": "JDK和Cglib动态代理有什么区别？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Data Structures",
+      "数据结构",
+      "Array",
+      "数组",
+      "Linked List",
+      "链表",
+      "Java"
+    ],
+    "difficulty": "Easy",
+    "title": "ArrayList和LinkedList的区别？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Data Structures",
+      "数据结构",
+      "Hash Table",
+      "哈希表",
+      "Java"
+    ],
+    "difficulty": "Medium",
+    "title": "HashMap原理?"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Data Structures",
+      "数据结构",
+      "Tree",
+      "树",
+      "Binary Search Tree",
+      "二叉搜索树",
+      "Java"
+    ],
+    "difficulty": "Medium",
+    "title": "红黑树红和黑代表什么?"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "Data Structures",
+      "数据结构",
+      "Hash Table",
+      "哈希表",
+      "Array",
+      "数组",
+      "Java"
+    ],
+    "difficulty": "Medium",
+    "title": "HashMap数组索引怎么确认？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Algorithms",
+      "算法",
+      "Hash Table",
+      "哈希表",
+      "Java"
+    ],
+    "difficulty": "Medium",
+    "title": "常见的哈希算法了解哪些？解决哈希冲突的方法?"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Data Structures",
+      "数据结构",
+      "Java"
+    ],
+    "difficulty": "Easy",
+    "title": "Java有什么集合容器？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Data Structures",
+      "数据结构",
+      "Tree",
+      "树",
+      "Sorting",
+      "排序",
+      "Java"
+    ],
+    "difficulty": "Medium",
+    "title": "Treemap怎么排序，有什么注意事项，可不可以自定义排序，排序的数据结构是什么"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Data Structures",
+      "数据结构",
+      "Concurrency",
+      "并发",
+      "Array",
+      "数组",
+      "Java"
+    ],
+    "difficulty": "Medium",
+    "title": "CopyOnWriteArrayList怎么保证线程安全，优点是这个，那缺点呢？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Data Structures",
+      "数据结构",
+      "Concurrency",
+      "并发",
+      "Array",
+      "数组",
+      "Java"
+    ],
+    "difficulty": "Medium",
+    "title": "ArrayList线程安全吗，想要使用线程安全的ArrayList怎么办？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Data Structures",
+      "数据结构",
+      "Hash Table",
+      "哈希表",
+      "Java"
+    ],
+    "difficulty": "Medium",
+    "title": "假设你要遍历一个 HashMap，同时删除一些 key，应该怎么编写代码？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Data Structures",
+      "数据结构",
+      "Concurrency",
+      "并发",
+      "Hash Table",
+      "哈希表",
+      "Java"
+    ],
+    "difficulty": "Medium",
+    "title": "HashTable怎么保证线程安全的，ConcurrentHashMap呢，怎么去选择呢"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Data Structures",
+      "数据结构",
+      "Hash Table",
+      "哈希表",
+      "Tree",
+      "树",
+      "Binary Search Tree",
+      "二叉搜索树",
+      "Java"
+    ],
+    "difficulty": "Hard",
+    "title": "Hashmap 为什么选择红黑树而不是AVL"
   }
 ]
