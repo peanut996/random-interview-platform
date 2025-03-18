@@ -1622,5 +1622,99 @@
     ],
     "difficulty": "Easy",
     "title": "数组和链表有什么区别？从内存结构上来说"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统"
+    ],
+    "difficulty": "Medium",
+    "title": "进程和线程的区别"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统"
+    ],
+    "difficulty": "Medium",
+    "title": "进程间的通信"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Medium",
+    "title": "单核 CPU 如何实现并发"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统"
+    ],
+    "difficulty": "Medium",
+    "title": "CPU 调度算法有哪些？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统"
+    ],
+    "difficulty": "Medium",
+    "title": "linux 如何查找你的进程占用的那个端口"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统"
+    ],
+    "difficulty": "Medium",
+    "title": "单核服务器连接数超载了怎么办"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统"
+    ],
+    "difficulty": "Medium",
+    "title": "请简述一个编译器的执行过程。前端有哪些常见的编译工具？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是编译型语言和解释型语言，他们有什么区别？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "JavaScript"
+    ],
+    "difficulty": "Medium",
+    "title": "简述 JS 垃圾回收的过程。用什么算法？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "JavaScript"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是内存泄漏？如何排查？JS 内存泄漏的常见原因？"
   }
 ]
