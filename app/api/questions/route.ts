@@ -40,10 +40,11 @@ export async function POST(req: NextRequest) {
           });
 
           return new Response(result.textStream);
+        } else {
+          console.warn('[Server] No matching question found in the QuestionBank.');
         }
       } catch (bankError) {
-        // Log the error but continue with the original logic as fallback
-        console.error('Error using QuestionBank:', bankError);
+        console.error('[Server] Error using QuestionBank:', bankError);
       }
     }
 

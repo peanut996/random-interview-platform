@@ -67,7 +67,6 @@ export default function MonacoEditor({
 
     if (customThemes.includes(editorTheme)) {
       const timer = setTimeout(() => {
-        console.log('Applying custom theme:', editorTheme);
         monacoInstance.editor.setTheme(editorTheme);
       }, 300);
 

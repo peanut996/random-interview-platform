@@ -90,7 +90,7 @@ export default function Page() {
 
         setQuestionHistory(prevHistory => {
           // 检查是否已存在相同ID的问题
-          const exists = prevHistory.some(item => item.id === question.id);
+          const exists = prevHistory.some(item => `${item.title}` === `${newHistoryItem.title}`);
           if (!exists) {
             const updatedHistory = [newHistoryItem, ...prevHistory];
             localStorage.setItem('questionHistory', JSON.stringify(updatedHistory));

@@ -41,27 +41,20 @@ export async function findMatchingQuestionFromBank(
   type?: QuestionType,
   category?: QuestionCategories,
   difficulty?: QuestionDifficulty
-): Promise<QuestionBankItem> {
-  try {
-    loadQuestionBank();
-    if (!questionBank || questionBank.length === 0) {
-      console.warn('[Server] Question bank is empty or not loaded.');
-      throw new Error('Question bank is empty or not loaded');
-    }
-
-    if (!type || !category || !difficulty) {
-      return questionBank[Math.floor(Math.random() * questionBank.length)];
-    }
-
-    const matchedQuestion = getMatchingQuestion(questionBank, type, category, difficulty);
-    if (!matchedQuestion) {
-      throw new Error('No matching question found');
-    }
-    return matchedQuestion;
-  } catch (error) {
-    console.error('Error finding matching question:', error);
-    throw error;
+): Promise<QuestionBankItem | null> {
+  loadQuestionBank();
+  if (!questionBank || questionBank.length === 0) {
+    console.warn('[Server] Question bank is empty or not loaded.');
+    return null;
   }
+
+  if (!type || !category || !difficulty) {
+    return questionBank[Math.floor(Math.random() * questionBank.length)];
+  }
+
+  const matchedQuestion = getMatchingQuestion(questionBank, type, category, difficulty);
+
+  return matchedQuestion;
 }
 
 /**
@@ -80,7 +73,7 @@ const getMatchingQuestion = (
   type: QuestionType,
   category: QuestionCategories,
   difficulty: QuestionDifficulty
-): QuestionBankItem => {
+): QuestionBankItem | null => {
   // Helper function to get a random item from an array
   const getRandomItem = (items: QuestionBankItem[]): QuestionBankItem =>
     items[Math.floor(Math.random() * items.length)];
@@ -92,11 +85,7 @@ const getMatchingQuestion = (
 
   // If no category matches, return a random question from the entire bank
   if (categoryMatches.length === 0) {
-    // try filter with type and difficulty
-    const fallback = questionBank
-      .filter(question => caseInsensitiveEqual(type, question.type))
-      .filter(question => caseInsensitiveEqual(difficulty, question.difficulty));
-    return fallback.length > 0 ? getRandomItem(fallback) : getRandomItem(questionBank);
+    return null;
   }
 
   // Step 2: From category matches, filter by type

@@ -126,7 +126,25 @@ export default function SettingsModal({ onClose }: SettingsModalProps) {
     }
   }, []);
 
-  // Define different categories based on question type
+  const getLocalizedCategoryName = (category: string): string => {
+    if (category === All) return t('settings.all');
+    if (category === Custom) return t('settings.custom');
+
+    // Convert category value to match the i18n key format
+    // Replace spaces with nothing and handle special cases
+    const categoryKey = category.replace(/\s+/g, '').replace(/&/g, 'And').replace(/\+\+/g, 'pp'); // For C++
+
+    const localizedCategoryKey = `category.${categoryKey}`;
+
+    const localizedCategory = t(localizedCategoryKey);
+    if (localizedCategory === localizedCategoryKey) {
+      // If the translation key doesn't exist, return the original category
+      return category;
+    }
+
+    return localizedCategory;
+  };
+
   const getCategories = () => {
     const selectedType =
       questionSettings.type === QuestionType.Coding
@@ -138,16 +156,32 @@ export default function SettingsModal({ onClose }: SettingsModalProps) {
     if (questionSettings.type === All || !selectedType) {
       // If no specific type selected, return all categories
       return [
-        ...Object.values(QuestionCategory).map(value => ({ key: value, value })),
-        ...Object.values(CodingCategory).map(value => ({ key: value, value })),
+        ...Object.values(QuestionCategory).map(value => ({
+          key: value,
+          value,
+          label: getLocalizedCategoryName(value),
+        })),
+        ...Object.values(CodingCategory).map(value => ({
+          key: value,
+          value,
+          label: getLocalizedCategoryName(value),
+        })),
       ];
     }
 
     // Return categories specific to the selected type
     const standardCategories =
       selectedType === QuestionType.Coding
-        ? Object.values(CodingCategory).map(value => ({ key: value, value }))
-        : Object.values(QuestionCategory).map(value => ({ key: value, value }));
+        ? Object.values(CodingCategory).map(value => ({
+            key: value,
+            value,
+            label: getLocalizedCategoryName(value),
+          }))
+        : Object.values(QuestionCategory).map(value => ({
+            key: value,
+            value,
+            label: getLocalizedCategoryName(value),
+          }));
 
     return standardCategories;
   };
@@ -402,10 +436,9 @@ export default function SettingsModal({ onClose }: SettingsModalProps) {
                     <SelectItem value={All}>{t('settings.all')}</SelectItem>
                     {getCategories().map(category => (
                       <SelectItem key={category.key} value={category.value}>
-                        {category.value}
+                        {category.label}
                       </SelectItem>
                     ))}
-                    {/* Always show the custom option */}
                     <SelectItem value={Custom}>{t('settings.custom')}</SelectItem>
                   </SelectContent>
                 </Select>
@@ -466,7 +499,6 @@ export default function SettingsModal({ onClose }: SettingsModalProps) {
                         </div>
                       )}
 
-                      {/* Show Question custom categories */}
                       {customCategories[QuestionType.Question].length > 0 && (
                         <div className="mt-4">
                           <Label className="mb-2 block">
@@ -520,7 +552,7 @@ export default function SettingsModal({ onClose }: SettingsModalProps) {
                                   });
                                 }}
                               >
-                                {category}
+                                {getLocalizedCategoryName(category)}
                               </span>
                               <Button
                                 variant="ghost"

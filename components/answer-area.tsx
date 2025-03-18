@@ -46,10 +46,11 @@ export default function AnswerArea({
   const [editorTheme, setEditorTheme] = useState('github');
   const [isCopied, setIsCopied] = useState(false);
 
-  // Detect language based on question category or content
   useEffect(() => {
     if (question.category) {
-      const category = question.category.toLowerCase();
+      const category = Array.isArray(question.category)
+        ? question.category.join(' ').toLowerCase()
+        : String(question.category).toLowerCase();
       if (category.includes('javascript') || category.includes('js')) {
         setEditorLanguage('javascript');
       } else if (category.includes('python') || category.includes('py')) {
