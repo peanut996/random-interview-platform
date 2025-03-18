@@ -1002,5 +1002,148 @@
     ],
     "difficulty": "Medium",
     "title": "泛型、反射和类型推断的关系"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "JavaScript",
+      "JavaScript",
+      "Variables",
+      "变量"
+    ],
+    "difficulty": "Easy",
+    "title": "JS 编译结果是什么？"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "JavaScript",
+      "JavaScript",
+      "Data Types",
+      "数据类型"
+    ],
+    "difficulty": "Easy",
+    "title": "JS 引用类型代码执行结果是什么？"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "JavaScript",
+      "JavaScript",
+      "String",
+      "字符串"
+    ],
+    "difficulty": "Easy",
+    "title": "JS parseInt 代码执行结果是什么？"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "JavaScript",
+      "JavaScript",
+      "this",
+      "this"
+    ],
+    "difficulty": "Medium",
+    "title": "JS this 1 代码执行结果是什么？"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "JavaScript",
+      "JavaScript",
+      "this",
+      "this"
+    ],
+    "difficulty": "Hard",
+    "title": "JS this 2 代码执行结果是什么？"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "JavaScript",
+      "JavaScript",
+      "Scope",
+      "作用域"
+    ],
+    "difficulty": "Medium",
+    "title": "JS 自由变量 1 代码执行结果是什么？"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "JavaScript",
+      "JavaScript",
+      "Scope",
+      "作用域"
+    ],
+    "difficulty": "Medium",
+    "title": "JS 自由变量 2 代码执行结果是什么？"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "JavaScript",
+      "JavaScript",
+      "Closure",
+      "闭包"
+    ],
+    "difficulty": "Medium",
+    "title": "JS 闭包 1 代码执行结果是什么？"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "JavaScript",
+      "JavaScript",
+      "Closure",
+      "闭包"
+    ],
+    "difficulty": "Medium",
+    "title": "JS 闭包 2 代码执行结果是什么？"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "JavaScript",
+      "JavaScript",
+      "Promise",
+      "Promise"
+    ],
+    "difficulty": "Easy",
+    "title": "JS Promise 1 代码执行结果是什么？"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "JavaScript",
+      "JavaScript",
+      "Promise",
+      "Promise"
+    ],
+    "difficulty": "Medium",
+    "title": "JS Promise 2 代码执行结果是什么？"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "JavaScript",
+      "JavaScript",
+      "Asynchronous",
+      "异步"
+    ],
+    "difficulty": "Hard",
+    "title": "JS 异步执行顺序 1 代码执行结果是什么？"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "JavaScript",
+      "JavaScript",
+      "Asynchronous",
+      "异步"
+    ],
+    "difficulty": "Hard",
+    "title": "JS 异步执行顺序 2 代码执行结果是什么？"
   }
 ]
