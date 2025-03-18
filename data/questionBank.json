@@ -264,5 +264,150 @@
     ],
     "difficulty": "Medium",
     "title": "MySQL索引为什么用B+不用B树？如果把内容存在内存上，用B树会不会快一点。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "System Design",
+      "系统设计",
+      "分库分表",
+      "MySQL"
+    ],
+    "difficulty": "Medium",
+    "title": "分库分表的常用中间件有哪些？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "System Design",
+      "系统设计"
+    ],
+    "difficulty": "Hard",
+    "title": "有哪些问题中间件无法提供帮助、只能改写业务代码的场景？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "System Design",
+      "系统设计",
+      "MySQL",
+      "分库分表"
+    ],
+    "difficulty": "Easy",
+    "title": "分库分表使用了什么中间件？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "System Design",
+      "系统设计",
+      "分库分表"
+    ],
+    "difficulty": "Medium",
+    "title": "分库分表的实现场景和方式有哪些？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "System Design",
+      "系统设计",
+      "分库分表"
+    ],
+    "difficulty": "Medium",
+    "title": "分表之后，要查询两个表的数据要怎么查？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "System Design",
+      "系统设计",
+      "分库分表"
+    ],
+    "difficulty": "Medium",
+    "title": "分库分表的优缺点是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "System Design",
+      "系统设计",
+      "分库分表"
+    ],
+    "difficulty": "Hard",
+    "title": "分库分表业界有哪些替代方案？（提示：分布式文件系统，因为分库分表会出现降低QPS，比如range查询失效）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "System Design",
+      "系统设计",
+      "分库分表"
+    ],
+    "difficulty": "Hard",
+    "title": "为什么做了分库分表后分页比较困难了？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "System Design",
+      "系统设计",
+      "分库分表"
+    ],
+    "difficulty": "Hard",
+    "title": "如果10亿数据要分表，要怎么分？业务怎么切？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "Concurrency",
+      "并发",
+      "分库分表"
+    ],
+    "difficulty": "Hard",
+    "title": "分库分表怎么保证数据一致性？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "System Design",
+      "系统设计",
+      "分库分表"
+    ],
+    "difficulty": "Medium",
+    "title": "分库分表选的什么分片键？什么分片算法？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "System Design",
+      "系统设计",
+      "分库分表"
+    ],
+    "difficulty": "Medium",
+    "title": "分库分表后的分布式ID怎么做？"
   }
 ]
