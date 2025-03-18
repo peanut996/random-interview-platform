@@ -2350,5 +2350,1143 @@
     ],
     "difficulty": "Medium",
     "title": "什么是 GraphQL ？"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Hash Table",
+      "哈希表"
+    ],
+    "difficulty": "Easy",
+    "title": "1. 两数之和"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "String",
+      "字符串"
+    ],
+    "difficulty": "Medium",
+    "title": "49. 字母异位词分组"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Array",
+      "数组"
+    ],
+    "difficulty": "Medium",
+    "title": "128. 最长连续序列"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Array",
+      "数组",
+      "Two Pointers",
+      "双指针"
+    ],
+    "difficulty": "Easy",
+    "title": "283. 移动零"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Array",
+      "数组"
+    ],
+    "difficulty": "Medium",
+    "title": "11. 盛最多水的容器"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Array",
+      "数组"
+    ],
+    "difficulty": "Medium",
+    "title": "15. 三数之和"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Array",
+      "数组",
+      "Dynamic Programming",
+      "动态规划"
+    ],
+    "difficulty": "Hard",
+    "title": "42. 接雨水"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "String",
+      "字符串",
+      "Sliding Window",
+      "滑动窗口"
+    ],
+    "difficulty": "Medium",
+    "title": "3. 无重复字符的最长子串"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "String",
+      "字符串"
+    ],
+    "difficulty": "Medium",
+    "title": "438. 找到字符串中所有字母异位词"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Array",
+      "数组"
+    ],
+    "difficulty": "Medium",
+    "title": "560. 和为 K 的子数组"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Array",
+      "数组",
+      "Sliding Window",
+      "滑动窗口"
+    ],
+    "difficulty": "Hard",
+    "title": "239. 滑动窗口最大值"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "String",
+      "字符串",
+      "Sliding Window",
+      "滑动窗口"
+    ],
+    "difficulty": "Hard",
+    "title": "76. 最小覆盖子串"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Array",
+      "数组"
+    ],
+    "difficulty": "Medium",
+    "title": "53. 最大子数组和"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Array",
+      "数组"
+    ],
+    "difficulty": "Medium",
+    "title": "56. 合并区间"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Array",
+      "数组"
+    ],
+    "difficulty": "Medium",
+    "title": "189. 轮转数组"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Array",
+      "数组"
+    ],
+    "difficulty": "Medium",
+    "title": "238. 除自身以外数组的乘积"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Array",
+      "数组"
+    ],
+    "difficulty": "Hard",
+    "title": "41. 缺失的第一个正数"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Array",
+      "数组",
+      "Matrix",
+      "矩阵"
+    ],
+    "difficulty": "Medium",
+    "title": "73. 矩阵置零"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Array",
+      "数组",
+      "Matrix",
+      "矩阵"
+    ],
+    "difficulty": "Medium",
+    "title": "54. 螺旋矩阵"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Array",
+      "数组",
+      "Matrix",
+      "矩阵"
+    ],
+    "difficulty": "Medium",
+    "title": "48. 旋转图像"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Array",
+      "数组",
+      "Matrix",
+      "矩阵"
+    ],
+    "difficulty": "Medium",
+    "title": "240. 搜索二维矩阵 II"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Linked List",
+      "链表"
+    ],
+    "difficulty": "Easy",
+    "title": "160. 相交链表"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Linked List",
+      "链表"
+    ],
+    "difficulty": "Easy",
+    "title": "206. 反转链表"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Linked List",
+      "链表"
+    ],
+    "difficulty": "Easy",
+    "title": "234. 回文链表"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Linked List",
+      "链表"
+    ],
+    "difficulty": "Easy",
+    "title": "141. 环形链表"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Linked List",
+      "链表"
+    ],
+    "difficulty": "Medium",
+    "title": "142. 环形链表 II"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Linked List",
+      "链表"
+    ],
+    "difficulty": "Easy",
+    "title": "21. 合并两个有序链表"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Linked List",
+      "链表"
+    ],
+    "difficulty": "Medium",
+    "title": "2. 两数相加"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Linked List",
+      "链表"
+    ],
+    "difficulty": "Medium",
+    "title": "19. 删除链表的倒数第 N 个结点"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Linked List",
+      "链表"
+    ],
+    "difficulty": "Medium",
+    "title": "24. 两两交换链表中的节点"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Linked List",
+      "链表"
+    ],
+    "difficulty": "Hard",
+    "title": "25. K 个一组翻转链表"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Linked List",
+      "链表"
+    ],
+    "difficulty": "Medium",
+    "title": "138. 随机链表的复制"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Linked List",
+      "链表",
+      "Sorting",
+      "排序"
+    ],
+    "difficulty": "Medium",
+    "title": "148. 排序链表"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Linked List",
+      "链表"
+    ],
+    "difficulty": "Hard",
+    "title": "23. 合并 K 个升序链表"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "System Design",
+      "系统设计"
+    ],
+    "difficulty": "Medium",
+    "title": "146. LRU 缓存"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Binary Tree",
+      "二叉树"
+    ],
+    "difficulty": "Easy",
+    "title": "94. 二叉树的中序遍历"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Binary Tree",
+      "二叉树"
+    ],
+    "difficulty": "Easy",
+    "title": "104. 二叉树的最大深度"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Binary Tree",
+      "二叉树"
+    ],
+    "difficulty": "Easy",
+    "title": "226. 翻转二叉树"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Binary Tree",
+      "二叉树"
+    ],
+    "difficulty": "Easy",
+    "title": "101. 对称二叉树"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Binary Tree",
+      "二叉树"
+    ],
+    "difficulty": "Easy",
+    "title": "543. 二叉树的直径"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Binary Tree",
+      "二叉树"
+    ],
+    "difficulty": "Medium",
+    "title": "102. 二叉树的层序遍历"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Binary Tree",
+      "二叉树",
+      "Binary Search Tree",
+      "二叉搜索树"
+    ],
+    "difficulty": "Easy",
+    "title": "108. 将有序数组转换为二叉搜索树"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Binary Tree",
+      "二叉树",
+      "Binary Search Tree",
+      "二叉搜索树"
+    ],
+    "difficulty": "Medium",
+    "title": "98. 验证二叉搜索树"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Binary Tree",
+      "二叉树",
+      "Binary Search Tree",
+      "二叉搜索树"
+    ],
+    "difficulty": "Medium",
+    "title": "230. 二叉搜索树中第 K 小的元素"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Binary Tree",
+      "二叉树"
+    ],
+    "difficulty": "Medium",
+    "title": "199. 二叉树的右视图"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Binary Tree",
+      "二叉树"
+    ],
+    "difficulty": "Medium",
+    "title": "114. 二叉树展开为链表"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Binary Tree",
+      "二叉树"
+    ],
+    "difficulty": "Medium",
+    "title": "105. 从前序与中序遍历序列构造二叉树"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Binary Tree",
+      "二叉树"
+    ],
+    "difficulty": "Medium",
+    "title": "437. 路径总和 III"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Binary Tree",
+      "二叉树"
+    ],
+    "difficulty": "Medium",
+    "title": "236. 二叉树的最近公共祖先"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Binary Tree",
+      "二叉树"
+    ],
+    "difficulty": "Hard",
+    "title": "124. 二叉树中的最大路径和"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Graph",
+      "图"
+    ],
+    "difficulty": "Medium",
+    "title": "200. 岛屿数量"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Graph",
+      "图"
+    ],
+    "difficulty": "Medium",
+    "title": "994. 腐烂的橘子"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Graph",
+      "图"
+    ],
+    "difficulty": "Medium",
+    "title": "207. 课程表"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Trie",
+      "前缀树"
+    ],
+    "difficulty": "Medium",
+    "title": "208. 实现 Trie (前缀树)"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Backtracking",
+      "回溯"
+    ],
+    "difficulty": "Medium",
+    "title": "46. 全排列"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Backtracking",
+      "回溯"
+    ],
+    "difficulty": "Medium",
+    "title": "78. 子集"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Backtracking",
+      "回溯"
+    ],
+    "difficulty": "Medium",
+    "title": "17. 电话号码的字母组合"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Backtracking",
+      "回溯"
+    ],
+    "difficulty": "Medium",
+    "title": "39. 组合总和"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Backtracking",
+      "回溯"
+    ],
+    "difficulty": "Medium",
+    "title": "22. 括号生成"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Backtracking",
+      "回溯"
+    ],
+    "difficulty": "Medium",
+    "title": "79. 单词搜索"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Backtracking",
+      "回溯"
+    ],
+    "difficulty": "Medium",
+    "title": "131. 分割回文串"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Backtracking",
+      "回溯"
+    ],
+    "difficulty": "Hard",
+    "title": "51. N 皇后"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Binary Search",
+      "二分查找"
+    ],
+    "difficulty": "Easy",
+    "title": "35. 搜索插入位置"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Binary Search",
+      "二分查找",
+      "Matrix",
+      "矩阵"
+    ],
+    "difficulty": "Medium",
+    "title": "74. 搜索二维矩阵"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Binary Search",
+      "二分查找"
+    ],
+    "difficulty": "Medium",
+    "title": "34. 在排序数组中查找元素的第一个和最后一个位置"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Binary Search",
+      "二分查找"
+    ],
+    "difficulty": "Medium",
+    "title": "33. 搜索旋转排序数组"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Binary Search",
+      "二分查找"
+    ],
+    "difficulty": "Medium",
+    "title": "153. 寻找旋转排序数组中的最小值"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Binary Search",
+      "二分查找"
+    ],
+    "difficulty": "Hard",
+    "title": "4. 寻找两个正序数组的中位数"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Stack",
+      "栈"
+    ],
+    "difficulty": "Easy",
+    "title": "20. 有效的括号"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Stack",
+      "栈"
+    ],
+    "difficulty": "Medium",
+    "title": "155. 最小栈"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Stack",
+      "栈",
+      "String",
+      "字符串"
+    ],
+    "difficulty": "Medium",
+    "title": "394. 字符串解码"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Stack",
+      "栈"
+    ],
+    "difficulty": "Medium",
+    "title": "739. 每日温度"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Stack",
+      "栈"
+    ],
+    "difficulty": "Hard",
+    "title": "84. 柱状图中最大的矩形"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Heap",
+      "堆"
+    ],
+    "difficulty": "Medium",
+    "title": "215. 数组中的第K个最大元素"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Heap",
+      "堆",
+      "Hash Table",
+      "哈希表"
+    ],
+    "difficulty": "Medium",
+    "title": "347. 前 K 个高频元素"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Heap",
+      "堆",
+      "System Design",
+      "系统设计"
+    ],
+    "difficulty": "Hard",
+    "title": "295. 数据流的中位数"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Greedy",
+      "贪心算法"
+    ],
+    "difficulty": "Easy",
+    "title": "121. 买卖股票的最佳时机"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Greedy",
+      "贪心算法"
+    ],
+    "difficulty": "Medium",
+    "title": "55. 跳跃游戏"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Greedy",
+      "贪心算法"
+    ],
+    "difficulty": "Medium",
+    "title": "45. 跳跃游戏 II"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Greedy",
+      "贪心算法"
+    ],
+    "difficulty": "Medium",
+    "title": "763. 划分字母区间"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Dynamic Programming",
+      "动态规划"
+    ],
+    "difficulty": "Easy",
+    "title": "70. 爬楼梯"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Dynamic Programming",
+      "动态规划"
+    ],
+    "difficulty": "Easy",
+    "title": "118. 杨辉三角"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Dynamic Programming",
+      "动态规划"
+    ],
+    "difficulty": "Medium",
+    "title": "198. 打家劫舍"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Dynamic Programming",
+      "动态规划"
+    ],
+    "difficulty": "Medium",
+    "title": "279. 完全平方数"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Dynamic Programming",
+      "动态规划"
+    ],
+    "difficulty": "Medium",
+    "title": "322. 零钱兑换"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Dynamic Programming",
+      "动态规划"
+    ],
+    "difficulty": "Medium",
+    "title": "139. 单词拆分"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Dynamic Programming",
+      "动态规划"
+    ],
+    "difficulty": "Medium",
+    "title": "300. 最长递增子序列"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Dynamic Programming",
+      "动态规划"
+    ],
+    "difficulty": "Medium",
+    "title": "152. 乘积最大子数组"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Dynamic Programming",
+      "动态规划"
+    ],
+    "difficulty": "Medium",
+    "title": "416. 分割等和子集"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Dynamic Programming",
+      "动态规划"
+    ],
+    "difficulty": "Hard",
+    "title": "32. 最长有效括号"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Dynamic Programming",
+      "动态规划"
+    ],
+    "difficulty": "Medium",
+    "title": "62. 不同路径"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Dynamic Programming",
+      "动态规划"
+    ],
+    "difficulty": "Medium",
+    "title": "64. 最小路径和"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Dynamic Programming",
+      "动态规划",
+      "String",
+      "字符串"
+    ],
+    "difficulty": "Medium",
+    "title": "5. 最长回文子串"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Dynamic Programming",
+      "动态规划"
+    ],
+    "difficulty": "Medium",
+    "title": "1143. 最长公共子序列"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Dynamic Programming",
+      "动态规划"
+    ],
+    "difficulty": "Medium",
+    "title": "72. 编辑距离"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Bit Manipulation",
+      "位运算"
+    ],
+    "difficulty": "Easy",
+    "title": "136. 只出现一次的数字"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Array",
+      "数组"
+    ],
+    "difficulty": "Easy",
+    "title": "169. 多数元素"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Array",
+      "数组",
+      "Sorting",
+      "排序"
+    ],
+    "difficulty": "Medium",
+    "title": "75. 颜色分类"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Array",
+      "数组"
+    ],
+    "difficulty": "Medium",
+    "title": "31. 下一个排列"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "LeetCode",
+      "Array",
+      "数组"
+    ],
+    "difficulty": "Medium",
+    "title": "287. 寻找重复数"
   }
 ]
