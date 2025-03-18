@@ -1,6 +1,13 @@
 'use client';
 
-import { API_ROUTE_PARSE_QUESTION_TITLE } from './const';
+import {
+  API_ROUTE_CONTRIBUTE,
+  API_ROUTE_EVALUATE,
+  API_ROUTE_GENERATE_QUESTION,
+  API_ROUTE_GET_MODEL_ANSWER,
+  API_ROUTE_PARSE_QUESTION_TITLE,
+  API_ROUTE_SUBMIT_MODEL_ANSWER,
+} from './const';
 import {
   CustomSettings,
   GenerateQuestionParams,
@@ -8,6 +15,7 @@ import {
   Question,
   QuestionCategories,
   QuestionDifficulty,
+  QuestionShell,
   QuestionType,
 } from './types';
 import { jsonrepair } from 'jsonrepair';
@@ -62,7 +70,7 @@ export async function generateQuestion(
         : undefined,
     };
 
-    const response = await fetch('/api/questions', {
+    const response = await fetch(API_ROUTE_GENERATE_QUESTION, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -116,17 +124,17 @@ export async function callLanguageModel(
     const customSettings = getCustomSettings();
 
     // Determine the API endpoint based on requestType
-    let endpoint = '/api/questions'; // Default is now /api/questions
+    let endpoint = API_ROUTE_GENERATE_QUESTION; // Default is now /api/questions
 
     switch (requestType) {
       case 'modelAnswer':
-        endpoint = '/api/model-answer';
+        endpoint = API_ROUTE_SUBMIT_MODEL_ANSWER;
         break;
       case 'modelAnswerText':
-        endpoint = '/api/model-answer-text';
+        endpoint = API_ROUTE_GET_MODEL_ANSWER;
         break;
       case 'evaluation':
-        endpoint = '/api/evaluation';
+        endpoint = API_ROUTE_EVALUATE;
         break;
     }
 
@@ -371,4 +379,44 @@ export async function parseQuestion(questionTitle: string) {
     console.error('Error parsing question:', error);
     throw new Error('Failed to parse question. Please check your API settings and try again.');
   }
+}
+
+export async function parseTextToQuestions(input: string, inputType: 'text' | 'url' = 'text') {
+  const parseResponse = await fetch(API_ROUTE_PARSE_QUESTION_TITLE, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      content: input,
+      type: inputType,
+    }),
+  });
+
+  if (!parseResponse.ok) {
+    throw new Error(`API responded with status: ${parseResponse.status}`);
+  }
+
+  const parsedData = await parseResponse.json();
+
+  // Validate returned data
+  if (!Array.isArray(parsedData)) {
+    throw new Error('Invalid format returned: expected an array of questions');
+  }
+  return parsedData;
+}
+
+export async function contributeQuestionBank(selectedQuestions: QuestionShell[]) {
+  const response = await fetch(API_ROUTE_CONTRIBUTE, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ questions: selectedQuestions }),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to submit contribution: ${response.status} ${response.statusText}`);
+  }
+  return response;
 }
