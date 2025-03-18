@@ -758,5 +758,60 @@
     ],
     "difficulty": "Easy",
     "title": "String，StringBuilder，StringBuffer的区别?"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java"
+    ],
+    "difficulty": "Medium",
+    "title": "synchronized和reentrantlock的区别？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java"
+    ],
+    "difficulty": "Medium",
+    "title": "java乐观锁和悲观锁？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java"
+    ],
+    "difficulty": "Medium",
+    "title": "Java 有哪些重要的锁？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java"
+    ],
+    "difficulty": "Hard",
+    "title": "AQS实现"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java"
+    ],
+    "difficulty": "Medium",
+    "title": "有了synchornized为什么还会出现lock"
   }
 ]
