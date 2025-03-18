@@ -813,5 +813,117 @@
     ],
     "difficulty": "Medium",
     "title": "有了synchornized为什么还会出现lock"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Operating System",
+      "操作系统",
+      "多线程",
+      "Multi Threading"
+    ],
+    "difficulty": "Medium",
+    "title": "多进程、多线程、多协程各自的优势和劣势？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "多线程",
+      "Multi Threading"
+    ],
+    "difficulty": "Easy",
+    "title": "Java有哪些线程状态？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Operating System",
+      "操作系统",
+      "Java",
+      "Multi Threading"
+    ],
+    "difficulty": "Medium",
+    "title": "如果一个进程创建了几万个线程会出现什么问题？"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Multi Threading",
+      "多线程"
+    ],
+    "difficulty": "Medium",
+    "title": "怎么让两个线程有序执行？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Medium",
+    "title": "多线程如何做同步"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Operating System",
+      "操作系统"
+    ],
+    "difficulty": "Medium",
+    "title": "线程的上下文切换需要切换什么东西"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java"
+    ],
+    "difficulty": "Medium",
+    "title": "completablefuture 和 futuretask"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java"
+    ],
+    "difficulty": "Easy",
+    "title": "Java线程怎么进入阻塞状态"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java"
+    ],
+    "difficulty": "Easy",
+    "title": "Java线程怎么进入Runnable状态"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Operating System",
+      "操作系统",
+      "Java"
+    ],
+    "difficulty": "Hard",
+    "title": "Java线程上下文切换具体过程"
   }
 ]
