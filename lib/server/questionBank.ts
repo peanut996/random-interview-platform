@@ -42,26 +42,21 @@ export async function findMatchingQuestionFromBank(
   category?: QuestionCategories,
   difficulty?: QuestionDifficulty
 ): Promise<QuestionBankItem> {
-  try {
-    loadQuestionBank();
-    if (!questionBank || questionBank.length === 0) {
-      console.warn('[Server] Question bank is empty or not loaded.');
-      throw new Error('Question bank is empty or not loaded');
-    }
-
-    if (!type || !category || !difficulty) {
-      return questionBank[Math.floor(Math.random() * questionBank.length)];
-    }
-
-    const matchedQuestion = getMatchingQuestion(questionBank, type, category, difficulty);
-    if (!matchedQuestion) {
-      throw new Error('No matching question found');
-    }
-    return matchedQuestion;
-  } catch (error) {
-    console.error('Error finding matching question:', error);
-    throw error;
+  loadQuestionBank();
+  if (!questionBank || questionBank.length === 0) {
+    console.warn('[Server] Question bank is empty or not loaded.');
+    throw new Error('Question bank is empty or not loaded');
   }
+
+  if (!type || !category || !difficulty) {
+    return questionBank[Math.floor(Math.random() * questionBank.length)];
+  }
+
+  const matchedQuestion = getMatchingQuestion(questionBank, type, category, difficulty);
+  if (!matchedQuestion) {
+    throw new Error('No matching question found');
+  }
+  return matchedQuestion;
 }
 
 /**
@@ -92,11 +87,7 @@ const getMatchingQuestion = (
 
   // If no category matches, return a random question from the entire bank
   if (categoryMatches.length === 0) {
-    // try filter with type and difficulty
-    const fallback = questionBank
-      .filter(question => caseInsensitiveEqual(type, question.type))
-      .filter(question => caseInsensitiveEqual(difficulty, question.difficulty));
-    return fallback.length > 0 ? getRandomItem(fallback) : getRandomItem(questionBank);
+    throw new Error('[Server] No category matches found');
   }
 
   // Step 2: From category matches, filter by type
