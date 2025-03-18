@@ -925,5 +925,82 @@
     ],
     "difficulty": "Hard",
     "title": "Java线程上下文切换具体过程"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "System Design",
+      "系统设计"
+    ],
+    "difficulty": "Medium",
+    "title": "如果让你调研是否要从Java 8升级到更新的版本（如11或17），你会如何评估其必要性？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Data Structures",
+      "数据结构"
+    ],
+    "difficulty": "Medium",
+    "title": "BigDecimal怎么存储，怎么计算，有什么注意事项，为什么他能保证不丢失"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Design Patterns",
+      "设计模式"
+    ],
+    "difficulty": "Medium",
+    "title": "JDK Proxy 和 CGLib Proxy 的区别"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Exception Handling",
+      "异常处理"
+    ],
+    "difficulty": "Easy",
+    "title": "Java中你遇到过哪些异常？你分别怎么处理？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "System Design",
+      "系统设计"
+    ],
+    "difficulty": "Medium",
+    "title": "团队升级JDK版本的话你怎么调研？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Performance Optimization",
+      "性能优化"
+    ],
+    "difficulty": "Hard",
+    "title": "Java分配大对象怎么进行性能优化"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Generics",
+      "泛型"
+    ],
+    "difficulty": "Medium",
+    "title": "泛型、反射和类型推断的关系"
   }
 ]
