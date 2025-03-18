@@ -409,5 +409,16 @@
     ],
     "difficulty": "Medium",
     "title": "分库分表后的分布式ID怎么做？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Concurrency",
+      "并发",
+      "动态代理"
+    ],
+    "difficulty": "Medium",
+    "title": "JDK和Cglib动态代理有什么区别？"
   }
 ]
