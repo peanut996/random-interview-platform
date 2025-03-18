@@ -1002,5 +1002,193 @@
     ],
     "difficulty": "Medium",
     "title": "泛型、反射和类型推断的关系"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统"
+    ],
+    "difficulty": "Medium",
+    "title": "进程和线程的区别"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统"
+    ],
+    "difficulty": "Medium",
+    "title": "进程间的通信"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Medium",
+    "title": "单核 CPU 如何实现并发"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统"
+    ],
+    "difficulty": "Medium",
+    "title": "CPU 调度算法有哪些？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统"
+    ],
+    "difficulty": "Medium",
+    "title": "linux 如何查找你的进程占用的那个端口"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统"
+    ],
+    "difficulty": "Medium",
+    "title": "单核服务器连接数超载了怎么办"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Question",
+      "问题",
+      "Operating System",
+      "操作系统"
+    ],
+    "difficulty": "Medium",
+    "title": "请简述一个编译器的执行过程。前端有哪些常见的编译工具？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Question",
+      "问题"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是编译型语言和解释型语言，他们有什么区别？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "String",
+      "字符串"
+    ],
+    "difficulty": "Medium",
+    "title": "简述 JS 垃圾回收的过程。用什么算法？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Question",
+      "问题"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是内存泄漏？如何排查？JS 内存泄漏的常见原因？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Question",
+      "问题"
+    ],
+    "difficulty": "Medium",
+    "title": "简述 JS 运行时的堆栈内存模型？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Question",
+      "问题"
+    ],
+    "difficulty": "Medium",
+    "title": "冯·诺依曼架构是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Question",
+      "问题"
+    ],
+    "difficulty": "Medium",
+    "title": "计算机内部为何使用二进制？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Question",
+      "问题"
+    ],
+    "difficulty": "Medium",
+    "title": "二进制如何表示负数和小数？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是虚拟内存，为何要使用虚拟内存？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Question",
+      "问题"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是 Unicode 编码？它和常见的 UTF-8 有什么关系？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络"
+    ],
+    "difficulty": "Medium",
+    "title": "简述计算机网络的 OSI 模型"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络"
+    ],
+    "difficulty": "Easy",
+    "title": "一个域名对应一个 ip 吗"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络"
+    ],
+    "difficulty": "Medium",
+    "title": "UDP 和 TCP 协议的区别？有什么应用场景"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Data Structures",
+      "数据结构",
+      "Array",
+      "数组",
+      "Linked List",
+      "链表"
+    ],
+    "difficulty": "Easy",
+    "title": "数组和链表有什么区别？从内存结构上来说"
   }
 ]
