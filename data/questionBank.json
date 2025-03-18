@@ -644,5 +644,119 @@
     ],
     "difficulty": "Medium",
     "title": "反射为什么性能开销高"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java"
+    ],
+    "difficulty": "Medium",
+    "title": "volatile 关键字的作用是什么？不加这个关键字对变量修改就不会加到主存吗？加了这个关键字还需要加锁吗？这个关键字的一些应用场景都有哪些呢？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池",
+      "Java"
+    ],
+    "difficulty": "Hard",
+    "title": "假设让你写一个线程池工具，你觉得应该怎么去设计呢？应该有什么变量？有什么接口？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池",
+      "Java"
+    ],
+    "difficulty": "Medium",
+    "title": "比如核心线程数量是5，最大线程是10，现在来了11个任务，怎么调度？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池",
+      "Java"
+    ],
+    "difficulty": "Medium",
+    "title": "线程池的执行流程?"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池",
+      "Java"
+    ],
+    "difficulty": "Medium",
+    "title": "线程池是否会出现并发安全问题?"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Hard",
+    "title": "动态线程池是怎么实现的？动态调整机制是什么？我们应该设置多少核心线程数和最大线程数，以及通过哪里去设置？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "动态线程池的“动态”体现在什么地方？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "线程池过程和原理"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Hard",
+    "title": "你怎么实际计算需要的核心线程数目和阻塞队列大小?你怎么设定拒绝策略?高请求下有的用户的请求被拒绝了，你会怎么处理反映给用户?"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "String",
+      "字符串",
+      "Java",
+      "Java"
+    ],
+    "difficulty": "Easy",
+    "title": "String，StringBuilder，StringBuffer的区别?"
   }
 ]
