@@ -1002,5 +1002,335 @@
     ],
     "difficulty": "Medium",
     "title": "泛型、反射和类型推断的关系"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "HTML",
+      "HTML",
+      "Basic Concepts",
+      "基本概念"
+    ],
+    "difficulty": "Easy",
+    "title": "DOCTYPE 是什么，都有哪些属性？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "HTML",
+      "HTML",
+      "Basic Concepts",
+      "基本概念"
+    ],
+    "difficulty": "Easy",
+    "title": "meta 标签是干什么的，都有什么属性和作用"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "HTML",
+      "HTML",
+      "DOM",
+      "DOM"
+    ],
+    "difficulty": "Easy",
+    "title": "什么是 DOM ，它和 HTML 有什么区别？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "HTML",
+      "HTML",
+      "Semantic HTML",
+      "语义化HTML"
+    ],
+    "difficulty": "Medium",
+    "title": "如何理解 HTML5 语义化 ？有哪些常见的语义化标签？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "HTML",
+      "HTML",
+      "DOM",
+      "DOM"
+    ],
+    "difficulty": "Medium",
+    "title": "DOM 节点的 attr 和 property 有何区别"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "HTML",
+      "HTML",
+      "DOM Manipulation",
+      "DOM操作"
+    ],
+    "difficulty": "Medium",
+    "title": "如何一次性插入多个 DOM 节点？考虑性能"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "HTML",
+      "HTML",
+      "DOM",
+      "DOM"
+    ],
+    "difficulty": "Easy",
+    "title": "offsetHeight scrollHeight clientHeight 有什么区别"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "HTML",
+      "HTML",
+      "DOM",
+      "DOM"
+    ],
+    "difficulty": "Medium",
+    "title": "HTMLCollection 和 NodeList 的区别"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "HTML",
+      "HTML",
+      "DOM",
+      "DOM"
+    ],
+    "difficulty": "Easy",
+    "title": "Node 和 Element 有什么区别？"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "HTML",
+      "HTML",
+      "Event Handling",
+      "事件处理"
+    ],
+    "difficulty": "Medium",
+    "title": "开发一个无限下拉加载图片的页面，如何给每个图片绑定 click 事件？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "HTML",
+      "HTML",
+      "Event Handling",
+      "事件处理"
+    ],
+    "difficulty": "Easy",
+    "title": "window.onload 和 DOMContentLoaded 的区别是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "HTML",
+      "HTML",
+      "Performance",
+      "性能"
+    ],
+    "difficulty": "Medium",
+    "title": "script 标签放在 head 里，怎么解决加载阻塞的问题"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "HTML",
+      "HTML",
+      "Basic Concepts",
+      "基本概念"
+    ],
+    "difficulty": "Easy",
+    "title": "常见的 HTML 标签哪些是 inline 元素，哪些是 block 元素，哪些是 inline-block 元素"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "CSS",
+      "CSS",
+      "Selectors",
+      "选择器"
+    ],
+    "difficulty": "Easy",
+    "title": "常见的 CSS 选择器有哪些？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "CSS",
+      "CSS",
+      "Box Model",
+      "盒子模型"
+    ],
+    "difficulty": "Medium",
+    "title": "CSS 盒子模型，尺寸计算"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "CSS",
+      "CSS",
+      "Layout",
+      "布局"
+    ],
+    "difficulty": "Medium",
+    "title": "margin 纵向重叠"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "CSS",
+      "CSS",
+      "Text Styling",
+      "文本样式"
+    ],
+    "difficulty": "Easy",
+    "title": "lineHeight 如何继承？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "CSS",
+      "CSS",
+      "Layout",
+      "布局"
+    ],
+    "difficulty": "Medium",
+    "title": "margin 负值问题"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "CSS",
+      "CSS",
+      "Layout",
+      "布局"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是 BFC 如何触发 BFC？"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "CSS",
+      "CSS",
+      "Layout",
+      "布局"
+    ],
+    "difficulty": "Medium",
+    "title": "使用 CSS 实现居中对齐，有哪几种方式？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "CSS",
+      "CSS",
+      "Positioning",
+      "定位"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是 CSS 定位上下文？absolute 和 relative 分别依据谁来定位？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "CSS",
+      "CSS",
+      "Visibility",
+      "可见性"
+    ],
+    "difficulty": "Easy",
+    "title": "CSS overflow: hidden display：none 和 visibility: hidden 有什么区别"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "CSS",
+      "CSS",
+      "Units",
+      "单位"
+    ],
+    "difficulty": "Easy",
+    "title": "CSS px % em rem vw/vh 的区别"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "CSS",
+      "CSS",
+      "UI",
+      "UI"
+    ],
+    "difficulty": "Medium",
+    "title": "如何实现 Retina 屏 1px 像素边框"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "CSS",
+      "CSS",
+      "UI",
+      "UI"
+    ],
+    "difficulty": "Easy",
+    "title": "使用 CSS 画一个三角形"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "CSS",
+      "CSS",
+      "UI",
+      "UI"
+    ],
+    "difficulty": "Medium",
+    "title": "如何实现黑白主题变化？"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "CSS",
+      "CSS",
+      "Layout",
+      "布局"
+    ],
+    "difficulty": "Medium",
+    "title": "如何实现响应式布局？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "CSS",
+      "CSS",
+      "Z-index",
+      "Z-index"
+    ],
+    "difficulty": "Easy",
+    "title": "如何理解 z-index ？"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "CSS",
+      "CSS",
+      "Layout",
+      "布局"
+    ],
+    "difficulty": "Hard",
+    "title": "使用 flex 设计一个“四合院”布局"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "CSS",
+      "CSS",
+      "Tools",
+      "工具"
+    ],
+    "difficulty": "Medium",
+    "title": "你用过哪些 CSS 相关的技术，如库、框架、预处理语言、后处理语言等"
   }
 ]
