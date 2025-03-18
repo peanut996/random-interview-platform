@@ -82,6 +82,7 @@ export const getDefaultEnhanceQuestionPrompt = (title: string) =>
   
   Generate a question that follows this exact JSON structure:
   {
+    "id": "generated_unique_id",
     "type": "Coding",
     "category": "Stack", 
     "difficulty": "Easy",
@@ -117,6 +118,7 @@ export const getDefaultEnhanceQuestionPrompt = (title: string) =>
   - For number output: "output": "42" (no extra quotes for numbers)
   
   Pay careful attention to the data type of the expected output and format it accordingly.
+  CRITICAL: Only return a SINGLE JSON OBJECT, not an array. Your response must start with "{" and end with "}", not "[{...}]".
   If you cannot generate a valid JSON based on the provided title, return an error message or an empty JSON object.
   `;
 
