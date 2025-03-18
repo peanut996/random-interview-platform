@@ -5,6 +5,8 @@ import { Badge } from '@/components/ui/badge';
 import { useTranslation } from '@/lib/i18n';
 import type { Question } from '@/lib/types';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 
 interface QuestionAreaProps {
   question: Question;
@@ -60,7 +62,9 @@ export default function QuestionArea({ question, language }: QuestionAreaProps) 
           </div>
 
           <div className="prose dark:prose-invert max-w-none">
-            <ReactMarkdown>{description}</ReactMarkdown>
+            <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+              {description}
+            </ReactMarkdown>
           </div>
 
           {question.testCases && question.testCases.length > 0 && (

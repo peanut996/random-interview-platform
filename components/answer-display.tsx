@@ -10,6 +10,8 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { formatCodeBlock } from '@/lib/utils';
 import { useEffect, useState } from 'react';
+import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 
 interface AnswerDisplayProps {
   answer: string;
@@ -114,6 +116,8 @@ export default function AnswerDisplay({
         <div className="prose dark:prose-invert max-w-none">
           <div className="markdown-content">
             <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              rehypePlugins={[rehypeRaw]}
               components={{
                 p: ({ children }) => (
                   <p style={{ marginBottom: '1em', marginTop: '1em' }}>{children}</p>
