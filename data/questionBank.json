@@ -1002,5 +1002,115 @@
     ],
     "difficulty": "Medium",
     "title": "泛型、反射和类型推断的关系"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP",
+      "HTTP"
+    ],
+    "difficulty": "Medium",
+    "title": "TCP 是如何建立连接的，三次握手，四次挥手"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP",
+      "HTTP"
+    ],
+    "difficulty": "Medium",
+    "title": "HTTP 几个版本的区别"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP",
+      "HTTP"
+    ],
+    "difficulty": "Easy",
+    "title": "HTTP 常见的状态码"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP",
+      "HTTP"
+    ],
+    "difficulty": "Easy",
+    "title": "HTTP 常见 Header"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP",
+      "HTTP"
+    ],
+    "difficulty": "Easy",
+    "title": "URL 包含哪些部分？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP",
+      "HTTP"
+    ],
+    "difficulty": "Easy",
+    "title": "GET 和 POST 请求的区别"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP",
+      "HTTP"
+    ],
+    "difficulty": "Medium",
+    "title": "Ajax Fetch Axios 三者有什么区别？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP",
+      "HTTP"
+    ],
+    "difficulty": "Medium",
+    "title": "Fetch 和 XMLHTTPRequest 有什么区别？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP",
+      "HTTP"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是 Restful API ？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP",
+      "HTTP"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是 GraphQL ？"
   }
 ]
