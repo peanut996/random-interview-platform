@@ -40,6 +40,8 @@ export async function POST(req: NextRequest) {
           });
 
           return new Response(result.textStream);
+        } else {
+          console.warn('[Server] No matching question found in the QuestionBank.');
         }
       } catch (bankError) {
         console.error('[Server] Error using QuestionBank:', bankError);

@@ -41,11 +41,11 @@ export async function findMatchingQuestionFromBank(
   type?: QuestionType,
   category?: QuestionCategories,
   difficulty?: QuestionDifficulty
-): Promise<QuestionBankItem> {
+): Promise<QuestionBankItem | null> {
   loadQuestionBank();
   if (!questionBank || questionBank.length === 0) {
     console.warn('[Server] Question bank is empty or not loaded.');
-    throw new Error('Question bank is empty or not loaded');
+    return null;
   }
 
   if (!type || !category || !difficulty) {
@@ -53,9 +53,7 @@ export async function findMatchingQuestionFromBank(
   }
 
   const matchedQuestion = getMatchingQuestion(questionBank, type, category, difficulty);
-  if (!matchedQuestion) {
-    throw new Error('No matching question found');
-  }
+
   return matchedQuestion;
 }
 
@@ -75,7 +73,7 @@ const getMatchingQuestion = (
   type: QuestionType,
   category: QuestionCategories,
   difficulty: QuestionDifficulty
-): QuestionBankItem => {
+): QuestionBankItem | null => {
   // Helper function to get a random item from an array
   const getRandomItem = (items: QuestionBankItem[]): QuestionBankItem =>
     items[Math.floor(Math.random() * items.length)];
@@ -87,7 +85,7 @@ const getMatchingQuestion = (
 
   // If no category matches, return a random question from the entire bank
   if (categoryMatches.length === 0) {
-    throw new Error('[Server] No category matches found');
+    return null;
   }
 
   // Step 2: From category matches, filter by type
