@@ -3656,5 +3656,16 @@
     ],
     "difficulty": "Medium",
     "title": "Java线程池 ThreadPoolExecutor 为什么要使用高位存储runState"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Serialization",
+      "序列化"
+    ],
+    "difficulty": "Medium",
+    "title": "Serialize 接口的作用是什么？serialVersionUID 呢？"
   }
 ]
