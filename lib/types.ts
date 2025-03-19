@@ -54,6 +54,7 @@ export enum QuestionCategory {
   TCP = 'TCP',
   UDP = 'UDP',
   IP = 'IP',
+  HTTP = 'HTTP',
   Spring = 'Spring',
   Redis = 'Redis',
   MySQL = 'MySQL',
@@ -63,33 +64,12 @@ export enum QuestionCategory {
   OperationSystem = 'Operation System',
   SystemDesign = 'System Design',
 
-  //  新增的 HTML 相关分类
-  HTML = 'HTML',
-  BasicConcepts = 'Basic Concepts',
-  Meta = 'Meta',
-  DOM = 'DOM',
-  SemanticHTML = 'Semantic HTML',
-  DOMManipulation = 'DOM Manipulation',
-  EventHandling = 'Event Handling',
-  Performance = 'Performance',
+  Vue = 'Vue',
+  React = 'React',
 
-  // 新增的 CSS 相关分类
-  CSS = 'CSS',
-  Selectors = 'Selectors',
-  BoxModel = 'Box Model',
-  Layout = 'Layout',
-  TextStyling = 'Text Styling',
-  Positioning = 'Positioning',
-  Visibility = 'Visibility',
-  Units = 'Units',
-  UI = 'UI',
-  ZIndex = 'Z-index',
-
-  // 通用分类 (如果需要)
   Frameworks = 'Frameworks',
   Tools = 'Tools',
 
-  // 编程语言
   JavaScript = 'JavaScript',
   TypeScript = 'TypeScript',
   Python = 'Python',
@@ -97,11 +77,6 @@ export enum QuestionCategory {
   Cpp = 'C++',
   Go = 'Go',
   Rust = 'Rust',
-  PHP = 'PHP',
-  CSharp = 'C#',
-  Kotlin = 'Kotlin',
-  Swift = 'Swift',
-  Ruby = 'Ruby',
 }
 
 export enum CodingCategory {
@@ -130,11 +105,6 @@ export enum CodingCategory {
 
   // 排序算法
   Sorting = 'Sorting',
-  BubbleSort = 'Bubble Sort',
-  InsertionSort = 'Insertion Sort',
-  SelectionSort = 'Selection Sort',
-  MergeSort = 'Merge Sort',
-  QuickSort = 'Quick Sort',
 
   // 查找算法
   Searching = 'Searching',
