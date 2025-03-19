@@ -61,6 +61,7 @@ export enum QuestionCategory {
   RocketMQ = 'RocketMQ',
   Kafka = 'Kafka',
   Java = 'Java',
+  JVM = 'JVM',
   OperationSystem = 'Operation System',
   SystemDesign = 'System Design',
 
