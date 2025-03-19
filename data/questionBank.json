@@ -3667,5 +3667,285 @@
     ],
     "difficulty": "Medium",
     "title": "Serialize 接口的作用是什么？serialVersionUID 呢？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java"
+    ],
+    "difficulty": "Medium",
+    "title": "简单讲一下线程池"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java"
+    ],
+    "difficulty": "Medium",
+    "title": "线程池的拒绝策略大概有几种?"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java"
+    ],
+    "difficulty": "Medium",
+    "title": "线程池的池化思想还被用在哪里?"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Spring",
+      "Spring"
+    ],
+    "difficulty": "Medium",
+    "title": "spring最核心的是什么?"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Spring",
+      "Spring"
+    ],
+    "difficulty": "Medium",
+    "title": "简单讲一下你对IOC的理解?"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Spring",
+      "Spring"
+    ],
+    "difficulty": "Medium",
+    "title": "spring生成的bean和直接new的对象有什么区别?"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Spring",
+      "Spring",
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Hard",
+    "title": "spring的bean是线程安全的吗?(面试官引导了很久,硬控3min,其实就是看bean是不是有状态的)"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Spring",
+      "Spring"
+    ],
+    "difficulty": "Medium",
+    "title": "讲一下springMVC最核心的是什么?"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Spring",
+      "Spring"
+    ],
+    "difficulty": "Medium",
+    "title": "是怎么解析url的?"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Spring",
+      "Spring"
+    ],
+    "difficulty": "Medium",
+    "title": "实现springMVC最核心的几个类是什么?"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL"
+    ],
+    "difficulty": "Medium",
+    "title": "mysql的在innodb存储引擎下数据是怎么组织的?"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL"
+    ],
+    "difficulty": "Medium",
+    "title": "索引和数据是放在一起的吗?"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Tree",
+      "树"
+    ],
+    "difficulty": "Medium",
+    "title": "讲一下b+树"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Tree",
+      "树"
+    ],
+    "difficulty": "Medium",
+    "title": "b+树在非叶子结点不存储数据相比于b树有什么优势?"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Algorithms",
+      "算法"
+    ],
+    "difficulty": "Medium",
+    "title": "为什么加索引能提升查询速度?"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Algorithms",
+      "算法"
+    ],
+    "difficulty": "Hard",
+    "title": "b+树o(lg n)是怎么得出来的?底数是多少?"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Tree",
+      "树"
+    ],
+    "difficulty": "Hard",
+    "title": "b+树的k叉树这个k最大是多少?"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL"
+    ],
+    "difficulty": "Medium",
+    "title": "mysql的数据写经历了哪些过程?"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL"
+    ],
+    "difficulty": "Medium",
+    "title": "mysql中有哪几种log?简单答一下各自的作用?"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL"
+    ],
+    "difficulty": "Medium",
+    "title": "了解mysql的MVCC吗?核心的是什么?"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "JVM",
+      "JVM"
+    ],
+    "difficulty": "Medium",
+    "title": "jvm的内存结构?"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "JVM",
+      "JVM",
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Medium",
+    "title": "哪些是线程私有的?"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "JVM",
+      "JVM"
+    ],
+    "difficulty": "Easy",
+    "title": "代码文件(.java文件)是放在哪里的?"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "JVM",
+      "JVM",
+      "Algorithms",
+      "算法"
+    ],
+    "difficulty": "Hard",
+    "title": "如何理解\"尽量将递归转为迭代\",结合jvm讲一下?"
   }
 ]
