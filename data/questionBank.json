@@ -3633,5 +3633,15 @@
     ],
     "difficulty": "Hard",
     "title": "Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么区别，以及适合哪些场景？"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "LeetCode",
+      "Array",
+      "数组"
+    ],
+    "difficulty": "Medium",
+    "title": "2610. 转换二维数组"
   }
 ]
