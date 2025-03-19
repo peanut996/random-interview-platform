@@ -3599,5 +3599,39 @@
     ],
     "difficulty": "Medium",
     "title": "Java两个线程交叉打印"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MQ"
+    ],
+    "difficulty": "Medium",
+    "title": "为什么使用消息队列？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MQ"
+    ],
+    "difficulty": "Medium",
+    "title": "消息队列有什么优点和缺点？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "System Design",
+      "系统设计",
+      "MQ",
+      "Kafka",
+      "RocketMQ"
+    ],
+    "difficulty": "Hard",
+    "title": "Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么区别，以及适合哪些场景？"
   }
 ]
