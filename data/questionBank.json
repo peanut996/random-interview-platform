@@ -3643,5 +3643,18 @@
     ],
     "difficulty": "Medium",
     "title": "2610. 转换二维数组"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "ThreadPoolExecutor",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "Java线程池 ThreadPoolExecutor 为什么要使用高位存储runState"
   }
 ]
