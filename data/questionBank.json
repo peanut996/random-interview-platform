@@ -3745,7 +3745,7 @@
       "并发"
     ],
     "difficulty": "Hard",
-    "title": "spring的bean是线程安全的吗?(面试官引导了很久,硬控3min,其实就是看bean是不是有状态的)"
+    "title": "spring的bean是线程安全的吗?"
   },
   {
     "type": "Question",
