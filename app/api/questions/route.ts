@@ -65,7 +65,7 @@ export async function POST(req: NextRequest) {
       model: completion as LanguageModel,
       schema: questionSchema,
       messages,
-      temperature: 0.7,
+      temperature: 1,
       mode: 'json',
     });
 
