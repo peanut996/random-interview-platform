@@ -25,30 +25,30 @@ export default function QuestionArea({ question, language }: QuestionAreaProps) 
   return (
     <Card className="mb-6 shadow-sm border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#2c2c2e] rounded-xl">
       <CardContent className="p-6">
-        <div className="space-y-4">
-          {/* Title and badges in same flex container with justification */}
-          <div className="flex items-center justify-between">
-            <h2 className="text-2xl font-semibold">{title}</h2>
+        <div className="space-y-6">
+          {/* Title with badges positioned closer */}
+          <div>
+            <h2 className="text-2xl font-semibold mb-1">{title}</h2>
 
-            {/* Badges positioned to the right of the title */}
-            <div className="flex flex-wrap gap-2 items-center">
+            {/* Badges with smaller size, closer to title */}
+            <div className="flex flex-wrap gap-1.5 items-center mt-1">
               <Badge
                 variant="outline"
-                className="bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-800 font-medium"
+                className="bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-800 font-medium text-xs py-0 px-2 h-5"
               >
                 {question.type}
               </Badge>
 
               <Badge
                 variant="outline"
-                className="bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 border-purple-200 dark:border-purple-800 font-medium"
+                className="bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 border-purple-200 dark:border-purple-800 font-medium text-xs py-0 px-2 h-5"
               >
                 {topic}
               </Badge>
 
               <Badge
                 variant="outline"
-                className={`font-medium ${
+                className={`font-medium text-xs py-0 px-2 h-5 ${
                   question.difficulty === 'Easy'
                     ? 'bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 border-green-200 dark:border-green-800'
                     : question.difficulty === 'Medium'
@@ -61,7 +61,7 @@ export default function QuestionArea({ question, language }: QuestionAreaProps) 
             </div>
           </div>
 
-          <div className="prose dark:prose-invert max-w-none">
+          <div className="prose dark:prose-invert max-w-none mt-3">
             <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
               {description}
             </ReactMarkdown>
