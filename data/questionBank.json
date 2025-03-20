@@ -4285,5 +4285,18 @@
     ],
     "difficulty": "Medium",
     "title": "在 Spring 框架中，如何配置和使用线程池？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "线程池的 execute() 和 submit() 方法有什么区别？"
   }
 ]
