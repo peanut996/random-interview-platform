@@ -4532,5 +4532,265 @@
     ],
     "difficulty": "Hard",
     "title": "如何使用 Java 9 引入的 Flow API 来实现响应式编程？它和线程池有什么关系？"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "如何设计一个线程池，满足特定的性能指标（例如：吞吐量、延迟）"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "如何实现一个自定义的拒绝策略？"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "如何实现一个自定义的 ThreadFactory？为什么要自定义 ThreadFactory？"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Hard",
+    "title": "如何在线程池中实现任务的优先级调度？"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "如何保证提交到线程池的任务的执行顺序？"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Hard",
+    "title": "如何设计一个可伸缩的线程池？"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "如果线程池中的线程因为异常而终止，如何自动重启线程？"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "如何实现一个线程池的优雅降级方案？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "如何避免死锁？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "在什么情况下适合使用 CachedThreadPool？它的缺点是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Hard",
+    "title": "如何排查线程池中的线程死锁问题？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "如何避免线程池中的线程饥饿问题？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "如果线程池的任务执行时间不稳定，如何优化线程池的配置？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Hard",
+    "title": "在高并发场景下，如何避免线程池成为性能瓶颈？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "你在实际项目中使用线程池遇到过什么问题？你是如何解决的？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "如何使用 Java Flight Recorder (JFR) 分析线程池的性能问题？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "如何避免在 Runnable 或 Callable 中抛出未捕获的异常？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "如何使用 APM (Application Performance Monitoring) 工具来监控线程池的性能？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "如何根据线程池的监控数据进行调优？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "如何使用压力测试工具来评估线程池的性能？"
   }
 ]
