@@ -4298,5 +4298,109 @@
     ],
     "difficulty": "Medium",
     "title": "线程池的 execute() 和 submit() 方法有什么区别？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "ThreadPool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "ThreadPoolExecutor 的核心参数有哪些，它们的作用是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "ThreadPool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "如何选择合适的 BlockingQueue？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "ThreadPool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "Future 接口的作用是什么？如何使用它来获取线程池任务的执行结果？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "ThreadPool",
+      "线程池"
+    ],
+    "difficulty": "Hard",
+    "title": "ThreadPoolExecutor 中，任务是如何从 workQueue 中被取出的？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "ThreadPool",
+      "线程池"
+    ],
+    "difficulty": "Hard",
+    "title": "ThreadPoolExecutor 中，addWorker 方法的作用是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "ThreadPool",
+      "线程池"
+    ],
+    "difficulty": "Hard",
+    "title": "分析 ThreadPoolExecutor 的状态转换过程。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "ThreadPool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "线程池的 allowCoreThreadTimeOut 参数有什么作用？在什么情况下应该使用它？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "ThreadPool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "线程池的 prestartAllCoreThreads() 方法有什么作用？它和线程池的预热有什么区别？"
   }
 ]
