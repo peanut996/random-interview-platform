@@ -28,27 +28,25 @@ export default function QuestionArea({ question, language }: QuestionAreaProps) 
         <div className="space-y-6">
           {/* Title with badges positioned closer */}
           <div>
-            <h2 className="text-2xl font-semibold mb-1">{title}</h2>
-
-            {/* Badges with smaller size, closer to title */}
-            <div className="flex flex-wrap gap-1.5 items-center mt-1">
+            <h2 className="text-2xl font-semibold mb-3">{title}</h2>
+            <div className="flex flex-wrap gap-1.5 items-center mb-2">
               <Badge
                 variant="outline"
-                className="bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-800 font-medium text-xs py-0 px-2 h-5"
+                className="bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-800 font-medium text-xs py-0.5 px-2 h-5"
               >
                 {question.type}
               </Badge>
 
               <Badge
                 variant="outline"
-                className="bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 border-purple-200 dark:border-purple-800 font-medium text-xs py-0 px-2 h-5"
+                className="bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 border-purple-200 dark:border-purple-800 font-medium text-xs py-0.5 px-2 h-5"
               >
                 {topic}
               </Badge>
 
               <Badge
                 variant="outline"
-                className={`font-medium text-xs py-0 px-2 h-5 ${
+                className={`font-medium text-xs py-0.5 px-2 h-5 ${
                   question.difficulty === 'Easy'
                     ? 'bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 border-green-200 dark:border-green-800'
                     : question.difficulty === 'Medium'
