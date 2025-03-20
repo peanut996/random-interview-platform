@@ -4935,5 +4935,148 @@
     ],
     "difficulty": "Medium",
     "title": "线程池是否体现了某种设计模式？如果是，是什么模式？请描述该模式的意图和如何在线程池中体现。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "ThreadPool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "在高并发订单场景中，如何使用线程池来优化性能？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "ThreadPool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "在处理大数据任务时，如何使用线程池来并行处理数据？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "ThreadPool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "在处理 I/O 密集型任务时，如何选择合适的线程池配置？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "ThreadPool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "在微服务架构中，如何管理和监控各个服务的线程池？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "ThreadPool",
+      "线程池"
+    ],
+    "difficulty": "Hard",
+    "title": "请分享一个你曾经遇到的线程池相关的性能问题，你是如何分析和解决的？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "ThreadPool",
+      "线程池"
+    ],
+    "difficulty": "Hard",
+    "title": "请分析一个开源项目中的线程池使用方式，并指出其优点和缺点。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "ThreadPool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "你有什么关于线程池使用的经验或者教训可以分享？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "ThreadPool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "在 Spring 中，如何配置和使用 ThreadPoolTaskExecutor？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "ThreadPool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "Spring 的 @Async 注解是如何工作的？它和线程池有什么关系？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "ThreadPool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "如何在 Spring Boot 应用中监控和管理线程池？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "ThreadPool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "如何在 Spring Cloud 应用中使用线程池来实现服务间的异步调用？"
   }
 ]
