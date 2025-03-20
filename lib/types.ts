@@ -62,6 +62,7 @@ export enum QuestionCategory {
   Kafka = 'Kafka',
   Java = 'Java',
   JVM = 'JVM',
+  ThreadPool = 'Thread Pool',
   OperationSystem = 'Operation System',
   SystemDesign = 'System Design',
 
