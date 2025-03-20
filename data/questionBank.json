@@ -4792,5 +4792,148 @@
     ],
     "difficulty": "Medium",
     "title": "如何使用压力测试工具来评估线程池的性能？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "在使用线程池时，如何保证线程安全？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "volatile 关键字在线程池中有什么应用？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "AtomicInteger 等原子类在线程池中有什么作用？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "如何使用 CountDownLatch、CyclicBarrier、Semaphore 等并发工具来协调线程池中的任务？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "Exchanger 在线程池中有什么应用？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "如何使用 Phaser 来管理线程池中的阶段性任务？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "如何避免在线程池中使用过多的 synchronized 关键字？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "线程池的线程上下文切换是如何发生的？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "线程池的线程调度算法是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Hard",
+    "title": "Java 内存模型 (JMM) 在线程池中扮演什么角色？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Thread Pool",
+      "线程池",
+      "Design Pattern",
+      "设计模式"
+    ],
+    "difficulty": "Medium",
+    "title": "线程池是否体现了某种设计模式？如果是，是什么模式？请描述该模式的意图和如何在线程池中体现。"
   }
 ]
