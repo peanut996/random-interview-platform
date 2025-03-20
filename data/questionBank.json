@@ -5078,5 +5078,672 @@
     ],
     "difficulty": "Medium",
     "title": "如何在 Spring Cloud 应用中使用线程池来实现服务间的异步调用？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "AQS",
+      "AQS"
+    ],
+    "difficulty": "Medium",
+    "title": "AQS 的基本原理是什么？它是如何实现同步的？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "AQS",
+      "AQS"
+    ],
+    "difficulty": "Medium",
+    "title": "AQS 中的同步状态（state）有哪些用途？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "AQS",
+      "AQS"
+    ],
+    "difficulty": "Medium",
+    "title": "AQS 的公平锁和非公平锁有什么区别？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "AQS",
+      "AQS"
+    ],
+    "difficulty": "Medium",
+    "title": "AQS 中的 ConditionObject 是什么？它有什么作用？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "AQS",
+      "AQS"
+    ],
+    "difficulty": "Medium",
+    "title": "AQS 的 acquire 和 release 流程是怎样的？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "AQS",
+      "AQS"
+    ],
+    "difficulty": "Medium",
+    "title": "AQS 如何支持共享模式和独占模式？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Data Structures",
+      "数据结构",
+      "Java",
+      "Java",
+      "AQS",
+      "AQS"
+    ],
+    "difficulty": "Medium",
+    "title": "描述 AQS 的核心数据结构，以及它们在同步中的作用。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Data Structures",
+      "数据结构",
+      "Java",
+      "Java",
+      "AQS",
+      "AQS"
+    ],
+    "difficulty": "Medium",
+    "title": "AQS 中的 Node 节点是如何组织的？它们的状态有哪些？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "AQS",
+      "AQS"
+    ],
+    "difficulty": "Medium",
+    "title": "解释 acquireShared 和 releaseShared 方法在共享模式下的工作原理。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "AQS",
+      "AQS"
+    ],
+    "difficulty": "Medium",
+    "title": "AQS 如何避免死锁？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "AQS",
+      "AQS"
+    ],
+    "difficulty": "Hard",
+    "title": "如果自定义同步器，需要重写 AQS 的哪些方法？请给出具体例子。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "AQS",
+      "AQS"
+    ],
+    "difficulty": "Medium",
+    "title": "AQS 中的 tryAcquire 方法返回不同的值代表什么含义？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "AQS",
+      "AQS"
+    ],
+    "difficulty": "Medium",
+    "title": "AQS 如何处理中断信号？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "AQS",
+      "AQS"
+    ],
+    "difficulty": "Hard",
+    "title": "AQS 的性能瓶颈可能出现在哪些地方？如何优化？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "AQS",
+      "AQS"
+    ],
+    "difficulty": "Medium",
+    "title": "AQS 在 CountDownLatch、CyclicBarrier 和 Semaphore 中的应用有什么不同？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "AQS",
+      "AQS"
+    ],
+    "difficulty": "Medium",
+    "title": "解释 AQS 的“模板方法模式”。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "AQS",
+      "AQS"
+    ],
+    "difficulty": "Medium",
+    "title": "AQS 中，如果等待队列过长，会产生什么问题？如何解决？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "AQS",
+      "AQS"
+    ],
+    "difficulty": "Medium",
+    "title": "AQS 的 doAcquireInterruptibly 方法和 acquireQueued 方法有什么区别？分别在什么情况下使用？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "AQS",
+      "AQS"
+    ],
+    "difficulty": "Medium",
+    "title": "AQS 如何保证在并发环境下，只有一个线程能够成功获取锁？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "AQS",
+      "AQS"
+    ],
+    "difficulty": "Medium",
+    "title": "AQS 中的 cancelAcquire 方法的作用是什么？什么情况下会调用它？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "AQS",
+      "AQS"
+    ],
+    "difficulty": "Medium",
+    "title": "如果一个线程在 AQS 的等待队列中，但是它不想继续等待了，应该如何操作？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "AQS",
+      "AQS"
+    ],
+    "difficulty": "Medium",
+    "title": "AQS 的状态 (state) 除了用于表示锁的持有状态，还可以用于其他用途吗？请举例说明。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "AQS",
+      "AQS"
+    ],
+    "difficulty": "Medium",
+    "title": "在自定义 AQS 同步器时，如何选择合适的同步模式（独占或共享）？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "AQS",
+      "AQS"
+    ],
+    "difficulty": "Medium",
+    "title": "AQS 的 hasQueuedPredecessors 方法的作用是什么？它在公平锁和非公平锁中的作用有什么不同？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "AQS",
+      "AQS"
+    ],
+    "difficulty": "Hard",
+    "title": "如何使用 AQS 实现一个自定义的读写锁？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "AQS",
+      "AQS"
+    ],
+    "difficulty": "Medium",
+    "title": "谈谈你对 AQS 中 \"自旋\" 的理解，以及它对性能的影响。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "ReentrantLock",
+      "ReentrantLock"
+    ],
+    "difficulty": "Medium",
+    "title": "ReentrantLock 的特点是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "ReentrantLock",
+      "ReentrantLock"
+    ],
+    "difficulty": "Medium",
+    "title": "ReentrantLock 是如何实现可重入性的？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "ReentrantLock",
+      "ReentrantLock"
+    ],
+    "difficulty": "Medium",
+    "title": "ReentrantLock 的 lock() 和 unlock() 方法应该如何使用？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "ReentrantLock",
+      "ReentrantLock"
+    ],
+    "difficulty": "Medium",
+    "title": "ReentrantLock 提供了哪些方法来尝试获取锁？它们有什么区别？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "ReentrantLock",
+      "ReentrantLock"
+    ],
+    "difficulty": "Medium",
+    "title": "ReentrantLock 中的 Condition 是如何使用的？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "ReentrantLock",
+      "ReentrantLock"
+    ],
+    "difficulty": "Medium",
+    "title": "ReentrantLock 的底层实现是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "ReentrantLock",
+      "ReentrantLock"
+    ],
+    "difficulty": "Medium",
+    "title": "ReentrantLock 的公平锁是如何保证公平性的？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "ReentrantLock",
+      "ReentrantLock"
+    ],
+    "difficulty": "Medium",
+    "title": "ReentrantLock 的非公平锁有什么优势？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "ReentrantLock",
+      "ReentrantLock"
+    ],
+    "difficulty": "Medium",
+    "title": "ReentrantLock 中的 Condition 对象是如何与锁关联的？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "ReentrantLock",
+      "ReentrantLock"
+    ],
+    "difficulty": "Hard",
+    "title": "使用 ReentrantLock 实现一个简单的有界阻塞队列。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "ReentrantLock",
+      "ReentrantLock"
+    ],
+    "difficulty": "Medium",
+    "title": "ReentrantLock 的可重入性是如何影响性能的？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "ReentrantLock",
+      "ReentrantLock"
+    ],
+    "difficulty": "Medium",
+    "title": "如何使用 ReentrantLock 来避免死锁？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "ReentrantLock",
+      "ReentrantLock"
+    ],
+    "difficulty": "Medium",
+    "title": "ReentrantLock 相比于 synchronized，在调试方面有什么优势？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "ReentrantLock",
+      "ReentrantLock"
+    ],
+    "difficulty": "Medium",
+    "title": "ReentrantLock 如何处理线程优先级反转问题？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "ReentrantLock",
+      "ReentrantLock"
+    ],
+    "difficulty": "Hard",
+    "title": "分析 ReentrantLock 在高并发场景下的性能表现。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "ReentrantLock",
+      "ReentrantLock"
+    ],
+    "difficulty": "Hard",
+    "title": "如何使用 ReentrantLock 实现一个线程安全的计数器？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "ReentrantLock",
+      "ReentrantLock"
+    ],
+    "difficulty": "Hard",
+    "title": "在一个多线程环境中，如何使用 ReentrantLock 保护一个共享资源，避免数据竞争？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "ReentrantLock",
+      "ReentrantLock"
+    ],
+    "difficulty": "Hard",
+    "title": "如何使用 ReentrantLock 和 Condition 实现生产者-消费者模式？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "ReentrantLock",
+      "ReentrantLock"
+    ],
+    "difficulty": "Hard",
+    "title": "如何使用 ReentrantLock 实现一个可定时的任务调度器？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "ReentrantLock",
+      "ReentrantLock"
+    ],
+    "difficulty": "Medium",
+    "title": "在什么情况下，使用 ReentrantLock 的 tryLock 方法比 lock 方法更合适？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "ReentrantLock",
+      "ReentrantLock"
+    ],
+    "difficulty": "Medium",
+    "title": "如何通过监控 ReentrantLock 的状态，来诊断并发问题？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "ReentrantLock",
+      "ReentrantLock"
+    ],
+    "difficulty": "Medium",
+    "title": "如果在使用 ReentrantLock 时，忘记在 finally 块中释放锁，会发生什么问题？如何避免？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "ReentrantLock",
+      "ReentrantLock"
+    ],
+    "difficulty": "Hard",
+    "title": "如何使用 ReentrantLock 实现一个简单的线程池？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "ReentrantLock",
+      "ReentrantLock"
+    ],
+    "difficulty": "Medium",
+    "title": "在使用 ReentrantLock 时，如何选择合适的锁的公平性策略？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "ReentrantLock",
+      "ReentrantLock"
+    ],
+    "difficulty": "Hard",
+    "title": "如何通过 ReentrantLock 实现一个简单的分布式锁？"
   }
 ]
