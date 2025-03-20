@@ -3947,5 +3947,343 @@
     ],
     "difficulty": "Hard",
     "title": "如何理解\"尽量将递归转为迭代\",结合jvm讲一下?"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "线程池是什么？为什么使用线程池？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Hard",
+    "title": "线程池的原理是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "Java 线程池的参数有哪些？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "线程池的类型有哪些？分别适用于什么场景？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "线程池的拒绝策略有哪些？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "如何监控线程池的状态？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "使用无界队列的线程池会导致内存飙升吗？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "如何合理配置线程池的大小？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "线程池的execute()和submit()方法有什么区别？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "如何优雅地关闭线程池？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "线程池的创建方式有哪些？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Hard",
+    "title": "`ThreadPoolExecutor` 的核心参数有哪些，它们的作用是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Hard",
+    "title": "线程池是如何管理线程的生命周期的？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "线程池的饱和策略有哪些？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是线程池的“预热”？如何实现？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "如何动态调整线程池的参数？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Hard",
+    "title": "在使用线程池时，如何避免死锁？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "如何选择合适的 `BlockingQueue`？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "`Future`接口的作用是什么？如何使用它来获取线程池任务的执行结果？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "在使用线程池时，如何处理任务中抛出的异常？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "线程池的监控指标有哪些？如何通过 JMX 监控线程池？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "除了 `ThreadPoolExecutor`，还有其他的线程池实现吗？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "`ForkJoinPool` 和 `ThreadPoolExecutor` 有什么区别？分别适用于什么场景？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是 `CompletableFuture`？它和线程池有什么关系？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "如何使用线程池来执行定时任务？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "在 Spring 框架中，如何配置和使用线程池？"
   }
 ]
