@@ -5745,5 +5745,135 @@
     ],
     "difficulty": "Hard",
     "title": "如何通过 ReentrantLock 实现一个简单的分布式锁？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "Java",
+      "ForkJoinPool"
+    ],
+    "difficulty": "Medium",
+    "title": "Fork/Join主要用来解决什么样的问题？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "Java",
+      "ForkJoinPool"
+    ],
+    "difficulty": "Easy",
+    "title": "Fork/Join框架是在哪个JDK版本中引入的？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "ForkJoinPool"
+    ],
+    "difficulty": "Medium",
+    "title": "Fork/Join框架主要包含哪三个模块？模块之间的关系是怎么样的？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "ForkJoinPool"
+    ],
+    "difficulty": "Medium",
+    "title": "ForkJoinPool类继承关系？ForkJoinTask抽象类继承关系？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "ForkJoinPool"
+    ],
+    "difficulty": "Medium",
+    "title": "在实际运用中，我们一般都会继承 RecursiveTask 、RecursiveAction 或 CountedCompleter 来实现我们的业务需求，而不会直接继承 ForkJoinTask 类。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "ForkJoinPool"
+    ],
+    "difficulty": "Hard",
+    "title": "整个Fork/Join 框架的执行流程/运行机制是怎么样的？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "ForkJoinPool"
+    ],
+    "difficulty": "Hard",
+    "title": "具体阐述Fork/Join的分治思想和work-stealing 实现方式？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "ForkJoinPool"
+    ],
+    "difficulty": "Medium",
+    "title": "有哪些JDK源码中使用了Fork/Join思想？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "ForkJoinPool"
+    ],
+    "difficulty": "Medium",
+    "title": "如何使用Executors工具类创建ForkJoinPool？"
+  },
+  {
+    "type": "Coding",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "Algorithms",
+      "算法",
+      "ForkJoinPool"
+    ],
+    "difficulty": "Medium",
+    "title": "写一个例子: 用ForkJoin方式实现1+2+3+...+100000？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Java",
+      "Java",
+      "ForkJoinPool"
+    ],
+    "difficulty": "Medium",
+    "title": "Fork/Join在使用时有哪些注意事项？结合JDK中的斐波那契数列实例具体说明。"
   }
 ]
