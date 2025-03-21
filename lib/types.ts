@@ -63,6 +63,7 @@ export enum QuestionCategory {
   Java = 'Java',
   JVM = 'JVM',
   ThreadPool = 'Thread Pool',
+  Concurrent = 'Concurrent',
   OperationSystem = 'Operation System',
   SystemDesign = 'System Design',
 
