@@ -5875,5 +5875,16 @@
     ],
     "difficulty": "Medium",
     "title": "Fork/Join在使用时有哪些注意事项？结合JDK中的斐波那契数列实例具体说明。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Operating System",
+      "操作系统"
+    ],
+    "difficulty": "Medium",
+    "title": "进程间通信和线程间通信的几种方式和区别"
   }
 ]
