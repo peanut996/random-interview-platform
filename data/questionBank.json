@@ -6033,6 +6033,2116 @@
   {
     "type": "Question",
     "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机体系结构",
+      "CPU Cache",
+      "CPU缓存"
+    ],
+    "difficulty": "Medium",
+    "title": "缓存写策略：写直达（Write Through）与写回（Write Back）的区别是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机体系结构",
+      "CPU Cache",
+      "CPU缓存",
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是CPU缓存一致性问题？如何保证缓存一致性？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机体系结构",
+      "CPU Cache",
+      "CPU缓存",
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Hard",
+    "title": "解释MESI协议及其四种状态（Modified, Exclusive, Shared, Invalidated）。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机体系结构",
+      "Data Representation",
+      "数据表示"
+    ],
+    "difficulty": "Easy",
+    "title": "为什么计算机中使用补码来表示负数？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机体系结构",
+      "Data Representation",
+      "数据表示"
+    ],
+    "difficulty": "Easy",
+    "title": "十进制小数如何转换为二进制表示？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机体系结构",
+      "Data Representation",
+      "数据表示"
+    ],
+    "difficulty": "Medium",
+    "title": "计算机是如何存储浮点数的？请解释IEEE 754标准。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机体系结构",
+      "Data Representation",
+      "数据表示"
+    ],
+    "difficulty": "Medium",
+    "title": "为什么在很多编程语言中，0.1 + 0.2 不等于 0.3？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机体系结构",
+      "CPU Cache",
+      "CPU缓存",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Easy",
+    "title": "为什么在CPU和主内存之间需要CPU Cache（高速缓存）？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机体系结构",
+      "CPU Cache",
+      "CPU缓存"
+    ],
+    "difficulty": "Easy",
+    "title": "什么是缓存行（Cache Line）？它的大小通常是多少？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机体系结构",
+      "CPU Cache",
+      "CPU缓存",
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是CPU缓存伪共享（False Sharing）？如何避免伪共享问题？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "CPU Scheduling",
+      "CPU调度"
+    ],
+    "difficulty": "Medium",
+    "title": "Linux内核是如何调度普通任务的？解释一下CFS（完全公平调度器）和vruntime。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "CPU Scheduling",
+      "CPU调度"
+    ],
+    "difficulty": "Easy",
+    "title": "在Linux中，如何调整一个正在运行进程的优先级？（nice, renice）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机体系结构"
+    ],
+    "difficulty": "Easy",
+    "title": "请简述冯诺依曼体系结构的主要组成部分。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机体系结构"
+    ],
+    "difficulty": "Easy",
+    "title": "32位CPU和64位CPU的主要区别是什么？64位一定比32位快很多吗？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机体系结构"
+    ],
+    "difficulty": "Medium",
+    "title": "32位操作系统能否运行在64位CPU上？64位操作系统能否运行在32位CPU上？为什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机体系结构"
+    ],
+    "difficulty": "Medium",
+    "title": "描述CPU执行一条指令的基本周期（取指、译码、执行、写回）。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机体系结构",
+      "Performance Optimization",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "哪些因素会影响程序在CPU上的执行速度？（指令数、CPI、时钟频率）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机体系结构",
+      "CPU Cache",
+      "CPU缓存"
+    ],
+    "difficulty": "Easy",
+    "title": "解释CPU缓存的不同级别（L1, L2, L3）及其特点。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机体系结构",
+      "CPU Cache",
+      "CPU缓存",
+      "Performance Optimization",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "如何编写代码以提高CPU数据缓存的命中率？（例如：数组遍历顺序）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机体系结构",
+      "CPU Cache",
+      "CPU缓存",
+      "Performance Optimization",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "如何编写代码以提高CPU指令缓存的命中率？（例如：利用分支预测）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机体系结构",
+      "Concurrency",
+      "并发",
+      "Performance Optimization",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "在多核CPU系统中，CPU亲和性（CPU Affinity）如何帮助提高程序性能？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Interrupts",
+      "中断"
+    ],
+    "difficulty": "Easy",
+    "title": "什么是中断？它在操作系统中起什么作用？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Interrupts",
+      "中断"
+    ],
+    "difficulty": "Medium",
+    "title": "硬中断和软中断（Softirq）的主要区别是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Interrupts",
+      "中断"
+    ],
+    "difficulty": "Medium",
+    "title": "为什么Linux将中断处理分为上半部（Top Half）和下半部（Bottom Half）？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Interrupts",
+      "中断",
+      "Troubleshooting",
+      "故障排查"
+    ],
+    "difficulty": "Easy",
+    "title": "在Linux系统中，如何查看软中断（Softirq）的统计信息？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Interrupts",
+      "中断",
+      "Troubleshooting",
+      "故障排查",
+      "Performance Optimization",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "如果发现系统软中断CPU使用率过高，你会如何诊断和定位问题？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机体系结构",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Easy",
+    "title": "描述计算机的存储层次结构（寄存器、缓存、内存、硬盘）。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机体系结构",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Medium",
+    "title": "比较SRAM和DRAM的特点、用途和成本。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机体系结构",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Easy",
+    "title": "简述不同存储层级（缓存、内存、SSD、HDD）在访问速度和成本上的大致差异。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Easy",
+    "title": "虚拟内存的作用是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Medium",
+    "title": "Linux 进程的内存布局是怎样的？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Medium",
+    "title": "内存分段和内存分页的区别和优缺点是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理",
+      "Computer Architecture",
+      "计算机体系结构"
+    ],
+    "difficulty": "Medium",
+    "title": "多级页表和 TLB 是如何工作的？它们解决了什么问题？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理",
+      "C Programming",
+      "C语言"
+    ],
+    "difficulty": "Medium",
+    "title": "malloc 是如何分配内存的？(brk 和 mmap 的区别)"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理",
+      "C Programming",
+      "C语言"
+    ],
+    "difficulty": "Medium",
+    "title": "free() 函数如何知道要释放多大的内存？free 后内存会立即归还给 OS 吗？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Medium",
+    "title": "在 4GB 物理内存的 64 位机器上申请 8G 内存会发生什么？需要考虑哪些因素？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是 Swap 机制？它在什么情况下会被触发？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Hard",
+    "title": "系统内存不足时，Linux 会如何回收内存？(kswapd, 直接回收, OOM)"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Medium",
+    "title": "文件页和匿名页的回收方式有什么不同？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Hard",
+    "title": "什么是 OOM Killer？它是如何选择进程杀死的？如何调整？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Cache",
+      "缓存",
+      "Algorithms",
+      "算法",
+      "Data Structures",
+      "数据结构"
+    ],
+    "difficulty": "Hard",
+    "title": "解释 Linux/MySQL 中改进的 LRU 算法如何解决预读失效和缓存污染问题。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Linux",
+      "Linux",
+      "Performance Tuning",
+      "性能调优",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Hard",
+    "title": "swappiness, min_free_kbytes, zone_reclaim_mode 这些内核参数的作用是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Process",
+      "进程",
+      "Thread",
+      "线程",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Medium",
+    "title": "一个进程最多可以创建多少个线程？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Concurrency",
+      "并发",
+      "Deadlock",
+      "死锁",
+      "Thread",
+      "线程"
+    ],
+    "difficulty": "Medium",
+    "title": "如何避免死锁？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Concurrency",
+      "并发",
+      "Deadlock",
+      "死锁"
+    ],
+    "difficulty": "Easy",
+    "title": "死锁产生的四个必要条件是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Concurrency",
+      "并发",
+      "Deadlock",
+      "死锁",
+      "Debugging",
+      "调试"
+    ],
+    "difficulty": "Hard",
+    "title": "如何使用 pstack/gdb 等工具排查死锁问题？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Concurrency",
+      "并发",
+      "Synchronization",
+      "同步",
+      "Mutual Exclusion",
+      "互斥",
+      "Thread",
+      "线程"
+    ],
+    "difficulty": "Medium",
+    "title": "多线程冲突与同步互斥机制"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Concurrency",
+      "并发",
+      "Race Condition",
+      "竞争条件"
+    ],
+    "difficulty": "Easy",
+    "title": "什么是竞争条件（Race Condition）？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Concurrency",
+      "并发",
+      "Critical Section",
+      "临界区"
+    ],
+    "difficulty": "Easy",
+    "title": "什么是临界区（Critical Section）？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Concurrency",
+      "并发",
+      "Synchronization",
+      "同步",
+      "Mutual Exclusion",
+      "互斥"
+    ],
+    "difficulty": "Medium",
+    "title": "同步（Synchronization）与互斥（Mutual Exclusion）的区别是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Concurrency",
+      "并发",
+      "Locking",
+      "锁",
+      "Spinlock",
+      "自旋锁"
+    ],
+    "difficulty": "Medium",
+    "title": "锁的实现方式（忙等待锁与无忙等待锁）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Concurrency",
+      "并发",
+      "Semaphore",
+      "信号量",
+      "Synchronization",
+      "同步",
+      "Mutual Exclusion",
+      "互斥"
+    ],
+    "difficulty": "Medium",
+    "title": "信号量（Semaphore）及其 P/V 操作如何实现互斥与同步？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Concurrency",
+      "并发",
+      "Synchronization",
+      "同步",
+      "Producer-Consumer Problem",
+      "生产者消费者问题",
+      "Semaphore",
+      "信号量"
+    ],
+    "difficulty": "Medium",
+    "title": "生产者消费者问题及其信号量解决方案"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Concurrency",
+      "并发",
+      "Synchronization",
+      "同步",
+      "Deadlock",
+      "死锁",
+      "Dining Philosophers Problem",
+      "哲学家就餐问题",
+      "Semaphore",
+      "信号量"
+    ],
+    "difficulty": "Hard",
+    "title": "哲学家就餐问题及其解决方案（避免死锁）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Concurrency",
+      "并发",
+      "Synchronization",
+      "同步",
+      "Readers-Writers Problem",
+      "读者写者问题",
+      "Semaphore",
+      "信号量"
+    ],
+    "difficulty": "Hard",
+    "title": "读者写者问题及其解决方案（读者优先、写者优先、公平）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Concurrency",
+      "并发",
+      "Locking",
+      "锁",
+      "Pessimistic Lock",
+      "悲观锁",
+      "Optimistic Lock",
+      "乐观锁",
+      "Database",
+      "数据库"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是悲观锁和乐观锁？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Concurrency",
+      "并发",
+      "Locking",
+      "锁",
+      "Mutex",
+      "互斥锁",
+      "Spinlock",
+      "自旋锁"
+    ],
+    "difficulty": "Medium",
+    "title": "互斥锁（Mutex）和自旋锁（Spinlock）的区别是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Concurrency",
+      "并发",
+      "Locking",
+      "锁",
+      "Read-Write Lock",
+      "读写锁"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是读写锁？读者优先、写者优先、公平读写锁的区别？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Concurrency",
+      "并发",
+      "Atomic Operation",
+      "原子操作",
+      "CAS",
+      "比较并交换"
+    ],
+    "difficulty": "Medium",
+    "title": "CAS（Compare-And-Swap）原子操作的原理是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Process",
+      "进程"
+    ],
+    "difficulty": "Easy",
+    "title": "什么是进程？进程和程序的区别？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Concurrency",
+      "并发",
+      "Parallelism",
+      "并行"
+    ],
+    "difficulty": "Easy",
+    "title": "并发（Concurrency）和并行（Parallelism）的区别是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Process",
+      "进程",
+      "Process State",
+      "进程状态"
+    ],
+    "difficulty": "Easy",
+    "title": "进程有哪些状态？（运行、就绪、阻塞等）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Process",
+      "进程",
+      "PCB",
+      "进程控制块"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是进程控制块（PCB）？它包含哪些信息？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Process",
+      "进程",
+      "PCB",
+      "进程控制块"
+    ],
+    "difficulty": "Medium",
+    "title": "PCB 是如何组织的？（例如，状态队列链表）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Process",
+      "进程",
+      "Process Management",
+      "进程管理"
+    ],
+    "difficulty": "Medium",
+    "title": "描述进程的创建、终止、阻塞和唤醒过程"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Process",
+      "进程",
+      "Context Switching",
+      "上下文切换"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是上下文切换？进程上下文切换会发生什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Thread",
+      "线程",
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Easy",
+    "title": "为什么使用线程？线程的优缺点是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Process",
+      "进程",
+      "Thread",
+      "线程",
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Easy",
+    "title": "进程和线程的主要区别是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Thread",
+      "线程",
+      "Context Switching",
+      "上下文切换"
+    ],
+    "difficulty": "Medium",
+    "title": "线程上下文切换会发生什么？与进程上下文切换有何不同？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Thread",
+      "线程",
+      "User Thread",
+      "用户线程",
+      "Kernel Thread",
+      "内核线程",
+      "LWP",
+      "轻量级进程"
+    ],
+    "difficulty": "Hard",
+    "title": "描述不同的线程实现模型（用户线程、内核线程、轻量级进程 LWP）及其优缺点"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Scheduling",
+      "调度",
+      "Process",
+      "进程",
+      "Thread",
+      "线程"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是进程/线程调度？调度发生在哪些时机？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Scheduling",
+      "调度",
+      "Scheduling Algorithm",
+      "调度算法"
+    ],
+    "difficulty": "Medium",
+    "title": "调度算法的设计原则有哪些？（CPU利用率、吞吐量、周转时间、等待时间、响应时间）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Scheduling",
+      "调度",
+      "Scheduling Algorithm",
+      "调度算法"
+    ],
+    "difficulty": "Medium",
+    "title": "描述常见的调度算法（FCFS, SJF, HRRN, RR, HPF, MFQ）及其特点"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Inter-Process Communication",
+      "进程间通信",
+      "IPC"
+    ],
+    "difficulty": "Medium",
+    "title": "进程间有哪些通信方式？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Inter-Process Communication",
+      "进程间通信",
+      "IPC",
+      "Pipe",
+      "管道"
+    ],
+    "difficulty": "Medium",
+    "title": "解释管道（匿名管道与命名管道/FIFO）通信机制"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Inter-Process Communication",
+      "进程间通信",
+      "IPC",
+      "Message Queue",
+      "消息队列"
+    ],
+    "difficulty": "Medium",
+    "title": "解释消息队列（Message Queue）通信机制"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Inter-Process Communication",
+      "进程间通信",
+      "IPC",
+      "Shared Memory",
+      "共享内存"
+    ],
+    "difficulty": "Medium",
+    "title": "解释共享内存（Shared Memory）通信机制"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Inter-Process Communication",
+      "进程间通信",
+      "IPC",
+      "Semaphore",
+      "信号量",
+      "Synchronization",
+      "同步",
+      "Mutual Exclusion",
+      "互斥"
+    ],
+    "difficulty": "Medium",
+    "title": "解释信号量（Semaphore）在进程间通信中的作用（互斥与同步）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Inter-Process Communication",
+      "进程间通信",
+      "IPC",
+      "Signal",
+      "信号"
+    ],
+    "difficulty": "Medium",
+    "title": "解释信号（Signal）作为异步通信机制"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Inter-Process Communication",
+      "进程间通信",
+      "IPC",
+      "Networking",
+      "网络",
+      "Socket",
+      "套接字"
+    ],
+    "difficulty": "Medium",
+    "title": "解释套接字（Socket）通信（包括跨网络和本地）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Process",
+      "进程",
+      "Thread",
+      "线程",
+      "Error Handling",
+      "错误处理",
+      "JVM",
+      "Java虚拟机"
+    ],
+    "difficulty": "Medium",
+    "title": "线程崩溃了，进程也会崩溃吗？（区分 C/C++ 与 Java）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Process",
+      "进程",
+      "Thread",
+      "线程",
+      "Memory Management",
+      "内存管理",
+      "C++",
+      "C++"
+    ],
+    "difficulty": "Medium",
+    "title": "为什么在 C/C++ 中线程崩溃（如非法内存访问）通常会导致进程崩溃？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Process",
+      "进程",
+      "Signal",
+      "信号"
+    ],
+    "difficulty": "Medium",
+    "title": "信号（Signal）机制在进程终止中是如何工作的？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Process",
+      "进程",
+      "Thread",
+      "线程",
+      "JVM",
+      "Java虚拟机",
+      "Error Handling",
+      "错误处理",
+      "Signal",
+      "信号"
+    ],
+    "difficulty": "Hard",
+    "title": "为什么在 Java 中线程崩溃（如 StackOverflowError 或 NPE）不会导致 JVM 进程崩溃？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Process Scheduling",
+      "进程调度"
+    ],
+    "difficulty": "Medium",
+    "title": "比较不同的进程调度算法（如 FCFS, SJF, RR, 优先级, MLFQ）的优缺点。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Process Scheduling",
+      "进程调度"
+    ],
+    "difficulty": "Easy",
+    "title": "什么是抢占式调度和非抢占式调度？它们有什么区别？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Medium",
+    "title": "比较不同的页面置换算法（如 OPT, FIFO, LRU, Clock, LFU）的原理和优缺点。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Medium",
+    "title": "解释缺页中断（Page Fault）的处理过程。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "I/O Management",
+      "I/O管理"
+    ],
+    "difficulty": "Medium",
+    "title": "比较不同的磁盘调度算法（如 FCFS, SSTF, SCAN, C-SCAN, LOOK, C-LOOK）的目标和特性。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "File System",
+      "文件系统"
+    ],
+    "difficulty": "Medium",
+    "title": "解释文件系统的基本组成：索引节点（inode）和目录项（dentry）的作用和关系。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "File System",
+      "文件系统"
+    ],
+    "difficulty": "Easy",
+    "title": "什么是虚拟文件系统（VFS）？它的作用是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "File System",
+      "文件系统"
+    ],
+    "difficulty": "Medium",
+    "title": "比较文件的不同存储方式（连续、链表、索引）的优缺点。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "File System",
+      "文件系统"
+    ],
+    "difficulty": "Easy",
+    "title": "硬链接（Hard Link）和软链接（Symbolic Link）有什么区别？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "I/O Management",
+      "I/O管理"
+    ],
+    "difficulty": "Medium",
+    "title": "解释缓冲 I/O 与非缓冲 I/O，直接 I/O 与非直接 I/O 的区别。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Networking",
+      "网络",
+      "I/O Management",
+      "I/O管理"
+    ],
+    "difficulty": "Medium",
+    "title": "解释阻塞 I/O、非阻塞 I/O、同步 I/O、异步 I/O 的区别和联系。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是 Linux 的 Page Cache？它的作用和优缺点是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Easy",
+    "title": "Page Cache 和 Buffer Cache 有什么区别和联系？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Medium",
+    "title": "Page Cache 如何保证数据一致性？（Write Through vs Write Back）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "I/O Management",
+      "I/O管理"
+    ],
+    "difficulty": "Medium",
+    "title": "解释 DMA（直接内存访问）的工作原理及其解决了什么问题。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "I/O Management",
+      "I/O管理"
+    ],
+    "difficulty": "Easy",
+    "title": "设备驱动程序的作用是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "I/O Management",
+      "I/O管理"
+    ],
+    "difficulty": "Medium",
+    "title": "键盘敲入一个字母时，操作系统内部发生了什么？（中断处理过程）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "System Design",
+      "系统设计",
+      "Algorithms",
+      "算法",
+      "Hash Table",
+      "哈希表"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是一致性哈希？它解决了什么问题？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "System Design",
+      "系统设计",
+      "Algorithms",
+      "算法",
+      "Hash Table",
+      "哈希表"
+    ],
+    "difficulty": "Medium",
+    "title": "一致性哈希中的虚拟节点是如何解决数据倾斜问题的？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "System Design",
+      "系统设计"
+    ],
+    "difficulty": "Hard",
+    "title": "解释 Reactor 模式及其不同的实现方式（单 Reactor 单线程/多线程，多 Reactor 多线程）。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "System Design",
+      "系统设计"
+    ],
+    "difficulty": "Hard",
+    "title": "Reactor 模式和 Proactor 模式有什么区别？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "Operating System",
+      "操作系统"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是 I/O 多路复用？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "Operating System",
+      "操作系统"
+    ],
+    "difficulty": "Hard",
+    "title": "比较 select、poll、epoll 的实现原理和优缺点。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "Operating System",
+      "操作系统"
+    ],
+    "difficulty": "Medium",
+    "title": "epoll 的水平触发（LT）和边缘触发（ET）有什么区别？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Networking",
+      "网络",
+      "I/O Management",
+      "I/O管理"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是零拷贝（Zero-copy）？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Networking",
+      "网络",
+      "I/O Management",
+      "I/O管理"
+    ],
+    "difficulty": "Hard",
+    "title": "解释实现零拷贝的几种方式（mmap+write, sendfile）及其原理。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Networking",
+      "网络",
+      "I/O Management",
+      "I/O管理"
+    ],
+    "difficulty": "Medium",
+    "title": "零拷贝和 PageCache 的关系是什么？传输大文件时为什么不建议用零拷贝？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Networking",
+      "网络"
+    ],
+    "difficulty": "Easy",
+    "title": "衡量网络性能的主要指标有哪些？（带宽、延时、吞吐率、PPS）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Networking",
+      "网络",
+      "Linux"
+    ],
+    "difficulty": "Easy",
+    "title": "如何使用 Linux 命令（如 ifconfig/ip, netstat/ss, sar, ping, ethtool）查看网络配置和性能指标？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Networking",
+      "网络",
+      "Linux"
+    ],
+    "difficulty": "Medium",
+    "title": "netstat/ss 命令输出中 Recv-Q 和 Send-Q 在不同 socket 状态下分别代表什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Linux",
+      "Linux",
+      "Data Analysis",
+      "数据分析"
+    ],
+    "difficulty": "Medium",
+    "title": "如何使用 Linux Shell 命令（awk, sort, uniq, wc）从 Nginx 日志中分析 PV 和 UV？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机组成原理",
+      "CPU Cache",
+      "CPU缓存"
+    ],
+    "difficulty": "Medium",
+    "title": "CPU Cache 的数据写入方式有哪些？（写直达 vs 写回）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机组成原理",
+      "CPU Cache",
+      "CPU缓存",
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是缓存一致性问题？如何解决？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机组成原理",
+      "CPU Cache",
+      "CPU缓存",
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Hard",
+    "title": "解释 MESI 协议。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机组成原理",
+      "CPU Cache",
+      "CPU缓存",
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Hard",
+    "title": "MESI 协议的四种状态是什么？它们之间如何转换？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机组成原理",
+      "CPU Cache",
+      "CPU缓存",
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是总线嗅探？它在缓存一致性中扮演什么角色？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机组成原理",
+      "Data Representation",
+      "数据表示"
+    ],
+    "difficulty": "Easy",
+    "title": "为什么负数要用补码表示？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机组成原理",
+      "Data Representation",
+      "数据表示"
+    ],
+    "difficulty": "Easy",
+    "title": "十进制小数如何转换为二进制？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机组成原理",
+      "Data Representation",
+      "数据表示",
+      "Floating Point",
+      "浮点数"
+    ],
+    "difficulty": "Medium",
+    "title": "计算机是如何存储小数的？（IEEE 754 浮点数标准）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机组成原理",
+      "Data Representation",
+      "数据表示",
+      "Floating Point",
+      "浮点数"
+    ],
+    "difficulty": "Medium",
+    "title": "为什么 0.1 + 0.2 不等于 0.3？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机组成原理",
+      "Data Representation",
+      "数据表示",
+      "Floating Point",
+      "浮点数"
+    ],
+    "difficulty": "Medium",
+    "title": "单精度和双精度浮点数有什么区别？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机组成原理",
+      "CPU Cache",
+      "CPU缓存"
+    ],
+    "difficulty": "Easy",
+    "title": "CPU 缓存的层次结构是怎样的？为什么需要多级缓存？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机组成原理",
+      "CPU Cache",
+      "CPU缓存"
+    ],
+    "difficulty": "Easy",
+    "title": "什么是 CPU Cache Line？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机组成原理",
+      "CPU Cache",
+      "CPU缓存",
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Hard",
+    "title": "什么是伪共享（False Sharing）？如何避免？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "CPU Scheduling",
+      "CPU调度"
+    ],
+    "difficulty": "Medium",
+    "title": "Linux 中的任务调度策略有哪些？（实时任务 vs 普通任务）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "CPU Scheduling",
+      "CPU调度"
+    ],
+    "difficulty": "Medium",
+    "title": "解释 CFS（完全公平调度）算法。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "CPU Scheduling",
+      "CPU调度"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是 vruntime？它在 CFS 中如何工作？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "CPU Scheduling",
+      "CPU调度"
+    ],
+    "difficulty": "Easy",
+    "title": "如何调整 Linux 任务的优先级？（nice 值）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机组成原理"
+    ],
+    "difficulty": "Medium",
+    "title": "CPU 是如何执行程序的？（指令周期）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机组成原理"
+    ],
+    "difficulty": "Easy",
+    "title": "解释冯诺依曼模型的基本组成部分。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机组成原理"
+    ],
+    "difficulty": "Medium",
+    "title": "CPU 中的寄存器有哪些主要类型及其作用？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机组成原理"
+    ],
+    "difficulty": "Easy",
+    "title": "32 位和 64 位 CPU 的主要区别是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机组成原理"
+    ],
+    "difficulty": "Easy",
+    "title": "64 位 CPU 的计算性能一定比 32 位 CPU 高很多吗？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机组成原理"
+    ],
+    "difficulty": "Medium",
+    "title": "解释指令流水线的基本阶段。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机组成原理",
+      "Performance Optimization",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "如何衡量和提高程序的 CPU 执行速度？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机组成原理",
+      "CPU Cache",
+      "CPU缓存"
+    ],
+    "difficulty": "Easy",
+    "title": "为什么需要 CPU Cache？它比内存快多少？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机组成原理",
+      "CPU Cache",
+      "CPU缓存"
+    ],
+    "difficulty": "Medium",
+    "title": "CPU Cache 的数据结构是怎样的？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机组成原理",
+      "CPU Cache",
+      "CPU缓存"
+    ],
+    "difficulty": "Medium",
+    "title": "解释直接映射缓存（Direct Mapped Cache）的工作原理。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机组成原理",
+      "CPU Cache",
+      "CPU缓存",
+      "Performance Optimization",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "如何编写能提高 CPU 数据缓存命中率的代码？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机组成原理",
+      "CPU Cache",
+      "CPU缓存",
+      "Performance Optimization",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "如何编写能提高 CPU 指令缓存命中率的代码？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机组成原理",
+      "CPU Cache",
+      "CPU缓存",
+      "Performance Optimization",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是分支预测？它如何影响性能？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机组成原理",
+      "CPU Cache",
+      "CPU缓存",
+      "Concurrency",
+      "并发",
+      "Performance Optimization",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "在多核 CPU 上，如何提高缓存命中率？（线程绑定）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机组成原理",
+      "Interrupts",
+      "中断"
+    ],
+    "difficulty": "Easy",
+    "title": "什么是中断？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机组成原理",
+      "Interrupts",
+      "中断"
+    ],
+    "difficulty": "Easy",
+    "title": "为什么中断处理程序需要短而快？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Interrupts",
+      "中断"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是软中断？它与硬中断有何区别？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Interrupts",
+      "中断"
+    ],
+    "difficulty": "Medium",
+    "title": "Linux 为什么要将中断处理分为上半部和下半部？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Interrupts",
+      "中断"
+    ],
+    "difficulty": "Medium",
+    "title": "Linux 中常见的软中断类型有哪些？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Linux",
+      "Linux",
+      "Troubleshooting",
+      "故障排查",
+      "Interrupts",
+      "中断"
+    ],
+    "difficulty": "Medium",
+    "title": "如何查看和分析 Linux 系统中的软中断情况？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Linux",
+      "Linux",
+      "Troubleshooting",
+      "故障排查",
+      "Performance Optimization",
+      "性能优化",
+      "Interrupts",
+      "中断"
+    ],
+    "difficulty": "Hard",
+    "title": "如何定位软中断 CPU 使用率过高的问题？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机组成原理",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Easy",
+    "title": "描述计算机的存储器层次结构。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机组成原理",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Easy",
+    "title": "不同层级的存储器在速度、容量、成本上有何差异？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机组成原理",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Medium",
+    "title": "SRAM 和 DRAM 有什么区别？它们分别用于什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机组成原理",
+      "CPU Cache",
+      "CPU缓存"
+    ],
+    "difficulty": "Medium",
+    "title": "CPU 访问数据的流程是怎样的（考虑缓存）？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机组成原理",
+      "Storage",
+      "存储"
+    ],
+    "difficulty": "Easy",
+    "title": "机械硬盘、固态硬盘、内存的速度大约相差多少倍？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Kernel",
+      "内核"
+    ],
+    "difficulty": "Easy",
+    "title": "内核在操作系统中扮演什么角色？提供哪些基本能力？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Kernel",
+      "内核"
+    ],
+    "difficulty": "Easy",
+    "title": "什么是用户态和内核态？为什么需要区分？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Kernel",
+      "内核",
+      "System Call",
+      "系统调用"
+    ],
+    "difficulty": "Easy",
+    "title": "应用程序如何从用户态切换到内核态？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Linux",
+      "Linux",
+      "Kernel",
+      "内核"
+    ],
+    "difficulty": "Medium",
+    "title": "Linux 内核的设计理念有哪些？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Kernel",
+      "内核"
+    ],
+    "difficulty": "Medium",
+    "title": "宏内核、微内核、混合内核各有什么特点和优缺点？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Linux",
+      "Linux",
+      "Windows",
+      "Windows",
+      "Kernel",
+      "内核"
+    ],
+    "difficulty": "Medium",
+    "title": "Linux 和 Windows 内核的主要区别是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Linux",
+      "Linux",
+      "Windows",
+      "Windows",
+      "File Format",
+      "文件格式"
+    ],
+    "difficulty": "Medium",
+    "title": "Linux 和 Windows 的可执行文件格式分别是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
       "Database",
       "数据库"
     ],
