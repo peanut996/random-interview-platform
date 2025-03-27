@@ -5886,5 +5886,148 @@
     ],
     "difficulty": "Medium",
     "title": "进程间通信和线程间通信的几种方式和区别"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Medium",
+    "title": "为什么要有虚拟内存？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Medium",
+    "title": "malloc 是如何分配内存的？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Medium",
+    "title": "内存满了，会发生什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Medium",
+    "title": "在 4GB 物理内存的机器上，申请 8G 内存会怎么样？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Hard",
+    "title": "如何避免预读失效和缓存污染的问题？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Hard",
+    "title": "什么是预读机制？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Hard",
+    "title": "预读失效会带来什么问题？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Hard",
+    "title": "如何避免预读失效造成的影响？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Hard",
+    "title": "什么是缓存污染？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Hard",
+    "title": "缓存污染会带来什么问题？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Hard",
+    "title": "怎么避免缓存污染造成的影响？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Hard",
+    "title": "深入理解 Linux 虚拟内存管理"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Hard",
+    "title": "深入理解 Linux 物理内存管理"
   }
 ]
