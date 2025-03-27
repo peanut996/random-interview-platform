@@ -8139,5 +8139,223 @@
     ],
     "difficulty": "Medium",
     "title": "Linux 和 Windows 的可执行文件格式分别是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库"
+    ],
+    "difficulty": "Medium",
+    "title": "分库分表怎么分"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库"
+    ],
+    "difficulty": "Medium",
+    "title": "SharingSphere怎么查数据的总量"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Thread",
+      "线程"
+    ],
+    "difficulty": "Medium",
+    "title": "为什么要用ThreadLocal，ThreadLocal的原理"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Algorithms",
+      "算法"
+    ],
+    "difficulty": "Medium",
+    "title": "布隆过滤器原理和特点"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "线程池处理任务的流程"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Concurrency",
+      "并发",
+      "Thread Pool",
+      "线程池"
+    ],
+    "difficulty": "Medium",
+    "title": "面对一个有很多任务的场景，依据什么原则去设计线程池的线程数"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库"
+    ],
+    "difficulty": "Medium",
+    "title": "ACID特性分别怎么实现"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "Tree",
+      "树"
+    ],
+    "difficulty": "Medium",
+    "title": "为什么要用B+树"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库"
+    ],
+    "difficulty": "Medium",
+    "title": "LIMIT分页查询为什么后面页面的查询会很慢"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库"
+    ],
+    "difficulty": "Medium",
+    "title": "索引失效有哪些场景"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java"
+    ],
+    "difficulty": "Easy",
+    "title": "两个new Integer（100）是否=="
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Java",
+      "Spring",
+      "Spring"
+    ],
+    "difficulty": "Medium",
+    "title": "用Spring的时候怎么避免循环依赖"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java"
+    ],
+    "difficulty": "Medium",
+    "title": "类型擦除问题，ArrayList<Int>可以存入一个String吗？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java"
+    ],
+    "difficulty": "Medium",
+    "title": "java序列化生成的uuid有什么用？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Medium",
+    "title": "java有哪些锁？讲讲AQS"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Medium",
+    "title": "synchronizied锁的原理"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Hard",
+    "title": "CAS操作怎么避免ABA问题"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Java",
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Medium",
+    "title": "volatile关键字有什么用？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "String",
+      "字符串"
+    ],
+    "difficulty": "Medium",
+    "title": "redis的String结构和java的String有什么不同"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Data Structures",
+      "数据结构"
+    ],
+    "difficulty": "Medium",
+    "title": "redis的ZSET了解吗？底层是什么结构"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis"
+    ],
+    "difficulty": "Medium",
+    "title": "redis为什么这么快，为什么不使用多线程？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis"
+    ],
+    "difficulty": "Medium",
+    "title": "了解Redis Cluster吗？多加几个实例数据要怎么迁移?"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis"
+    ],
+    "difficulty": "Medium",
+    "title": "redis某个key过期了，删除策略有哪些？"
   }
 ]
