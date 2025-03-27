@@ -9987,5 +9987,263 @@
     ],
     "difficulty": "Hard",
     "title": "AOF 后台重写（bgrewriteaof）是如何工作的？如何处理重写期间的数据修改？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "Operating System",
+      "操作系统",
+      "Linux Networking",
+      "Linux网络"
+    ],
+    "difficulty": "Hard",
+    "title": "Linux 系统是如何收发网络包的？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "TCP/IP",
+      "OSI Model",
+      "网络模型"
+    ],
+    "difficulty": "Medium",
+    "title": "OSI 模型和 TCP/IP 模型有什么区别？各自有哪几层？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "TCP/IP",
+      "Packet Encapsulation",
+      "数据包封装"
+    ],
+    "difficulty": "Medium",
+    "title": "请描述网络数据包在 TCP/IP 模型中的封装过程。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "IP",
+      "MTU",
+      "Packet Fragmentation",
+      "数据包分片"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是 MTU？网络包超过 MTU 会发生什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "Operating System",
+      "操作系统",
+      "Linux Networking",
+      "Linux网络",
+      "NAPI",
+      "Interrupt Handling",
+      "中断处理"
+    ],
+    "difficulty": "Hard",
+    "title": "什么是 NAPI 机制？它解决了什么问题？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "Operating System",
+      "操作系统",
+      "Linux Networking",
+      "Linux网络",
+      "Packet Processing",
+      "数据包处理"
+    ],
+    "difficulty": "Medium",
+    "title": "简述 Linux 接收网络包的详细流程。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "Operating System",
+      "操作系统",
+      "Linux Networking",
+      "Linux网络",
+      "Packet Processing",
+      "数据包处理",
+      "sk_buff"
+    ],
+    "difficulty": "Medium",
+    "title": "简述 Linux 发送网络包的详细流程。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "Operating System",
+      "操作系统",
+      "Linux Networking",
+      "Linux网络",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Medium",
+    "title": "Linux 发送网络数据时涉及几次内存拷贝？为什么需要拷贝？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "TCP/IP",
+      "Network Model",
+      "网络模型"
+    ],
+    "difficulty": "Easy",
+    "title": "TCP/IP 网络模型分为哪几层？各自的作用是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "TCP/IP",
+      "Transport Layer",
+      "传输层",
+      "TCP",
+      "UDP"
+    ],
+    "difficulty": "Easy",
+    "title": "传输层有哪些主要协议？TCP 和 UDP 有什么区别？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "TCP/IP",
+      "Network Layer",
+      "网络层",
+      "IP",
+      "Routing",
+      "路由",
+      "Addressing",
+      "寻址"
+    ],
+    "difficulty": "Medium",
+    "title": "网络层的主要作用是什么？IP 地址和子网掩码如何工作？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "TCP/IP",
+      "Network Interface Layer",
+      "网络接口层",
+      "MAC Address",
+      "MAC地址",
+      "Ethernet",
+      "以太网"
+    ],
+    "difficulty": "Medium",
+    "title": "网络接口层的作用是什么？为什么需要 MAC 地址？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP",
+      "DNS",
+      "TCP",
+      "IP",
+      "Web",
+      "浏览器"
+    ],
+    "difficulty": "Hard",
+    "title": "键入网址到网页显示，期间发生了什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "DNS"
+    ],
+    "difficulty": "Medium",
+    "title": "请描述 DNS 域名解析的详细过程。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "TCP",
+      "Connection Establishment",
+      "连接建立"
+    ],
+    "difficulty": "Medium",
+    "title": "请描述 TCP 三次握手的过程及其目的。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "IP",
+      "Routing",
+      "路由"
+    ],
+    "difficulty": "Medium",
+    "title": "路由器是如何根据 IP 地址转发数据包的？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "Ethernet",
+      "以太网",
+      "MAC Address",
+      "MAC地址",
+      "Switching",
+      "交换"
+    ],
+    "difficulty": "Medium",
+    "title": "交换机是如何根据 MAC 地址转发数据帧的？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "ARP"
+    ],
+    "difficulty": "Medium",
+    "title": "ARP 协议的作用是什么？它是如何工作的？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "MAC Address",
+      "MAC地址",
+      "IP Address",
+      "IP地址"
+    ],
+    "difficulty": "Medium",
+    "title": "在数据包传输过程中，源/目的 IP 地址和源/目的 MAC 地址是如何变化的？"
   }
 ]
