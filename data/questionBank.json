@@ -6372,5 +6372,166 @@
     ],
     "difficulty": "Easy",
     "title": "简述不同存储层级（缓存、内存、SSD、HDD）在访问速度和成本上的大致差异。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Easy",
+    "title": "虚拟内存的作用是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Medium",
+    "title": "Linux 进程的内存布局是怎样的？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Medium",
+    "title": "内存分段和内存分页的区别和优缺点是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理",
+      "Computer Architecture",
+      "计算机体系结构"
+    ],
+    "difficulty": "Medium",
+    "title": "多级页表和 TLB 是如何工作的？它们解决了什么问题？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理",
+      "C Programming",
+      "C语言"
+    ],
+    "difficulty": "Medium",
+    "title": "malloc 是如何分配内存的？(brk 和 mmap 的区别)"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理",
+      "C Programming",
+      "C语言"
+    ],
+    "difficulty": "Medium",
+    "title": "free() 函数如何知道要释放多大的内存？free 后内存会立即归还给 OS 吗？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Medium",
+    "title": "在 4GB 物理内存的 64 位机器上申请 8G 内存会发生什么？需要考虑哪些因素？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是 Swap 机制？它在什么情况下会被触发？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Hard",
+    "title": "系统内存不足时，Linux 会如何回收内存？(kswapd, 直接回收, OOM)"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Medium",
+    "title": "文件页和匿名页的回收方式有什么不同？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Hard",
+    "title": "什么是 OOM Killer？它是如何选择进程杀死的？如何调整？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Cache",
+      "缓存",
+      "Algorithms",
+      "算法",
+      "Data Structures",
+      "数据结构"
+    ],
+    "difficulty": "Hard",
+    "title": "解释 Linux/MySQL 中改进的 LRU 算法如何解决预读失效和缓存污染问题。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Linux",
+      "Linux",
+      "Performance Tuning",
+      "性能调优",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Hard",
+    "title": "swappiness, min_free_kbytes, zone_reclaim_mode 这些内核参数的作用是什么？"
   }
 ]
