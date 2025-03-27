@@ -12745,5 +12745,532 @@
     ],
     "difficulty": "Medium",
     "title": "拔掉网线后，原本的 TCP 连接还存在吗？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "OSI Model",
+      "OSI模型",
+      "TCP/IP Model",
+      "TCP/IP模型"
+    ],
+    "difficulty": "Medium",
+    "title": "网络层与数据链路层有什么关系？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "IP",
+      "IP协议",
+      "MAC Address",
+      "MAC地址",
+      "Routing",
+      "路由"
+    ],
+    "difficulty": "Medium",
+    "title": "为什么数据包转发过程中IP地址不变而MAC地址会变？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "IP Addressing",
+      "IP编址",
+      "IPv4"
+    ],
+    "difficulty": "Easy",
+    "title": "解释IPv4地址分类（A、B、C、D、E类）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "IP Addressing",
+      "IP编址",
+      "IPv4"
+    ],
+    "difficulty": "Easy",
+    "title": "如何计算A、B、C类地址的最大主机数？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "IP Addressing",
+      "IP编址",
+      "Broadcast",
+      "广播"
+    ],
+    "difficulty": "Medium",
+    "title": "广播地址的用途是什么？解释本地广播和直接广播。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "IP Addressing",
+      "IP编址",
+      "Multicast",
+      "组播"
+    ],
+    "difficulty": "Medium",
+    "title": "组播地址（D类地址）的用途是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "IP Addressing",
+      "IP编址",
+      "IPv4"
+    ],
+    "difficulty": "Medium",
+    "title": "IP地址分类的优缺点是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "IP Addressing",
+      "IP编址",
+      "CIDR"
+    ],
+    "difficulty": "Medium",
+    "title": "解释无分类编址 CIDR。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "IP Addressing",
+      "IP编址",
+      "CIDR",
+      "Subnetting",
+      "子网划分"
+    ],
+    "difficulty": "Easy",
+    "title": "在CIDR中如何区分网络号和主机号？（子网掩码或前缀长度）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "IP Addressing",
+      "IP编址",
+      "Routing",
+      "路由"
+    ],
+    "difficulty": "Medium",
+    "title": "为什么要区分IP地址的网络号和主机号？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "IP Addressing",
+      "IP编址",
+      "Subnetting",
+      "子网划分"
+    ],
+    "difficulty": "Medium",
+    "title": "如何进行子网划分？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "IP Addressing",
+      "IP编址"
+    ],
+    "difficulty": "Easy",
+    "title": "解释公有IP地址和私有IP地址的区别。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "IP Addressing",
+      "IP编址",
+      "Routing",
+      "路由"
+    ],
+    "difficulty": "Medium",
+    "title": "IP地址如何用于路由控制？解释最长匹配原则。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "IP Addressing",
+      "IP编址"
+    ],
+    "difficulty": "Easy",
+    "title": "什么是环回地址（127.0.0.1）？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "IP",
+      "IP协议",
+      "Fragmentation",
+      "分片",
+      "MTU"
+    ],
+    "difficulty": "Medium",
+    "title": "解释IP分片和重组过程。什么是MTU？重组在哪里发生？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "IPv6",
+      "IPv4"
+    ],
+    "difficulty": "Medium",
+    "title": "IPv6相比IPv4有哪些主要优势？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "IP Addressing",
+      "IP编址",
+      "IPv6"
+    ],
+    "difficulty": "Easy",
+    "title": "IPv6地址如何表示？解释其缩写规则。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "IP Addressing",
+      "IP编址",
+      "IPv6"
+    ],
+    "difficulty": "Medium",
+    "title": "描述IPv6地址的结构和主要类型（单播、组播、任播）。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "IP Addressing",
+      "IP编址",
+      "IPv6"
+    ],
+    "difficulty": "Medium",
+    "title": "解释IPv6单播地址的不同类型（链路本地、唯一本地、全局）。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "IP",
+      "IP协议",
+      "IPv4",
+      "IPv6"
+    ],
+    "difficulty": "Medium",
+    "title": "比较IPv4和IPv6的首部。IPv6移除了/改变了哪些字段，为什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "DNS"
+    ],
+    "difficulty": "Medium",
+    "title": "解释DNS域名解析的过程。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "DNS"
+    ],
+    "difficulty": "Easy",
+    "title": "描述域名的层级结构。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "ARP"
+    ],
+    "difficulty": "Medium",
+    "title": "解释ARP协议的用途和工作原理。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "ARP"
+    ],
+    "difficulty": "Medium",
+    "title": "ARP如何发现IP地址对应的MAC地址？（ARP请求/响应）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "RARP"
+    ],
+    "difficulty": "Easy",
+    "title": "什么是RARP协议？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "DHCP"
+    ],
+    "difficulty": "Medium",
+    "title": "解释DHCP动态分配IP地址的过程（DORA）。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "DHCP"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是DHCP中继代理？为什么需要它？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "NAT"
+    ],
+    "difficulty": "Medium",
+    "title": "解释NAT（网络地址转换）的原理。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "NAT",
+      "NAPT"
+    ],
+    "difficulty": "Medium",
+    "title": "解释NAPT（网络地址端口转换）及其如何帮助节省IP地址。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "NAT"
+    ],
+    "difficulty": "Hard",
+    "title": "什么是NAT穿透技术？为什么需要它？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "ICMP"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是ICMP协议？它的主要功能是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "ICMP"
+    ],
+    "difficulty": "Medium",
+    "title": "描述ICMP报文的主要类型（查询报文和差错报文）。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "IGMP",
+      "Multicast",
+      "组播"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是IGMP协议？它在组播中的作用是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "IGMP",
+      "Multicast",
+      "组播"
+    ],
+    "difficulty": "Hard",
+    "title": "解释IGMP的基本工作机制（例如，加入/离开组播组，查询）。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "ICMP",
+      "Ping"
+    ],
+    "difficulty": "Medium",
+    "title": "解释 ping 命令的工作原理。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "ICMP"
+    ],
+    "difficulty": "Medium",
+    "title": "描述常见的ICMP差错报文类型（目标不可达、重定向、超时）。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "ICMP"
+    ],
+    "difficulty": "Medium",
+    "title": "解释ICMP目标不可达报文及其常见代码。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "ICMP",
+      "Routing",
+      "路由"
+    ],
+    "difficulty": "Medium",
+    "title": "解释ICMP重定向报文的作用。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "ICMP",
+      "IP",
+      "IP协议",
+      "TTL"
+    ],
+    "difficulty": "Medium",
+    "title": "解释ICMP超时报文以及TTL的作用。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "ICMP",
+      "Traceroute"
+    ],
+    "difficulty": "Hard",
+    "title": "解释 traceroute (或 tracert) 命令的工作原理。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "ICMP",
+      "Traceroute",
+      "MTU"
+    ],
+    "difficulty": "Hard",
+    "title": "traceroute 如何用于路径MTU发现？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "Ping",
+      "Loopback",
+      "回环地址"
+    ],
+    "difficulty": "Medium",
+    "title": "断网了还能 ping 通 127.0.0.1 吗？为什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "TCP",
+      "Ping",
+      "ICMP"
+    ],
+    "difficulty": "Medium",
+    "title": "TCP 发送数据和使用 ping 命令有什么区别？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "Ping",
+      "Loopback",
+      "回环地址",
+      "IP Addressing",
+      "IP编址"
+    ],
+    "difficulty": "Medium",
+    "title": "ping 回环地址 (127.0.0.1) 和 ping 本机IP地址有区别吗？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "IP Addressing",
+      "IP编址",
+      "Loopback",
+      "回环地址",
+      "DNS"
+    ],
+    "difficulty": "Medium",
+    "title": "127.0.0.1、localhost 和 0.0.0.0 有什么区别？"
   }
 ]
