@@ -6029,5 +6029,348 @@
     ],
     "difficulty": "Hard",
     "title": "深入理解 Linux 物理内存管理"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机体系结构",
+      "CPU Cache",
+      "CPU缓存"
+    ],
+    "difficulty": "Medium",
+    "title": "缓存写策略：写直达（Write Through）与写回（Write Back）的区别是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机体系结构",
+      "CPU Cache",
+      "CPU缓存",
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是CPU缓存一致性问题？如何保证缓存一致性？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机体系结构",
+      "CPU Cache",
+      "CPU缓存",
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Hard",
+    "title": "解释MESI协议及其四种状态（Modified, Exclusive, Shared, Invalidated）。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机体系结构",
+      "Data Representation",
+      "数据表示"
+    ],
+    "difficulty": "Easy",
+    "title": "为什么计算机中使用补码来表示负数？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机体系结构",
+      "Data Representation",
+      "数据表示"
+    ],
+    "difficulty": "Easy",
+    "title": "十进制小数如何转换为二进制表示？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机体系结构",
+      "Data Representation",
+      "数据表示"
+    ],
+    "difficulty": "Medium",
+    "title": "计算机是如何存储浮点数的？请解释IEEE 754标准。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机体系结构",
+      "Data Representation",
+      "数据表示"
+    ],
+    "difficulty": "Medium",
+    "title": "为什么在很多编程语言中，0.1 + 0.2 不等于 0.3？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机体系结构",
+      "CPU Cache",
+      "CPU缓存",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Easy",
+    "title": "为什么在CPU和主内存之间需要CPU Cache（高速缓存）？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机体系结构",
+      "CPU Cache",
+      "CPU缓存"
+    ],
+    "difficulty": "Easy",
+    "title": "什么是缓存行（Cache Line）？它的大小通常是多少？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机体系结构",
+      "CPU Cache",
+      "CPU缓存",
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是CPU缓存伪共享（False Sharing）？如何避免伪共享问题？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "CPU Scheduling",
+      "CPU调度"
+    ],
+    "difficulty": "Medium",
+    "title": "Linux内核是如何调度普通任务的？解释一下CFS（完全公平调度器）和vruntime。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "CPU Scheduling",
+      "CPU调度"
+    ],
+    "difficulty": "Easy",
+    "title": "在Linux中，如何调整一个正在运行进程的优先级？（nice, renice）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机体系结构"
+    ],
+    "difficulty": "Easy",
+    "title": "请简述冯诺依曼体系结构的主要组成部分。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机体系结构"
+    ],
+    "difficulty": "Easy",
+    "title": "32位CPU和64位CPU的主要区别是什么？64位一定比32位快很多吗？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机体系结构"
+    ],
+    "difficulty": "Medium",
+    "title": "32位操作系统能否运行在64位CPU上？64位操作系统能否运行在32位CPU上？为什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机体系结构"
+    ],
+    "difficulty": "Medium",
+    "title": "描述CPU执行一条指令的基本周期（取指、译码、执行、写回）。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机体系结构",
+      "Performance Optimization",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "哪些因素会影响程序在CPU上的执行速度？（指令数、CPI、时钟频率）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机体系结构",
+      "CPU Cache",
+      "CPU缓存"
+    ],
+    "difficulty": "Easy",
+    "title": "解释CPU缓存的不同级别（L1, L2, L3）及其特点。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机体系结构",
+      "CPU Cache",
+      "CPU缓存",
+      "Performance Optimization",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "如何编写代码以提高CPU数据缓存的命中率？（例如：数组遍历顺序）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机体系结构",
+      "CPU Cache",
+      "CPU缓存",
+      "Performance Optimization",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "如何编写代码以提高CPU指令缓存的命中率？（例如：利用分支预测）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机体系结构",
+      "Concurrency",
+      "并发",
+      "Performance Optimization",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "在多核CPU系统中，CPU亲和性（CPU Affinity）如何帮助提高程序性能？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Interrupts",
+      "中断"
+    ],
+    "difficulty": "Easy",
+    "title": "什么是中断？它在操作系统中起什么作用？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Interrupts",
+      "中断"
+    ],
+    "difficulty": "Medium",
+    "title": "硬中断和软中断（Softirq）的主要区别是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Interrupts",
+      "中断"
+    ],
+    "difficulty": "Medium",
+    "title": "为什么Linux将中断处理分为上半部（Top Half）和下半部（Bottom Half）？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Interrupts",
+      "中断",
+      "Troubleshooting",
+      "故障排查"
+    ],
+    "difficulty": "Easy",
+    "title": "在Linux系统中，如何查看软中断（Softirq）的统计信息？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Interrupts",
+      "中断",
+      "Troubleshooting",
+      "故障排查",
+      "Performance Optimization",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "如果发现系统软中断CPU使用率过高，你会如何诊断和定位问题？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机体系结构",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Easy",
+    "title": "描述计算机的存储层次结构（寄存器、缓存、内存、硬盘）。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机体系结构",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Medium",
+    "title": "比较SRAM和DRAM的特点、用途和成本。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机体系结构",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Easy",
+    "title": "简述不同存储层级（缓存、内存、SSD、HDD）在访问速度和成本上的大致差异。"
   }
 ]
