@@ -7156,5 +7156,360 @@
     ],
     "difficulty": "Hard",
     "title": "为什么在 Java 中线程崩溃（如 StackOverflowError 或 NPE）不会导致 JVM 进程崩溃？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Process Scheduling",
+      "进程调度"
+    ],
+    "difficulty": "Medium",
+    "title": "比较不同的进程调度算法（如 FCFS, SJF, RR, 优先级, MLFQ）的优缺点。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Process Scheduling",
+      "进程调度"
+    ],
+    "difficulty": "Easy",
+    "title": "什么是抢占式调度和非抢占式调度？它们有什么区别？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Medium",
+    "title": "比较不同的页面置换算法（如 OPT, FIFO, LRU, Clock, LFU）的原理和优缺点。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Medium",
+    "title": "解释缺页中断（Page Fault）的处理过程。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "I/O Management",
+      "I/O管理"
+    ],
+    "difficulty": "Medium",
+    "title": "比较不同的磁盘调度算法（如 FCFS, SSTF, SCAN, C-SCAN, LOOK, C-LOOK）的目标和特性。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "File System",
+      "文件系统"
+    ],
+    "difficulty": "Medium",
+    "title": "解释文件系统的基本组成：索引节点（inode）和目录项（dentry）的作用和关系。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "File System",
+      "文件系统"
+    ],
+    "difficulty": "Easy",
+    "title": "什么是虚拟文件系统（VFS）？它的作用是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "File System",
+      "文件系统"
+    ],
+    "difficulty": "Medium",
+    "title": "比较文件的不同存储方式（连续、链表、索引）的优缺点。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "File System",
+      "文件系统"
+    ],
+    "difficulty": "Easy",
+    "title": "硬链接（Hard Link）和软链接（Symbolic Link）有什么区别？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "I/O Management",
+      "I/O管理"
+    ],
+    "difficulty": "Medium",
+    "title": "解释缓冲 I/O 与非缓冲 I/O，直接 I/O 与非直接 I/O 的区别。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Networking",
+      "网络",
+      "I/O Management",
+      "I/O管理"
+    ],
+    "difficulty": "Medium",
+    "title": "解释阻塞 I/O、非阻塞 I/O、同步 I/O、异步 I/O 的区别和联系。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是 Linux 的 Page Cache？它的作用和优缺点是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Easy",
+    "title": "Page Cache 和 Buffer Cache 有什么区别和联系？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Medium",
+    "title": "Page Cache 如何保证数据一致性？（Write Through vs Write Back）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "I/O Management",
+      "I/O管理"
+    ],
+    "difficulty": "Medium",
+    "title": "解释 DMA（直接内存访问）的工作原理及其解决了什么问题。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "I/O Management",
+      "I/O管理"
+    ],
+    "difficulty": "Easy",
+    "title": "设备驱动程序的作用是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "I/O Management",
+      "I/O管理"
+    ],
+    "difficulty": "Medium",
+    "title": "键盘敲入一个字母时，操作系统内部发生了什么？（中断处理过程）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "System Design",
+      "系统设计",
+      "Algorithms",
+      "算法",
+      "Hash Table",
+      "哈希表"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是一致性哈希？它解决了什么问题？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "System Design",
+      "系统设计",
+      "Algorithms",
+      "算法",
+      "Hash Table",
+      "哈希表"
+    ],
+    "difficulty": "Medium",
+    "title": "一致性哈希中的虚拟节点是如何解决数据倾斜问题的？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "System Design",
+      "系统设计"
+    ],
+    "difficulty": "Hard",
+    "title": "解释 Reactor 模式及其不同的实现方式（单 Reactor 单线程/多线程，多 Reactor 多线程）。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "System Design",
+      "系统设计"
+    ],
+    "difficulty": "Hard",
+    "title": "Reactor 模式和 Proactor 模式有什么区别？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "Operating System",
+      "操作系统"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是 I/O 多路复用？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "Operating System",
+      "操作系统"
+    ],
+    "difficulty": "Hard",
+    "title": "比较 select、poll、epoll 的实现原理和优缺点。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "Operating System",
+      "操作系统"
+    ],
+    "difficulty": "Medium",
+    "title": "epoll 的水平触发（LT）和边缘触发（ET）有什么区别？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Networking",
+      "网络",
+      "I/O Management",
+      "I/O管理"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是零拷贝（Zero-copy）？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Networking",
+      "网络",
+      "I/O Management",
+      "I/O管理"
+    ],
+    "difficulty": "Hard",
+    "title": "解释实现零拷贝的几种方式（mmap+write, sendfile）及其原理。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Networking",
+      "网络",
+      "I/O Management",
+      "I/O管理"
+    ],
+    "difficulty": "Medium",
+    "title": "零拷贝和 PageCache 的关系是什么？传输大文件时为什么不建议用零拷贝？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Networking",
+      "网络"
+    ],
+    "difficulty": "Easy",
+    "title": "衡量网络性能的主要指标有哪些？（带宽、延时、吞吐率、PPS）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Networking",
+      "网络",
+      "Linux"
+    ],
+    "difficulty": "Easy",
+    "title": "如何使用 Linux 命令（如 ifconfig/ip, netstat/ss, sar, ping, ethtool）查看网络配置和性能指标？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Networking",
+      "网络",
+      "Linux"
+    ],
+    "difficulty": "Medium",
+    "title": "netstat/ss 命令输出中 Recv-Q 和 Send-Q 在不同 socket 状态下分别代表什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Linux",
+      "Linux",
+      "Data Analysis",
+      "数据分析"
+    ],
+    "difficulty": "Medium",
+    "title": "如何使用 Linux Shell 命令（awk, sort, uniq, wc）从 Nginx 日志中分析 PV 和 UV？"
   }
 ]
