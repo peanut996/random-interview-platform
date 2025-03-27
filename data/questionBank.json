@@ -6533,5 +6533,628 @@
     ],
     "difficulty": "Hard",
     "title": "swappiness, min_free_kbytes, zone_reclaim_mode 这些内核参数的作用是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Process",
+      "进程",
+      "Thread",
+      "线程",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Medium",
+    "title": "一个进程最多可以创建多少个线程？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Concurrency",
+      "并发",
+      "Deadlock",
+      "死锁",
+      "Thread",
+      "线程"
+    ],
+    "difficulty": "Medium",
+    "title": "如何避免死锁？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Concurrency",
+      "并发",
+      "Deadlock",
+      "死锁"
+    ],
+    "difficulty": "Easy",
+    "title": "死锁产生的四个必要条件是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Concurrency",
+      "并发",
+      "Deadlock",
+      "死锁",
+      "Debugging",
+      "调试"
+    ],
+    "difficulty": "Hard",
+    "title": "如何使用 pstack/gdb 等工具排查死锁问题？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Concurrency",
+      "并发",
+      "Synchronization",
+      "同步",
+      "Mutual Exclusion",
+      "互斥",
+      "Thread",
+      "线程"
+    ],
+    "difficulty": "Medium",
+    "title": "多线程冲突与同步互斥机制"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Concurrency",
+      "并发",
+      "Race Condition",
+      "竞争条件"
+    ],
+    "difficulty": "Easy",
+    "title": "什么是竞争条件（Race Condition）？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Concurrency",
+      "并发",
+      "Critical Section",
+      "临界区"
+    ],
+    "difficulty": "Easy",
+    "title": "什么是临界区（Critical Section）？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Concurrency",
+      "并发",
+      "Synchronization",
+      "同步",
+      "Mutual Exclusion",
+      "互斥"
+    ],
+    "difficulty": "Medium",
+    "title": "同步（Synchronization）与互斥（Mutual Exclusion）的区别是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Concurrency",
+      "并发",
+      "Locking",
+      "锁",
+      "Spinlock",
+      "自旋锁"
+    ],
+    "difficulty": "Medium",
+    "title": "锁的实现方式（忙等待锁与无忙等待锁）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Concurrency",
+      "并发",
+      "Semaphore",
+      "信号量",
+      "Synchronization",
+      "同步",
+      "Mutual Exclusion",
+      "互斥"
+    ],
+    "difficulty": "Medium",
+    "title": "信号量（Semaphore）及其 P/V 操作如何实现互斥与同步？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Concurrency",
+      "并发",
+      "Synchronization",
+      "同步",
+      "Producer-Consumer Problem",
+      "生产者消费者问题",
+      "Semaphore",
+      "信号量"
+    ],
+    "difficulty": "Medium",
+    "title": "生产者消费者问题及其信号量解决方案"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Concurrency",
+      "并发",
+      "Synchronization",
+      "同步",
+      "Deadlock",
+      "死锁",
+      "Dining Philosophers Problem",
+      "哲学家就餐问题",
+      "Semaphore",
+      "信号量"
+    ],
+    "difficulty": "Hard",
+    "title": "哲学家就餐问题及其解决方案（避免死锁）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Concurrency",
+      "并发",
+      "Synchronization",
+      "同步",
+      "Readers-Writers Problem",
+      "读者写者问题",
+      "Semaphore",
+      "信号量"
+    ],
+    "difficulty": "Hard",
+    "title": "读者写者问题及其解决方案（读者优先、写者优先、公平）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Concurrency",
+      "并发",
+      "Locking",
+      "锁",
+      "Pessimistic Lock",
+      "悲观锁",
+      "Optimistic Lock",
+      "乐观锁",
+      "Database",
+      "数据库"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是悲观锁和乐观锁？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Concurrency",
+      "并发",
+      "Locking",
+      "锁",
+      "Mutex",
+      "互斥锁",
+      "Spinlock",
+      "自旋锁"
+    ],
+    "difficulty": "Medium",
+    "title": "互斥锁（Mutex）和自旋锁（Spinlock）的区别是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Concurrency",
+      "并发",
+      "Locking",
+      "锁",
+      "Read-Write Lock",
+      "读写锁"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是读写锁？读者优先、写者优先、公平读写锁的区别？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Concurrency",
+      "并发",
+      "Atomic Operation",
+      "原子操作",
+      "CAS",
+      "比较并交换"
+    ],
+    "difficulty": "Medium",
+    "title": "CAS（Compare-And-Swap）原子操作的原理是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Process",
+      "进程"
+    ],
+    "difficulty": "Easy",
+    "title": "什么是进程？进程和程序的区别？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Concurrency",
+      "并发",
+      "Parallelism",
+      "并行"
+    ],
+    "difficulty": "Easy",
+    "title": "并发（Concurrency）和并行（Parallelism）的区别是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Process",
+      "进程",
+      "Process State",
+      "进程状态"
+    ],
+    "difficulty": "Easy",
+    "title": "进程有哪些状态？（运行、就绪、阻塞等）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Process",
+      "进程",
+      "PCB",
+      "进程控制块"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是进程控制块（PCB）？它包含哪些信息？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Process",
+      "进程",
+      "PCB",
+      "进程控制块"
+    ],
+    "difficulty": "Medium",
+    "title": "PCB 是如何组织的？（例如，状态队列链表）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Process",
+      "进程",
+      "Process Management",
+      "进程管理"
+    ],
+    "difficulty": "Medium",
+    "title": "描述进程的创建、终止、阻塞和唤醒过程"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Process",
+      "进程",
+      "Context Switching",
+      "上下文切换"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是上下文切换？进程上下文切换会发生什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Thread",
+      "线程",
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Easy",
+    "title": "为什么使用线程？线程的优缺点是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Process",
+      "进程",
+      "Thread",
+      "线程",
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Easy",
+    "title": "进程和线程的主要区别是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Thread",
+      "线程",
+      "Context Switching",
+      "上下文切换"
+    ],
+    "difficulty": "Medium",
+    "title": "线程上下文切换会发生什么？与进程上下文切换有何不同？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Thread",
+      "线程",
+      "User Thread",
+      "用户线程",
+      "Kernel Thread",
+      "内核线程",
+      "LWP",
+      "轻量级进程"
+    ],
+    "difficulty": "Hard",
+    "title": "描述不同的线程实现模型（用户线程、内核线程、轻量级进程 LWP）及其优缺点"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Scheduling",
+      "调度",
+      "Process",
+      "进程",
+      "Thread",
+      "线程"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是进程/线程调度？调度发生在哪些时机？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Scheduling",
+      "调度",
+      "Scheduling Algorithm",
+      "调度算法"
+    ],
+    "difficulty": "Medium",
+    "title": "调度算法的设计原则有哪些？（CPU利用率、吞吐量、周转时间、等待时间、响应时间）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Scheduling",
+      "调度",
+      "Scheduling Algorithm",
+      "调度算法"
+    ],
+    "difficulty": "Medium",
+    "title": "描述常见的调度算法（FCFS, SJF, HRRN, RR, HPF, MFQ）及其特点"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Inter-Process Communication",
+      "进程间通信",
+      "IPC"
+    ],
+    "difficulty": "Medium",
+    "title": "进程间有哪些通信方式？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Inter-Process Communication",
+      "进程间通信",
+      "IPC",
+      "Pipe",
+      "管道"
+    ],
+    "difficulty": "Medium",
+    "title": "解释管道（匿名管道与命名管道/FIFO）通信机制"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Inter-Process Communication",
+      "进程间通信",
+      "IPC",
+      "Message Queue",
+      "消息队列"
+    ],
+    "difficulty": "Medium",
+    "title": "解释消息队列（Message Queue）通信机制"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Inter-Process Communication",
+      "进程间通信",
+      "IPC",
+      "Shared Memory",
+      "共享内存"
+    ],
+    "difficulty": "Medium",
+    "title": "解释共享内存（Shared Memory）通信机制"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Inter-Process Communication",
+      "进程间通信",
+      "IPC",
+      "Semaphore",
+      "信号量",
+      "Synchronization",
+      "同步",
+      "Mutual Exclusion",
+      "互斥"
+    ],
+    "difficulty": "Medium",
+    "title": "解释信号量（Semaphore）在进程间通信中的作用（互斥与同步）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Inter-Process Communication",
+      "进程间通信",
+      "IPC",
+      "Signal",
+      "信号"
+    ],
+    "difficulty": "Medium",
+    "title": "解释信号（Signal）作为异步通信机制"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Inter-Process Communication",
+      "进程间通信",
+      "IPC",
+      "Networking",
+      "网络",
+      "Socket",
+      "套接字"
+    ],
+    "difficulty": "Medium",
+    "title": "解释套接字（Socket）通信（包括跨网络和本地）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Process",
+      "进程",
+      "Thread",
+      "线程",
+      "Error Handling",
+      "错误处理",
+      "JVM",
+      "Java虚拟机"
+    ],
+    "difficulty": "Medium",
+    "title": "线程崩溃了，进程也会崩溃吗？（区分 C/C++ 与 Java）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Process",
+      "进程",
+      "Thread",
+      "线程",
+      "Memory Management",
+      "内存管理",
+      "C++",
+      "C++"
+    ],
+    "difficulty": "Medium",
+    "title": "为什么在 C/C++ 中线程崩溃（如非法内存访问）通常会导致进程崩溃？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Process",
+      "进程",
+      "Signal",
+      "信号"
+    ],
+    "difficulty": "Medium",
+    "title": "信号（Signal）机制在进程终止中是如何工作的？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Process",
+      "进程",
+      "Thread",
+      "线程",
+      "JVM",
+      "Java虚拟机",
+      "Error Handling",
+      "错误处理",
+      "Signal",
+      "信号"
+    ],
+    "difficulty": "Hard",
+    "title": "为什么在 Java 中线程崩溃（如 StackOverflowError 或 NPE）不会导致 JVM 进程崩溃？"
   }
 ]
