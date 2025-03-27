@@ -8357,5 +8357,722 @@
     ],
     "difficulty": "Medium",
     "title": "redis某个key过期了，删除策略有哪些？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "Database",
+      "数据库"
+    ],
+    "difficulty": "Easy",
+    "title": "什么是 Redis？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "Memcached",
+      "Database",
+      "数据库"
+    ],
+    "difficulty": "Medium",
+    "title": "Redis 和 Memcached 有什么区别？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "MySQL",
+      "Database",
+      "数据库",
+      "System Design",
+      "系统设计",
+      "Performance",
+      "性能"
+    ],
+    "difficulty": "Medium",
+    "title": "为什么用 Redis 作为 MySQL 的缓存？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "Data Structures",
+      "数据结构"
+    ],
+    "difficulty": "Medium",
+    "title": "Redis 有哪些数据类型及其应用场景？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "Data Structures",
+      "数据结构",
+      "Internal Implementation",
+      "内部实现"
+    ],
+    "difficulty": "Hard",
+    "title": "Redis 常见数据类型的底层实现是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "Concurrency",
+      "并发",
+      "Threading Model",
+      "线程模型"
+    ],
+    "difficulty": "Medium",
+    "title": "Redis 是单线程吗？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "Concurrency",
+      "并发",
+      "Threading Model",
+      "线程模型",
+      "Networking",
+      "网络",
+      "I/O Multiplexing",
+      "IO多路复用"
+    ],
+    "difficulty": "Medium",
+    "title": "Redis 的单线程模型是如何工作的？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "Performance",
+      "性能",
+      "Threading Model",
+      "线程模型",
+      "I/O Multiplexing",
+      "IO多路复用"
+    ],
+    "difficulty": "Medium",
+    "title": "为什么单线程的 Redis 性能还这么高？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "Threading Model",
+      "线程模型",
+      "Design Philosophy",
+      "设计哲学"
+    ],
+    "difficulty": "Medium",
+    "title": "Redis 6.0 之前为什么采用单线程模型？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "Threading Model",
+      "线程模型",
+      "Performance",
+      "性能",
+      "Networking",
+      "网络"
+    ],
+    "difficulty": "Medium",
+    "title": "Redis 6.0 为什么引入了多线程 I/O？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "Persistence",
+      "持久化",
+      "AOF",
+      "RDB"
+    ],
+    "difficulty": "Easy",
+    "title": "Redis 如何保证数据不丢失（持久化机制）？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "Persistence",
+      "持久化",
+      "AOF"
+    ],
+    "difficulty": "Medium",
+    "title": "AOF 日志的实现原理是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "Persistence",
+      "持久化",
+      "AOF",
+      "Configuration",
+      "配置"
+    ],
+    "difficulty": "Medium",
+    "title": "AOF 有哪几种写回策略？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "Persistence",
+      "持久化",
+      "AOF",
+      "AOF Rewrite",
+      "AOF重写"
+    ],
+    "difficulty": "Medium",
+    "title": "AOF 文件过大时会发生什么？（AOF 重写机制）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "Persistence",
+      "持久化",
+      "AOF",
+      "AOF Rewrite",
+      "AOF重写",
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Hard",
+    "title": "AOF 重写过程是怎样的？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "Persistence",
+      "持久化",
+      "RDB",
+      "Snapshot",
+      "快照"
+    ],
+    "difficulty": "Medium",
+    "title": "RDB 快照的实现原理是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "Persistence",
+      "持久化",
+      "RDB",
+      "Snapshot",
+      "快照",
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Medium",
+    "title": "RDB 生成快照时会阻塞主线程吗？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "Persistence",
+      "持久化",
+      "RDB",
+      "Snapshot",
+      "快照",
+      "Concurrency",
+      "并发",
+      "COW",
+      "写时复制"
+    ],
+    "difficulty": "Medium",
+    "title": "生成 RDB 快照期间，数据可以修改吗？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "Persistence",
+      "持久化",
+      "RDB",
+      "AOF",
+      "Hybrid Persistence",
+      "混合持久化"
+    ],
+    "difficulty": "Medium",
+    "title": "为什么 Redis 4.0 引入了混合持久化？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "High Availability",
+      "高可用",
+      "Replication",
+      "主从复制",
+      "Sentinel",
+      "哨兵",
+      "Cluster",
+      "集群"
+    ],
+    "difficulty": "Medium",
+    "title": "Redis 如何实现服务高可用？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "High Availability",
+      "高可用",
+      "Cluster",
+      "集群",
+      "Replication",
+      "主从复制",
+      "Sentinel",
+      "哨兵",
+      "Consistency",
+      "一致性",
+      "Split Brain",
+      "脑裂"
+    ],
+    "difficulty": "Hard",
+    "title": "如何防止 Redis 集群脑裂导致数据丢失？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "Expiration",
+      "过期策略",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Medium",
+    "title": "Redis 的 key 过期删除策略是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "Expiration",
+      "过期策略",
+      "Persistence",
+      "持久化",
+      "RDB",
+      "AOF"
+    ],
+    "difficulty": "Medium",
+    "title": "Redis 持久化时如何处理过期 key？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "Expiration",
+      "过期策略",
+      "Replication",
+      "主从复制",
+      "High Availability",
+      "高可用"
+    ],
+    "difficulty": "Medium",
+    "title": "Redis 主从模式下如何处理过期 key？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "Memory Management",
+      "内存管理",
+      "Eviction",
+      "内存淘汰"
+    ],
+    "difficulty": "Easy",
+    "title": "Redis 内存满了会怎么样？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "Memory Management",
+      "内存管理",
+      "Eviction",
+      "内存淘汰",
+      "LRU",
+      "LFU"
+    ],
+    "difficulty": "Medium",
+    "title": "Redis 有哪些内存淘汰策略？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "Memory Management",
+      "内存管理",
+      "Eviction",
+      "内存淘汰",
+      "LRU",
+      "LFU",
+      "Algorithms",
+      "算法"
+    ],
+    "difficulty": "Medium",
+    "title": "LRU 和 LFU 内存淘汰算法有什么区别？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "Memory Management",
+      "内存管理",
+      "Eviction",
+      "内存淘汰",
+      "LRU",
+      "Algorithms",
+      "算法",
+      "Internal Implementation",
+      "内部实现"
+    ],
+    "difficulty": "Medium",
+    "title": "Redis 如何实现 LRU 算法？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "Memory Management",
+      "内存管理",
+      "Eviction",
+      "内存淘汰",
+      "LFU",
+      "Algorithms",
+      "算法",
+      "Internal Implementation",
+      "内部实现"
+    ],
+    "difficulty": "Hard",
+    "title": "Redis 如何实现 LFU 算法？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "System Design",
+      "系统设计",
+      "High Availability",
+      "高可用",
+      "Cache Problems",
+      "缓存问题"
+    ],
+    "difficulty": "Medium",
+    "title": "如何避免缓存雪崩、缓存击穿、缓存穿透？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "System Design",
+      "系统设计",
+      "Cache Strategy",
+      "缓存策略",
+      "Hot Data",
+      "热点数据"
+    ],
+    "difficulty": "Medium",
+    "title": "如何设计动态缓存热点数据的策略？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "System Design",
+      "系统设计",
+      "Cache Strategy",
+      "缓存策略",
+      "Consistency",
+      "一致性"
+    ],
+    "difficulty": "Medium",
+    "title": "常见的缓存更新策略有哪些？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "Database",
+      "数据库",
+      "MySQL",
+      "Consistency",
+      "一致性",
+      "System Design",
+      "系统设计",
+      "Cache Strategy",
+      "缓存策略",
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Hard",
+    "title": "如何保证数据库和缓存的数据一致性？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "Database",
+      "数据库",
+      "Consistency",
+      "一致性",
+      "System Design",
+      "系统设计",
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Medium",
+    "title": "更新数据时，应先更新数据库还是先更新缓存？为什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "Database",
+      "数据库",
+      "Consistency",
+      "一致性",
+      "System Design",
+      "系统设计",
+      "Cache Strategy",
+      "缓存策略"
+    ],
+    "difficulty": "Medium",
+    "title": "缓存更新策略：直接更新缓存 V.S. 删除缓存（旁路缓存），各有什么优劣？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "Database",
+      "数据库",
+      "Consistency",
+      "一致性",
+      "System Design",
+      "系统设计",
+      "Cache Strategy",
+      "缓存策略",
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Medium",
+    "title": "旁路缓存策略：先删除缓存再更新数据库可能导致什么问题？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "Database",
+      "数据库",
+      "Consistency",
+      "一致性",
+      "System Design",
+      "系统设计",
+      "Cache Strategy",
+      "缓存策略",
+      "Concurrency",
+      "并发",
+      "Reliability",
+      "可靠性"
+    ],
+    "difficulty": "Hard",
+    "title": "旁路缓存策略：先更新数据库再删除缓存可能导致什么问题？如何保证两个操作都成功？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "Database",
+      "数据库",
+      "Consistency",
+      "一致性",
+      "System Design",
+      "系统设计",
+      "Cache Strategy",
+      "缓存策略"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是延迟双删策略？它有什么缺点？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "Database",
+      "数据库",
+      "Consistency",
+      "一致性",
+      "System Design",
+      "系统设计",
+      "Cache Strategy",
+      "缓存策略",
+      "Message Queue",
+      "消息队列",
+      "Binlog",
+      "Canal"
+    ],
+    "difficulty": "Hard",
+    "title": "如何通过消息队列或订阅 Binlog 来保证缓存与数据库一致性？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "Data Structures",
+      "数据结构",
+      "ZSet",
+      "有序集合",
+      "Message Queue",
+      "消息队列",
+      "Use Case",
+      "应用场景"
+    ],
+    "difficulty": "Medium",
+    "title": "如何用 Redis 实现延迟队列？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "Performance",
+      "性能",
+      "Operations",
+      "运维",
+      "Big Key",
+      "大Key"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是 Redis 大 Key？如何发现和处理？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "Performance",
+      "性能",
+      "Client",
+      "客户端",
+      "Pipeline",
+      "管道"
+    ],
+    "difficulty": "Medium",
+    "title": "Redis Pipeline（管道）的作用是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "Transaction",
+      "事务",
+      "Atomicity",
+      "原子性"
+    ],
+    "difficulty": "Medium",
+    "title": "Redis 事务支持回滚吗？原子性如何保证？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "Distributed Lock",
+      "分布式锁",
+      "Concurrency",
+      "并发",
+      "System Design",
+      "系统设计"
+    ],
+    "difficulty": "Medium",
+    "title": "如何用 Redis 实现分布式锁？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "Distributed Lock",
+      "分布式锁",
+      "Concurrency",
+      "并发",
+      "System Design",
+      "系统设计"
+    ],
+    "difficulty": "Medium",
+    "title": "基于 Redis 实现分布式锁有哪些优缺点？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "缓存",
+      "Distributed Lock",
+      "分布式锁",
+      "Concurrency",
+      "并发",
+      "System Design",
+      "系统设计",
+      "High Availability",
+      "高可用",
+      "Cluster",
+      "集群",
+      "Redlock"
+    ],
+    "difficulty": "Hard",
+    "title": "Redis 集群环境下如何保证分布式锁的可靠性（Redlock）？"
   }
 ]
