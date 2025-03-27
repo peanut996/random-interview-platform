@@ -10245,5 +10245,667 @@
     ],
     "difficulty": "Medium",
     "title": "在数据包传输过程中，源/目的 IP 地址和源/目的 MAC 地址是如何变化的？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP"
+    ],
+    "difficulty": "Medium",
+    "title": "HTTP/1.1 有哪些主要的性能问题？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP",
+      "Performance Optimization",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "如何优化 HTTP/1.1 的性能？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP"
+    ],
+    "difficulty": "Easy",
+    "title": "HTTP/2 如何实现对 HTTP/1.1 的兼容？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP"
+    ],
+    "difficulty": "Medium",
+    "title": "解释 HTTP/2 的头部压缩机制 (HPACK)。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP"
+    ],
+    "difficulty": "Medium",
+    "title": "解释 HTTP/2 的二进制分帧层。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP"
+    ],
+    "difficulty": "Medium",
+    "title": "HTTP/2 如何通过多路复用解决 HTTP/1.1 的队头阻塞问题？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP"
+    ],
+    "difficulty": "Medium",
+    "title": "解释 HTTP/2 的服务器推送 (Server Push) 功能。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP",
+      "TCP"
+    ],
+    "difficulty": "Hard",
+    "title": "HTTP/2 是否完全解决了队头阻塞问题？解释 TCP 层面的队头阻塞。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP"
+    ],
+    "difficulty": "Medium",
+    "title": "HTTP/2 相比 HTTP/1.1 存在哪些缺点或仍需改进的地方？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP",
+      "TCP",
+      "TLS/SSL"
+    ],
+    "difficulty": "Medium",
+    "title": "解释基于 TCP 的 HTTP 连接建立过程中的握手延迟。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP",
+      "TCP"
+    ],
+    "difficulty": "Medium",
+    "title": "为什么基于 TCP 的 HTTP 在网络切换（如 4G 到 WiFi）时需要重新建立连接？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP",
+      "UDP",
+      "QUIC"
+    ],
+    "difficulty": "Medium",
+    "title": "QUIC 协议的主要特点有哪些？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP",
+      "UDP",
+      "QUIC",
+      "TCP"
+    ],
+    "difficulty": "Hard",
+    "title": "QUIC 协议如何解决队头阻塞问题？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP",
+      "UDP",
+      "QUIC",
+      "TLS/SSL"
+    ],
+    "difficulty": "Hard",
+    "title": "QUIC 协议如何实现更快的连接建立（0-RTT/1-RTT）？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP",
+      "UDP",
+      "QUIC"
+    ],
+    "difficulty": "Medium",
+    "title": "解释 QUIC 协议的连接迁移特性。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP"
+    ],
+    "difficulty": "Medium",
+    "title": "HTTP/3 相比 HTTP/2 做了哪些主要改进？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP"
+    ],
+    "difficulty": "Hard",
+    "title": "QPACK 是什么？它与 HPACK 的主要区别是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP"
+    ],
+    "difficulty": "Easy",
+    "title": "HTTP 是什么？请解释超文本传输协议。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP"
+    ],
+    "difficulty": "Easy",
+    "title": "请列举并解释一些常见的 HTTP 状态码。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP"
+    ],
+    "difficulty": "Easy",
+    "title": "请列举并解释一些常见的 HTTP 请求/响应头字段。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP"
+    ],
+    "difficulty": "Easy",
+    "title": "GET 请求和 POST 请求有哪些主要区别？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP"
+    ],
+    "difficulty": "Medium",
+    "title": "GET 和 POST 方法是安全的或幂等的吗？请解释。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP"
+    ],
+    "difficulty": "Medium",
+    "title": "GET 请求的 URL 中可以携带 body 数据吗？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP",
+      "Performance Optimization",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "HTTP 缓存机制有哪些？解释强制缓存和协商缓存。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP"
+    ],
+    "difficulty": "Easy",
+    "title": "HTTP/1.1 有哪些优点和缺点？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP"
+    ],
+    "difficulty": "Medium",
+    "title": "评价 HTTP/1.1 的性能，并讨论长连接、管道化和队头阻塞。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP",
+      "HTTPS",
+      "Security",
+      "安全"
+    ],
+    "difficulty": "Easy",
+    "title": "HTTP 和 HTTPS 的主要区别是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP",
+      "HTTPS",
+      "Security",
+      "安全"
+    ],
+    "difficulty": "Medium",
+    "title": "HTTPS 主要解决了 HTTP 的哪些安全问题？如何解决的？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTPS",
+      "TLS/SSL",
+      "Security",
+      "安全"
+    ],
+    "difficulty": "Hard",
+    "title": "描述 HTTPS 的连接建立过程（TLS 握手）。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTPS",
+      "TLS/SSL",
+      "Security",
+      "安全"
+    ],
+    "difficulty": "Hard",
+    "title": "客户端如何校验服务器发送的数字证书？解释证书链。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTPS",
+      "TLS/SSL",
+      "Security",
+      "安全"
+    ],
+    "difficulty": "Medium",
+    "title": "HTTPS 如何保证应用数据的完整性？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTPS",
+      "Security",
+      "安全"
+    ],
+    "difficulty": "Hard",
+    "title": "HTTPS 一定是安全的吗？讨论中间人攻击的可能性。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTPS",
+      "Security",
+      "安全"
+    ],
+    "difficulty": "Hard",
+    "title": "为什么 Wireshark 等抓包工具能够抓取并解密 HTTPS 流量？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTPS",
+      "Security",
+      "安全"
+    ],
+    "difficulty": "Medium",
+    "title": "如何防止 HTTPS 数据被中间人攻击截取？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP"
+    ],
+    "difficulty": "Easy",
+    "title": "HTTP/1.1 相比 HTTP/1.0 在性能上有哪些改进？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP",
+      "Performance Optimization",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "HTTP/2 相比 HTTP/1.1 做了哪些性能优化？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP",
+      "Performance Optimization",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "HTTP/3 相比 HTTP/2 做了哪些性能优化？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP",
+      "Performance Optimization",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "如何通过缓存技术优化 HTTP/1.1 性能？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP",
+      "Performance Optimization",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "如何通过减少请求次数（如重定向优化、请求合并、延迟加载）优化 HTTP/1.1 性能？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP",
+      "Performance Optimization",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "如何通过压缩减少 HTTP 响应数据大小来优化性能？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP",
+      "RPC"
+    ],
+    "difficulty": "Medium",
+    "title": "既然有 HTTP 协议，为什么还需要 RPC？它们的主要区别是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "TCP"
+    ],
+    "difficulty": "Medium",
+    "title": "直接使用 TCP 协议传输数据会遇到什么问题？（如粘包）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP",
+      "WebSocket"
+    ],
+    "difficulty": "Medium",
+    "title": "既然有 HTTP 协议，为什么还需要 WebSocket？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTP",
+      "WebSocket"
+    ],
+    "difficulty": "Medium",
+    "title": "除了 WebSocket，还有哪些方式可以实现服务器向客户端推送消息？（轮询、长轮询）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "WebSocket"
+    ],
+    "difficulty": "Easy",
+    "title": "WebSocket 是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "WebSocket",
+      "HTTP"
+    ],
+    "difficulty": "Medium",
+    "title": "WebSocket 连接是如何建立的？它和 HTTP 的关系是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "WebSocket"
+    ],
+    "difficulty": "Easy",
+    "title": "WebSocket 适用于哪些应用场景？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTPS",
+      "Cryptography",
+      "密码学"
+    ],
+    "difficulty": "Hard",
+    "title": "解释离散对数及其在 DH 密钥交换算法中的应用。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTPS",
+      "Cryptography",
+      "密码学",
+      "Security",
+      "安全"
+    ],
+    "difficulty": "Hard",
+    "title": "DHE 与 DH 算法有何不同？什么是前向保密性？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTPS",
+      "Cryptography",
+      "密码学"
+    ],
+    "difficulty": "Hard",
+    "title": "解释 ECDHE 密钥交换算法的原理。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTPS",
+      "TLS/SSL"
+    ],
+    "difficulty": "Hard",
+    "title": "描述使用 ECDHE 算法的 TLS 握手过程。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTPS",
+      "TLS/SSL",
+      "Performance Optimization",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "ECDHE 握手相比 RSA 握手有哪些优势？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTPS",
+      "Performance Optimization",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "HTTPS 的性能瓶颈主要在哪里？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTPS",
+      "Performance Optimization",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "如何从硬件、软件和协议层面优化 HTTPS 性能？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTPS",
+      "TLS/SSL",
+      "Performance Optimization",
+      "性能优化",
+      "Security",
+      "安全"
+    ],
+    "difficulty": "Medium",
+    "title": "如何优化 HTTPS 证书（大小、验证过程如 OCSP Stapling）？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTPS",
+      "TLS/SSL",
+      "Performance Optimization",
+      "性能优化"
+    ],
+    "difficulty": "Hard",
+    "title": "解释 HTTPS 会话复用技术（Session ID, Session Ticket, Pre-shared Key）的原理、优缺点。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTPS",
+      "TLS/SSL"
+    ],
+    "difficulty": "Hard",
+    "title": "描述使用 RSA 算法的 TLS 握手过程。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Networking",
+      "网络",
+      "HTTPS",
+      "Cryptography",
+      "密码学",
+      "Security",
+      "安全"
+    ],
+    "difficulty": "Medium",
+    "title": "使用 RSA 进行密钥协商存在什么主要缺陷？"
   }
 ]
