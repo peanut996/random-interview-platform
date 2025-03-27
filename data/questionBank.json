@@ -13272,5 +13272,1669 @@
     ],
     "difficulty": "Medium",
     "title": "127.0.0.1、localhost 和 0.0.0.0 有什么区别？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Query Processing",
+      "查询处理"
+    ],
+    "difficulty": "Medium",
+    "title": "MySQL查询执行流程详解"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Architecture",
+      "架构"
+    ],
+    "difficulty": "Easy",
+    "title": "MySQL Server层与存储引擎层职责"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Connection",
+      "连接管理"
+    ],
+    "difficulty": "Medium",
+    "title": "MySQL连接器的工作原理"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Connection",
+      "连接管理"
+    ],
+    "difficulty": "Medium",
+    "title": "MySQL长连接与短连接的区别与优缺点"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Connection",
+      "连接管理",
+      "Performance",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "解决MySQL长连接内存占用问题"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Query Cache",
+      "查询缓存",
+      "Performance",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "MySQL查询缓存机制及8.0废弃原因"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Query Processing",
+      "查询处理"
+    ],
+    "difficulty": "Medium",
+    "title": "MySQL解析器与预处理阶段的工作"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Query Optimization",
+      "查询优化"
+    ],
+    "difficulty": "Medium",
+    "title": "MySQL优化器的作用"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Query Processing",
+      "查询处理"
+    ],
+    "difficulty": "Medium",
+    "title": "MySQL执行器的工作原理"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Index",
+      "索引",
+      "Query Optimization",
+      "查询优化"
+    ],
+    "difficulty": "Medium",
+    "title": "MySQL索引下推 (ICP) 详解"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "InnoDB",
+      "InnoDB",
+      "Storage",
+      "存储结构"
+    ],
+    "difficulty": "Medium",
+    "title": "MySQL InnoDB行存储格式详解"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "InnoDB",
+      "InnoDB",
+      "Storage",
+      "存储结构"
+    ],
+    "difficulty": "Medium",
+    "title": "InnoDB表空间结构 (段、区、页、行)"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "InnoDB",
+      "InnoDB",
+      "Storage",
+      "存储结构"
+    ],
+    "difficulty": "Medium",
+    "title": "COMPACT行格式详解"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Storage",
+      "存储结构"
+    ],
+    "difficulty": "Easy",
+    "title": "MySQL中NULL值的存储"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Data Types",
+      "数据类型",
+      "Storage",
+      "存储结构"
+    ],
+    "difficulty": "Medium",
+    "title": "VARCHAR类型实际长度存储"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Data Types",
+      "数据类型",
+      "Limits",
+      "限制"
+    ],
+    "difficulty": "Medium",
+    "title": "VARCHAR(n)的最大长度限制及原因"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "InnoDB",
+      "InnoDB",
+      "Storage",
+      "存储结构"
+    ],
+    "difficulty": "Medium",
+    "title": "MySQL行溢出处理机制"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "InnoDB",
+      "InnoDB",
+      "Buffer Pool",
+      "缓冲池",
+      "Performance",
+      "性能优化"
+    ],
+    "difficulty": "Easy",
+    "title": "MySQL Buffer Pool的作用与原理"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "InnoDB",
+      "InnoDB",
+      "Buffer Pool",
+      "缓冲池",
+      "Data Structures",
+      "数据结构"
+    ],
+    "difficulty": "Medium",
+    "title": "Buffer Pool管理机制 (Free/Flush/LRU链表)"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "InnoDB",
+      "InnoDB",
+      "Buffer Pool",
+      "缓冲池",
+      "Algorithms",
+      "算法"
+    ],
+    "difficulty": "Hard",
+    "title": "InnoDB LRU算法优化 (冷热分离、停留时间)"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "InnoDB",
+      "InnoDB",
+      "Buffer Pool",
+      "缓冲池",
+      "Performance",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "Buffer Pool预读失效及解决"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "InnoDB",
+      "InnoDB",
+      "Buffer Pool",
+      "缓冲池",
+      "Performance",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "Buffer Pool污染及解决"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "InnoDB",
+      "InnoDB",
+      "Buffer Pool",
+      "缓冲池"
+    ],
+    "difficulty": "Medium",
+    "title": "Buffer Pool脏页刷盘时机"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Limits",
+      "限制"
+    ],
+    "difficulty": "Medium",
+    "title": "MySQL单表最大行数及限制因素"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "InnoDB",
+      "InnoDB",
+      "Index",
+      "索引",
+      "Storage",
+      "存储结构",
+      "Data Structures",
+      "数据结构"
+    ],
+    "difficulty": "Medium",
+    "title": "InnoDB索引结构与数据存储 (表空间、页)"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Index",
+      "索引",
+      "Data Structures",
+      "数据结构"
+    ],
+    "difficulty": "Medium",
+    "title": "估算B+树索引容量"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Performance",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "MySQL单表2000万行限制是否靠谱"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "SQL",
+      "SQL",
+      "Performance",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "count(*), count(1), count(字段)的区别与性能"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "InnoDB",
+      "InnoDB",
+      "MyISAM",
+      "MyISAM",
+      "Storage Engine",
+      "存储引擎"
+    ],
+    "difficulty": "Medium",
+    "title": "InnoDB与MyISAM执行count()的差异"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "SQL",
+      "SQL",
+      "Performance",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "优化大表count(*)查询"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Index",
+      "索引"
+    ],
+    "difficulty": "Easy",
+    "title": "什么是数据库索引"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Index",
+      "索引"
+    ],
+    "difficulty": "Medium",
+    "title": "MySQL索引分类"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Index",
+      "索引",
+      "Data Structures",
+      "数据结构"
+    ],
+    "difficulty": "Medium",
+    "title": "B+树索引结构详解"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "InnoDB",
+      "InnoDB",
+      "Index",
+      "索引"
+    ],
+    "difficulty": "Medium",
+    "title": "聚簇索引与二级索引的区别"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Index",
+      "索引",
+      "Performance",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "回表与覆盖索引"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Index",
+      "索引",
+      "Data Structures",
+      "数据结构"
+    ],
+    "difficulty": "Medium",
+    "title": "MySQL为何选择B+树作为索引 (对比B树, Hash等)"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Index",
+      "索引"
+    ],
+    "difficulty": "Medium",
+    "title": "主键/唯一/普通/前缀索引的区别"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Index",
+      "索引"
+    ],
+    "difficulty": "Medium",
+    "title": "联合索引与最左匹配原则"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Index",
+      "索引",
+      "Query Optimization",
+      "查询优化"
+    ],
+    "difficulty": "Hard",
+    "title": "联合索引范围查询与最左匹配原则的应用"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Index",
+      "索引",
+      "Design",
+      "设计"
+    ],
+    "difficulty": "Medium",
+    "title": "联合索引字段顺序选择 (区分度)"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Index",
+      "索引",
+      "Performance",
+      "性能优化",
+      "SQL",
+      "SQL"
+    ],
+    "difficulty": "Medium",
+    "title": "利用联合索引优化ORDER BY"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Index",
+      "索引",
+      "Design",
+      "设计"
+    ],
+    "difficulty": "Medium",
+    "title": "索引创建时机选择 (何时创建/不创建)"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Index",
+      "索引",
+      "Performance",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "索引优化方法总结"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Index",
+      "索引",
+      "Design",
+      "设计",
+      "Performance",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "为何推荐使用自增主键"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Index",
+      "索引",
+      "Design",
+      "设计",
+      "Performance",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "为何推荐索引列NOT NULL"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Index",
+      "索引",
+      "Query Optimization",
+      "查询优化"
+    ],
+    "difficulty": "Medium",
+    "title": "索引失效的场景有哪些"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Index",
+      "索引",
+      "Query Optimization",
+      "查询优化",
+      "Performance",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "通过执行计划分析索引使用情况"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Index",
+      "索引",
+      "Query Optimization",
+      "查询优化"
+    ],
+    "difficulty": "Medium",
+    "title": "like '%x'一定会导致索引失效吗"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Index",
+      "索引",
+      "Query Optimization",
+      "查询优化"
+    ],
+    "difficulty": "Medium",
+    "title": "覆盖索引对like '%x'查询的影响"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "InnoDB",
+      "InnoDB",
+      "MyISAM",
+      "MyISAM",
+      "Index",
+      "索引",
+      "Storage",
+      "存储结构"
+    ],
+    "difficulty": "Medium",
+    "title": "InnoDB与MyISAM索引存储结构对比"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Index",
+      "索引",
+      "Query Optimization",
+      "查询优化"
+    ],
+    "difficulty": "Medium",
+    "title": "模糊查询(%xx)导致索引失效的原因"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Index",
+      "索引",
+      "Query Optimization",
+      "查询优化"
+    ],
+    "difficulty": "Medium",
+    "title": "索引列使用函数导致失效的原因"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Index",
+      "索引"
+    ],
+    "difficulty": "Medium",
+    "title": "函数索引 (MySQL 8.0)"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Index",
+      "索引",
+      "Query Optimization",
+      "查询优化"
+    ],
+    "difficulty": "Medium",
+    "title": "索引列表达式计算导致失效的原因"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Index",
+      "索引",
+      "Query Optimization",
+      "查询优化"
+    ],
+    "difficulty": "Medium",
+    "title": "索引列隐式类型转换导致失效的原因"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Index",
+      "索引",
+      "Query Optimization",
+      "查询优化"
+    ],
+    "difficulty": "Medium",
+    "title": "OR条件导致索引失效的情况"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "InnoDB",
+      "InnoDB",
+      "Storage",
+      "存储结构"
+    ],
+    "difficulty": "Medium",
+    "title": "InnoDB数据页结构详解"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Index",
+      "索引",
+      "Data Structures",
+      "数据结构",
+      "Query Processing",
+      "查询处理"
+    ],
+    "difficulty": "Medium",
+    "title": "B+树查询过程 (结合数据页)"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Locking",
+      "锁",
+      "Deadlock",
+      "死锁"
+    ],
+    "difficulty": "Hard",
+    "title": "MySQL死锁场景复现与原因分析"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Locking",
+      "锁"
+    ],
+    "difficulty": "Medium",
+    "title": "间隙锁的兼容性与作用"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Locking",
+      "锁"
+    ],
+    "difficulty": "Medium",
+    "title": "插入意向锁详解及其与间隙锁关系"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Locking",
+      "锁"
+    ],
+    "difficulty": "Hard",
+    "title": "INSERT语句的加锁机制 (隐式/显式锁)"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Locking",
+      "锁"
+    ],
+    "difficulty": "Hard",
+    "title": "唯一键冲突时的加锁行为 (主键 vs 唯一二级索引)"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Locking",
+      "锁",
+      "Deadlock",
+      "死锁"
+    ],
+    "difficulty": "Medium",
+    "title": "MySQL死锁避免与解决策略"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Locking",
+      "锁"
+    ],
+    "difficulty": "Easy",
+    "title": "哪些SQL语句会加行级锁"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Locking",
+      "锁"
+    ],
+    "difficulty": "Medium",
+    "title": "MySQL行级锁类型详解 (记录锁, 间隙锁, Next-Key)"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Locking",
+      "锁"
+    ],
+    "difficulty": "Hard",
+    "title": "MySQL行级锁加锁基本规则 (RR级别)"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Locking",
+      "锁",
+      "Index",
+      "索引"
+    ],
+    "difficulty": "Hard",
+    "title": "唯一索引等值查询加锁规则"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Locking",
+      "锁",
+      "Index",
+      "索引"
+    ],
+    "difficulty": "Hard",
+    "title": "唯一索引范围查询加锁规则"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Locking",
+      "锁",
+      "Index",
+      "索引"
+    ],
+    "difficulty": "Hard",
+    "title": "非唯一索引等值查询加锁规则"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Locking",
+      "锁",
+      "Index",
+      "索引"
+    ],
+    "difficulty": "Hard",
+    "title": "非唯一索引范围查询加锁规则"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Locking",
+      "锁",
+      "Performance",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "无索引查询/更新的加锁行为 (锁全表风险)"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Locking",
+      "锁",
+      "Troubleshooting",
+      "问题排查"
+    ],
+    "difficulty": "Medium",
+    "title": "使用performance_schema分析锁信息"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Locking",
+      "锁",
+      "Transaction",
+      "事务",
+      "Phantom Read",
+      "幻读"
+    ],
+    "difficulty": "Hard",
+    "title": "记录锁+间隙锁能否防止删除导致的幻读"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Locking",
+      "锁"
+    ],
+    "difficulty": "Easy",
+    "title": "MySQL锁分类 (全局锁、表级锁、行锁)"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Locking",
+      "锁"
+    ],
+    "difficulty": "Medium",
+    "title": "MySQL全局锁详解 (用途、影响、替代方案)"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Locking",
+      "锁"
+    ],
+    "difficulty": "Medium",
+    "title": "MySQL表级锁详解 (表锁、MDL、意向锁、AUTO-INC)"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Locking",
+      "锁"
+    ],
+    "difficulty": "Medium",
+    "title": "元数据锁(MDL)详解 (作用、规则、长事务影响)"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Locking",
+      "锁"
+    ],
+    "difficulty": "Medium",
+    "title": "意向锁(IS/IX)详解 (作用、兼容性)"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Locking",
+      "锁",
+      "Replication",
+      "主从复制",
+      "Performance",
+      "性能优化"
+    ],
+    "difficulty": "Hard",
+    "title": "AUTO-INC锁与innodb_autoinc_lock_mode详解"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Locking",
+      "锁",
+      "Deadlock",
+      "死锁"
+    ],
+    "difficulty": "Hard",
+    "title": "分析update/insert导致的死锁 (字节面试题)"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Locking",
+      "锁",
+      "Index",
+      "索引",
+      "Performance",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "update无索引导致锁全表分析及避免方法"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Logging",
+      "日志",
+      "Transaction",
+      "事务",
+      "Query Processing",
+      "查询处理"
+    ],
+    "difficulty": "Medium",
+    "title": "MySQL update语句执行流程 (含日志)"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Logging",
+      "日志",
+      "Transaction",
+      "事务",
+      "MVCC",
+      "MVCC"
+    ],
+    "difficulty": "Medium",
+    "title": "undo log的作用 (原子性, MVCC)"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Logging",
+      "日志",
+      "Transaction",
+      "事务",
+      "Crash Recovery",
+      "崩溃恢复",
+      "Performance",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "redo log的作用 (持久性, 崩溃恢复, 性能)"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Logging",
+      "日志",
+      "Performance",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "WAL技术详解"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Logging",
+      "日志",
+      "Transaction",
+      "事务"
+    ],
+    "difficulty": "Medium",
+    "title": "redo log与undo log的区别"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Logging",
+      "日志",
+      "Performance",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "redo log刷盘时机与策略 (innodb_flush_log_at_trx_commit)"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Logging",
+      "日志"
+    ],
+    "difficulty": "Medium",
+    "title": "redo log循环写入与checkpoint机制"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Logging",
+      "日志",
+      "Replication",
+      "主从复制",
+      "Backup",
+      "备份"
+    ],
+    "difficulty": "Medium",
+    "title": "binlog的作用与格式详解"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Logging",
+      "日志"
+    ],
+    "difficulty": "Medium",
+    "title": "redo log与binlog的区别"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Replication",
+      "主从复制",
+      "Logging",
+      "日志"
+    ],
+    "difficulty": "Medium",
+    "title": "MySQL主从复制原理与模型"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Logging",
+      "日志",
+      "Performance",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "binlog刷盘时机与策略 (sync_binlog)"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Logging",
+      "日志",
+      "Transaction",
+      "事务",
+      "Consistency",
+      "一致性"
+    ],
+    "difficulty": "Medium",
+    "title": "两阶段提交的必要性 (redo log与binlog一致性)"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Logging",
+      "日志",
+      "Transaction",
+      "事务"
+    ],
+    "difficulty": "Hard",
+    "title": "MySQL两阶段提交过程详解"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Logging",
+      "日志",
+      "Transaction",
+      "事务",
+      "Crash Recovery",
+      "崩溃恢复"
+    ],
+    "difficulty": "Hard",
+    "title": "两阶段提交异常恢复机制"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Logging",
+      "日志",
+      "Transaction",
+      "事务",
+      "Performance",
+      "性能优化"
+    ],
+    "difficulty": "Hard",
+    "title": "MySQL组提交机制详解及其对两阶段提交的优化"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Logging",
+      "日志",
+      "Performance",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "优化MySQL磁盘I/O (日志刷盘策略)"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Transaction",
+      "事务"
+    ],
+    "difficulty": "Easy",
+    "title": "事务的ACID特性"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "InnoDB",
+      "InnoDB",
+      "Transaction",
+      "事务",
+      "Logging",
+      "日志",
+      "MVCC",
+      "MVCC",
+      "Locking",
+      "锁"
+    ],
+    "difficulty": "Medium",
+    "title": "InnoDB如何保证ACID特性"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Transaction",
+      "事务",
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Medium",
+    "title": "并发事务的问题 (脏读、不可重复读、幻读)"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Transaction",
+      "事务",
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Medium",
+    "title": "事务隔离级别详解及其解决的问题"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "InnoDB",
+      "InnoDB",
+      "Transaction",
+      "事务",
+      "Phantom Read",
+      "幻读",
+      "MVCC",
+      "MVCC",
+      "Locking",
+      "锁"
+    ],
+    "difficulty": "Medium",
+    "title": "MySQL默认隔离级别及幻读避免机制"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "MVCC",
+      "MVCC",
+      "Transaction",
+      "事务"
+    ],
+    "difficulty": "Medium",
+    "title": "Read View结构与作用"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "InnoDB",
+      "InnoDB",
+      "MVCC",
+      "MVCC",
+      "Storage",
+      "存储结构"
+    ],
+    "difficulty": "Medium",
+    "title": "记录中的事务隐藏列 (trx_id, roll_pointer)"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "MVCC",
+      "MVCC",
+      "Transaction",
+      "事务"
+    ],
+    "difficulty": "Hard",
+    "title": "MVCC可见性判断规则与版本链"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "MVCC",
+      "MVCC",
+      "Transaction",
+      "事务"
+    ],
+    "difficulty": "Hard",
+    "title": "可重复读与读提交隔离级别的实现原理 (Read View)"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Transaction",
+      "事务",
+      "MVCC",
+      "MVCC",
+      "Phantom Read",
+      "幻读"
+    ],
+    "difficulty": "Medium",
+    "title": "MVCC如何避免幻读 (快照读)"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Transaction",
+      "事务",
+      "Locking",
+      "锁",
+      "Phantom Read",
+      "幻读"
+    ],
+    "difficulty": "Medium",
+    "title": "Next-Key Lock如何避免幻读 (当前读)"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Database",
+      "数据库",
+      "MySQL",
+      "MySQL",
+      "Transaction",
+      "事务",
+      "Phantom Read",
+      "幻读",
+      "MVCC",
+      "MVCC",
+      "Locking",
+      "锁"
+    ],
+    "difficulty": "Hard",
+    "title": "可重复读隔离级别下的幻读问题及场景分析"
   }
 ]
