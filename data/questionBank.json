@@ -9074,5 +9074,918 @@
     ],
     "difficulty": "Hard",
     "title": "Redis 集群环境下如何保证分布式锁的可靠性（Redlock）？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Cache",
+      "缓存"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是 Redis 缓存雪崩、击穿、穿透？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Cache",
+      "缓存"
+    ],
+    "difficulty": "Medium",
+    "title": "缓存雪崩的原因及解决方案？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Cache",
+      "缓存"
+    ],
+    "difficulty": "Medium",
+    "title": "缓存击穿的原因及解决方案？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Cache",
+      "缓存"
+    ],
+    "difficulty": "Medium",
+    "title": "缓存穿透的原因及解决方案？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Data Structures",
+      "数据结构",
+      "Bloom Filter",
+      "布隆过滤器"
+    ],
+    "difficulty": "Medium",
+    "title": "布隆过滤器的工作原理是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Replication",
+      "主从复制",
+      "High Availability",
+      "高可用"
+    ],
+    "difficulty": "Medium",
+    "title": "Redis 主从复制是怎么实现的？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Replication",
+      "主从复制"
+    ],
+    "difficulty": "Easy",
+    "title": "Redis 主从节点是长连接还是短链接？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Cluster",
+      "集群",
+      "High Availability",
+      "高可用"
+    ],
+    "difficulty": "Easy",
+    "title": "怎么判断 Redis 某个节点是否正常工作？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Replication",
+      "主从复制",
+      "Expiration",
+      "过期策略"
+    ],
+    "difficulty": "Medium",
+    "title": "主从复制架构中，过期 key 如何处理？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Replication",
+      "主从复制"
+    ],
+    "difficulty": "Easy",
+    "title": "Redis 是同步复制还是异步复制？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Replication",
+      "主从复制"
+    ],
+    "difficulty": "Medium",
+    "title": "主从复制中两个 Buffer(replication buffer、repl backlog buffer) 有什么区别？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Replication",
+      "主从复制",
+      "Consistency",
+      "一致性"
+    ],
+    "difficulty": "Medium",
+    "title": "如何应对 Redis 主从数据不一致？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Replication",
+      "主从复制",
+      "High Availability",
+      "高可用",
+      "Failover",
+      "故障转移"
+    ],
+    "difficulty": "Hard",
+    "title": "Redis 主从切换如何减少数据丢失？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Replication",
+      "主从复制",
+      "High Availability",
+      "高可用",
+      "Failover",
+      "故障转移",
+      "Sentinel",
+      "哨兵"
+    ],
+    "difficulty": "Medium",
+    "title": "Redis 主从如何做到故障自动切换？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Sentinel",
+      "哨兵",
+      "High Availability",
+      "高可用"
+    ],
+    "difficulty": "Easy",
+    "title": "为什么要有 Redis 哨兵机制？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Sentinel",
+      "哨兵",
+      "High Availability",
+      "高可用"
+    ],
+    "difficulty": "Medium",
+    "title": "Redis 哨兵机制是如何工作的？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Sentinel",
+      "哨兵",
+      "High Availability",
+      "高可用",
+      "Failure Detection",
+      "故障检测"
+    ],
+    "difficulty": "Medium",
+    "title": "Redis 哨兵如何判断主节点真的故障了？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Sentinel",
+      "哨兵",
+      "High Availability",
+      "高可用",
+      "Failover",
+      "故障转移",
+      "Leader Election",
+      "领导者选举"
+    ],
+    "difficulty": "Medium",
+    "title": "由哪个哨兵进行主从故障转移？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Sentinel",
+      "哨兵",
+      "High Availability",
+      "高可用",
+      "Quorum",
+      "法定人数"
+    ],
+    "difficulty": "Medium",
+    "title": "为什么哨兵节点至少要有 3 个？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Sentinel",
+      "哨兵",
+      "High Availability",
+      "高可用",
+      "Failover",
+      "故障转移"
+    ],
+    "difficulty": "Hard",
+    "title": "Redis 主从故障转移的过程是怎样的？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Sentinel",
+      "哨兵",
+      "High Availability",
+      "高可用",
+      "Discovery",
+      "服务发现"
+    ],
+    "difficulty": "Medium",
+    "title": "Redis 哨兵集群是如何组成的？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Data Types",
+      "数据类型",
+      "Data Structures",
+      "数据结构"
+    ],
+    "difficulty": "Easy",
+    "title": "Redis 常见数据类型有哪些？各自的应用场景是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Data Types",
+      "数据类型",
+      "String",
+      "字符串",
+      "SDS"
+    ],
+    "difficulty": "Medium",
+    "title": "Redis String 类型的底层实现和应用场景？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Data Types",
+      "数据类型",
+      "List",
+      "列表",
+      "Message Queue",
+      "消息队列"
+    ],
+    "difficulty": "Medium",
+    "title": "Redis List 类型的底层实现和应用场景？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Data Types",
+      "数据类型",
+      "Hash",
+      "哈希"
+    ],
+    "difficulty": "Medium",
+    "title": "Redis Hash 类型的底层实现和应用场景？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Data Types",
+      "数据类型",
+      "Set",
+      "集合"
+    ],
+    "difficulty": "Medium",
+    "title": "Redis Set 类型的底层实现和应用场景？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Data Types",
+      "数据类型",
+      "Zset",
+      "有序集合",
+      "Sorted Set"
+    ],
+    "difficulty": "Medium",
+    "title": "Redis Zset 类型的底层实现和应用场景？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Data Types",
+      "数据类型",
+      "BitMap",
+      "位图"
+    ],
+    "difficulty": "Medium",
+    "title": "Redis BitMap 类型的底层实现和应用场景？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Data Types",
+      "数据类型",
+      "HyperLogLog"
+    ],
+    "difficulty": "Medium",
+    "title": "Redis HyperLogLog 类型的底层实现和应用场景？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Data Types",
+      "数据类型",
+      "GEO"
+    ],
+    "difficulty": "Medium",
+    "title": "Redis GEO 类型的底层实现和应用场景？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Data Types",
+      "数据类型",
+      "Stream",
+      "流",
+      "Message Queue",
+      "消息队列"
+    ],
+    "difficulty": "Hard",
+    "title": "Redis Stream 类型的底层实现和应用场景？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Data Types",
+      "数据类型",
+      "List",
+      "列表",
+      "Stream",
+      "流",
+      "Message Queue",
+      "消息队列"
+    ],
+    "difficulty": "Medium",
+    "title": "Redis List 和 Stream 作为消息队列的区别？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Stream",
+      "流",
+      "Message Queue",
+      "消息队列",
+      "System Design",
+      "系统设计"
+    ],
+    "difficulty": "Hard",
+    "title": "Redis Stream 与专业消息队列（如 Kafka）的差距？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Pub/Sub",
+      "发布/订阅",
+      "Message Queue",
+      "消息队列"
+    ],
+    "difficulty": "Medium",
+    "title": "Redis 发布/订阅机制为什么不适合做消息队列？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Performance",
+      "性能",
+      "Data Structures",
+      "数据结构",
+      "Architecture",
+      "架构"
+    ],
+    "difficulty": "Medium",
+    "title": "Redis 为什么快？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Data Types",
+      "数据类型",
+      "Data Structures",
+      "数据结构"
+    ],
+    "difficulty": "Medium",
+    "title": "Redis 数据类型和底层数据结构的关系？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Data Structures",
+      "数据结构",
+      "String",
+      "字符串",
+      "SDS"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是 SDS（简单动态字符串）？相比 C 字符串有什么优点？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Data Structures",
+      "数据结构",
+      "Linked List",
+      "链表"
+    ],
+    "difficulty": "Easy",
+    "title": "Redis 链表的实现是怎样的？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Data Structures",
+      "数据结构",
+      "Ziplist",
+      "压缩列表"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是压缩列表（ziplist）？有什么优缺点？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Data Structures",
+      "数据结构",
+      "Ziplist",
+      "压缩列表",
+      "Quicklist",
+      "Listpack"
+    ],
+    "difficulty": "Hard",
+    "title": "压缩列表的连锁更新问题是什么？如何解决？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Data Structures",
+      "数据结构",
+      "Hash Table",
+      "哈希表"
+    ],
+    "difficulty": "Medium",
+    "title": "Redis 哈希表的实现是怎样的？如何解决哈希冲突？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Data Structures",
+      "数据结构",
+      "Hash Table",
+      "哈希表",
+      "Rehash"
+    ],
+    "difficulty": "Medium",
+    "title": "Redis 的 rehash 过程是怎样的？什么是渐进式 rehash？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Data Structures",
+      "数据结构",
+      "Hash Table",
+      "哈希表",
+      "Rehash"
+    ],
+    "difficulty": "Medium",
+    "title": "Redis rehash 的触发条件是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Data Structures",
+      "数据结构",
+      "Intset",
+      "整数集合"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是整数集合（intset）？升级操作是怎样的？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Data Structures",
+      "数据结构",
+      "Skiplist",
+      "跳表"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是跳表（skiplist）？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Data Structures",
+      "数据结构",
+      "Skiplist",
+      "跳表",
+      "Zset",
+      "有序集合"
+    ],
+    "difficulty": "Hard",
+    "title": "Redis Zset 为什么用跳表而不用平衡树？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Data Structures",
+      "数据结构",
+      "Quicklist"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是 quicklist？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Data Structures",
+      "数据结构",
+      "Listpack"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是 listpack？相比压缩列表有什么改进？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Expiration",
+      "过期策略",
+      "Eviction",
+      "淘汰策略"
+    ],
+    "difficulty": "Medium",
+    "title": "Redis 过期删除策略和内存淘汰策略有什么区别？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Expiration",
+      "过期策略"
+    ],
+    "difficulty": "Easy",
+    "title": "Redis 如何设置 key 的过期时间？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Expiration",
+      "过期策略"
+    ],
+    "difficulty": "Easy",
+    "title": "Redis 如何判断 key 是否已过期？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Expiration",
+      "过期策略"
+    ],
+    "difficulty": "Medium",
+    "title": "Redis 的过期删除策略有哪些？（惰性删除+定期删除）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Configuration",
+      "配置",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Easy",
+    "title": "Redis 如何设置最大运行内存？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Eviction",
+      "淘汰策略",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Medium",
+    "title": "Redis 内存淘汰策略有哪些？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Eviction",
+      "淘汰策略",
+      "LRU",
+      "LFU",
+      "Algorithms",
+      "算法"
+    ],
+    "difficulty": "Hard",
+    "title": "LRU 算法和 LFU 算法有什么区别？Redis 如何实现它们？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Persistence",
+      "持久化",
+      "AOF",
+      "Big Key",
+      "大 Key"
+    ],
+    "difficulty": "Medium",
+    "title": "Redis 大 Key 对 AOF 持久化有什么影响？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Persistence",
+      "持久化",
+      "RDB",
+      "AOF Rewrite",
+      "AOF重写",
+      "Big Key",
+      "大 Key",
+      "Fork"
+    ],
+    "difficulty": "Hard",
+    "title": "Redis 大 Key 对 RDB 持久化和 AOF 重写有什么影响？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Performance",
+      "性能",
+      "Operating System",
+      "操作系统",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Hard",
+    "title": "Linux 内存大页机制对 Redis 性能有什么影响？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Performance",
+      "性能",
+      "Big Key",
+      "大 Key"
+    ],
+    "difficulty": "Medium",
+    "title": "Redis 大 Key 还有哪些其他影响？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Best Practices",
+      "最佳实践",
+      "Big Key",
+      "大 Key"
+    ],
+    "difficulty": "Medium",
+    "title": "如何避免和处理 Redis 大 Key？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Persistence",
+      "持久化",
+      "RDB"
+    ],
+    "difficulty": "Medium",
+    "title": "RDB 快照是怎么实现的？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Persistence",
+      "持久化",
+      "RDB"
+    ],
+    "difficulty": "Easy",
+    "title": "Redis 如何生成 RDB 文件？save 和 bgsave 的区别？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Persistence",
+      "持久化",
+      "RDB",
+      "Concurrency",
+      "并发",
+      "Copy-on-Write",
+      "写时复制"
+    ],
+    "difficulty": "Medium",
+    "title": "执行 RDB 快照（bgsave）时，数据能被修改吗？如何实现的？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Persistence",
+      "持久化",
+      "RDB",
+      "AOF"
+    ],
+    "difficulty": "Medium",
+    "title": "RDB 和 AOF 混合持久化是怎么回事？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Persistence",
+      "持久化",
+      "AOF"
+    ],
+    "difficulty": "Medium",
+    "title": "AOF 持久化是怎么实现的？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Persistence",
+      "持久化",
+      "AOF"
+    ],
+    "difficulty": "Medium",
+    "title": "AOF 的三种写回策略是什么？有什么优缺点？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Persistence",
+      "持久化",
+      "AOF",
+      "AOF Rewrite",
+      "AOF重写"
+    ],
+    "difficulty": "Medium",
+    "title": "Redis 的 AOF 重写机制是为了解决什么问题？过程是怎样的？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Redis",
+      "Redis",
+      "Persistence",
+      "持久化",
+      "AOF",
+      "AOF Rewrite",
+      "AOF重写",
+      "Concurrency",
+      "并发",
+      "Copy-on-Write",
+      "写时复制"
+    ],
+    "difficulty": "Hard",
+    "title": "AOF 后台重写（bgrewriteaof）是如何工作的？如何处理重写期间的数据修改？"
   }
 ]
