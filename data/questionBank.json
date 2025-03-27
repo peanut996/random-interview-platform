@@ -7511,5 +7511,633 @@
     ],
     "difficulty": "Medium",
     "title": "如何使用 Linux Shell 命令（awk, sort, uniq, wc）从 Nginx 日志中分析 PV 和 UV？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机组成原理",
+      "CPU Cache",
+      "CPU缓存"
+    ],
+    "difficulty": "Medium",
+    "title": "CPU Cache 的数据写入方式有哪些？（写直达 vs 写回）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机组成原理",
+      "CPU Cache",
+      "CPU缓存",
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是缓存一致性问题？如何解决？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机组成原理",
+      "CPU Cache",
+      "CPU缓存",
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Hard",
+    "title": "解释 MESI 协议。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机组成原理",
+      "CPU Cache",
+      "CPU缓存",
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Hard",
+    "title": "MESI 协议的四种状态是什么？它们之间如何转换？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机组成原理",
+      "CPU Cache",
+      "CPU缓存",
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是总线嗅探？它在缓存一致性中扮演什么角色？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机组成原理",
+      "Data Representation",
+      "数据表示"
+    ],
+    "difficulty": "Easy",
+    "title": "为什么负数要用补码表示？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机组成原理",
+      "Data Representation",
+      "数据表示"
+    ],
+    "difficulty": "Easy",
+    "title": "十进制小数如何转换为二进制？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机组成原理",
+      "Data Representation",
+      "数据表示",
+      "Floating Point",
+      "浮点数"
+    ],
+    "difficulty": "Medium",
+    "title": "计算机是如何存储小数的？（IEEE 754 浮点数标准）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机组成原理",
+      "Data Representation",
+      "数据表示",
+      "Floating Point",
+      "浮点数"
+    ],
+    "difficulty": "Medium",
+    "title": "为什么 0.1 + 0.2 不等于 0.3？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机组成原理",
+      "Data Representation",
+      "数据表示",
+      "Floating Point",
+      "浮点数"
+    ],
+    "difficulty": "Medium",
+    "title": "单精度和双精度浮点数有什么区别？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机组成原理",
+      "CPU Cache",
+      "CPU缓存"
+    ],
+    "difficulty": "Easy",
+    "title": "CPU 缓存的层次结构是怎样的？为什么需要多级缓存？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机组成原理",
+      "CPU Cache",
+      "CPU缓存"
+    ],
+    "difficulty": "Easy",
+    "title": "什么是 CPU Cache Line？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机组成原理",
+      "CPU Cache",
+      "CPU缓存",
+      "Concurrency",
+      "并发"
+    ],
+    "difficulty": "Hard",
+    "title": "什么是伪共享（False Sharing）？如何避免？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "CPU Scheduling",
+      "CPU调度"
+    ],
+    "difficulty": "Medium",
+    "title": "Linux 中的任务调度策略有哪些？（实时任务 vs 普通任务）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "CPU Scheduling",
+      "CPU调度"
+    ],
+    "difficulty": "Medium",
+    "title": "解释 CFS（完全公平调度）算法。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "CPU Scheduling",
+      "CPU调度"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是 vruntime？它在 CFS 中如何工作？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "CPU Scheduling",
+      "CPU调度"
+    ],
+    "difficulty": "Easy",
+    "title": "如何调整 Linux 任务的优先级？（nice 值）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机组成原理"
+    ],
+    "difficulty": "Medium",
+    "title": "CPU 是如何执行程序的？（指令周期）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机组成原理"
+    ],
+    "difficulty": "Easy",
+    "title": "解释冯诺依曼模型的基本组成部分。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机组成原理"
+    ],
+    "difficulty": "Medium",
+    "title": "CPU 中的寄存器有哪些主要类型及其作用？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机组成原理"
+    ],
+    "difficulty": "Easy",
+    "title": "32 位和 64 位 CPU 的主要区别是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机组成原理"
+    ],
+    "difficulty": "Easy",
+    "title": "64 位 CPU 的计算性能一定比 32 位 CPU 高很多吗？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机组成原理"
+    ],
+    "difficulty": "Medium",
+    "title": "解释指令流水线的基本阶段。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机组成原理",
+      "Performance Optimization",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "如何衡量和提高程序的 CPU 执行速度？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机组成原理",
+      "CPU Cache",
+      "CPU缓存"
+    ],
+    "difficulty": "Easy",
+    "title": "为什么需要 CPU Cache？它比内存快多少？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机组成原理",
+      "CPU Cache",
+      "CPU缓存"
+    ],
+    "difficulty": "Medium",
+    "title": "CPU Cache 的数据结构是怎样的？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机组成原理",
+      "CPU Cache",
+      "CPU缓存"
+    ],
+    "difficulty": "Medium",
+    "title": "解释直接映射缓存（Direct Mapped Cache）的工作原理。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机组成原理",
+      "CPU Cache",
+      "CPU缓存",
+      "Performance Optimization",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "如何编写能提高 CPU 数据缓存命中率的代码？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机组成原理",
+      "CPU Cache",
+      "CPU缓存",
+      "Performance Optimization",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "如何编写能提高 CPU 指令缓存命中率的代码？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机组成原理",
+      "CPU Cache",
+      "CPU缓存",
+      "Performance Optimization",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是分支预测？它如何影响性能？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机组成原理",
+      "CPU Cache",
+      "CPU缓存",
+      "Concurrency",
+      "并发",
+      "Performance Optimization",
+      "性能优化"
+    ],
+    "difficulty": "Medium",
+    "title": "在多核 CPU 上，如何提高缓存命中率？（线程绑定）"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机组成原理",
+      "Interrupts",
+      "中断"
+    ],
+    "difficulty": "Easy",
+    "title": "什么是中断？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机组成原理",
+      "Interrupts",
+      "中断"
+    ],
+    "difficulty": "Easy",
+    "title": "为什么中断处理程序需要短而快？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Interrupts",
+      "中断"
+    ],
+    "difficulty": "Medium",
+    "title": "什么是软中断？它与硬中断有何区别？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Interrupts",
+      "中断"
+    ],
+    "difficulty": "Medium",
+    "title": "Linux 为什么要将中断处理分为上半部和下半部？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Interrupts",
+      "中断"
+    ],
+    "difficulty": "Medium",
+    "title": "Linux 中常见的软中断类型有哪些？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Linux",
+      "Linux",
+      "Troubleshooting",
+      "故障排查",
+      "Interrupts",
+      "中断"
+    ],
+    "difficulty": "Medium",
+    "title": "如何查看和分析 Linux 系统中的软中断情况？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Linux",
+      "Linux",
+      "Troubleshooting",
+      "故障排查",
+      "Performance Optimization",
+      "性能优化",
+      "Interrupts",
+      "中断"
+    ],
+    "difficulty": "Hard",
+    "title": "如何定位软中断 CPU 使用率过高的问题？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机组成原理",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Easy",
+    "title": "描述计算机的存储器层次结构。"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机组成原理",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Easy",
+    "title": "不同层级的存储器在速度、容量、成本上有何差异？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机组成原理",
+      "Memory Management",
+      "内存管理"
+    ],
+    "difficulty": "Medium",
+    "title": "SRAM 和 DRAM 有什么区别？它们分别用于什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Computer Architecture",
+      "计算机组成原理",
+      "CPU Cache",
+      "CPU缓存"
+    ],
+    "difficulty": "Medium",
+    "title": "CPU 访问数据的流程是怎样的（考虑缓存）？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Computer Architecture",
+      "计算机组成原理",
+      "Storage",
+      "存储"
+    ],
+    "difficulty": "Easy",
+    "title": "机械硬盘、固态硬盘、内存的速度大约相差多少倍？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Kernel",
+      "内核"
+    ],
+    "difficulty": "Easy",
+    "title": "内核在操作系统中扮演什么角色？提供哪些基本能力？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Kernel",
+      "内核"
+    ],
+    "difficulty": "Easy",
+    "title": "什么是用户态和内核态？为什么需要区分？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Kernel",
+      "内核",
+      "System Call",
+      "系统调用"
+    ],
+    "difficulty": "Easy",
+    "title": "应用程序如何从用户态切换到内核态？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Linux",
+      "Linux",
+      "Kernel",
+      "内核"
+    ],
+    "difficulty": "Medium",
+    "title": "Linux 内核的设计理念有哪些？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Kernel",
+      "内核"
+    ],
+    "difficulty": "Medium",
+    "title": "宏内核、微内核、混合内核各有什么特点和优缺点？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Linux",
+      "Linux",
+      "Windows",
+      "Windows",
+      "Kernel",
+      "内核"
+    ],
+    "difficulty": "Medium",
+    "title": "Linux 和 Windows 内核的主要区别是什么？"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "Operating System",
+      "操作系统",
+      "Linux",
+      "Linux",
+      "Windows",
+      "Windows",
+      "File Format",
+      "文件格式"
+    ],
+    "difficulty": "Medium",
+    "title": "Linux 和 Windows 的可执行文件格式分别是什么？"
   }
 ]
