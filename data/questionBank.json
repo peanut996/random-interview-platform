@@ -14936,5 +14936,16 @@
     ],
     "difficulty": "Hard",
     "title": "可重复读隔离级别下的幻读问题及场景分析"
+  },
+  {
+    "type": "Question",
+    "category": [
+      "General",
+      "通用",
+      "System Design",
+      "系统设计"
+    ],
+    "difficulty": "Medium",
+    "title": "八股文"
   }
 ]
