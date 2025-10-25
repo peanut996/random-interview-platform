@@ -17,6 +17,9 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <meta name="google-adsense-account" content="ca-pub-7805627632792292" />
+      </head>
       <body className={inter.className}>
         <ThemeProvider
           attribute="class"
